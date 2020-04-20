@@ -36,6 +36,7 @@ class Entity(rdfSubject):
 
     label = rdfMultiple(RDFS.label)
     name = rdfMultiple(schema.name)
+    description = rdfMultiple(schema.description)
 
     mainEntityOfPage = rdfSingle(schema.mainEntityOfPage)
     sameAs = rdfMultiple(OWL.sameAs)
@@ -263,10 +264,19 @@ def main(loadData=None):
           description="",
           target='trig/gildenleden.trig')
 
+    # artwork dataset
+    df5 = pd.read_csv('data/corporatiestukken.csv')
+    df5 = df5.where((pd.notnull(df5)), None)
+    toRDF(df5.to_dict(orient='records'),
+          uri=ns.term('corporatiestukken/'),
+          name=Literal("Lijst van corporatiestukken", lang='nl'),
+          description="Overgenomen uit appendix 3 (Middelkoop 2019).",
+          target='trig/corporatiestukken.trig')
+
 
 def getPersonName(d):
 
-    surnamePrefixes = ['de', 'van', 'la', 'der']
+    surnamePrefixes = ['de', 'van', 'la', 'der', 'du']
     pns = []
     labels = []
 
@@ -326,13 +336,82 @@ def toRDF(data, uri, name, description, target=None):
 
     g = rdfSubject.db = ds.graph(identifier=uri)
 
-    for d in data:
+    # For the artworks
+    if 'corporatiestukken.trig' in target:
 
-        # Titel	Voornaam	Patroniem en tussenvoegsel	Achternaam
-        pn, label = getPersonName(d)
+        for d in data:
+            art_id = d['identifier'].replace(' ', '').replace('.', '')
+            artwork = VisualArtwork(
+                nsArtwork.term(art_id),
+                name=[d['title']],
+                dateCreated=d['date'],
+                artist=[d['artist']],
+                disambiguatingDescription=d['dimensions'],
+                description=[Literal(d['description'], lang='nl')])
 
-        p = Person(None, hasName=pn, label=label)
+            sameAs = [
+                URIRef(i)
+                for i in [d['rijksmuseum_uri'], d['amsterdammuseum_uri']]
+                if i is not None
+            ]
+            artwork.sameAs = sameAs
 
+            # for the exampleResource
+            p = artwork
+
+    # For the person data
+    else:
+        for d in data:
+
+            lifeevents = []
+
+            gender = d['geslacht']
+
+            pn, label = getPersonName(d)
+
+            birthDate = Literal(d['Doop/geboren genormaliseerd'],
+                                datatype=XSD.date
+                                ) if d['Doop/geboren genormaliseerd'] else None
+            birthPlace = d['Doop/geboren te']
+            deathDate = Literal(
+                d['Begraven/overleden genormaliseerd'], datatype=XSD.date
+            ) if d['Begraven/overleden genormaliseerd'] else None
+            deathPlace = d['Begraven/overleden te']
+
+            p = Person(nsPerson.term(str(next(personCounter))),
+                       hasName=pn,
+                       label=label,
+                       birthDate=birthDate,
+                       deathDate=deathDate,
+                       birthPlace=birthPlace,
+                       deathPlace=deathPlace)
+
+            if d['Geportretteerd op']:
+
+                try:
+                    art_id = re.findall(r"([A-Z]{1,3}\. \d+)",
+                                        d['Geportretteerd op'])[0]
+                except:
+                    art_id = d['Geportretteerd op']
+                art_id = art_id.replace(' ', '').replace('.', '')
+
+                artwork = VisualArtwork(nsArtwork.term(art_id))
+                p.subjectOf = [artwork]
+
+            # regentessen
+            if 'huisvrouw (hv) van / weduwe (w) van genormaliseerd' in d and d[
+                    'huisvrouw (hv) van / weduwe (w) van genormaliseerd']:
+
+                for marriage in d[
+                        'huisvrouw (hv) van / weduwe (w) van genormaliseerd'].split(
+                            '; '):
+
+                    marriage = re.sub(r"(?:hv. v. )|(?:w. v. )|(?:hertr. )",
+                                      "", marriage)
+                    husbandName, rest = marriage.split('(', 1)
+                    years, rest = rest.split(')', 1)
+
+                    print(years)
     ########
     # Meta #
     ########
