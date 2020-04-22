@@ -492,24 +492,79 @@ def toRDF(data, uri, name, description, target=None):
 
                     earliestDate, latestDate = yearToDate(marriageYear)
 
-                    # print(years)
+                    try:
+                        birthYear, deathYear = years.split('-')
+                        if birthYear != "?":
+                            birthDateEarliest, birthDateLatest = yearToDate(
+                                birthYear)
+                        else:
+                            birthDateEarliest, birthDateLatest = None, None
+
+                        if deathYear != "?":
+                            deathDateEarliest, deathDateLatest = yearToDate(
+                                deathYear)
+                        else:
+                            deathDateEarliest, deathDateLatest = None, None
+                    except ValueError:  # quick and dirty
+                        birthDateEarliest, birthDateLatest, deathDateEarliest, deathDateLatest = None, None, None, None
+
                     pnHusband, labelsHusband = parsePersonName(husbandName)
                     husband = Person(nsPerson.term(str(next(personCounter))),
                                      hasName=pnHusband,
                                      label=labelsHusband,
                                      comment=[comment])
 
+                    lifeEventsHusband = []
+
+                    # Birth Husband
+                    birthEventHusband = Event(
+                        None,
+                        label=[
+                            Literal(f"Geboorte van {labelsHusband[0]}",
+                                    lang='nl')
+                        ],
+                        hasEarliestBeginTimeStamp=birthDateEarliest,
+                        hasLatestEndTimeStamp=birthDateLatest,
+                        place=birthPlace)
+                    birthEventHusband.participationOf = [husband]
+
+                    roleBorn = Born(None,
+                                    carriedIn=birthEventHusband,
+                                    carriedBy=husband,
+                                    label=["Born"])
+                    lifeEventsHusband.append(birthEventHusband)
+
+                    # Death
+                    deathEventHusband = Event(
+                        None,
+                        label=[
+                            Literal(f"Overlijden van {labelsHusband[0]}",
+                                    lang='nl')
+                        ],
+                        hasEarliestBeginTimeStamp=deathDateEarliest,
+                        hasLatestEndTimeStamp=deathDateLatest,
+                        place=deathPlace)
+                    deathEventHusband.participationOf = [husband]
+
+                    roleDied = Died(None,
+                                    carriedIn=deathEventHusband,
+                                    carriedBy=husband,
+                                    label=["Died"])
+
+                    lifeEventsHusband.append(deathEventHusband)
+
                     marriageEvent = Event(
                         None,
                         label=[
                             Literal(
-                                f"Marriage of {labels[0]} and {husbandName}",
-                                lang='en')
+                                f"Huwelijk tussen {labels[0]} en {husbandName}",
+                                lang='nl')
                         ],
                         hasEarliestBeginTimeStamp=earliestDate,
                         hasLatestEndTimeStamp=latestDate,
                         participationOf=[p, husband])
                     lifeEvents.append(marriageEvent)
+                    lifeEventsHusband.append(marriageEvent)
 
                     roleBride = Bride(None,
                                       carriedIn=marriageEvent,
@@ -521,7 +576,7 @@ def toRDF(data, uri, name, description, target=None):
                                       carriedBy=husband,
                                       label=["Groom"])
 
-                    husband.participatesIn = [marriageEvent]
+                    husband.participatesIn = lifeEventsHusband
 
             p.participatesIn = lifeEvents
 
