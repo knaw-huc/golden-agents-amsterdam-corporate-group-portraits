@@ -3,217 +3,64 @@ import datetime
 import json
 import re
 from itertools import count, product
+from collections import defaultdict
 import pandas as pd
+
+from dateutil import parser as dateParser
 
 import rdflib
 from rdflib import Dataset, ConjunctiveGraph, Graph, URIRef, Literal, XSD, Namespace, RDFS, BNode, OWL
 from rdfalchemy import rdfSubject, rdfMultiple, rdfSingle
 
-create = Namespace("https://data.create.humanities.uva.nl/")
-schema = Namespace("http://schema.org/")
-sem = Namespace("http://semanticweb.cs.vu.nl/2009/11/sem/")
-bio = Namespace("http://purl.org/vocab/bio/0.1/")
-foaf = Namespace("http://xmlns.com/foaf/0.1/")
-void = Namespace("http://rdfs.org/ns/void#")
-dcterms = Namespace("http://purl.org/dc/terms/")
-pnv = Namespace('https://w3id.org/pnv#')
+from ga import *
 
-rdflib.graph.DATASET_DEFAULT_GRAPH_ID = create
-
-ns = Namespace("https://data.create.humanities.uva.nl/id/corporatiestukken/")
+ns = Namespace("https://data.goldenagents.org/datasets/corporatiestukken/")
+rdflib.graph.DATASET_DEFAULT_GRAPH_ID = ns
 
 nsPerson = Namespace(
-    "https://data.create.humanities.uva.nl/id/corporatiestukken/person/")
+    "https://data.goldenagents.org/datasets/corporatiestukken/person/")
 personCounter = count(1)
 
 nsArtwork = Namespace(
-    "https://data.create.humanities.uva.nl/id/corporatiestukken/artwork/")
+    "https://data.goldenagents.org/datasets/corporatiestukken/artwork/")
 artworkCounter = count(1)
 
+afkortingen = {
+    "Amwh": "Aalmoezeniersweeshuis",
+    "Bwh": "Burgerweeshuis",
+    "Dh": "Dolhuis",
+    "Gh": "Gasthuizen",
+    "Lh": "Leprozenhuis",
+    "OMVGh": "Oude Mannen- en Vrouwengasthuis",
+    "Rh": "Rasphuis",
+    "SJh": "Sint Jorishof",
+    "Sph": "Spinhuis",
+    "SphNWh": "Spin- en Nieuwe Werkhuis",
+    "Wwh": "Walenweeshuis",
+}
 
-class Entity(rdfSubject):
-    rdf_type = URIRef('urn:entity')
-
-    label = rdfMultiple(RDFS.label)
-    name = rdfMultiple(schema.name)
-    description = rdfMultiple(schema.description)
-
-    mainEntityOfPage = rdfSingle(schema.mainEntityOfPage)
-    sameAs = rdfMultiple(OWL.sameAs)
-
-    disambiguatingDescription = rdfSingle(schema.disambiguatingDescription)
-
-    depiction = rdfSingle(foaf.depiction)
-    subjectOf = rdfMultiple(schema.subjectOf)
-    about = rdfSingle(schema.about)
-    url = rdfSingle(schema.url)
-
-    inDataset = rdfSingle(void.inDataset)
-
-
-class CreativeWork(Entity):
-    rdf_type = schema.CreativeWork
-
-    publication = rdfMultiple(schema.publication)
-    author = rdfMultiple(schema.author)
-
-    mainEntity = rdfSingle(schema.mainEntity)
-
-    version = rdfSingle(schema.version)
-
-
-class DatasetClass(rdfSubject):
-    """Dataset class, both a schema:Dataset and a void:Dataset.
-
-    Indicate at least:
-        * name (name of the dataset, str)
-        * description (detailed description (Markdown allowed), str)
-
-    See also: https://developers.google.com/search/docs/data-types/dataset
-    """
-
-    rdf_type = void.Dataset, schema.Dataset
-    label = rdfMultiple(RDFS.label)
-
-    ##########
-    # schema #
-    ##########
-
-    name = rdfMultiple(schema.name)
-    description = rdfMultiple(schema.description)
-    alternateName = rdfMultiple(schema.alternateName)
-    creator = rdfMultiple(schema.creator,
-                          range_type=(schema.Person, schema.Organization))
-    publisher = rdfMultiple(schema.publisher)
-    citation = rdfMultiple(schema.citation,
-                           range_type=(Literal, schema.CreativeWork))
-    hasPart = rdfMultiple(schema.hasPart, range_type=(URIRef, schema.Dataset))
-    isPartOf = rdfSingle(schema.isPartOf, range_type=(URIRef, schema.Dataset))
-    isBasedOn = rdfMultiple(schema.isBasedOn,
-                            range_type=(URIRef, schema.CreativeWork))
-    identifier = rdfMultiple(schema.identifier,
-                             range_type=(URIRef, Literal,
-                                         schema.PropertyValue))
-    keywords = rdfMultiple(schema.keywords, range_type=Literal)
-    licenseprop = rdfSingle(schema.license,
-                            range_type=(URIRef, schema.CreativeWork))
-    sameAs = rdfMultiple(schema.sameAs, range_type=URIRef)
-    spatialCoverage = rdfMultiple(schema.spatialCoverage,
-                                  range_type=(Literal, schema.Place))
-    temporalCoverage = rdfMultiple(schema.temporalCoverage, range_type=Literal)
-    variableMeasured = rdfMultiple(schema.variableMeasured,
-                                   range_type=(Literal, schema.PropertyValue))
-    version = rdfMultiple(schema.sameAs, range_type=Literal)
-    url = rdfMultiple(schema.url, range_type=URIRef)
-
-    distribution = rdfSingle(schema.distribution,
-                             range_type=schema.DataDownload)
-    dateModified = rdfSingle(schema.dateModified)
-
-    image = rdfSingle(schema.image, range_type=URIRef)
-
-    ########
-    # void #
-    ########
-
-    dctitle = rdfMultiple(dcterms.title)
-    dcdescription = rdfMultiple(dcterms.description)
-    dccreator = rdfMultiple(dcterms.creator)
-    dcpublisher = rdfMultiple(dcterms.publisher)
-    dccontributor = rdfMultiple(dcterms.contributor)
-    dcsource = rdfSingle(dcterms.source)
-    dcdate = rdfSingle(dcterms.date)
-    dccreated = rdfSingle(dcterms.created)
-    dcissued = rdfSingle(dcterms.issued)
-    dcmodified = rdfSingle(dcterms.modified)
-
-    dataDump = rdfSingle(void.dataDump)
-    sparqlEndpoint = rdfSingle(void.sparqlEndpoint)
-    exampleResource = rdfSingle(void.exampleResource)
-    vocabulary = rdfMultiple(void.vocabulary)
-    triples = rdfSingle(void.triples)
-
-    inDataset = rdfSingle(void.inDataset)
-    subset = rdfMultiple(void.subset)
-
-    # I left out some very specific void properties.
-
-
-class DataDownload(CreativeWork):
-    rdf_type = schema.DataDownload
-
-    contentUrl = rdfSingle(schema.contentUrl)
-    encodingFormat = rdfSingle(schema.encodingFormat)
-
-
-class ScholarlyArticle(CreativeWork):
-    rdf_type = schema.ScholarlyArticle
-
-
-class VisualArtwork(CreativeWork):
-    rdf_type = schema.VisualArtwork
-
-    artist = rdfMultiple(schema.artist)
-
-    dateCreated = rdfSingle(schema.dateCreated)
-    dateModified = rdfSingle(schema.dateModified)
-
-    temporal = rdfSingle(schema.temporal)
-
-
-class PublicationEvent(Entity):
-    rdf_type = schema.PublicationEvent
-
-    startDate = rdfSingle(schema.startDate)
-    hasEarliestBeginTimeStamp = rdfSingle(sem.hasEarliestBeginTimeStamp)
-    hasLatestEndTimeStamp = rdfSingle(sem.hasLatestEndTimeStamp)
-
-    location = rdfSingle(schema.location)
-
-    publishedBy = rdfMultiple(schema.publishedBy)
-
-
-class Place(Entity):
-    rdf_type = schema.Place
-
-
-class Marriage(Entity):
-    rdf_type = bio.Marriage
-
-    date = rdfSingle(bio.date)
-    partner = rdfMultiple(bio.partner)
-    place = rdfSingle(bio.place)
-
-    subjectOf = rdfMultiple(schema.subjectOf)
-
-
-class Person(Entity):
-    rdf_type = schema.Person
-
-    birthPlace = rdfSingle(schema.birthPlace)
-    deathPlace = rdfSingle(schema.deathPlace)
-
-    birthDate = rdfSingle(schema.birthDate)
-    deathDate = rdfSingle(schema.deathDate)
-
-    hasName = rdfMultiple(pnv.hasName, range_type=pnv.PersonName)
-
-
-class PersonName(Entity):
-    rdf_type = pnv.PersonName
-    label = rdfSingle(RDFS.label)
-
-    # These map to A2A
-    literalName = rdfSingle(pnv.literalName)
-    givenName = rdfSingle(pnv.givenName)
-    surnamePrefix = rdfSingle(pnv.surnamePrefix)
-    baseSurname = rdfSingle(pnv.baseSurname)
-
-    # These do not
-    prefix = rdfSingle(pnv.prefix)
-    disambiguatingDescription = rdfSingle(pnv.disambiguatingDescription)
-    patronym = rdfSingle(pnv.patronym)
-    surname = rdfSingle(pnv.surname)
+# abbreviations = {
+# Hd = "Handboogdoelen"
+# Kd = "Kloveniersdoelen"
+# Vd = "Voetboogdoelen"
+# kap. = "kapitein"
+# luit. = "luitenant"
+# vaand. = "vaandrig"
+# kol. = "kolonel"
+# serg. = "sergeant"
+# W. = "Wijk"
+# reg. = "regent / regentes"
+# ov. = "overman (-n. = onvervulde nominatie)"
+# insp. = "inspecteur"
+# doct. med. = "medisch doctor"
+# m.p. = "jaar van meesterproef"
+# d. = "deken"
+# k. = "keurmeester"
+# comm. = "oppercommissaris"
+# havenm. = "havenmeester"
+# OZ = "Oude Zijde / Oudezijds"
+# NZ = "Nieuwe Zijde / Nieuwezijds",
+# }
 
 
 def main(loadData=None):
@@ -280,7 +127,8 @@ def getPersonName(d):
     pns = []
     labels = []
 
-    prefixes = d['Titel'].split(' / ') if d['Titel'] else [None]
+    prefixes = d['Titel'].split(
+        ' / ') if d['Titel'] and d['Titel'] != "*" else [None]
     givenNames = d['Voornaam'].split(' / ') if d['Voornaam'] else [None]
     patronyms = d['Patroniem en tussenvoegsel'].split(
         ' / ') if d['Patroniem en tussenvoegsel'] else [None]
@@ -322,11 +170,130 @@ def getPersonName(d):
                         patronym=patronym,
                         surnamePrefix=surnamePrefix,
                         baseSurname=baseSurname,
-                        literalName=literalName)
+                        literalName=literalName,
+                        label=[literalName])
 
         pns.append(pn)
 
     return pns, labels
+
+
+def parsePersonName(nameString, identifier=None):
+    """
+    Parse a capitalised Notary Name from the notorial acts to pnv format. 
+    
+    Args:
+        full_name (str): Capitalised string
+
+    Returns:
+        PersonName: according to pnv
+    """
+
+    pns = []
+    labels = []
+
+    for full_name in nameString.split(' / '):
+
+        # Some static lists
+        dets = ['van', 'de', 'den', 'des', 'der', 'ten', "l'", "d'"]
+        prefixes = ['Mr.']
+        suffixes = ['Jr.', 'Sr.']
+        patronymfix = ('sz', 'sz.', 'szoon')
+
+        # Correcting syntax errors
+        full_name = full_name.replace('.', '. ')
+        full_name = full_name.replace("'", "' ")
+        full_name = full_name.replace('  ', ' ')
+
+        # Tokenise
+        tokens = full_name.split(' ')
+        tokens = [i.lower() for i in tokens]
+        tokens = [i.title() if i not in dets else i for i in tokens]
+        full_name = " ".join(
+            tokens
+        )  # ALL CAPS to normal name format (e.g. Mr. Jan van Tatenhove)
+        full_name = full_name.replace(
+            "' ", "'")  # clunk back the apostrophe to the name
+
+        # -fixes
+        infix = " ".join(i for i in tokens if i in dets).strip()
+        prefix = " ".join(i for i in tokens if i in prefixes).strip()
+        suffix = " ".join(i for i in tokens if i in suffixes).strip()
+
+        name_removed_fix = " ".join(i for i in tokens
+                                    if i not in prefixes and i not in suffixes)
+
+        if infix and infix in name_removed_fix:
+            name = name_removed_fix.split(infix)
+            first_name = name[0].strip()
+            family_name = name[1].strip()
+
+        else:
+            name = name_removed_fix.split(' ', 1)
+            first_name = name[0]
+            family_name = name[1]
+
+        family_name_split = family_name.split(' ')
+        first_name_split = first_name.split(' ')
+
+        # build first name, family name, patronym and ignore -fixes
+        first_name = " ".join(i for i in first_name_split
+                              if not i.endswith(patronymfix)).strip()
+        family_name = " ".join(i for i in family_name_split
+                               if not i.endswith(patronymfix)).strip()
+        patronym = " ".join(i for i in first_name_split + family_name_split
+                            if i.endswith(patronymfix)).strip()
+
+        full_name = " ".join(tokens).strip(
+        )  # ALL CAPS to normal name format (e.g. Mr. Jan van Tatenhove)
+
+        pn = PersonName(
+            identifier,
+            literalName=full_name.strip()
+            if full_name is not None else "Unknown",
+            prefix=prefix if prefix != "" else None,
+            givenName=first_name if first_name != "" else None,
+            surnamePrefix=infix if infix != "" else None,
+            surname=family_name if family_name != "" else None,
+            patronym=patronym if patronym != "" else None,
+            disambiguatingDescription=suffix if suffix != "" else None)
+
+        pn.label = [pn.literalName]
+
+        pns.append(pn)
+        labels.append(pn.literalName)
+
+    return pns, labels
+
+
+def parseDate(dateString):
+
+    if dateString is None:
+        return None, None
+
+    if '/' in dateString:
+
+        earliestDate, latestDate = dateString.split('/')
+
+        earliestDate = dateParser.parse(earliestDate)
+        latestDate = dateParser.parse(latestDate)
+    else:
+        date = dateParser.parse(dateString)
+        earliestDate = date
+        latestDate = date
+
+    return Literal(earliestDate.date(),
+                   datatype=XSD.date), Literal(latestDate.date(),
+                                               datatype=XSD.date)
+
+
+def yearToDate(yearString):
+    if yearString is None or yearString == "?":
+        return None, None
+
+    return Literal(f"{yearString}-01-01",
+                   datatype=XSD.date), Literal(f"{yearString}-12-31",
+                                               datatype=XSD.date)
 
 
 def toRDF(data, uri, name, description, target=None):
@@ -336,18 +303,20 @@ def toRDF(data, uri, name, description, target=None):
 
     g = rdfSubject.db = ds.graph(identifier=uri)
 
+    artworkDepictedDict = defaultdict(list)
+
     # For the artworks
     if 'corporatiestukken.trig' in target:
 
         for d in data:
             art_id = d['identifier'].replace(' ', '').replace('.', '')
-            artwork = VisualArtwork(
+            artwork = CreativeArtifact(
                 nsArtwork.term(art_id),
-                name=[d['title']],
-                dateCreated=d['date'],
+                label=[d['title']],
+                creationDate=d['date'],
                 artist=[d['artist']],
-                disambiguatingDescription=d['dimensions'],
-                description=[Literal(d['description'], lang='nl')])
+                #disambiguatingDescription=d['dimensions'],
+                comment=[Literal(d['description'], lang='nl')])
 
             sameAs = [
                 URIRef(i)
@@ -363,11 +332,20 @@ def toRDF(data, uri, name, description, target=None):
     else:
         for d in data:
 
-            lifeevents = []
+            lifeEvents = []
 
             gender = d['geslacht']
+            if gender == 'M':
+                gender = ga.Male
+            elif gender == "F":
+                gender = ga.Female
 
-            pn, label = getPersonName(d)
+            pn, labels = getPersonName(d)
+
+            p = Person(nsPerson.term(str(next(personCounter))),
+                       hasName=pn,
+                       gender=gender,
+                       label=labels)
 
             birthDate = Literal(d['Doop/geboren genormaliseerd'],
                                 datatype=XSD.date
@@ -378,13 +356,46 @@ def toRDF(data, uri, name, description, target=None):
             ) if d['Begraven/overleden genormaliseerd'] else None
             deathPlace = d['Begraven/overleden te']
 
-            p = Person(nsPerson.term(str(next(personCounter))),
-                       hasName=pn,
-                       label=label,
-                       birthDate=birthDate,
-                       deathDate=deathDate,
-                       birthPlace=birthPlace,
-                       deathPlace=deathPlace)
+            birthDateEarliest, birthDateLatest = parseDate(
+                d['Doop/geboren genormaliseerd'])
+            deathDateEarliest, deathDateLatest = parseDate(
+                d['Begraven/overleden genormaliseerd'])
+
+            # Birth
+            birthEvent = Event(
+                None,
+                label=[Literal(f"Geboorte van {labels[0]}", lang='nl')],
+                hasEarliestBeginTimeStamp=birthDateEarliest,
+                hasLatestEndTimeStamp=birthDateLatest,
+                place=birthPlace)
+            birthEvent.participationOf = [p]
+
+            roleBorn = Born(None,
+                            carriedIn=birthEvent,
+                            carriedBy=p,
+                            label=["Born"])
+            lifeEvents.append(birthEvent)
+
+            # Death
+            deathEvent = Event(
+                None,
+                label=[Literal(f"Overlijden van {labels[0]}", lang='nl')],
+                hasEarliestBeginTimeStamp=deathDateEarliest,
+                hasLatestEndTimeStamp=deathDateLatest,
+                place=deathPlace)
+            deathEvent.participationOf = [p]
+
+            roleDied = Died(None,
+                            carriedIn=deathEvent,
+                            carriedBy=p,
+                            label=["Died"])
+
+            lifeEvents.append(deathEvent)
+
+            #    birthDate=birthDate,
+            #    deathDate=deathDate,
+            #    birthPlace=birthPlace,
+            #    deathPlace=deathPlace)
 
             if d['Geportretteerd op']:
 
@@ -395,12 +406,78 @@ def toRDF(data, uri, name, description, target=None):
                     art_id = d['Geportretteerd op']
                 art_id = art_id.replace(' ', '').replace('.', '')
 
-                artwork = VisualArtwork(nsArtwork.term(art_id))
-                p.subjectOf = [artwork]
+                artwork = CreativeArtifact(nsArtwork.term(art_id))
+                artworkDepictedDict[artwork].append(p)
+                # p.subjectOf = [artwork]
 
             # regentessen
             if 'huisvrouw (hv) van / weduwe (w) van genormaliseerd' in d and d[
                     'huisvrouw (hv) van / weduwe (w) van genormaliseerd']:
+
+                # regentes
+                RoleTypeRegentes = RoleType(BNode("Regentes"),
+                                            subClassOf=ga.Role,
+                                            label=["Regentes"])
+
+                occupationInfo = d['Regentes genormaliseerd']
+
+                for occupation in occupationInfo.split('; '):
+                    organizationString, years = occupation.split(' ', 1)
+
+                    begin, end = years.split('/')
+
+                    earliestBeginTimeStamp, latestBeginTimeStamp = begin.split(
+                        '|')
+                    earliestEndTimeStamp, latestEndTimeStamp = end.split('|')
+
+                    earliestBeginTimeStamp = Literal(
+                        earliestBeginTimeStamp, datatype=XSD.date
+                    ) if earliestBeginTimeStamp != "?" else None
+                    latestBeginTimeStamp = Literal(
+                        latestBeginTimeStamp, datatype=XSD.date
+                    ) if latestBeginTimeStamp != "?" else None
+                    earliestEndTimeStamp = Literal(
+                        earliestEndTimeStamp, datatype=XSD.date
+                    ) if earliestEndTimeStamp != "?" else None
+                    latestEndTimeStamp = Literal(
+                        latestEndTimeStamp, datatype=XSD.date
+                    ) if latestEndTimeStamp != "?" else None
+
+                    RoleTypeAdministrativeOrganization = RoleType(
+                        BNode("AdministrativeOrganization"),
+                        subClassOf=ga.Role,
+                        label=["Administrative Organization"])
+
+                    organization = Organization(
+                        BNode(organizationString),
+                        label=[
+                            Literal(afkortingen[organizationString], lang='nl')
+                        ])
+
+                    regentesEvent = Event(
+                        None,
+                        label=[
+                            Literal(
+                                f"Regentes bij {afkortingen[organizationString]}",
+                                lang='nl')
+                        ],
+                        participationOf=[p, organization],
+                        hasEarliestBeginTimeStamp=earliestBeginTimeStamp,
+                        hasLatestBeginTimeStamp=latestBeginTimeStamp,
+                        hasEarliestEndTimeStamp=earliestEndTimeStamp,
+                        hasLatestEndTimeStamp=latestEndTimeStamp)
+                    lifeEvents.append(regentesEvent)
+
+                    roleRegentes = SpecificRoleType(None,
+                                                    type=RoleTypeRegentes,
+                                                    carriedIn=regentesEvent,
+                                                    carriedBy=p)
+
+                    roleAdministrativeOrganization = SpecificRoleType(
+                        None,
+                        type=RoleTypeAdministrativeOrganization,
+                        carriedIn=regentesEvent,
+                        carriedBy=organization)
 
                 for marriage in d[
                         'huisvrouw (hv) van / weduwe (w) van genormaliseerd'].split(
@@ -409,9 +486,51 @@ def toRDF(data, uri, name, description, target=None):
                     marriage = re.sub(r"(?:hv. v. )|(?:w. v. )|(?:hertr. )",
                                       "", marriage)
                     husbandName, rest = marriage.split('(', 1)
-                    years, rest = rest.split(')', 1)
+                    years, comment = rest.split(')', 1)
 
-                    print(years)
+                    *_, marriageYear = years.rsplit('x', 1)
+
+                    earliestDate, latestDate = yearToDate(marriageYear)
+
+                    # print(years)
+                    pnHusband, labelsHusband = parsePersonName(husbandName)
+                    husband = Person(nsPerson.term(str(next(personCounter))),
+                                     hasName=pnHusband,
+                                     label=labelsHusband,
+                                     comment=[comment])
+
+                    marriageEvent = Event(
+                        None,
+                        label=[
+                            Literal(
+                                f"Marriage of {labels[0]} and {husbandName}",
+                                lang='en')
+                        ],
+                        hasEarliestBeginTimeStamp=earliestDate,
+                        hasLatestEndTimeStamp=latestDate,
+                        participationOf=[p, husband])
+                    lifeEvents.append(marriageEvent)
+
+                    roleBride = Bride(None,
+                                      carriedIn=marriageEvent,
+                                      carriedBy=p,
+                                      label=["Bride"])
+
+                    roleGroom = Groom(None,
+                                      carriedIn=marriageEvent,
+                                      carriedBy=husband,
+                                      label=["Groom"])
+
+                    husband.participatesIn = [marriageEvent]
+
+            p.participatesIn = lifeEvents
+
+            # break
+
+    # Dict lists
+    for artwork, depictedList in artworkDepictedDict.items():
+        artwork.depicts = depictedList
+
     ########
     # Meta #
     ########
@@ -424,15 +543,15 @@ def toRDF(data, uri, name, description, target=None):
 
     download = DataDownload(
         None,
-        contentUrl=URIRef(
-            "https://raw.githubusercontent.com/LvanWissen/schrijverskabinet-rdf/0.2/data/schrijverskabinet.trig"
-        ),
+        # contentUrl=URIRef(
+        #     "https://raw.githubusercontent.com/LvanWissen/iets.trig"
+        # ),
         # name=Literal(),
-        url=URIRef(
-            "https://github.com/LvanWissen/schrijverskabinet-rdf/tree/0.2/data"
-        ),
+        # url=URIRef(
+        #     "https://github.com/LvanWissen/iets/data"
+        # ),
         encodingFormat="application/trig",
-        version="0.2")
+        version="0.1")
 
     date = Literal(datetime.datetime.now().strftime('%Y-%m-%d'),
                    datatype=XSD.datetime)
@@ -465,12 +584,12 @@ def toRDF(data, uri, name, description, target=None):
         dcdescription=[Literal(description, lang='nl')],
         creator=[
             Person(nsPerson.term('norbert-middelkoop'),
-                   name=["Norbert Middelkoop"],
+                   label=["Norbert Middelkoop"],
                    sameAs=[URIRef("http://viaf.org/viaf/12415105")])
         ],
         dccreator=[
             Person(nsPerson.term('norbert-middelkoop'),
-                   name=["Norbert Middelkoop"],
+                   label=["Norbert Middelkoop"],
                    sameAs=[URIRef("http://viaf.org/viaf/12415105")])
         ],
         publisher=[URIRef("https://leonvanwissen.nl/me")],
@@ -508,7 +627,7 @@ def toRDF(data, uri, name, description, target=None):
 
     ds.bind('owl', OWL)
     ds.bind('dcterms', dcterms)
-    ds.bind('create', create)
+    ds.bind('ga', ga)
     ds.bind('schema', schema)
     ds.bind('sem', sem)
     ds.bind('void', void)
