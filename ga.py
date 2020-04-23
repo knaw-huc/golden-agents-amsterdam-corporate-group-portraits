@@ -29,6 +29,8 @@ class Entity(rdfSubject):
 
     creationDate = rdfSingle(ga.creationDate)
 
+    depiction = rdfMultiple(foaf.depiction)
+
 
 class Bearer(Entity):
     rdf_type = ga.Bearer
@@ -41,7 +43,7 @@ class Event(Entity):
 
     participationOf = rdfMultiple(ga.participationOf)
 
-    subevent = rdfMultiple(ga.subevent)
+    subEvent = rdfMultiple(ga.subEvent)
     subEventOf = rdfSingle(ga.subEventOf)
 
     hasTimeStamp = rdfSingle(sem.hasTimeStamp)

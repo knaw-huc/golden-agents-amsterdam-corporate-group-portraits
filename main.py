@@ -275,16 +275,27 @@ def parseDate(dateString):
 
         earliestDate, latestDate = dateString.split('/')
 
-        earliestDate = dateParser.parse(earliestDate)
-        latestDate = dateParser.parse(latestDate)
+        if earliestDate != "?":
+            earliestDate = dateParser.parse(earliestDate)
+        else:
+            earliestDate = None
+
+        if latestDate != "?":
+            latestDate = dateParser.parse(latestDate)
+        else:
+            latestDate = None
+
     else:
         date = dateParser.parse(dateString)
         earliestDate = date
         latestDate = date
 
-    return Literal(earliestDate.date(),
-                   datatype=XSD.date), Literal(latestDate.date(),
-                                               datatype=XSD.date)
+    if earliestDate:
+        earliestDate = Literal(earliestDate.date(), datatype=XSD.date)
+    if latestDate:
+        latestDate = Literal(latestDate.date(), datatype=XSD.date)
+
+    return earliestDate, latestDate
 
 
 def yearToDate(yearString):
@@ -296,6 +307,73 @@ def yearToDate(yearString):
                                                datatype=XSD.date)
 
 
+def parseOccupationInfo(occupationInfo, roleTypePerson, person,
+                        roleTypeOrganization, organizationSubEventDict):
+    for occupation in occupationInfo.split('; '):
+        organizationString, years = occupation.split(' ', 1)
+
+        begin, end = years.split('/')
+
+        earliestBeginTimeStamp, latestBeginTimeStamp = begin.split('|')
+        earliestEndTimeStamp, latestEndTimeStamp = end.split('|')
+
+        earliestBeginTimeStamp = Literal(
+            earliestBeginTimeStamp,
+            datatype=XSD.date) if earliestBeginTimeStamp != "?" else None
+        latestBeginTimeStamp = Literal(
+            latestBeginTimeStamp,
+            datatype=XSD.date) if latestBeginTimeStamp != "?" else None
+        earliestEndTimeStamp = Literal(
+            earliestEndTimeStamp,
+            datatype=XSD.date) if earliestEndTimeStamp != "?" else None
+        latestEndTimeStamp = Literal(
+            latestEndTimeStamp,
+            datatype=XSD.date) if latestEndTimeStamp != "?" else None
+
+        organization = Organization(
+            BNode(organizationString),
+            label=[Literal(afkortingen[organizationString], lang='nl')])
+
+        occupationEvent = Event(
+            None,
+            label=[
+                Literal(
+                    f"{roleTypePerson.label[0]} bij {afkortingen[organizationString]}",
+                    lang='nl')
+            ],
+            participationOf=[person, organization],
+            hasEarliestBeginTimeStamp=earliestBeginTimeStamp,
+            hasLatestBeginTimeStamp=latestBeginTimeStamp,
+            hasEarliestEndTimeStamp=earliestEndTimeStamp,
+            hasLatestEndTimeStamp=latestEndTimeStamp)
+
+        rolePerson = SpecificRoleType(
+            None,
+            type=roleTypePerson,
+            carriedIn=occupationEvent,
+            carriedBy=person,
+            label=[
+                Literal(
+                    f"{person.label[0]} in de rol van {roleTypeOrganization.label[0].lower()}",
+                    lang='nl')
+            ])
+
+        roleTypeOrganization = SpecificRoleType(
+            None,
+            type=roleTypeOrganization,
+            carriedIn=occupationEvent,
+            carriedBy=organization,
+            label=[
+                Literal(
+                    f"{afkortingen[organizationString]} in de rol van administratieve organisatie",
+                    lang='nl')
+            ])
+
+        organizationSubEventDict[organization].append(occupationEvent)
+
+        return occupationEvent, organizationSubEventDict
+
+
 def toRDF(data, uri, name, description, target=None):
 
     ds = Dataset()
@@ -304,6 +382,7 @@ def toRDF(data, uri, name, description, target=None):
     g = rdfSubject.db = ds.graph(identifier=uri)
 
     artworkDepictedDict = defaultdict(list)
+    organizationSubEventDict = defaultdict(list)
 
     # For the artworks
     if 'corporatiestukken.trig' in target:
@@ -324,6 +403,17 @@ def toRDF(data, uri, name, description, target=None):
                 if i is not None
             ]
             artwork.sameAs = sameAs
+
+            if d['amsterdammuseum_uri']:
+                with open('data/depictions_amsterdammuseum.json') as infile:
+                    depictions_amsterdammuseum = json.load(infile)
+
+                    depictions = [
+                        URIRef(i) for i in depictions_amsterdammuseum[
+                            d['amsterdammuseum_uri']]
+                    ]
+
+                    artwork.depiction = depictions
 
             # for the exampleResource
             p = artwork
@@ -410,181 +500,206 @@ def toRDF(data, uri, name, description, target=None):
                 artworkDepictedDict[artwork].append(p)
                 # p.subjectOf = [artwork]
 
-            # regentessen
-            if 'huisvrouw (hv) van / weduwe (w) van genormaliseerd' in d and d[
-                    'huisvrouw (hv) van / weduwe (w) van genormaliseerd']:
+            # RoleTypes
+            RoleTypeAdministrativeOrganization = RoleType(
+                BNode("AdministrativeOrganization"),
+                subClassOf=ga.Role,
+                label=["Administrative Organization"])
 
-                # regentes
+            # 1 poorters
+            if 'poorters.trig' in target:
+                pass
+
+            # 2 regentessen
+            if 'regentessen.trig' in target:
+
                 RoleTypeRegentes = RoleType(BNode("Regentes"),
                                             subClassOf=ga.Role,
                                             label=["Regentes"])
 
+                # regentes
                 occupationInfo = d['Regentes genormaliseerd']
 
-                for occupation in occupationInfo.split('; '):
-                    organizationString, years = occupation.split(' ', 1)
+                occupationEvent, organizationSubEventDict = parseOccupationInfo(
+                    occupationInfo,
+                    roleTypePerson=RoleTypeRegentes,
+                    person=p,
+                    roleTypeOrganization=RoleTypeAdministrativeOrganization,
+                    organizationSubEventDict=organizationSubEventDict)
+                lifeEvents.append(occupationEvent)
 
-                    begin, end = years.split('/')
+                # marriage
+                if d['huisvrouw (hv) van / weduwe (w) van genormaliseerd']:
 
-                    earliestBeginTimeStamp, latestBeginTimeStamp = begin.split(
-                        '|')
-                    earliestEndTimeStamp, latestEndTimeStamp = end.split('|')
+                    for marriage in d[
+                            'huisvrouw (hv) van / weduwe (w) van genormaliseerd'].split(
+                                '; '):
 
-                    earliestBeginTimeStamp = Literal(
-                        earliestBeginTimeStamp, datatype=XSD.date
-                    ) if earliestBeginTimeStamp != "?" else None
-                    latestBeginTimeStamp = Literal(
-                        latestBeginTimeStamp, datatype=XSD.date
-                    ) if latestBeginTimeStamp != "?" else None
-                    earliestEndTimeStamp = Literal(
-                        earliestEndTimeStamp, datatype=XSD.date
-                    ) if earliestEndTimeStamp != "?" else None
-                    latestEndTimeStamp = Literal(
-                        latestEndTimeStamp, datatype=XSD.date
-                    ) if latestEndTimeStamp != "?" else None
+                        marriage = re.sub(
+                            r"(?:hv. v. )|(?:w. v. )|(?:hertr. )", "",
+                            marriage)
+                        husbandName, rest = marriage.split('(', 1)
+                        years, comment = rest.split(')', 1)
 
-                    RoleTypeAdministrativeOrganization = RoleType(
-                        BNode("AdministrativeOrganization"),
-                        subClassOf=ga.Role,
-                        label=["Administrative Organization"])
+                        *_, marriageYear = years.rsplit('x', 1)
 
-                    organization = Organization(
-                        BNode(organizationString),
-                        label=[
-                            Literal(afkortingen[organizationString], lang='nl')
-                        ])
+                        earliestDate, latestDate = yearToDate(marriageYear)
 
-                    regentesEvent = Event(
-                        None,
-                        label=[
-                            Literal(
-                                f"Regentes bij {afkortingen[organizationString]}",
-                                lang='nl')
-                        ],
-                        participationOf=[p, organization],
-                        hasEarliestBeginTimeStamp=earliestBeginTimeStamp,
-                        hasLatestBeginTimeStamp=latestBeginTimeStamp,
-                        hasEarliestEndTimeStamp=earliestEndTimeStamp,
-                        hasLatestEndTimeStamp=latestEndTimeStamp)
-                    lifeEvents.append(regentesEvent)
+                        try:
+                            birthYear, deathYear = years.split('-')
+                            if birthYear != "?":
+                                birthDateEarliest, birthDateLatest = yearToDate(
+                                    birthYear)
+                            else:
+                                birthDateEarliest, birthDateLatest = None, None
 
-                    roleRegentes = SpecificRoleType(None,
-                                                    type=RoleTypeRegentes,
-                                                    carriedIn=regentesEvent,
-                                                    carriedBy=p)
+                            if deathYear != "?":
+                                deathDateEarliest, deathDateLatest = yearToDate(
+                                    deathYear)
+                            else:
+                                deathDateEarliest, deathDateLatest = None, None
+                        except ValueError:  # quick and dirty
+                            birthDateEarliest, birthDateLatest, deathDateEarliest, deathDateLatest = None, None, None, None
 
-                    roleAdministrativeOrganization = SpecificRoleType(
-                        None,
-                        type=RoleTypeAdministrativeOrganization,
-                        carriedIn=regentesEvent,
-                        carriedBy=organization)
+                        pnHusband, labelsHusband = parsePersonName(husbandName)
+                        husband = Person(nsPerson.term(str(
+                            next(personCounter))),
+                                         hasName=pnHusband,
+                                         label=labelsHusband,
+                                         comment=[comment])
 
-                for marriage in d[
-                        'huisvrouw (hv) van / weduwe (w) van genormaliseerd'].split(
-                            '; '):
+                        lifeEventsHusband = []
 
-                    marriage = re.sub(r"(?:hv. v. )|(?:w. v. )|(?:hertr. )",
-                                      "", marriage)
-                    husbandName, rest = marriage.split('(', 1)
-                    years, comment = rest.split(')', 1)
+                        # Birth Husband
+                        birthEventHusband = Event(
+                            None,
+                            label=[
+                                Literal(f"Geboorte van {labelsHusband[0]}",
+                                        lang='nl')
+                            ],
+                            hasEarliestBeginTimeStamp=birthDateEarliest,
+                            hasLatestEndTimeStamp=birthDateLatest,
+                            place=birthPlace)
+                        birthEventHusband.participationOf = [husband]
 
-                    *_, marriageYear = years.rsplit('x', 1)
-
-                    earliestDate, latestDate = yearToDate(marriageYear)
-
-                    try:
-                        birthYear, deathYear = years.split('-')
-                        if birthYear != "?":
-                            birthDateEarliest, birthDateLatest = yearToDate(
-                                birthYear)
-                        else:
-                            birthDateEarliest, birthDateLatest = None, None
-
-                        if deathYear != "?":
-                            deathDateEarliest, deathDateLatest = yearToDate(
-                                deathYear)
-                        else:
-                            deathDateEarliest, deathDateLatest = None, None
-                    except ValueError:  # quick and dirty
-                        birthDateEarliest, birthDateLatest, deathDateEarliest, deathDateLatest = None, None, None, None
-
-                    pnHusband, labelsHusband = parsePersonName(husbandName)
-                    husband = Person(nsPerson.term(str(next(personCounter))),
-                                     hasName=pnHusband,
-                                     label=labelsHusband,
-                                     comment=[comment])
-
-                    lifeEventsHusband = []
-
-                    # Birth Husband
-                    birthEventHusband = Event(
-                        None,
-                        label=[
-                            Literal(f"Geboorte van {labelsHusband[0]}",
+                        roleBorn = Born(
+                            None,
+                            carriedIn=birthEventHusband,
+                            carriedBy=husband,
+                            label=[
+                                Literal(
+                                    f"{labelsHusband[0]} in de rol van geborene",
                                     lang='nl')
-                        ],
-                        hasEarliestBeginTimeStamp=birthDateEarliest,
-                        hasLatestEndTimeStamp=birthDateLatest,
-                        place=birthPlace)
-                    birthEventHusband.participationOf = [husband]
+                            ])
+                        lifeEventsHusband.append(birthEventHusband)
 
-                    roleBorn = Born(None,
-                                    carriedIn=birthEventHusband,
-                                    carriedBy=husband,
-                                    label=["Born"])
-                    lifeEventsHusband.append(birthEventHusband)
+                        # Death
+                        deathEventHusband = Event(
+                            None,
+                            label=[
+                                Literal(f"Overlijden van {labelsHusband[0]}",
+                                        lang='nl')
+                            ],
+                            hasEarliestBeginTimeStamp=deathDateEarliest,
+                            hasLatestEndTimeStamp=deathDateLatest,
+                            place=deathPlace)
+                        deathEventHusband.participationOf = [husband]
 
-                    # Death
-                    deathEventHusband = Event(
-                        None,
-                        label=[
-                            Literal(f"Overlijden van {labelsHusband[0]}",
+                        roleDied = Died(
+                            None,
+                            carriedIn=deathEventHusband,
+                            carriedBy=husband,
+                            label=[
+                                Literal(
+                                    f"{labelsHusband[0]} in de rol van overledene",
                                     lang='nl')
-                        ],
-                        hasEarliestBeginTimeStamp=deathDateEarliest,
-                        hasLatestEndTimeStamp=deathDateLatest,
-                        place=deathPlace)
-                    deathEventHusband.participationOf = [husband]
+                            ])
 
-                    roleDied = Died(None,
-                                    carriedIn=deathEventHusband,
-                                    carriedBy=husband,
-                                    label=["Died"])
+                        lifeEventsHusband.append(deathEventHusband)
 
-                    lifeEventsHusband.append(deathEventHusband)
+                        marriageEvent = Event(
+                            None,
+                            label=[
+                                Literal(
+                                    f"Huwelijk tussen {labels[0]} en {husbandName}",
+                                    lang='nl')
+                            ],
+                            hasEarliestBeginTimeStamp=earliestDate,
+                            hasLatestEndTimeStamp=latestDate,
+                            participationOf=[p, husband])
+                        lifeEvents.append(marriageEvent)
+                        lifeEventsHusband.append(marriageEvent)
 
-                    marriageEvent = Event(
-                        None,
-                        label=[
-                            Literal(
-                                f"Huwelijk tussen {labels[0]} en {husbandName}",
-                                lang='nl')
-                        ],
-                        hasEarliestBeginTimeStamp=earliestDate,
-                        hasLatestEndTimeStamp=latestDate,
-                        participationOf=[p, husband])
-                    lifeEvents.append(marriageEvent)
-                    lifeEventsHusband.append(marriageEvent)
+                        roleBride = Bride(
+                            None,
+                            carriedIn=marriageEvent,
+                            carriedBy=p,
+                            label=[
+                                Literal(f"{labels[0]} in de rol van bruid",
+                                        lang='nl')
+                            ])
 
-                    roleBride = Bride(None,
-                                      carriedIn=marriageEvent,
-                                      carriedBy=p,
-                                      label=["Bride"])
+                        roleGroom = Groom(
+                            None,
+                            carriedIn=marriageEvent,
+                            carriedBy=husband,
+                            label=[
+                                Literal(
+                                    f"{labelsHusband[0]} in de rol van bruidegom",
+                                    lang='nl')
+                            ])
 
-                    roleGroom = Groom(None,
-                                      carriedIn=marriageEvent,
-                                      carriedBy=husband,
-                                      label=["Groom"])
+                        husband.participatesIn = lifeEventsHusband
 
-                    husband.participatesIn = lifeEventsHusband
+            # 3 regenten
+            if 'regenten.trig' in target:
+                RoleTypeRegent = RoleType(BNode("Regent"),
+                                          subClassOf=ga.Role,
+                                          label=["Regent"])
+
+                occupationInfo = d['regent / kerkmeester genormaliseerd']
+
+                if occupationInfo:
+                    occupationEvent, organizationSubEventDict = parseOccupationInfo(
+                        occupationInfo,
+                        roleTypePerson=RoleTypeRegent,
+                        person=p,
+                        roleTypeOrganization=RoleTypeAdministrativeOrganization,
+                        organizationSubEventDict=organizationSubEventDict)
+                    lifeEvents.append(occupationEvent)
+
+            # 4 gildenleden
+            if 'gildenleden.trig' in target:
+                pass
 
             p.participatesIn = lifeEvents
 
             # break
 
     # Dict lists
+    ## Artworks
     for artwork, depictedList in artworkDepictedDict.items():
         artwork.depicts = depictedList
+
+    ## Organizations
+    organizationResUri2label = dict()
+    organizationResUriSubEventDict = defaultdict(list)
+    for organization, subEvents in organizationSubEventDict.items():
+        organizationResUriSubEventDict[organization.resUri] += subEvents
+        organizationResUri2label[organization.resUri] = organization.label[0]
+
+    for organization, subEvents in organizationResUriSubEventDict.items():
+        organizationEvent = Event(
+            None,
+            participationOf=[organization],
+            subEvent=subEvents,
+            label=[
+                Literal(
+                    f"Tijdlijn van {organizationResUri2label[organization]}",
+                    lang='nl')
+            ])
+        for e in subEvents:
+            e.subEventOf = organizationEvent
 
     ########
     # Meta #
