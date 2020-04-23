@@ -338,7 +338,7 @@ def parseOccupationInfo(occupationInfo, roleTypePerson, person,
             None,
             label=[
                 Literal(
-                    f"{roleTypePerson.label[0]} bij {afkortingen[organizationString]}",
+                    f"{person.label[0]} als {roleTypePerson.label[0].lower()} bij {afkortingen[organizationString]}",
                     lang='nl')
             ],
             participationOf=[person, organization],
@@ -354,7 +354,7 @@ def parseOccupationInfo(occupationInfo, roleTypePerson, person,
             carriedBy=person,
             label=[
                 Literal(
-                    f"{person.label[0]} in de rol van {roleTypeOrganization.label[0].lower()}",
+                    f"{person.label[0]} in de rol van {roleTypePerson.label[0].lower()}",
                     lang='nl')
             ])
 
@@ -365,7 +365,7 @@ def parseOccupationInfo(occupationInfo, roleTypePerson, person,
             carriedBy=organization,
             label=[
                 Literal(
-                    f"{afkortingen[organizationString]} in de rol van administratieve organisatie",
+                    f"{afkortingen[organizationString]} in de rol van {roleTypeOrganization.label[0].lower()}",
                     lang='nl')
             ])
 
@@ -504,7 +504,7 @@ def toRDF(data, uri, name, description, target=None):
             RoleTypeAdministrativeOrganization = RoleType(
                 BNode("AdministrativeOrganization"),
                 subClassOf=ga.Role,
-                label=["Administrative Organization"])
+                label=[Literal("Administratieve organisatie", lang='nl')])
 
             # 1 poorters
             if 'poorters.trig' in target:
