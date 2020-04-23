@@ -404,16 +404,26 @@ def toRDF(data, uri, name, description, target=None):
             ]
             artwork.sameAs = sameAs
 
+            depictions = []
             if d['amsterdammuseum_uri']:
                 with open('data/depictions_amsterdammuseum.json') as infile:
                     depictions_amsterdammuseum = json.load(infile)
 
-                    depictions = [
+                    depictionsList = [
                         URIRef(i) for i in depictions_amsterdammuseum[
                             d['amsterdammuseum_uri']]
                     ]
+                    depictions += depictionsList
 
-                    artwork.depiction = depictions
+            if d['rijksmuseum_uri']:
+                with open('data/depictions_rijksmuseum.json') as infile:
+                    depictions_rijksmuseum = json.load(infile)
+
+                portrait = depictions_rijksmuseum.get(d['rijksmuseum_uri'])
+                if portrait:
+                    depictions.append(URIRef(portrait))
+
+            artwork.depiction = depictions
 
             # for the exampleResource
             p = artwork
