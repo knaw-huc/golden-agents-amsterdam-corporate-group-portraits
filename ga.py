@@ -10,6 +10,10 @@ from rdflib import Dataset, ConjunctiveGraph, Graph, URIRef, Literal, XSD, Names
 from rdfalchemy import rdfSubject, rdfMultiple, rdfSingle, rdfContainer
 
 ga = Namespace("https://data.goldenagents.org/ontology#")
+gaRoleType = Namespace(
+    "https://data.goldenagents.org/datasets/corporatiestukken/roletype/")
+gaOrganization = Namespace(
+    "https://data.goldenagents.org/datasets/corporatiestukken/organization/")
 
 schema = Namespace("http://schema.org/")
 sem = Namespace("http://semanticweb.cs.vu.nl/2009/11/sem/")

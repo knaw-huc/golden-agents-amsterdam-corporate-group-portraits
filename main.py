@@ -331,7 +331,7 @@ def parseOccupationInfo(occupationInfo, roleTypePerson, person,
             datatype=XSD.date) if latestEndTimeStamp != "?" else None
 
         organization = Organization(
-            BNode(organizationString),
+            gaOrganization.term(organizationString),
             label=[Literal(afkortingen[organizationString], lang='nl')])
 
         occupationEvent = Event(
@@ -512,7 +512,7 @@ def toRDF(data, uri, name, description, target=None):
 
             # RoleTypes
             RoleTypeAdministrativeOrganization = RoleType(
-                BNode("AdministrativeOrganization"),
+                gaRoleType.AdministrativeOrganization,
                 subClassOf=ga.Role,
                 label=[Literal("Administratieve organisatie", lang='nl')])
 
@@ -523,7 +523,7 @@ def toRDF(data, uri, name, description, target=None):
             # 2 regentessen
             if 'regentessen.trig' in target:
 
-                RoleTypeRegentes = RoleType(BNode("Regentes"),
+                RoleTypeRegentes = RoleType(gaRoleType.Regentes,
                                             subClassOf=ga.Role,
                                             label=["Regentes"])
 
@@ -663,7 +663,7 @@ def toRDF(data, uri, name, description, target=None):
 
             # 3 regenten
             if 'regenten.trig' in target:
-                RoleTypeRegent = RoleType(BNode("Regent"),
+                RoleTypeRegent = RoleType(gaRoleType.Regent,
                                           subClassOf=ga.Role,
                                           label=["Regent"])
 
