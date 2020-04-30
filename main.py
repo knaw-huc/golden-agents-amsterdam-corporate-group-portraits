@@ -31,12 +31,28 @@ afkortingen = {
     "Dh": "Dolhuis",
     "Gh": "Gasthuizen",
     "Lh": "Leprozenhuis",
+    "NZHh": "Nieuwezijds Huiszittenhuis",
+    "No.K.": "Noorderkerk",
+    "Nz.K.": "Nieuwezijds Kapel",
+    "Oz.K.": "Oudezijds Kapel",
+    "E.K.": "Eilandskerk",
+    "A.K.": "Amstelkerk",
+    "N.K.": "Nieuwe Kerk",
+    "O.K.": "Oude Kerk",
+    "Z.K.": "Zuiderkerk",
+    "W.K.": "Westerkerk",
+    "Oo.K.": "Oosterkerk",
+    "N.W.K.": "Nieuwe Walenkerk",
+    "OZHh": "Oudezijds Huiszittenhuis",
     "OMVGh": "Oude Mannen- en Vrouwengasthuis",
     "Rh": "Rasphuis",
     "SJh": "Sint Jorishof",
     "Sph": "Spinhuis",
     "SphNWh": "Spin- en Nieuwe Werkhuis",
     "Wwh": "Walenweeshuis",
+    "Zwh": "Zijdewindhuis",
+    "A.A.": "Admiraliteit te Amsterdam",
+    "CM": "Collegium Medicum"
 }
 
 # abbreviations = {
@@ -518,7 +534,28 @@ def toRDF(data, uri, name, description, target=None):
 
             # 1 poorters
             if 'poorters.trig' in target:
-                pass
+                occupationInfo = d['regent / kerkmeester genormaliseerd']
+
+                if occupationInfo:
+
+                    if occupationInfo.startswith('km. '):
+                        rtp = "Kerkmeester"
+                        occupationInfo = occupationInfo.replace('km. ', '')
+                        RoleTypePoorter = RoleType(ga.term(rtp),
+                                                   subClassOf=ga.Role,
+                                                   label=[rtp.title()])
+                    else:
+                        RoleTypePoorter = RoleType(gaRoleType.Regent,
+                                                   subClassOf=ga.Role,
+                                                   label=["Regent"])
+
+                    occupationEvent, organizationSubEventDict = parseOccupationInfo(
+                        occupationInfo,
+                        roleTypePerson=RoleTypePoorter,
+                        person=p,
+                        roleTypeOrganization=RoleTypeAdministrativeOrganization,
+                        organizationSubEventDict=organizationSubEventDict)
+                    lifeEvents.append(occupationEvent)
 
             # 2 regentessen
             if 'regentessen.trig' in target:
@@ -575,6 +612,7 @@ def toRDF(data, uri, name, description, target=None):
                         husband = Person(nsPerson.term(str(
                             next(personCounter))),
                                          hasName=pnHusband,
+                                         gender=ga.Male,
                                          label=labelsHusband,
                                          comment=[comment])
 
