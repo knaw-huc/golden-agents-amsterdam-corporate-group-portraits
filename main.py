@@ -1,3 +1,4 @@
+import os
 import time
 import datetime
 import json
@@ -17,15 +18,12 @@ from ga import *
 ns = Namespace("https://data.goldenagents.org/datasets/corporatiestukken/")
 rdflib.graph.DATASET_DEFAULT_GRAPH_ID = ns
 
-nsPerson = Namespace(
-    "https://data.goldenagents.org/datasets/corporatiestukken/person/")
-personCounter = count(1)
-
 nsArtwork = Namespace(
     "https://data.goldenagents.org/datasets/corporatiestukken/artwork/")
 artworkCounter = count(1)
 
 afkortingen = {
+    "Awh": "Aalmoezeniershuis",
     "Amwh": "Aalmoezeniersweeshuis",
     "Bwh": "Burgerweeshuis",
     "Dh": "Dolhuis",
@@ -391,6 +389,12 @@ def parseOccupationInfo(occupationInfo, roleTypePerson, person,
 
 
 def toRDF(data, uri, name, description, target=None):
+
+    nametype = os.path.split(target)[1].replace('.trig', '')
+    nsPerson = Namespace(
+        f"https://data.goldenagents.org/datasets/corporatiestukken/person/{nametype}/"
+    )
+    personCounter = count(1)
 
     ds = Dataset()
     dataset = ns.term('')
@@ -801,12 +805,16 @@ def toRDF(data, uri, name, description, target=None):
         description=[Literal(description, lang='nl')],
         dcdescription=[Literal(description, lang='nl')],
         creator=[
-            Person(nsPerson.term('norbert-middelkoop'),
+            Person(URIRef(
+                "https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop"
+            ),
                    label=["Norbert Middelkoop"],
                    sameAs=[URIRef("http://viaf.org/viaf/12415105")])
         ],
         dccreator=[
-            Person(nsPerson.term('norbert-middelkoop'),
+            Person(URIRef(
+                "https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop"
+            ),
                    label=["Norbert Middelkoop"],
                    sameAs=[URIRef("http://viaf.org/viaf/12415105")])
         ],
@@ -833,11 +841,7 @@ def toRDF(data, uri, name, description, target=None):
         dcissued=None,
         dcmodified=None,
         exampleResource=p,
-        vocabulary=[
-            URIRef("http://schema.org/"),
-            URIRef("http://semanticweb.cs.vu.nl/2009/11/sem/"),
-            URIRef("http://xmlns.com/foaf/0.1/")
-        ],
+        vocabulary=[ga, URIRef("http://semanticweb.cs.vu.nl/2009/11/sem/")],
         triples=sum(1 for i in ds.graph(identifier=ns).subjects()),
         licenseprop=URIRef("https://creativecommons.org/licenses/by-sa/4.0/"),
         hasPart=[dataset],
