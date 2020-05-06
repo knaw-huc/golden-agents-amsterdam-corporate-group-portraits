@@ -50,7 +50,22 @@ afkortingen = {
     "Wwh": "Walenweeshuis",
     "Zwh": "Zijdewindhuis",
     "A.A.": "Admiraliteit te Amsterdam",
-    "CM": "Collegium Medicum"
+    "CM": "Collegium Medicum",
+    "H. Stede": "Heilige Stede"
+}
+
+functies = {
+    "doct.med.": "medisch doctor",
+    "havenm.": "havenmeester",
+    "insp.": "inspecteur",
+    "kap.": "kapitein",
+    "k.": "keurmeester",
+    "km.": "kerkmeester",
+    "kol.": "kolonel",
+    "luit.": "luitenant",
+    "ov.": "overman",
+    "serg.": "sergeant",
+    "vaand.": "vaandrig"
 }
 
 # abbreviations = {
@@ -283,7 +298,9 @@ def parsePersonName(nameString, identifier=None):
 def parseDate(dateString):
 
     if dateString is None:
-        return None, None
+        return None, None, None
+
+    timeStamp = None
 
     if '/' in dateString:
 
@@ -303,13 +320,14 @@ def parseDate(dateString):
         date = dateParser.parse(dateString)
         earliestDate = date
         latestDate = date
+        timeStamp = Literal(date.date(), datatype=XSD.date)
 
     if earliestDate:
         earliestDate = Literal(earliestDate.date(), datatype=XSD.date)
     if latestDate:
         latestDate = Literal(latestDate.date(), datatype=XSD.date)
 
-    return earliestDate, latestDate
+    return earliestDate, latestDate, timeStamp
 
 
 def yearToDate(yearString):
@@ -345,7 +363,7 @@ def parseOccupationInfo(occupationInfo, roleTypePerson, person,
             datatype=XSD.date) if latestEndTimeStamp != "?" else None
 
         organization = Organization(
-            gaOrganization.term(organizationString),
+            gaOrganization.term(organizationString.replace('.', '')),
             label=[Literal(afkortingen[organizationString], lang='nl')])
 
         occupationEvent = Event(
@@ -386,6 +404,84 @@ def parseOccupationInfo(occupationInfo, roleTypePerson, person,
         organizationSubEventDict[organization].append(occupationEvent)
 
         return occupationEvent, organizationSubEventDict
+
+
+def parseFunctionInfo(functionInfo, person, roleTypeOrganization,
+                      organizationSubEventDict):
+    for function in functionInfo.split('; '):
+
+        for f in functies:
+            if function.startswith(f):
+                function = function.replace(f + ' ')
+
+                roleTypePerson = RoleType(gaRoleType.term(functies[f]),
+                                          subClassOf=ga.Role,
+                                          label=[functies[f]])
+
+                break
+
+        organizationString, years = function.split(' ', 1)
+
+        begin, end = years.split('/')
+
+        earliestBeginTimeStamp, latestBeginTimeStamp = begin.split('|')
+        earliestEndTimeStamp, latestEndTimeStamp = end.split('|')
+
+        earliestBeginTimeStamp = Literal(
+            earliestBeginTimeStamp,
+            datatype=XSD.date) if earliestBeginTimeStamp != "?" else None
+        latestBeginTimeStamp = Literal(
+            latestBeginTimeStamp,
+            datatype=XSD.date) if latestBeginTimeStamp != "?" else None
+        earliestEndTimeStamp = Literal(
+            earliestEndTimeStamp,
+            datatype=XSD.date) if earliestEndTimeStamp != "?" else None
+        latestEndTimeStamp = Literal(
+            latestEndTimeStamp,
+            datatype=XSD.date) if latestEndTimeStamp != "?" else None
+
+        organization = Organization(
+            gaOrganization.term(organizationString.replace('.', '')),
+            label=[Literal(afkortingen[organizationString], lang='nl')])
+
+        functionEvent = Event(
+            None,
+            label=[
+                Literal(
+                    f"{person.label[0]} als {roleTypePerson.label[0].lower()} bij {afkortingen[organizationString]}",
+                    lang='nl')
+            ],
+            participationOf=[person, organization],
+            hasEarliestBeginTimeStamp=earliestBeginTimeStamp,
+            hasLatestBeginTimeStamp=latestBeginTimeStamp,
+            hasEarliestEndTimeStamp=earliestEndTimeStamp,
+            hasLatestEndTimeStamp=latestEndTimeStamp)
+
+        rolePerson = SpecificRoleType(
+            None,
+            type=roleTypePerson,
+            carriedIn=functionEvent,
+            carriedBy=person,
+            label=[
+                Literal(
+                    f"{person.label[0]} in de rol van {roleTypePerson.label[0].lower()}",
+                    lang='nl')
+            ])
+
+        roleTypeOrganization = SpecificRoleType(
+            None,
+            type=roleTypeOrganization,
+            carriedIn=functionEvent,
+            carriedBy=organization,
+            label=[
+                Literal(
+                    f"{afkortingen[organizationString]} in de rol van {roleTypeOrganization.label[0].lower()}",
+                    lang='nl')
+            ])
+
+        organizationSubEventDict[organization].append(functionEvent)
+
+        return functionEvent, organizationSubEventDict
 
 
 def toRDF(data, uri, name, description, target=None):
@@ -476,18 +572,20 @@ def toRDF(data, uri, name, description, target=None):
             ) if d['Begraven/overleden genormaliseerd'] else None
             deathPlace = d['Begraven/overleden te']
 
-            birthDateEarliest, birthDateLatest = parseDate(
+            birthDateEarliest, birthDateLatest, birthTimeStamp = parseDate(
                 d['Doop/geboren genormaliseerd'])
-            deathDateEarliest, deathDateLatest = parseDate(
+            deathDateEarliest, deathDateLatest, deathTimeStamp = parseDate(
                 d['Begraven/overleden genormaliseerd'])
 
             # Birth
-            birthEvent = Event(
+            birthEvent = Birth(
                 None,
                 label=[Literal(f"Geboorte van {labels[0]}", lang='nl')],
+                hasTimeStamp=birthTimeStamp,
                 hasEarliestBeginTimeStamp=birthDateEarliest,
                 hasLatestEndTimeStamp=birthDateLatest,
-                place=birthPlace)
+                place=birthPlace,
+                principal=p)
             birthEvent.participationOf = [p]
 
             roleBorn = Born(None,
@@ -497,12 +595,14 @@ def toRDF(data, uri, name, description, target=None):
             lifeEvents.append(birthEvent)
 
             # Death
-            deathEvent = Event(
+            deathEvent = Death(
                 None,
                 label=[Literal(f"Overlijden van {labels[0]}", lang='nl')],
+                hasTimeStamp=deathTimeStamp,
                 hasEarliestBeginTimeStamp=deathDateEarliest,
                 hasLatestEndTimeStamp=deathDateLatest,
-                place=deathPlace)
+                place=deathPlace,
+                principal=p)
             deathEvent.participationOf = [p]
 
             roleDied = Died(None,
@@ -560,6 +660,17 @@ def toRDF(data, uri, name, description, target=None):
                         roleTypeOrganization=RoleTypeAdministrativeOrganization,
                         organizationSubEventDict=organizationSubEventDict)
                     lifeEvents.append(occupationEvent)
+
+                functionInfo = d[
+                    'lid/officier schutterij (vaandrigs vanaf 1650) genormaliseerd']
+
+                # if functionInfo:
+                #     functionEvent, organizationSubEventDict = parseFunctionInfo(
+                #         occupationInfo,
+                #         person=p,
+                #         roleTypeOrganization=RoleTypeAdministrativeOrganization,
+                #         organizationSubEventDict=organizationSubEventDict)
+                #     lifeEvents.append(functionEvent)
 
             # 2 regentessen
             if 'regentessen.trig' in target:
@@ -623,7 +734,7 @@ def toRDF(data, uri, name, description, target=None):
                         lifeEventsHusband = []
 
                         # Birth Husband
-                        birthEventHusband = Event(
+                        birthEventHusband = Birth(
                             None,
                             label=[
                                 Literal(f"Geboorte van {labelsHusband[0]}",
@@ -631,7 +742,8 @@ def toRDF(data, uri, name, description, target=None):
                             ],
                             hasEarliestBeginTimeStamp=birthDateEarliest,
                             hasLatestEndTimeStamp=birthDateLatest,
-                            place=birthPlace)
+                            place=birthPlace,
+                            principal=husband)
                         birthEventHusband.participationOf = [husband]
 
                         roleBorn = Born(
@@ -646,7 +758,7 @@ def toRDF(data, uri, name, description, target=None):
                         lifeEventsHusband.append(birthEventHusband)
 
                         # Death
-                        deathEventHusband = Event(
+                        deathEventHusband = Death(
                             None,
                             label=[
                                 Literal(f"Overlijden van {labelsHusband[0]}",
@@ -654,7 +766,8 @@ def toRDF(data, uri, name, description, target=None):
                             ],
                             hasEarliestBeginTimeStamp=deathDateEarliest,
                             hasLatestEndTimeStamp=deathDateLatest,
-                            place=deathPlace)
+                            place=deathPlace,
+                            principal=husband)
                         deathEventHusband.participationOf = [husband]
 
                         roleDied = Died(
@@ -856,6 +969,7 @@ def toRDF(data, uri, name, description, target=None):
     ds.bind('foaf', foaf)
     ds.bind('wd', URIRef("http://www.wikidata.org/entity/"))
     ds.bind('pnv', pnv)
+    ds.bind('bio', bio)
 
     print(f"Serializing to {target}")
     ds.serialize(target, format='trig')

@@ -9,7 +9,7 @@ import rdflib
 from rdflib import Dataset, ConjunctiveGraph, Graph, URIRef, Literal, XSD, Namespace, RDF, RDFS, BNode, OWL
 from rdfalchemy import rdfSubject, rdfMultiple, rdfSingle, rdfContainer
 
-ga = Namespace("https://data.goldenagents.org/ontology#")
+ga = Namespace("https://data.goldenagents.org/ontology/")
 gaRoleType = Namespace(
     "https://data.goldenagents.org/datasets/corporatiestukken/roletype/")
 gaOrganization = Namespace(
@@ -22,6 +22,8 @@ foaf = Namespace("http://xmlns.com/foaf/0.1/")
 void = Namespace("http://rdfs.org/ns/void#")
 dcterms = Namespace("http://purl.org/dc/terms/")
 pnv = Namespace('https://w3id.org/pnv#')
+
+### GA ###
 
 
 class Entity(rdfSubject):
@@ -133,6 +135,80 @@ class SpecificRoleType(RoleType, Role):
     rdf_type = None
 
     type = rdfSingle(RDF.type)
+
+
+### Bio ###
+
+
+class BioEvent(Event):
+    rdf_type = bio.Event, ga.Event
+    label = rdfMultiple(RDFS.label)
+
+    date = rdfSingle(bio.date)
+
+    followingEvent = rdfSingle(bio.followingEvent)
+    precedingEvent = rdfSingle(bio.precedingEvent)
+
+    hasTimeStamp = rdfSingle(sem.hasTimeStamp)
+    hasBeginTimeStamp = rdfSingle(sem.hasBeginTimeStamp)
+    hasEndTimeStamp = rdfSingle(sem.hasEndTimeStamp)
+    hasEarliestBeginTimeStamp = rdfSingle(sem.hasEarliestBeginTimeStamp)
+    hasLatestBeginTimeStamp = rdfSingle(sem.hasLatestBeginTimeStamp)
+    hasEarliestEndTimeStamp = rdfSingle(sem.hasEarliestEndTimeStamp)
+    hasLatestEndTimeStamp = rdfSingle(sem.hasLatestEndTimeStamp)
+
+    place = rdfSingle(bio.place)  # multi-predicates?
+
+    witness = rdfMultiple(bio.witness)
+    spectator = rdfMultiple(bio.spectator)
+    parent = rdfMultiple(bio.parent)
+
+    hasActor = rdfMultiple(sem.hasActor, range_type=sem.Role)
+
+    comment = rdfSingle(RDFS.comment)
+
+
+class IndividualEvent(BioEvent):
+    rdf_type = bio.IndividualEvent
+    principal = rdfSingle(bio.principal)
+
+    label = rdfMultiple(RDFS.label)
+
+
+class GroupEvent(BioEvent):
+    rdf_type = bio.GroupEvent
+    partner = rdfMultiple(bio.partner)
+
+    label = rdfMultiple(RDFS.label)
+
+
+class Birth(IndividualEvent):
+    rdf_type = bio.Birth, ga.Event
+
+
+class Baptism(IndividualEvent):
+    rdf_type = bio.Baptism, ga.Event
+
+
+class Burial(IndividualEvent):
+    rdf_type = bio.Burial, ga.Event
+
+
+class Death(IndividualEvent):
+    rdf_type = bio.Death, ga.Event
+
+
+class Marriage(GroupEvent):
+    rdf_type = bio.Marriage, ga.Event
+
+
+class IntendedMarriage(GroupEvent):
+    rdf_type = ga.IntendedMarriage
+    hasDocument = rdfMultiple(ga.hasDocument)
+
+
+class PrenuptialAgreement(GroupEvent):
+    rdf_type = ga.PrenuptialAgreement
 
 
 ### Generic dataset
