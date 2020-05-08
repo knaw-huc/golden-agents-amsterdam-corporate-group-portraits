@@ -23,9 +23,11 @@ nsArtwork = Namespace(
 artworkCounter = count(1)
 
 afkortingen = {
+    "Amh": "Aalmoezeniershuis",
     "Awh": "Aalmoezeniershuis",
     "Amwh": "Aalmoezeniersweeshuis",
     "Bwh": "Burgerweeshuis",
+    "CM": "Collegium Medicum",
     "Dh": "Dolhuis",
     "Gh": "Gasthuizen",
     "Lh": "Leprozenhuis",
@@ -43,15 +45,19 @@ afkortingen = {
     "N.W.K.": "Nieuwe Walenkerk",
     "OZHh": "Oudezijds Huiszittenhuis",
     "OMVGh": "Oude Mannen- en Vrouwengasthuis",
+    "OCW": "Oppercommissarissen der Walen",
     "Rh": "Rasphuis",
     "SJh": "Sint Jorishof",
     "Sph": "Spinhuis",
     "SphNWh": "Spin- en Nieuwe Werkhuis",
     "Wwh": "Walenweeshuis",
+    "Wwh.A.": "Walenweeshuis",  # TODO
+    "Wwh.D.": "Walenweeshuis",  # TODO
     "Zwh": "Zijdewindhuis",
     "A.A.": "Admiraliteit te Amsterdam",
     "CM": "Collegium Medicum",
-    "H. Stede": "Heilige Stede"
+    "H.Stede": "Heilige Stede",
+    "RCAk": "Rooms-Catholijck Armenkantoor",
 }
 
 functies = {
