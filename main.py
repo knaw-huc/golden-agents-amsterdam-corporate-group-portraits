@@ -58,6 +58,10 @@ afkortingen = {
     "CM": "Collegium Medicum",
     "H.Stede": "Heilige Stede",
     "RCAk": "Rooms-Catholijck Armenkantoor",
+    "Vd": "Voetboogdoelen",
+    "Hd": "Handboogdoelen",
+    "Kd": "Kloveniersdoelen",
+    "hopmanstadssoldaten": "Hopman Stadssoldaten"
 }
 
 functies = {
@@ -65,13 +69,20 @@ functies = {
     "havenm.": "havenmeester",
     "insp.": "inspecteur",
     "kap.": "kapitein",
+    "kapluit.": "kapitein luitenant",
     "k.": "keurmeester",
     "km.": "kerkmeester",
     "kol.": "kolonel",
     "luit.": "luitenant",
+    "luitkol.": "luitenant kolonel",
     "ov.": "overman",
     "serg.": "sergeant",
-    "vaand.": "vaandrig"
+    "vaand.": "vaandrig",
+    "tamboer": "tamboer",
+    "overm.": "overman",
+    "schout": "schout",
+    "kastelein": "kastelein",
+    "maj.": "majoor"
 }
 
 # abbreviations = {
@@ -414,80 +425,86 @@ def parseOccupationInfo(occupationInfo, roleTypePerson, person,
 
 def parseFunctionInfo(functionInfo, person, roleTypeOrganization,
                       organizationSubEventDict):
-    for function in functionInfo.split('; '):
 
-        for f in functies:
-            if function.startswith(f):
-                function = function.replace(f + ' ')
+    if 'W.' in functionInfo:
+        # kap. W. XXIV 1793-01-01|1793-12-31/1795-01-01|1795-12-31
+        function, _, wijk, years = functionInfo.split(' ')
+        doelen = None
+        organizationLiteral = "Wijk " + wijk
+    else:
+        # overm. Hd 1659-01-01|1659-12-31/1659-01-01|1659-12-31
+        function, doelen, years = functionInfo.split(' ')
+        wijk = None
+        organizationLiteral = afkortingen[doelen]
 
-                roleTypePerson = RoleType(gaRoleType.term(functies[f]),
-                                          subClassOf=ga.Role,
-                                          label=[functies[f]])
+    if function == '?':
+        roleTypePerson = RoleType(None, subClassOf=ga.Role, label=["?"])
+    else:
+        roleTypePerson = RoleType(gaRoleType.term(
+            functies[function].title().replace(' ', '')),
+                                  subClassOf=ga.Role,
+                                  label=[functies[function]])
 
-                break
+    begin, end = years.split('/')
 
-        organizationString, years = function.split(' ', 1)
+    earliestBeginTimeStamp, latestBeginTimeStamp = begin.split('|')
+    earliestEndTimeStamp, latestEndTimeStamp = end.split('|')
 
-        begin, end = years.split('/')
+    earliestBeginTimeStamp = Literal(
+        earliestBeginTimeStamp,
+        datatype=XSD.date) if earliestBeginTimeStamp != "?" else None
+    latestBeginTimeStamp = Literal(
+        latestBeginTimeStamp,
+        datatype=XSD.date) if latestBeginTimeStamp != "?" else None
+    earliestEndTimeStamp = Literal(
+        earliestEndTimeStamp,
+        datatype=XSD.date) if earliestEndTimeStamp != "?" else None
+    latestEndTimeStamp = Literal(
+        latestEndTimeStamp,
+        datatype=XSD.date) if latestEndTimeStamp != "?" else None
 
-        earliestBeginTimeStamp, latestBeginTimeStamp = begin.split('|')
-        earliestEndTimeStamp, latestEndTimeStamp = end.split('|')
+    organization = Organization(
+        gaOrganization.term(wijk or doelen),
+        label=[Literal(organizationLiteral, lang='nl')])
 
-        earliestBeginTimeStamp = Literal(
-            earliestBeginTimeStamp,
-            datatype=XSD.date) if earliestBeginTimeStamp != "?" else None
-        latestBeginTimeStamp = Literal(
-            latestBeginTimeStamp,
-            datatype=XSD.date) if latestBeginTimeStamp != "?" else None
-        earliestEndTimeStamp = Literal(
-            earliestEndTimeStamp,
-            datatype=XSD.date) if earliestEndTimeStamp != "?" else None
-        latestEndTimeStamp = Literal(
-            latestEndTimeStamp,
-            datatype=XSD.date) if latestEndTimeStamp != "?" else None
+    functionEvent = Event(
+        None,
+        label=[
+            Literal(
+                f"{person.label[0]} als {roleTypePerson.label[0].lower()} bij {organizationLiteral}",
+                lang='nl')
+        ],
+        participationOf=[person, organization],
+        hasEarliestBeginTimeStamp=earliestBeginTimeStamp,
+        hasLatestBeginTimeStamp=latestBeginTimeStamp,
+        hasEarliestEndTimeStamp=earliestEndTimeStamp,
+        hasLatestEndTimeStamp=latestEndTimeStamp)
 
-        organization = Organization(
-            gaOrganization.term(organizationString.replace('.', '')),
-            label=[Literal(afkortingen[organizationString], lang='nl')])
+    rolePerson = SpecificRoleType(
+        None,
+        type=roleTypePerson,
+        carriedIn=functionEvent,
+        carriedBy=person,
+        label=[
+            Literal(
+                f"{person.label[0]} in de rol van {roleTypePerson.label[0].lower()}",
+                lang='nl')
+        ])
 
-        functionEvent = Event(
-            None,
-            label=[
-                Literal(
-                    f"{person.label[0]} als {roleTypePerson.label[0].lower()} bij {afkortingen[organizationString]}",
-                    lang='nl')
-            ],
-            participationOf=[person, organization],
-            hasEarliestBeginTimeStamp=earliestBeginTimeStamp,
-            hasLatestBeginTimeStamp=latestBeginTimeStamp,
-            hasEarliestEndTimeStamp=earliestEndTimeStamp,
-            hasLatestEndTimeStamp=latestEndTimeStamp)
+    roleTypeOrganization = SpecificRoleType(
+        None,
+        type=roleTypeOrganization,
+        carriedIn=functionEvent,
+        carriedBy=organization,
+        label=[
+            Literal(
+                f"{organizationLiteral} in de rol van {roleTypeOrganization.label[0].lower()}",
+                lang='nl')
+        ])
 
-        rolePerson = SpecificRoleType(
-            None,
-            type=roleTypePerson,
-            carriedIn=functionEvent,
-            carriedBy=person,
-            label=[
-                Literal(
-                    f"{person.label[0]} in de rol van {roleTypePerson.label[0].lower()}",
-                    lang='nl')
-            ])
+    organizationSubEventDict[organization].append(functionEvent)
 
-        roleTypeOrganization = SpecificRoleType(
-            None,
-            type=roleTypeOrganization,
-            carriedIn=functionEvent,
-            carriedBy=organization,
-            label=[
-                Literal(
-                    f"{afkortingen[organizationString]} in de rol van {roleTypeOrganization.label[0].lower()}",
-                    lang='nl')
-            ])
-
-        organizationSubEventDict[organization].append(functionEvent)
-
-        return functionEvent, organizationSubEventDict
+    return functionEvent, organizationSubEventDict
 
 
 def toRDF(data, uri, name, description, target=None):
@@ -647,36 +664,79 @@ def toRDF(data, uri, name, description, target=None):
                 occupationInfo = d['regent / kerkmeester genormaliseerd']
 
                 if occupationInfo:
+                    for occInfo in occupationInfo.split('; '):
 
-                    if occupationInfo.startswith('km. '):
-                        rtp = "Kerkmeester"
-                        occupationInfo = occupationInfo.replace('km. ', '')
-                        RoleTypePoorter = RoleType(ga.term(rtp),
-                                                   subClassOf=ga.Role,
-                                                   label=[rtp.title()])
-                    else:
-                        RoleTypePoorter = RoleType(gaRoleType.Regent,
-                                                   subClassOf=ga.Role,
-                                                   label=["Regent"])
+                        if occInfo.startswith('km. '):
+                            rtp = "Kerkmeester"
+                            occInfo = occInfo.replace('km. ', '')
+                            RoleTypePoorter = RoleType(ga.term(rtp),
+                                                       subClassOf=ga.Role,
+                                                       label=[rtp.title()])
+                        else:
+                            RoleTypePoorter = RoleType(gaRoleType.Regent,
+                                                       subClassOf=ga.Role,
+                                                       label=["Regent"])
 
-                    occupationEvent, organizationSubEventDict = parseOccupationInfo(
-                        occupationInfo,
-                        roleTypePerson=RoleTypePoorter,
-                        person=p,
-                        roleTypeOrganization=RoleTypeAdministrativeOrganization,
-                        organizationSubEventDict=organizationSubEventDict)
-                    lifeEvents.append(occupationEvent)
+                        occupationEvent, organizationSubEventDict = parseOccupationInfo(
+                            occInfo,
+                            roleTypePerson=RoleTypePoorter,
+                            person=p,
+                            roleTypeOrganization=
+                            RoleTypeAdministrativeOrganization,
+                            organizationSubEventDict=organizationSubEventDict)
+                        lifeEvents.append(occupationEvent)
 
                 functionInfo = d[
                     'lid/officier schutterij (vaandrigs vanaf 1650) genormaliseerd']
 
-                # if functionInfo:
-                #     functionEvent, organizationSubEventDict = parseFunctionInfo(
-                #         occupationInfo,
-                #         person=p,
-                #         roleTypeOrganization=RoleTypeAdministrativeOrganization,
-                #         organizationSubEventDict=organizationSubEventDict)
-                #     lifeEvents.append(functionEvent)
+                if functionInfo:
+
+                    RoleTypeSchutterij = RoleType(
+                        gaRoleType.Schutterij,
+                        subClassOf=ga.Role,
+                        label=[Literal("Schutterij", lang='nl')])
+
+                    RoleTypeDoelen = RoleType(
+                        gaRoleType.Doelen,
+                        subClassOf=ga.Role,
+                        label=[Literal("Doelen", lang='nl')])
+
+                    for funcInfo in functionInfo.split('; '):
+
+                        if 'W.' in funcInfo:
+                            rt = RoleTypeSchutterij
+
+                            if funcInfo.count(' ') < 3:
+                                print(d['id'], functionInfo)
+                                continue
+
+                        elif 'Hd' in funcInfo or 'Vd' in funcInfo or 'Kd' in funcInfo:
+                            rt = RoleTypeDoelen
+
+                            if funcInfo.count(' ') < 2:
+                                print(d['id'], functionInfo)
+                                continue
+
+                        else:
+                            print(d['id'], functionInfo)
+                            continue
+
+                        if funcInfo.count(' ') < 3:
+                            print(d['id'], functionInfo)
+                            continue
+
+                        try:
+
+                            functionEvent, organizationSubEventDict = parseFunctionInfo(
+                                funcInfo,
+                                person=p,
+                                roleTypeOrganization=rt,
+                                organizationSubEventDict=
+                                organizationSubEventDict)
+                            lifeEvents.append(functionEvent)
+
+                        except ValueError:
+                            print(d['id'], functionInfo)
 
             # 2 regentessen
             if 'regentessen.trig' in target:
