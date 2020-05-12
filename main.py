@@ -438,12 +438,14 @@ def parseFunctionInfo(functionInfo, person, roleTypeOrganization,
         organizationLiteral = afkortingen[doelen]
 
     if function == '?':
-        roleTypePerson = RoleType(None, subClassOf=ga.Role, label=["?"])
+        roleTypePerson = RoleType(gaRoleType.term('Unknown'),
+                                  subClassOf=ga.Role,
+                                  label=["?"])
     else:
         roleTypePerson = RoleType(gaRoleType.term(
             functies[function].title().replace(' ', '')),
                                   subClassOf=ga.Role,
-                                  label=[functies[function]])
+                                  label=[functies[function].title()])
 
     begin, end = years.split('/')
 
