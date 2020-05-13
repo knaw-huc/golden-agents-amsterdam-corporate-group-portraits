@@ -203,10 +203,16 @@ def getPersonName(d):
         else:
             surnamePrefix = None
 
+        if ', ' in baseSurname:
+            baseSurname, disambiguatingDescription = baseSurname.split(', ', 1)
+        else:
+            disambiguatingDescription = None
+
         literalName = " ".join([
-            i
-            for i in [prefix, givenName, patronym, surnamePrefix, baseSurname]
-            if i is not None
+            i for i in [
+                prefix, givenName, patronym, surnamePrefix, baseSurname,
+                disambiguatingDescription
+            ] if i is not None
         ])
         labels.append(literalName)
 
@@ -216,6 +222,7 @@ def getPersonName(d):
                         patronym=patronym,
                         surnamePrefix=surnamePrefix,
                         baseSurname=baseSurname,
+                        disambiguatingDescription=disambiguatingDescription,
                         literalName=literalName,
                         label=[literalName])
 
@@ -244,7 +251,7 @@ def parsePersonName(nameString, identifier=None):
         dets = ['van', 'de', 'den', 'des', 'der', 'ten', "l'", "d'"]
         prefixes = ['Mr.']
         suffixes = ['Jr.', 'Sr.']
-        patronymfix = ('sz', 'sz.', 'szoon')
+        patronymfix = ('sz', 'sz.', 'szoon', 'dr.', 'dr')
 
         # Correcting syntax errors
         full_name = full_name.replace('.', '. ')
@@ -739,6 +746,58 @@ def toRDF(data, uri, name, description, target=None):
 
                         except ValueError:
                             print(d['id'], functionInfo)
+
+                # marriage
+                if d['Getrouwd met genormaliseerd']:
+
+                    for marriage in d['Getrouwd met genormaliseerd'].split(
+                            '; '):
+
+                        wifeName, year = marriage.split(' (', 1)
+                        marriageYear = year[:-1]
+
+                        earliestDate, latestDate = yearToDate(marriageYear)
+
+                        pnWife, labelsWife = parsePersonName(wifeName)
+                        wife = Person(nsPerson.term(str(next(personCounter))),
+                                      hasName=pnWife,
+                                      gender=ga.Female,
+                                      label=labelsWife)
+
+                        lifeEventsWife = []
+
+                        marriageEvent = Event(
+                            None,
+                            label=[
+                                Literal(
+                                    f"Huwelijk tussen {labels[0]} en {wifeName}",
+                                    lang='nl')
+                            ],
+                            hasEarliestBeginTimeStamp=earliestDate,
+                            hasLatestEndTimeStamp=latestDate,
+                            participationOf=[p, wife])
+                        lifeEvents.append(marriageEvent)
+                        lifeEventsWife.append(marriageEvent)
+
+                        roleGroom = Groom(
+                            None,
+                            carriedIn=marriageEvent,
+                            carriedBy=p,
+                            label=[
+                                Literal(f"{labels[0]} in de rol van bruidegom",
+                                        lang='nl')
+                            ])
+
+                        roleBride = Bride(
+                            None,
+                            carriedIn=marriageEvent,
+                            carriedBy=wife,
+                            label=[
+                                Literal(f"{labelsWife[0]} in de rol van bruid",
+                                        lang='nl')
+                            ])
+
+                        wife.participatesIn = lifeEventsWife
 
             # 2 regentessen
             if 'regentessen.trig' in target:
