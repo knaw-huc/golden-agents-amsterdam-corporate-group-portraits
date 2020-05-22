@@ -73,6 +73,7 @@ functies = {
     "k.": "keurmeester",
     "km.": "kerkmeester",
     "kol.": "kolonel",
+    "kolgen.": "kolonel generaal",
     "luit.": "luitenant",
     "luitkol.": "luitenant kolonel",
     "ov.": "overman",
@@ -82,7 +83,8 @@ functies = {
     "overm.": "overman",
     "schout": "schout",
     "kastelein": "kastelein",
-    "maj.": "majoor"
+    "maj.": "majoor",
+    "provoost": "provoost"
 }
 
 # abbreviations = {
@@ -436,12 +438,17 @@ def parseFunctionInfo(functionInfo, person, roleTypeOrganization,
     if 'W.' in functionInfo:
         # kap. W. XXIV 1793-01-01|1793-12-31/1795-01-01|1795-12-31
         function, _, wijk, years = functionInfo.split(' ')
-        doelen = None
-        organizationLiteral = "Wijk " + wijk
+        doelen, unknownOrganization = None, None
+        organizationLiteral = "Schutterij van wijk " + wijk
+    elif ' ? ' in functionInfo:
+        function, _, years = functionInfo = functionInfo.split(' ')
+        wijk, doelen = None, None
+        unknownOrganization = "Unknown"
+        organizationLiteral = "Unknown organization"
     else:
         # overm. Hd 1659-01-01|1659-12-31/1659-01-01|1659-12-31
         function, doelen, years = functionInfo.split(' ')
-        wijk = None
+        wijk, unknownOrganization = None, None
         organizationLiteral = afkortingen[doelen]
 
     if function == '?':
@@ -473,7 +480,7 @@ def parseFunctionInfo(functionInfo, person, roleTypeOrganization,
         datatype=XSD.date) if latestEndTimeStamp != "?" else None
 
     organization = Organization(
-        gaOrganization.term(wijk or doelen),
+        gaOrganization.term(wijk or doelen or unknownOrganization),
         label=[Literal(organizationLiteral, lang='nl')])
 
     functionEvent = Event(
@@ -615,7 +622,9 @@ def toRDF(data, uri, name, description, target=None):
                 label=[Literal(f"Geboorte van {labels[0]}", lang='nl')],
                 hasTimeStamp=birthTimeStamp,
                 hasEarliestBeginTimeStamp=birthDateEarliest,
+                hasLatestBeginTimeStamp=birthDateLatest,
                 hasLatestEndTimeStamp=birthDateLatest,
+                hasEarliestEndTimeStamp=birthDateEarliest,
                 place=birthPlace,
                 principal=p)
             birthEvent.participationOf = [p]
@@ -632,7 +641,9 @@ def toRDF(data, uri, name, description, target=None):
                 label=[Literal(f"Overlijden van {labels[0]}", lang='nl')],
                 hasTimeStamp=deathTimeStamp,
                 hasEarliestBeginTimeStamp=deathDateEarliest,
+                hasLatestBeginTimeStamp=deathDateLatest,
                 hasLatestEndTimeStamp=deathDateLatest,
+                hasEarliestEndTimeStamp=deathDateEarliest,
                 place=deathPlace,
                 principal=p)
             deathEvent.participationOf = [p]
@@ -710,29 +721,20 @@ def toRDF(data, uri, name, description, target=None):
                         subClassOf=ga.Role,
                         label=[Literal("Doelen", lang='nl')])
 
+                    RoleTypeUnknown = RoleType(gaRoleType.term('Unknown'),
+                                               subClassOf=ga.Role,
+                                               label=["?"])
+
                     for funcInfo in functionInfo.split('; '):
 
                         if 'W.' in funcInfo:
                             rt = RoleTypeSchutterij
 
-                            if funcInfo.count(' ') < 3:
-                                print(d['id'], functionInfo)
-                                continue
-
                         elif 'Hd' in funcInfo or 'Vd' in funcInfo or 'Kd' in funcInfo:
                             rt = RoleTypeDoelen
 
-                            if funcInfo.count(' ') < 2:
-                                print(d['id'], functionInfo)
-                                continue
-
                         else:
-                            print(d['id'], functionInfo)
-                            continue
-
-                        if funcInfo.count(' ') < 3:
-                            print(d['id'], functionInfo)
-                            continue
+                            rt = RoleTypeUnknown
 
                         try:
 
@@ -745,7 +747,9 @@ def toRDF(data, uri, name, description, target=None):
                             lifeEvents.append(functionEvent)
 
                         except ValueError:
-                            print(d['id'], functionInfo)
+                            print("VALERROR", d['id'], functionInfo)
+                        except KeyError:
+                            print("KEYERROR", d['id'], functionInfo)
 
                 # marriage
                 if d['Getrouwd met genormaliseerd']:
@@ -868,7 +872,9 @@ def toRDF(data, uri, name, description, target=None):
                                         lang='nl')
                             ],
                             hasEarliestBeginTimeStamp=birthDateEarliest,
+                            hasLatestBeginTimeStamp=birthDateLatest,
                             hasLatestEndTimeStamp=birthDateLatest,
+                            hasEarliestEndTimeStamp=birthDateEarliest,
                             place=birthPlace,
                             principal=husband)
                         birthEventHusband.participationOf = [husband]
@@ -892,7 +898,9 @@ def toRDF(data, uri, name, description, target=None):
                                         lang='nl')
                             ],
                             hasEarliestBeginTimeStamp=deathDateEarliest,
+                            hasLatestBeginTimeStamp=deathDateLatest,
                             hasLatestEndTimeStamp=deathDateLatest,
+                            hasEarliestEndTimeStamp=deathDateEarliest,
                             place=deathPlace,
                             principal=husband)
                         deathEventHusband.participationOf = [husband]
