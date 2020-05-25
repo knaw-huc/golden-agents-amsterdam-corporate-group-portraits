@@ -61,7 +61,7 @@ afkortingen = {
     "Vd": "Voetboogdoelen",
     "Hd": "Handboogdoelen",
     "Kd": "Kloveniersdoelen",
-    "hopmanstadssoldaten": "Hopman Stadssoldaten"
+    "stadssoldaten": "Stadssoldaten"
 }
 
 functies = {
@@ -84,7 +84,8 @@ functies = {
     "schout": "schout",
     "kastelein": "kastelein",
     "maj.": "majoor",
-    "provoost": "provoost"
+    "provoost": "provoost",
+    "hopman": "hopman",
 }
 
 # abbreviations = {
@@ -438,11 +439,15 @@ def parseFunctionInfo(functionInfo, person, roleTypeOrganization,
     if 'W.' in functionInfo:
         # kap. W. XXIV 1793-01-01|1793-12-31/1795-01-01|1795-12-31
         function, _, wijk, years = functionInfo.split(' ')
-        doelen, unknownOrganization = None, None
+        doelen, unknownOrganization, stadssoldaten = None, None, None
         organizationLiteral = "Schutterij van wijk " + wijk
+    elif 'stadssoldaten' in functionInfo:
+        function, stadssoldaten, years = functionInfo.split(' ')
+        wijk, doelen, unknownOrganization = None, None, None
+        organizationLiteral = "Stadssoldaten"
     elif ' ? ' in functionInfo:
         function, _, years = functionInfo = functionInfo.split(' ')
-        wijk, doelen = None, None
+        wijk, doelen, stadssoldaten = None, None, None
         unknownOrganization = "Unknown"
         organizationLiteral = "Unknown organization"
     else:
@@ -480,7 +485,8 @@ def parseFunctionInfo(functionInfo, person, roleTypeOrganization,
         datatype=XSD.date) if latestEndTimeStamp != "?" else None
 
     organization = Organization(
-        gaOrganization.term(wijk or doelen or unknownOrganization),
+        gaOrganization.term(wijk or doelen or stadssoldaten
+                            or unknownOrganization),
         label=[Literal(organizationLiteral, lang='nl')])
 
     functionEvent = Event(
@@ -736,20 +742,19 @@ def toRDF(data, uri, name, description, target=None):
                         else:
                             rt = RoleTypeUnknown
 
-                        try:
+                        # try:
 
-                            functionEvent, organizationSubEventDict = parseFunctionInfo(
-                                funcInfo,
-                                person=p,
-                                roleTypeOrganization=rt,
-                                organizationSubEventDict=
-                                organizationSubEventDict)
-                            lifeEvents.append(functionEvent)
+                        functionEvent, organizationSubEventDict = parseFunctionInfo(
+                            funcInfo,
+                            person=p,
+                            roleTypeOrganization=rt,
+                            organizationSubEventDict=organizationSubEventDict)
+                        lifeEvents.append(functionEvent)
 
-                        except ValueError:
-                            print("VALERROR", d['id'], functionInfo)
-                        except KeyError:
-                            print("KEYERROR", d['id'], functionInfo)
+                        # except ValueError:
+                        #     print("VALERROR", d['id'], functionInfo)
+                        # except KeyError:
+                        #     print("KEYERROR", d['id'], functionInfo)
 
                 # marriage
                 if d['Getrouwd met genormaliseerd']:
