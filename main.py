@@ -88,6 +88,39 @@ functies = {
     "hopman": "hopman",
 }
 
+bestuursfuncties = {
+    'Sch.': 'Schepen',
+    'R.': 'Raad',
+    'C.': 'Commissaris',
+    'B.': 'Burgemeester',
+    'Secr.': 'Secretaris',
+    'C.K.Z.': 'Commissaris Kleine Zaken',
+    'C.H.': 'Commissaris Huwelijkse Zaken',
+    'S.': 'Schout',
+    'R.M.': 12,
+    'C.E.': 'Comm. Grooten Excijs',
+    'Pens.': 'Pensionaris',
+    'Wm.': 8,
+    'C.B.L.': 8,
+    'C.Z.': 8,
+    'Th.': 'Thesaurier-Ordinaris',
+    'C.Wb.': 'Commissaris Wisselbank',
+    'C.D.B.': 'Commissaris Desolate Boedelskamer',
+    'Th.E.': 4,
+    'Am.': 'Assurantiemeester',
+    'Gecomm.Raad': 2,
+    'HSchout': 1,
+    'Subst.scht.extr.': 1,
+    'Ordinaris': 1,
+    'G.R.': 1,
+    'Gedep.TerStatenGeneraal': 1,
+    'Raad.ter.admir.': 1,
+    'A.N.': 1,
+    'ov.WKG': 1,
+    'Wm': 'Weesmeester',
+    'Rm.': 'Rekenmeester'
+}
+
 # abbreviations = {
 # Hd = "Handboogdoelen"
 # Kd = "Kloveniersdoelen"
