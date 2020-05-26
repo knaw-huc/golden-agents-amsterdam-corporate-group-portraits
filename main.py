@@ -97,28 +97,33 @@ bestuursfuncties = {
     'C.K.Z.': 'Commissaris Kleine Zaken',
     'C.H.': 'Commissaris Huwelijkse Zaken',
     'S.': 'Schout',
-    'R.M.': 12,
+    'R.M.': "",
     'C.E.': 'Comm. Grooten Excijs',
     'Pens.': 'Pensionaris',
-    'Wm.': 8,
-    'C.B.L.': 8,
-    'C.Z.': 8,
+    'Wm.': "",
+    'C.B.L.': "",
+    'C.Z.': "",
     'Th.': 'Thesaurier-Ordinaris',
     'C.Wb.': 'Commissaris Wisselbank',
     'C.D.B.': 'Commissaris Desolate Boedelskamer',
-    'Th.E.': 4,
+    'Th.E.': "",
     'Am.': 'Assurantiemeester',
-    'Gecomm.Raad': 2,
-    'HSchout': 1,
-    'Subst.scht.extr.': 1,
-    'Ordinaris': 1,
-    'G.R.': 1,
-    'Gedep.TerStatenGeneraal': 1,
-    'Raad.ter.admir.': 1,
-    'A.N.': 1,
-    'ov.WKG': 1,
+    'Gecomm.Raad': "",
+    'HSchout': "",
+    'Subst.scht.extr.': "",
+    'Ordinaris': "",
+    'G.R.': "",
+    'Gedep.TerStatenGeneraal': "",
+    'Raad.ter.admir.': "",
+    'A.N.': "",
+    'ov.WKG': "",
     'Wm': 'Weesmeester',
-    'Rm.': 'Rekenmeester'
+    'Rm.': 'Rekenmeester',
+    "Secr.Zeezaken": "Secretaris Zeezaken",
+    "H.S.": "",
+    "G.R.K.": "",
+    "R.H.": "",
+    "Secr.Th.E.": ""
 }
 
 # abbreviations = {
@@ -562,6 +567,74 @@ def parseFunctionInfo(functionInfo, person, roleTypeOrganization,
     return functionEvent, organizationSubEventDict
 
 
+def parseRegeerInfo(regeerInfo, person, organization, roleTypeOrganization,
+                    organizationSubEventDict):
+
+    function, years = regeerInfo.split(' ')
+
+    roleTypePerson = RoleType(gaRoleType.term(
+        bestuursfuncties[function].title().replace(' ', '')),
+                              subClassOf=ga.Role,
+                              label=[bestuursfuncties[function].title()])
+
+    begin, end = years.split('/')
+
+    earliestBeginTimeStamp, latestBeginTimeStamp = begin.split('|')
+    earliestEndTimeStamp, latestEndTimeStamp = end.split('|')
+
+    earliestBeginTimeStamp = Literal(
+        earliestBeginTimeStamp,
+        datatype=XSD.date) if earliestBeginTimeStamp != "?" else None
+    latestBeginTimeStamp = Literal(
+        latestBeginTimeStamp,
+        datatype=XSD.date) if latestBeginTimeStamp != "?" else None
+    earliestEndTimeStamp = Literal(
+        earliestEndTimeStamp,
+        datatype=XSD.date) if earliestEndTimeStamp != "?" else None
+    latestEndTimeStamp = Literal(
+        latestEndTimeStamp,
+        datatype=XSD.date) if latestEndTimeStamp != "?" else None
+
+    bestuursEvent = Event(
+        None,
+        label=[
+            Literal(
+                f"{person.label[0]} als {roleTypePerson.label[0].lower()} bij de Stadsregering",
+                lang='nl')
+        ],
+        participationOf=[person, organization],
+        hasEarliestBeginTimeStamp=earliestBeginTimeStamp,
+        hasLatestBeginTimeStamp=latestBeginTimeStamp,
+        hasEarliestEndTimeStamp=earliestEndTimeStamp,
+        hasLatestEndTimeStamp=latestEndTimeStamp)
+
+    rolePerson = SpecificRoleType(
+        None,
+        type=roleTypePerson,
+        carriedIn=bestuursEvent,
+        carriedBy=person,
+        label=[
+            Literal(
+                f"{person.label[0]} in de rol van {roleTypePerson.label[0].lower()}",
+                lang='nl')
+        ])
+
+    roleTypeOrganization = SpecificRoleType(
+        None,
+        type=roleTypeOrganization,
+        carriedIn=bestuursEvent,
+        carriedBy=organization,
+        label=[
+            Literal(
+                f"Stadsregering in de rol van {roleTypeOrganization.label[0].lower()}",
+                lang='nl')
+        ])
+
+    organizationSubEventDict[organization].append(bestuursEvent)
+
+    return bestuursEvent, organizationSubEventDict
+
+
 def toRDF(data, uri, name, description, target=None):
 
     nametype = os.path.split(target)[1].replace('.trig', '')
@@ -740,6 +813,25 @@ def toRDF(data, uri, name, description, target=None):
                             occInfo,
                             roleTypePerson=RoleTypePoorter,
                             person=p,
+                            roleTypeOrganization=
+                            RoleTypeAdministrativeOrganization,
+                            organizationSubEventDict=organizationSubEventDict)
+                        lifeEvents.append(occupationEvent)
+
+                stadsregeringInfo = d[
+                    'functie in stadsregering genormaliseerd']
+
+                if stadsregeringInfo:
+
+                    organization = Organization(gaOrganization.Stadsregering,
+                                                label=["Stadsregering"])
+
+                    for regeerInfo in stadsregeringInfo.split('; '):
+
+                        occupationEvent, organizationSubEventDict = parseRegeerInfo(
+                            regeerInfo,
+                            person=p,
+                            organization=organization,
                             roleTypeOrganization=
                             RoleTypeAdministrativeOrganization,
                             organizationSubEventDict=organizationSubEventDict)
