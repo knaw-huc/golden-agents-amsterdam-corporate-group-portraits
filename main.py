@@ -5,6 +5,7 @@ import json
 import re
 from itertools import count, product
 from collections import defaultdict
+
 import pandas as pd
 
 from dateutil import parser as dateParser
@@ -89,40 +90,41 @@ functies = {
 }
 
 bestuursfuncties = {
-    'Sch.': 'Schepen',
-    'R.': 'Raad',
-    'C.': 'Commissaris',
-    'B.': 'Burgemeester',
-    'Secr.': 'Secretaris',
-    'C.K.Z.': 'Commissaris Kleine Zaken',
-    'C.H.': 'Commissaris Huwelijkse Zaken',
-    'S.': 'Schout',
-    'R.M.': "",
-    'C.E.': 'Comm. Grooten Excijs',
-    'Pens.': 'Pensionaris',
-    'Wm.': "Weesmeester",
-    'C.B.L.': "",
-    'C.Z.': "",
-    'Th.': 'Thesaurier-Ordinaris',
-    'C.Wb.': 'Commissaris Wisselbank',
-    'C.D.B.': 'Commissaris Desolate Boedelskamer',
-    'Th.E.': "",
-    'Am.': 'Assurantiemeester',
-    'Gecomm.Raad': "",
-    'HSchout': "",
-    'Subst.scht.extr.': "",
-    'Ordinaris': "",
-    'G.R.': "",
-    'Gedep.TerStatenGeneraal': "",
-    'Raad.ter.admir.': "",
-    'A.N.': "",
-    'ov.WKG': "",
-    'Rm.': 'Rekenmeester',
+    "Sch.": "Schepen",
+    "R.": "Raad",
+    "C.": "Commissaris",
+    "B.": "Burgemeester",
+    "Secr.": "Secretaris",
+    "C.H.": "Commissaris Huwelijkse Zaken",
+    "C.K.Z.": "Commissaris Kleine Zaken",
+    "S.": "Schout",
+    "Pens.": "Pensionaris",
+    "C.E.": "Commissaris Grooten Excijs",
+    "C.Z.": "Commissaris Zeezaken",
+    "Wm.": "Weesmeester",
+    "C.D.B.": "Commissaris Desolate Boedelskamer",
+    "C.B.L.": "Commisaris Bank van Lening",
+    "Th.E.": "Thesaurier Extraordinaris",
+    "Th.": "Thesaurier Ordinaris",
+    "Am.": "Assurantiemeester",
+    "C.Wb.": "Commissaris Wisselbank",
+    "G.R.": "Gecommitteerde Raad",
+    "Gecomm.Raad": "Gecommitteerde Raad",
+    "G.R.K.": "Gedeputeerde ter Generaliteits Rekenkamer",
+    "HSchout": "Hoofdschout",
+    "Subst.scht.extr.": "Substituut-schout Extraordinaris",
+    "Ordinaris": "Raad Ordinaris",
+    "Gedep.TerStaten": "Gedeputeerde ter Staten",
+    "Gedep.TerStatenGeneraal": "Gedeputeerde ter Staten Generaal",
+    "Raad.ter.admir.": "Raad ter Admiraliteit",
+    "A.N.": "Raad ter Admiraliteit in ‘t Noorderkwartier",
+    "ov.": "Overman",
+    "Rm.": "Rekenmeester",
+    "R.H.":
+    "Gecommitteerde ter Rekenkamer ter Auditie van Holland in het Zuiderkwartier",
+    "ov.WKG": "Overman Wijnkopersgilde",
     "Secr.Zeezaken": "Secretaris Zeezaken",
-    "H.S.": "",
-    "G.R.K.": "",
-    "R.H.": "",
-    "Secr.Th.E.": ""
+    "Secr.Th.E.": "Secretaris-thesaurier Extraordinaris"
 }
 
 # abbreviations = {
@@ -642,6 +644,16 @@ def toRDF(data, uri, name, description, target=None):
     )
     personCounter = count(1)
 
+    nsEvent = Namespace(
+        f"https://data.goldenagents.org/datasets/corporatiestukken/event/{nametype}/"
+    )
+    eventCounter = count(1)
+
+    nsRole = Namespace(
+        f"https://data.goldenagents.org/datasets/corporatiestukken/role/{nametype}/"
+    )
+    roleCounter = count(1)
+
     ds = Dataset()
     dataset = ns.term('')
 
@@ -708,7 +720,9 @@ def toRDF(data, uri, name, description, target=None):
 
             pn, labels = getPersonName(d)
 
-            p = Person(nsPerson.term(str(next(personCounter))),
+            pid = str(next(personCounter))
+
+            p = Person(nsPerson.term(pid),
                        hasName=pn,
                        gender=gender,
                        label=labels)
@@ -729,7 +743,7 @@ def toRDF(data, uri, name, description, target=None):
 
             # Birth
             birthEvent = Birth(
-                None,
+                nsEvent.term(f"{pid}-birth"),
                 label=[Literal(f"Geboorte van {labels[0]}", lang='nl')],
                 hasTimeStamp=birthTimeStamp,
                 hasEarliestBeginTimeStamp=birthDateEarliest,
@@ -740,7 +754,7 @@ def toRDF(data, uri, name, description, target=None):
                 principal=p)
             birthEvent.participationOf = [p]
 
-            roleBorn = Born(None,
+            roleBorn = Born(nsRole.term(f"{pid}-born"),
                             carriedIn=birthEvent,
                             carriedBy=p,
                             label=["Born"])
@@ -748,7 +762,7 @@ def toRDF(data, uri, name, description, target=None):
 
             # Death
             deathEvent = Death(
-                None,
+                nsEvent.term(f"{pid}-death"),
                 label=[Literal(f"Overlijden van {labels[0]}", lang='nl')],
                 hasTimeStamp=deathTimeStamp,
                 hasEarliestBeginTimeStamp=deathDateEarliest,
@@ -759,7 +773,7 @@ def toRDF(data, uri, name, description, target=None):
                 principal=p)
             deathEvent.participationOf = [p]
 
-            roleDied = Died(None,
+            roleDied = Died(nsRole.term(f"{pid}-died"),
                             carriedIn=deathEvent,
                             carriedBy=p,
                             label=["Died"])
@@ -827,14 +841,14 @@ def toRDF(data, uri, name, description, target=None):
 
                     for regeerInfo in stadsregeringInfo.split('; '):
 
-                        occupationEvent, organizationSubEventDict = parseRegeerInfo(
+                        regeerEvent, organizationSubEventDict = parseRegeerInfo(
                             regeerInfo,
                             person=p,
                             organization=organization,
                             roleTypeOrganization=
                             RoleTypeAdministrativeOrganization,
                             organizationSubEventDict=organizationSubEventDict)
-                        lifeEvents.append(occupationEvent)
+                        lifeEvents.append(regeerEvent)
 
                 functionInfo = d[
                     'lid/officier schutterij (vaandrigs vanaf 1650) genormaliseerd']
@@ -900,7 +914,7 @@ def toRDF(data, uri, name, description, target=None):
                         lifeEventsWife = []
 
                         marriageEvent = Event(
-                            None,
+                            nsEvent.term(f"{next(eventCounter)}-marriage"),
                             label=[
                                 Literal(
                                     f"Huwelijk tussen {labels[0]} en {wifeName}",
@@ -913,7 +927,7 @@ def toRDF(data, uri, name, description, target=None):
                         lifeEventsWife.append(marriageEvent)
 
                         roleGroom = Groom(
-                            None,
+                            nsRole.term(f"{next(roleCounter)}-groom"),
                             carriedIn=marriageEvent,
                             carriedBy=p,
                             label=[
@@ -922,7 +936,7 @@ def toRDF(data, uri, name, description, target=None):
                             ])
 
                         roleBride = Bride(
-                            None,
+                            nsRole.term(f"{next(roleCounter)}-bride"),
                             carriedIn=marriageEvent,
                             carriedBy=wife,
                             label=[
@@ -984,8 +998,8 @@ def toRDF(data, uri, name, description, target=None):
                             birthDateEarliest, birthDateLatest, deathDateEarliest, deathDateLatest = None, None, None, None
 
                         pnHusband, labelsHusband = parsePersonName(husbandName)
-                        husband = Person(nsPerson.term(str(
-                            next(personCounter))),
+                        pidhusband = nsPerson.term(str(next(personCounter)))
+                        husband = Person(pidhusband,
                                          hasName=pnHusband,
                                          gender=ga.Male,
                                          label=labelsHusband,
@@ -995,7 +1009,7 @@ def toRDF(data, uri, name, description, target=None):
 
                         # Birth Husband
                         birthEventHusband = Birth(
-                            None,
+                            nsEvent.term(f"{pidhusband}-birth"),
                             label=[
                                 Literal(f"Geboorte van {labelsHusband[0]}",
                                         lang='nl')
@@ -1009,7 +1023,7 @@ def toRDF(data, uri, name, description, target=None):
                         birthEventHusband.participationOf = [husband]
 
                         roleBorn = Born(
-                            None,
+                            nsRole.term(f"{pidhusband}-born"),
                             carriedIn=birthEventHusband,
                             carriedBy=husband,
                             label=[
@@ -1021,7 +1035,7 @@ def toRDF(data, uri, name, description, target=None):
 
                         # Death
                         deathEventHusband = Death(
-                            None,
+                            nsEvent.term(f"{pidhusband}-death"),
                             label=[
                                 Literal(f"Overlijden van {labelsHusband[0]}",
                                         lang='nl')
@@ -1035,7 +1049,7 @@ def toRDF(data, uri, name, description, target=None):
                         deathEventHusband.participationOf = [husband]
 
                         roleDied = Died(
-                            None,
+                            nsRole.term(f"{pidhusband}-died"),
                             carriedIn=deathEventHusband,
                             carriedBy=husband,
                             label=[
@@ -1047,7 +1061,7 @@ def toRDF(data, uri, name, description, target=None):
                         lifeEventsHusband.append(deathEventHusband)
 
                         marriageEvent = Event(
-                            None,
+                            nsEvent.term(f"{next(eventCounter)}-marriage"),
                             label=[
                                 Literal(
                                     f"Huwelijk tussen {labels[0]} en {husbandName}",
@@ -1060,7 +1074,7 @@ def toRDF(data, uri, name, description, target=None):
                         lifeEventsHusband.append(marriageEvent)
 
                         roleBride = Bride(
-                            None,
+                            nsRole.term(f"{next(roleCounter)}-bride"),
                             carriedIn=marriageEvent,
                             carriedBy=p,
                             label=[
@@ -1069,7 +1083,7 @@ def toRDF(data, uri, name, description, target=None):
                             ])
 
                         roleGroom = Groom(
-                            None,
+                            nsRole.term(f"{next(roleCounter)}-groom"),
                             carriedIn=marriageEvent,
                             carriedBy=husband,
                             label=[
@@ -1119,7 +1133,7 @@ def toRDF(data, uri, name, description, target=None):
 
     for organization, subEvents in organizationResUriSubEventDict.items():
         organizationEvent = Event(
-            None,
+            nsEvent.term(f"{next(eventCounter)}"),
             participationOf=[organization],
             subEvent=subEvents,
             label=[
