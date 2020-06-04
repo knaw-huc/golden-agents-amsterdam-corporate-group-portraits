@@ -1005,12 +1005,18 @@ def toRDF(data, uri, name, description, target=None):
                         husbandName, rest = marriage.split('(', 1)
                         years, comment = rest.split(')', 1)
 
-                        *_, marriageYear = years.rsplit('x', 1)
+                        bioYear, marriageYear = years.rsplit('x', 1)
+                        bioYear = bioYear.replace(', ', '')
+
+                        if ' ' in bioYear:
+                            birthPlaceHusband, bioYear = bioYear.rsplit(' ', 1)
+                        else:
+                            birthPlaceHusband = None
 
                         earliestDate, latestDate = yearToDate(marriageYear)
 
                         try:
-                            birthYear, deathYear = years.split('-')
+                            birthYear, deathYear = bioYear.split('-')
                             if birthYear != "?":
                                 birthDateEarliest, birthDateLatest = yearToDate(
                                     birthYear)
@@ -1046,7 +1052,7 @@ def toRDF(data, uri, name, description, target=None):
                             hasLatestBeginTimeStamp=birthDateLatest,
                             hasLatestEndTimeStamp=birthDateLatest,
                             hasEarliestEndTimeStamp=birthDateEarliest,
-                            place=birthPlace,
+                            place=birthPlaceHusband,
                             principal=husband)
                         birthEventHusband.participationOf = [husband]
 
@@ -1072,7 +1078,6 @@ def toRDF(data, uri, name, description, target=None):
                             hasLatestBeginTimeStamp=deathDateLatest,
                             hasLatestEndTimeStamp=deathDateLatest,
                             hasEarliestEndTimeStamp=deathDateEarliest,
-                            place=deathPlace,
                             principal=husband)
                         deathEventHusband.participationOf = [husband]
 
