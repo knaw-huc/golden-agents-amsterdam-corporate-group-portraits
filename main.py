@@ -93,6 +93,7 @@ bestuursfuncties = {
     "Sch.": "Schepen",
     "R.": "Raad",
     "C.": "Commissaris",
+    "C100p.": "Commissaris 100ste penning",
     "B.": "Burgemeester",
     "Secr.": "Secretaris",
     "C.H.": "Commissaris Huwelijkse Zaken",
@@ -123,8 +124,9 @@ bestuursfuncties = {
     "R.H.":
     "Gecommitteerde ter Rekenkamer ter Auditie van Holland in het Zuiderkwartier",
     "ov.WKG": "Overman Wijnkopersgilde",
-    "Secr.Zeezaken": "Secretaris Zeezaken",
-    "Secr.Th.E.": "Secretaris-thesaurier Extraordinaris"
+    "Secr.Z.": "Secretaris Zeezaken",
+    "Secr.Th.E.": "Secretaris-thesaurier Extraordinaris",
+    "Boekh200p.": "Boekhouder 200ste penning"
 }
 
 # abbreviations = {
@@ -407,69 +409,69 @@ def yearToDate(yearString):
 
 def parseOccupationInfo(occupationInfo, roleTypePerson, person,
                         roleTypeOrganization, organizationSubEventDict):
-    for occupation in occupationInfo.split('; '):
-        organizationString, years = occupation.split(' ', 1)
 
-        begin, end = years.split('/')
+    organizationString, years = occupationInfo.split(' ', 1)
 
-        earliestBeginTimeStamp, latestBeginTimeStamp = begin.split('|')
-        earliestEndTimeStamp, latestEndTimeStamp = end.split('|')
+    begin, end = years.split('/')
 
-        earliestBeginTimeStamp = Literal(
-            earliestBeginTimeStamp,
-            datatype=XSD.date) if earliestBeginTimeStamp != "?" else None
-        latestBeginTimeStamp = Literal(
-            latestBeginTimeStamp,
-            datatype=XSD.date) if latestBeginTimeStamp != "?" else None
-        earliestEndTimeStamp = Literal(
-            earliestEndTimeStamp,
-            datatype=XSD.date) if earliestEndTimeStamp != "?" else None
-        latestEndTimeStamp = Literal(
-            latestEndTimeStamp,
-            datatype=XSD.date) if latestEndTimeStamp != "?" else None
+    earliestBeginTimeStamp, latestBeginTimeStamp = begin.split('|')
+    earliestEndTimeStamp, latestEndTimeStamp = end.split('|')
 
-        organization = Organization(
-            gaOrganization.term(organizationString.replace('.', '')),
-            label=[Literal(afkortingen[organizationString], lang='nl')])
+    earliestBeginTimeStamp = Literal(
+        earliestBeginTimeStamp,
+        datatype=XSD.date) if earliestBeginTimeStamp != "?" else None
+    latestBeginTimeStamp = Literal(
+        latestBeginTimeStamp,
+        datatype=XSD.date) if latestBeginTimeStamp != "?" else None
+    earliestEndTimeStamp = Literal(
+        earliestEndTimeStamp,
+        datatype=XSD.date) if earliestEndTimeStamp != "?" else None
+    latestEndTimeStamp = Literal(
+        latestEndTimeStamp,
+        datatype=XSD.date) if latestEndTimeStamp != "?" else None
 
-        occupationEvent = Event(
-            None,
-            label=[
-                Literal(
-                    f"{person.label[0]} als {roleTypePerson.label[0].lower()} bij {afkortingen[organizationString]}",
-                    lang='nl')
-            ],
-            participationOf=[person, organization],
-            hasEarliestBeginTimeStamp=earliestBeginTimeStamp,
-            hasLatestBeginTimeStamp=latestBeginTimeStamp,
-            hasEarliestEndTimeStamp=earliestEndTimeStamp,
-            hasLatestEndTimeStamp=latestEndTimeStamp)
+    organization = Organization(
+        gaOrganization.term(organizationString.replace('.', '')),
+        label=[Literal(afkortingen[organizationString], lang='nl')])
 
-        rolePerson = SpecificRoleType(
-            None,
-            type=roleTypePerson,
-            carriedIn=occupationEvent,
-            carriedBy=person,
-            label=[
-                Literal(
-                    f"{person.label[0]} in de rol van {roleTypePerson.label[0].lower()}",
-                    lang='nl')
-            ])
+    occupationEvent = Event(
+        None,
+        label=[
+            Literal(
+                f"{person.label[0]} als {roleTypePerson.label[0].lower()} bij {afkortingen[organizationString]}",
+                lang='nl')
+        ],
+        participationOf=[person, organization],
+        hasEarliestBeginTimeStamp=earliestBeginTimeStamp,
+        hasLatestBeginTimeStamp=latestBeginTimeStamp,
+        hasEarliestEndTimeStamp=earliestEndTimeStamp,
+        hasLatestEndTimeStamp=latestEndTimeStamp)
 
-        roleTypeOrganization = SpecificRoleType(
-            None,
-            type=roleTypeOrganization,
-            carriedIn=occupationEvent,
-            carriedBy=organization,
-            label=[
-                Literal(
-                    f"{afkortingen[organizationString]} in de rol van {roleTypeOrganization.label[0].lower()}",
-                    lang='nl')
-            ])
+    rolePerson = SpecificRoleType(
+        None,
+        type=roleTypePerson,
+        carriedIn=occupationEvent,
+        carriedBy=person,
+        label=[
+            Literal(
+                f"{person.label[0]} in de rol van {roleTypePerson.label[0].lower()}",
+                lang='nl')
+        ])
 
-        organizationSubEventDict[organization].append(occupationEvent)
+    roleTypeOrganization = SpecificRoleType(
+        None,
+        type=roleTypeOrganization,
+        carriedIn=occupationEvent,
+        carriedBy=organization,
+        label=[
+            Literal(
+                f"{afkortingen[organizationString]} in de rol van {roleTypeOrganization.label[0].lower()}",
+                lang='nl')
+        ])
 
-        return occupationEvent, organizationSubEventDict
+    organizationSubEventDict[organization].append(occupationEvent)
+
+    return occupationEvent, organizationSubEventDict
 
 
 def parseFunctionInfo(functionInfo, person, roleTypeOrganization,
