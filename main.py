@@ -939,7 +939,7 @@ def toRDF(data, uri, name, description, target=None):
 
                         lifeEventsWife = []
 
-                        marriageEvent = Event(
+                        marriageEvent = Marriage(
                             nsEvent.term(f"{next(eventCounter)}-marriage"),
                             label=[
                                 Literal(
@@ -948,7 +948,7 @@ def toRDF(data, uri, name, description, target=None):
                             ],
                             hasEarliestBeginTimeStamp=earliestDate,
                             hasLatestEndTimeStamp=latestDate,
-                            participationOf=[p, wife])
+                            participationOf=[p, wife], partner=[p, wife])
                         lifeEvents.append(marriageEvent)
                         lifeEventsWife.append(marriageEvent)
 
@@ -1093,7 +1093,7 @@ def toRDF(data, uri, name, description, target=None):
 
                         lifeEventsHusband.append(deathEventHusband)
 
-                        marriageEvent = Event(
+                        marriageEvent = Marriage(
                             nsEvent.term(f"{next(eventCounter)}-marriage"),
                             label=[
                                 Literal(
@@ -1102,7 +1102,8 @@ def toRDF(data, uri, name, description, target=None):
                             ],
                             hasEarliestBeginTimeStamp=earliestDate,
                             hasLatestEndTimeStamp=latestDate,
-                            participationOf=[p, husband])
+                            participationOf=[p, husband],
+                            partner=[p, husband])
                         lifeEvents.append(marriageEvent)
                         lifeEventsHusband.append(marriageEvent)
 
@@ -1167,7 +1168,7 @@ def toRDF(data, uri, name, description, target=None):
 
                         lifeEventsWife = []
 
-                        marriageEvent = Event(
+                        marriageEvent = Marriage(
                             nsEvent.term(f"{next(eventCounter)}-marriage"),
                             label=[
                                 Literal(
@@ -1176,7 +1177,8 @@ def toRDF(data, uri, name, description, target=None):
                             ],
                             hasEarliestBeginTimeStamp=earliestDate,
                             hasLatestEndTimeStamp=latestDate,
-                            participationOf=[p, wife])
+                            participationOf=[p, wife],
+                            partner=[p, wife])
                         lifeEvents.append(marriageEvent)
                         lifeEventsWife.append(marriageEvent)
 
