@@ -126,7 +126,8 @@ bestuursfuncties = {
     "ov.WKG": "Overman Wijnkopersgilde",
     "Secr.Z.": "Secretaris Zeezaken",
     "Secr.Th.E.": "Secretaris-thesaurier Extraordinaris",
-    "Boekh200p.": "Boekhouder 200ste penning"
+    "Boekh200p.": "Boekhouder 200ste penning",
+    "OCW": "Oppercommissarissen der Walen"
 }
 
 # abbreviations = {
@@ -249,6 +250,7 @@ def getPersonName(d):
 
         if ', ' in baseSurname:
             baseSurname, disambiguatingDescription = baseSurname.split(', ', 1)
+            disambiguatingDescription = disambiguatingDescription.strip()
         else:
             disambiguatingDescription = None
 
@@ -787,13 +789,9 @@ def toRDF(data, uri, name, description, target=None):
             #    birthPlace=birthPlace,
             #    deathPlace=deathPlace)
 
-            if d['Geportretteerd op']:
+            if d['Geportretteerd op genormaliseerd']:
 
-                try:
-                    art_id = re.findall(r"([A-Z]{1,3}\. \d+)",
-                                        d['Geportretteerd op'])[0]
-                except:
-                    art_id = d['Geportretteerd op']
+                art_id = d['Geportretteerd op genormaliseerd']
                 art_id = art_id.replace(' ', '').replace('.', '')
 
                 artwork = CreativeArtifact(nsArtwork.term(art_id))
@@ -958,13 +956,15 @@ def toRDF(data, uri, name, description, target=None):
                 # regentes
                 occupationInfo = d['Regentes genormaliseerd']
 
-                occupationEvent, organizationSubEventDict = parseOccupationInfo(
-                    occupationInfo,
-                    roleTypePerson=RoleTypeRegentes,
-                    person=p,
-                    roleTypeOrganization=RoleTypeAdministrativeOrganization,
-                    organizationSubEventDict=organizationSubEventDict)
-                lifeEvents.append(occupationEvent)
+                for occupation in occupationInfo.split('; '):
+
+                    occupationEvent, organizationSubEventDict = parseOccupationInfo(
+                        occupation,
+                        roleTypePerson=RoleTypeRegentes,
+                        person=p,
+                        roleTypeOrganization=RoleTypeAdministrativeOrganization,
+                        organizationSubEventDict=organizationSubEventDict)
+                    lifeEvents.append(occupationEvent)
 
                 # marriage
                 if d['huisvrouw (hv) van / weduwe (w) van genormaliseerd']:
@@ -1105,13 +1105,15 @@ def toRDF(data, uri, name, description, target=None):
                 occupationInfo = d['regent / kerkmeester genormaliseerd']
 
                 if occupationInfo:
-                    occupationEvent, organizationSubEventDict = parseOccupationInfo(
-                        occupationInfo,
-                        roleTypePerson=RoleTypeRegent,
-                        person=p,
-                        roleTypeOrganization=RoleTypeAdministrativeOrganization,
-                        organizationSubEventDict=organizationSubEventDict)
-                    lifeEvents.append(occupationEvent)
+                    for occupation in occupationInfo.split('; '):
+                        occupationEvent, organizationSubEventDict = parseOccupationInfo(
+                            occupation,
+                            roleTypePerson=RoleTypeRegent,
+                            person=p,
+                            roleTypeOrganization=
+                            RoleTypeAdministrativeOrganization,
+                            organizationSubEventDict=organizationSubEventDict)
+                        lifeEvents.append(occupationEvent)
 
             # 4 gildenleden
             if 'gildenleden.trig' in target:
