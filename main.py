@@ -419,6 +419,11 @@ def parseOccupationInfo(occupationInfo, roleTypePerson, person,
     earliestBeginTimeStamp, latestBeginTimeStamp = begin.split('|')
     earliestEndTimeStamp, latestEndTimeStamp = end.split('|')
 
+    beginYearLabel = datetime.datetime.fromisoformat(
+        earliestBeginTimeStamp).year if earliestBeginTimeStamp != "?" else "?"
+    endYearLabel = datetime.datetime.fromisoformat(
+        latestEndTimeStamp).year if latestEndTimeStamp != "?" else "?"
+
     earliestBeginTimeStamp = Literal(
         earliestBeginTimeStamp,
         datatype=XSD.date) if earliestBeginTimeStamp != "?" else None
@@ -440,7 +445,7 @@ def parseOccupationInfo(occupationInfo, roleTypePerson, person,
         None,
         label=[
             Literal(
-                f"{person.label[0]} als {roleTypePerson.label[0].lower()} bij {afkortingen[organizationString]}",
+                f"{person.label[0]} als {roleTypePerson.label[0].lower()} bij {afkortingen[organizationString]} ({beginYearLabel}-{endYearLabel})",
                 lang='nl')
         ],
         participationOf=[person, organization],
@@ -514,6 +519,11 @@ def parseFunctionInfo(functionInfo, person, roleTypeOrganization,
     earliestBeginTimeStamp, latestBeginTimeStamp = begin.split('|')
     earliestEndTimeStamp, latestEndTimeStamp = end.split('|')
 
+    beginYearLabel = datetime.datetime.fromisoformat(
+        earliestBeginTimeStamp).year if earliestBeginTimeStamp != "?" else "?"
+    endYearLabel = datetime.datetime.fromisoformat(
+        latestEndTimeStamp).year if latestEndTimeStamp != "?" else "?"
+
     earliestBeginTimeStamp = Literal(
         earliestBeginTimeStamp,
         datatype=XSD.date) if earliestBeginTimeStamp != "?" else None
@@ -536,7 +546,7 @@ def parseFunctionInfo(functionInfo, person, roleTypeOrganization,
         None,
         label=[
             Literal(
-                f"{person.label[0]} als {roleTypePerson.label[0].lower()} bij {organizationLiteral}",
+                f"{person.label[0]} als {roleTypePerson.label[0].lower()} bij {organizationLiteral} ({beginYearLabel}-{endYearLabel})",
                 lang='nl')
         ],
         participationOf=[person, organization],
@@ -587,6 +597,11 @@ def parseRegeerInfo(regeerInfo, person, organization, roleTypeOrganization,
     earliestBeginTimeStamp, latestBeginTimeStamp = begin.split('|')
     earliestEndTimeStamp, latestEndTimeStamp = end.split('|')
 
+    beginYearLabel = datetime.datetime.fromisoformat(
+        earliestBeginTimeStamp).year if earliestBeginTimeStamp != "?" else "?"
+    endYearLabel = datetime.datetime.fromisoformat(
+        latestEndTimeStamp).year if latestEndTimeStamp != "?" else "?"
+
     earliestBeginTimeStamp = Literal(
         earliestBeginTimeStamp,
         datatype=XSD.date) if earliestBeginTimeStamp != "?" else None
@@ -604,7 +619,7 @@ def parseRegeerInfo(regeerInfo, person, organization, roleTypeOrganization,
         None,
         label=[
             Literal(
-                f"{person.label[0]} als {roleTypePerson.label[0].lower()} bij de Stadsregering",
+                f"{person.label[0]} als {roleTypePerson.label[0].lower()} bij de Stadsregering ({beginYearLabel}-{endYearLabel})",
                 lang='nl')
         ],
         participationOf=[person, organization],
@@ -680,9 +695,10 @@ def toRDF(data, uri, name, description, target=None):
                 comment=[Literal(d['description'], lang='nl')])
 
             sameAs = [
-                URIRef(i)
-                for i in [d['rijksmuseum_uri'], d['amsterdammuseum_uri'], d['stadsarchief_uri']]
-                if i is not None
+                URIRef(i) for i in [
+                    d['rijksmuseum_uri'], d['amsterdammuseum_uri'],
+                    d['stadsarchief_uri']
+                ] if i is not None
             ]
             artwork.sameAs = sameAs
 
