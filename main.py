@@ -705,6 +705,14 @@ def toRDF(data, uri, name, description, target=None):
                 if portrait:
                     depictions.append(URIRef(portrait))
 
+            if d['stadsarchief_uri']:
+                with open('data/depictions_stadsarchief.json') as infile:
+                    depictions_stadsarchief = json.load(infile)
+
+                portrait = depictions_stadsarchief.get(d['stadsarchief_uri'])
+                if portrait:
+                    depictions.append(URIRef(portrait))
+
             artwork.depiction = depictions
 
             # for the exampleResource
@@ -1117,7 +1125,57 @@ def toRDF(data, uri, name, description, target=None):
 
             # 4 gildenleden
             if 'gildenleden.trig' in target:
-                pass
+
+                # marriage
+                if d['Getrouwd met genormaliseerd']:
+
+                    for marriage in d['Getrouwd met genormaliseerd'].split(
+                            '; '):
+                        wifeName, year = marriage.split(' (', 1)
+                        marriageYear = year[:-1]
+
+                        earliestDate, latestDate = yearToDate(marriageYear)
+
+                        pnWife, labelsWife = parsePersonName(wifeName)
+                        wife = Person(nsPerson.term(str(next(personCounter))),
+                                      hasName=pnWife,
+                                      gender=ga.Female,
+                                      label=labelsWife)
+
+                        lifeEventsWife = []
+
+                        marriageEvent = Event(
+                            nsEvent.term(f"{next(eventCounter)}-marriage"),
+                            label=[
+                                Literal(
+                                    f"Huwelijk tussen {labels[0]} en {wifeName}",
+                                    lang='nl')
+                            ],
+                            hasEarliestBeginTimeStamp=earliestDate,
+                            hasLatestEndTimeStamp=latestDate,
+                            participationOf=[p, wife])
+                        lifeEvents.append(marriageEvent)
+                        lifeEventsWife.append(marriageEvent)
+
+                        roleGroom = Groom(
+                            nsRole.term(f"{next(roleCounter)}-groom"),
+                            carriedIn=marriageEvent,
+                            carriedBy=p,
+                            label=[
+                                Literal(f"{labels[0]} in de rol van bruidegom",
+                                        lang='nl')
+                            ])
+
+                        roleBride = Bride(
+                            nsRole.term(f"{next(roleCounter)}-bride"),
+                            carriedIn=marriageEvent,
+                            carriedBy=wife,
+                            label=[
+                                Literal(f"{labelsWife[0]} in de rol van bruid",
+                                        lang='nl')
+                            ])
+
+                        wife.participatesIn = lifeEventsWife
 
             p.participatesIn = lifeEvents
 
