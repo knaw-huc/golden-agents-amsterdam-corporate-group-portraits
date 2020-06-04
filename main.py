@@ -681,7 +681,7 @@ def toRDF(data, uri, name, description, target=None):
 
             sameAs = [
                 URIRef(i)
-                for i in [d['rijksmuseum_uri'], d['amsterdammuseum_uri']]
+                for i in [d['rijksmuseum_uri'], d['amsterdammuseum_uri'], d['stadsarchief_uri']]
                 if i is not None
             ]
             artwork.sameAs = sameAs
@@ -765,6 +765,7 @@ def toRDF(data, uri, name, description, target=None):
                 place=birthPlace,
                 principal=p)
             birthEvent.participationOf = [p]
+            p.birth = birthEvent
 
             roleBorn = Born(nsRole.term(f"{pid}-born"),
                             carriedIn=birthEvent,
@@ -784,6 +785,7 @@ def toRDF(data, uri, name, description, target=None):
                 place=deathPlace,
                 principal=p)
             deathEvent.participationOf = [p]
+            p.death = deathEvent
 
             roleDied = Died(nsRole.term(f"{pid}-died"),
                             carriedIn=deathEvent,
