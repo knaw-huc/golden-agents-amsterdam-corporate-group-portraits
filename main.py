@@ -46,7 +46,6 @@ afkortingen = {
     "N.W.K.": "Nieuwe Walenkerk",
     "OZHh": "Oudezijds Huiszittenhuis",
     "OMVGh": "Oude Mannen- en Vrouwengasthuis",
-    "OCW": "Oppercommissarissen der Walen",
     "Rh": "Rasphuis",
     "SJh": "Sint Jorishof",
     "Sph": "Spinhuis",
@@ -99,6 +98,7 @@ bestuursfuncties = {
     "C.H.": "Commissaris Huwelijkse Zaken",
     "C.K.Z.": "Commissaris Kleine Zaken",
     "S.": "Schout",
+    "Onderschout": "Onderschout",
     "Pens.": "Pensionaris",
     "C.E.": "Commissaris Grooten Excijs",
     "C.Z.": "Commissaris Zeezaken",
@@ -127,7 +127,7 @@ bestuursfuncties = {
     "Secr.Z.": "Secretaris Zeezaken",
     "Secr.Th.E.": "Secretaris-thesaurier Extraordinaris",
     "Boekh200p.": "Boekhouder 200ste penning",
-    "OCW": "Oppercommissarissen der Walen"
+    "OCW": "Oppercommissaris der Walen"
 }
 
 # abbreviations = {
@@ -387,7 +387,9 @@ def parseDate(dateString):
             latestDate = None
 
     else:
+
         date = dateParser.parse(dateString)
+
         earliestDate = date
         latestDate = date
         timeStamp = Literal(date.date(), datatype=XSD.date)
@@ -445,7 +447,7 @@ def parseOccupationInfo(occupationInfo, roleTypePerson, person,
         None,
         label=[
             Literal(
-                f"{person.label[0]} als {roleTypePerson.label[0].lower()} bij {afkortingen[organizationString]} ({beginYearLabel}-{endYearLabel})",
+                f"{person.label[0]} als {roleTypePerson.label[0]} bij {afkortingen[organizationString]} ({beginYearLabel}-{endYearLabel})",
                 lang='nl')
         ],
         participationOf=[person, organization],
@@ -461,7 +463,7 @@ def parseOccupationInfo(occupationInfo, roleTypePerson, person,
         carriedBy=person,
         label=[
             Literal(
-                f"{person.label[0]} in de rol van {roleTypePerson.label[0].lower()}",
+                f"{person.label[0]} in de rol van {roleTypePerson.label[0]}",
                 lang='nl')
         ])
 
@@ -472,7 +474,7 @@ def parseOccupationInfo(occupationInfo, roleTypePerson, person,
         carriedBy=organization,
         label=[
             Literal(
-                f"{afkortingen[organizationString]} in de rol van {roleTypeOrganization.label[0].lower()}",
+                f"{afkortingen[organizationString]} in de rol van {roleTypeOrganization.label[0]}",
                 lang='nl')
         ])
 
@@ -546,7 +548,7 @@ def parseFunctionInfo(functionInfo, person, roleTypeOrganization,
         None,
         label=[
             Literal(
-                f"{person.label[0]} als {roleTypePerson.label[0].lower()} bij {organizationLiteral} ({beginYearLabel}-{endYearLabel})",
+                f"{person.label[0]} als {roleTypePerson.label[0]} bij {organizationLiteral} ({beginYearLabel}-{endYearLabel})",
                 lang='nl')
         ],
         participationOf=[person, organization],
@@ -562,7 +564,7 @@ def parseFunctionInfo(functionInfo, person, roleTypeOrganization,
         carriedBy=person,
         label=[
             Literal(
-                f"{person.label[0]} in de rol van {roleTypePerson.label[0].lower()}",
+                f"{person.label[0]} in de rol van {roleTypePerson.label[0]}",
                 lang='nl')
         ])
 
@@ -573,7 +575,7 @@ def parseFunctionInfo(functionInfo, person, roleTypeOrganization,
         carriedBy=organization,
         label=[
             Literal(
-                f"{organizationLiteral} in de rol van {roleTypeOrganization.label[0].lower()}",
+                f"{organizationLiteral} in de rol van {roleTypeOrganization.label[0]}",
                 lang='nl')
         ])
 
@@ -619,7 +621,7 @@ def parseRegeerInfo(regeerInfo, person, organization, roleTypeOrganization,
         None,
         label=[
             Literal(
-                f"{person.label[0]} als {roleTypePerson.label[0].lower()} bij de Stadsregering ({beginYearLabel}-{endYearLabel})",
+                f"{person.label[0]} als {roleTypePerson.label[0]} bij de Stadsregering ({beginYearLabel}-{endYearLabel})",
                 lang='nl')
         ],
         participationOf=[person, organization],
@@ -635,7 +637,7 @@ def parseRegeerInfo(regeerInfo, person, organization, roleTypeOrganization,
         carriedBy=person,
         label=[
             Literal(
-                f"{person.label[0]} in de rol van {roleTypePerson.label[0].lower()}",
+                f"{person.label[0]} in de rol van {roleTypePerson.label[0]}",
                 lang='nl')
         ])
 
@@ -646,7 +648,7 @@ def parseRegeerInfo(regeerInfo, person, organization, roleTypeOrganization,
         carriedBy=organization,
         label=[
             Literal(
-                f"Stadsregering in de rol van {roleTypeOrganization.label[0].lower()}",
+                f"Stadsregering in de rol van {roleTypeOrganization.label[0]}",
                 lang='nl')
         ])
 
@@ -948,7 +950,8 @@ def toRDF(data, uri, name, description, target=None):
                             ],
                             hasEarliestBeginTimeStamp=earliestDate,
                             hasLatestEndTimeStamp=latestDate,
-                            participationOf=[p, wife], partner=[p, wife])
+                            participationOf=[p, wife],
+                            partner=[p, wife])
                         lifeEvents.append(marriageEvent)
                         lifeEventsWife.append(marriageEvent)
 
