@@ -12,48 +12,6 @@
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-{
-    <https://data.goldenagents.org/datasets/corporatiestukken/> a void:Dataset,
-            schema:Dataset ;
-        dcterms:creator <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> ;
-        dcterms:date "2020-06-25"^^xsd:datetime ;
-        dcterms:description ""@nl ;
-        dcterms:publisher <https://leonvanwissen.nl/me> ;
-        dcterms:source <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
-        dcterms:title "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850"@nl ;
-        void:exampleResource <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/195> ;
-        void:subset <https://data.goldenagents.org/datasets/corporatiestukken/regenten/> ;
-        void:triples 13 ;
-        void:vocabulary sem:,
-            "https://data.goldenagents.org/ontology/" ;
-        schema:citation <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
-        schema:creator <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> ;
-        schema:dateModified "2020-06-25"^^xsd:datetime ;
-        schema:description ""@nl ;
-        schema:distribution [ a schema:DataDownload ;
-                schema:encodingFormat "application/trig" ;
-                schema:version "0.1" ] ;
-        schema:hasPart <https://data.goldenagents.org/datasets/corporatiestukken/regenten/> ;
-        schema:isBasedOn <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
-        schema:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
-        schema:name "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850"@nl ;
-        schema:publisher <https://leonvanwissen.nl/me> ;
-        schema:spatialCoverage "Amsterdam" ;
-        schema:temporalCoverage "1525-01-01/1850-12-31" .
-
-    <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> a ga:Person ;
-        rdfs:label "Norbert Middelkoop" ;
-        owl:sameAs <http://viaf.org/viaf/12415105> .
-
-    <https://data.goldenagents.org/datasets/corporatiestukken/regenten/> a void:Dataset,
-            schema:Dataset ;
-        void:inDataset <https://data.goldenagents.org/datasets/corporatiestukken/> ;
-        void:triples 17041 ;
-        schema:description "" ;
-        schema:isPartOf <https://data.goldenagents.org/datasets/corporatiestukken/> ;
-        schema:name "Regenten Walenweeshuis"@nl .
-}
-
 <https://data.goldenagents.org/datasets/corporatiestukken/regenten/> {
     <https://data.goldenagents.org/datasets/corporatiestukken/artwork/R63> a ga:CreativeArtifact ;
         ga:depicts <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/1>,
@@ -115,7 +73,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/1> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/1-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/1-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/1-deceased> a ga:Deceased ;
         rdfs:label "Jean Hochepied in the role of deceased"@en,
             "Jean Hochepied in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/1> ;
@@ -139,7 +97,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/10> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/10-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/10-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/10-deceased> a ga:Deceased ;
         rdfs:label "Abraham Lestevenon in the role of deceased"@en,
             "Abraham Lestevenon in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/10> ;
@@ -199,7 +157,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/100> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/100-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/100-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/100-deceased> a ga:Deceased ;
         rdfs:label "Jean du Long in the role of deceased"@en,
             "Jean du Long in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/100> ;
@@ -247,7 +205,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/101> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/101-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/101-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/101-deceased> a ga:Deceased ;
         rdfs:label "Jacques Moutty in the role of deceased"@en,
             "Jacques Moutty in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/101> ;
@@ -271,7 +229,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/102> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/102-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/102-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/102-deceased> a ga:Deceased ;
         rdfs:label "Jean Bargignac in the role of deceased"@en,
             "Jean Bargignac in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/102> ;
@@ -295,7 +253,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/103> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/103-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/103-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/103-deceased> a ga:Deceased ;
         rdfs:label "Willem Clermont Johannesz in the role of deceased"@en,
             "Willem Clermont Johannesz in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/103> ;
@@ -343,7 +301,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/104> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/104-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/104-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/104-deceased> a ga:Deceased ;
         rdfs:label "François Juillon in the role of deceased"@en,
             "François Juillon in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/104> ;
@@ -367,7 +325,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/105> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/105-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/105-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/105-deceased> a ga:Deceased ;
         rdfs:label "Abraham Clary in the role of deceased"@en,
             "Abraham Clary in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/105> ;
@@ -403,7 +361,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/106> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/106-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/106-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/106-deceased> a ga:Deceased ;
         rdfs:label "Robert Neel Jr. in the role of deceased"@en,
             "Robert Neel Jr. in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/106> ;
@@ -427,7 +385,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/107> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/107-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/107-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/107-deceased> a ga:Deceased ;
         rdfs:label "Abraham Japin in the role of deceased"@en,
             "Abraham Japin in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/107> ;
@@ -451,7 +409,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/108> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/108-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/108-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/108-deceased> a ga:Deceased ;
         rdfs:label "Jean Martin in the role of deceased"@en,
             "Jean Martin in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/108> ;
@@ -487,7 +445,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/109> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/109-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/109-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/109-deceased> a ga:Deceased ;
         rdfs:label "Nicolas Rousselet in the role of deceased"@en,
             "Nicolas Rousselet in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/109> ;
@@ -511,7 +469,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/11> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/11-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/11-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/11-deceased> a ga:Deceased ;
         rdfs:label "Daniel du Jardin in the role of deceased"@en,
             "Daniel du Jardin in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/11> ;
@@ -535,7 +493,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/110> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/110-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/110-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/110-deceased> a ga:Deceased ;
         rdfs:label "Pierre Benoist in the role of deceased"@en,
             "Pierre Benoist in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/110> ;
@@ -607,7 +565,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/111> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/111-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/111-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/111-deceased> a ga:Deceased ;
         rdfs:label "Paul Allier in the role of deceased"@en,
             "Paul Allier in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/111> ;
@@ -631,7 +589,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/112> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/112-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/112-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/112-deceased> a ga:Deceased ;
         rdfs:label "Joseph Chion in the role of deceased"@en,
             "Joseph Chion in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/112> ;
@@ -655,7 +613,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/113> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/113-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/113-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/113-deceased> a ga:Deceased ;
         rdfs:label "Jacob Schues in the role of deceased"@en,
             "Jacob Schues in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/113> ;
@@ -679,7 +637,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/114> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/114-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/114-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/114-deceased> a ga:Deceased ;
         rdfs:label "Bernard Abraham Godefroy in the role of deceased"@en,
             "Bernard Abraham Godefroy in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/114> ;
@@ -703,7 +661,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/115> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/115-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/115-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/115-deceased> a ga:Deceased ;
         rdfs:label "François Rigail in the role of deceased"@en,
             "François Rigail in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/115> ;
@@ -739,7 +697,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/116> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/116-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/116-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/116-deceased> a ga:Deceased ;
         rdfs:label "André Amsincq in the role of deceased"@en,
             "André Amsincq in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/116> ;
@@ -763,7 +721,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/117> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/117-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/117-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/117-deceased> a ga:Deceased ;
         rdfs:label "Jean Paul Cordes in the role of deceased"@en,
             "Jean Paul Cordes in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/117> ;
@@ -787,7 +745,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/118> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/118-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/118-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/118-deceased> a ga:Deceased ;
         rdfs:label "Isaac Ferrieres in the role of deceased"@en,
             "Isaac Ferrieres in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/118> ;
@@ -811,7 +769,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/119> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/119-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/119-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/119-deceased> a ga:Deceased ;
         rdfs:label "Isaac Chavat in the role of deceased"@en,
             "Isaac Chavat in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/119> ;
@@ -835,7 +793,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/12> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/12-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/12-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/12-deceased> a ga:Deceased ;
         rdfs:label "Jean Seullyn in the role of deceased"@en,
             "Jean Seullyn in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/12> ;
@@ -859,7 +817,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/120> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/120-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/120-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/120-deceased> a ga:Deceased ;
         rdfs:label "Laurens le Febvre in the role of deceased"@en,
             "Laurens le Febvre in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/120> ;
@@ -883,7 +841,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/121> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/121-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/121-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/121-deceased> a ga:Deceased ;
         rdfs:label "Abraham Chatelain in the role of deceased"@en,
             "Abraham Chatelain in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/121> ;
@@ -919,7 +877,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/122> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/122-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/122-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/122-deceased> a ga:Deceased ;
         rdfs:label "Joseph Texier in the role of deceased"@en,
             "Joseph Texier in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/122> ;
@@ -955,7 +913,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/123> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/123-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/123-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/123-deceased> a ga:Deceased ;
         rdfs:label "Josias Bellesaigne in the role of deceased"@en,
             "Josias Bellesaigne in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/123> ;
@@ -1039,7 +997,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/124> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/124-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/124-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/124-deceased> a ga:Deceased ;
         rdfs:label "Paul Renouard in the role of deceased"@en,
             "Paul Renouard in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/124> ;
@@ -1063,7 +1021,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/125> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/125-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/125-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/125-deceased> a ga:Deceased ;
         rdfs:label "Jean Pierre St. Martin in the role of deceased"@en,
             "Jean Pierre St. Martin in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/125> ;
@@ -1087,7 +1045,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/126> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/126-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/126-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/126-deceased> a ga:Deceased ;
         rdfs:label "Pierre Mounier in the role of deceased"@en,
             "Pierre Mounier in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/126> ;
@@ -1111,7 +1069,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/127> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/127-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/127-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/127-deceased> a ga:Deceased ;
         rdfs:label "Guillaume Bernabé de Labat in the role of deceased"@en,
             "Guillaume Bernabé de Labat in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/127> ;
@@ -1135,7 +1093,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/128> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/128-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/128-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/128-deceased> a ga:Deceased ;
         rdfs:label "Michel Pierre le Cointe in the role of deceased"@en,
             "Michel Pierre le Cointe in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/128> ;
@@ -1171,7 +1129,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/129> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/129-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/129-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/129-deceased> a ga:Deceased ;
         rdfs:label "Gabriel Ferriere in the role of deceased"@en,
             "Gabriel Ferriere in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/129> ;
@@ -1231,7 +1189,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/13> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/13-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/13-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/13-deceased> a ga:Deceased ;
         rdfs:label "Simon Simonsz in the role of deceased"@en,
             "Simon Simonsz in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/13> ;
@@ -1255,7 +1213,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/130> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/130-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/130-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/130-deceased> a ga:Deceased ;
         rdfs:label "Pierre de Labat in the role of deceased"@en,
             "Pierre de Labat in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/130> ;
@@ -1279,7 +1237,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/131> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/131-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/131-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/131-deceased> a ga:Deceased ;
         rdfs:label "André Vauquet in the role of deceased"@en,
             "André Vauquet in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/131> ;
@@ -1303,7 +1261,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/132> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/132-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/132-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/132-deceased> a ga:Deceased ;
         rdfs:label "Josias Bourigaud Dartillact in the role of deceased"@en,
             "Josias Bourigaud Dartillact in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/132> ;
@@ -1327,7 +1285,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/133> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/133-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/133-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/133-deceased> a ga:Deceased ;
         rdfs:label "Jean Néel in the role of deceased"@en,
             "Jean Néel in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/133> ;
@@ -1363,7 +1321,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/134> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/134-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/134-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/134-deceased> a ga:Deceased ;
         rdfs:label "Jean Estienne Fizeaux in the role of deceased"@en,
             "Jean Estienne Fizeaux in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/134> ;
@@ -1387,7 +1345,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/135> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/135-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/135-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/135-deceased> a ga:Deceased ;
         rdfs:label "Jean Cazabou in the role of deceased"@en,
             "Jean Cazabou in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/135> ;
@@ -1411,7 +1369,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/136> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/136-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/136-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/136-deceased> a ga:Deceased ;
         rdfs:label "Geraut la Lauze in the role of deceased"@en,
             "Geraut la Lauze in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/136> ;
@@ -1435,7 +1393,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/137> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/137-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/137-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/137-deceased> a ga:Deceased ;
         rdfs:label "Zacharie le Febvre in the role of deceased"@en,
             "Zacharie le Febvre in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/137> ;
@@ -1471,7 +1429,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/138> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/138-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/138-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/138-deceased> a ga:Deceased ;
         rdfs:label "Jean Debary in the role of deceased"@en,
             "Jean Debary in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/138> ;
@@ -1495,7 +1453,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/139> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/139-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/139-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/139-deceased> a ga:Deceased ;
         rdfs:label "Daniel Flournoy in the role of deceased"@en,
             "Daniel Flournoy in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/139> ;
@@ -1531,7 +1489,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/14> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/14-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/14-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/14-deceased> a ga:Deceased ;
         rdfs:label "Jean Harel in the role of deceased"@en,
             "Jean Harel in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/14> ;
@@ -1567,7 +1525,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/140> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/140-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/140-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/140-deceased> a ga:Deceased ;
         rdfs:label "Elie Angely in the role of deceased"@en,
             "Elie Angely in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/140> ;
@@ -1603,7 +1561,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/141> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/141-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/141-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/141-deceased> a ga:Deceased ;
         rdfs:label "Pierre Elie Blaquiere in the role of deceased"@en,
             "Pierre Elie Blaquiere in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/141> ;
@@ -1627,7 +1585,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/142> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/142-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/142-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/142-deceased> a ga:Deceased ;
         rdfs:label "David Pierre Humbert in the role of deceased"@en,
             "David Pierre Humbert in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/142> ;
@@ -1651,7 +1609,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/143> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/143-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/143-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/143-deceased> a ga:Deceased ;
         rdfs:label "Jaques Langlois in the role of deceased"@en,
             "Jaques Langlois in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/143> ;
@@ -1711,7 +1669,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/144> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/144-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/144-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/144-deceased> a ga:Deceased ;
         rdfs:label "Nicolas Noording in the role of deceased"@en,
             "Nicolas Noording in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/144> ;
@@ -1735,7 +1693,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/145> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/145-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/145-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/145-deceased> a ga:Deceased ;
         rdfs:label "Jaques Delprat in the role of deceased"@en,
             "Jaques Delprat in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/145> ;
@@ -1771,7 +1729,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/146> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/146-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/146-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/146-deceased> a ga:Deceased ;
         rdfs:label "Jean Bomer in the role of deceased"@en,
             "Jean Bomer in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/146> ;
@@ -1795,7 +1753,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/147> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/147-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/147-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/147-deceased> a ga:Deceased ;
         rdfs:label "Charles le Maitre in the role of deceased"@en,
             "Charles le Maitre in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/147> ;
@@ -1819,7 +1777,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/148> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/148-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/148-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/148-deceased> a ga:Deceased ;
         rdfs:label "Jean Jordan in the role of deceased"@en,
             "Jean Jordan in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/148> ;
@@ -1879,7 +1837,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/149> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/149-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/149-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/149-deceased> a ga:Deceased ;
         rdfs:label "Jean Pierre St. Martin in the role of deceased"@en,
             "Jean Pierre St. Martin in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/149> ;
@@ -1903,7 +1861,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/15> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/15-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/15-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/15-deceased> a ga:Deceased ;
         rdfs:label "Jean Dailly in the role of deceased"@en,
             "Jean Dailly in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/15> ;
@@ -1963,7 +1921,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/150> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/150-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/150-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/150-deceased> a ga:Deceased ;
         rdfs:label "Samuel François Chatelain in the role of deceased"@en,
             "Samuel François Chatelain in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/150> ;
@@ -1987,7 +1945,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/151> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/151-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/151-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/151-deceased> a ga:Deceased ;
         rdfs:label "Guillaume Nairac in the role of deceased"@en,
             "Guillaume Nairac in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/151> ;
@@ -2011,7 +1969,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/152> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/152-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/152-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/152-deceased> a ga:Deceased ;
         rdfs:label "Esaïe Gillot in the role of deceased"@en,
             "Esaïe Gillot in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/152> ;
@@ -2035,7 +1993,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/153> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/153-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/153-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/153-deceased> a ga:Deceased ;
         rdfs:label "Daniel Delprat in the role of deceased"@en,
             "Daniel Delprat in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/153> ;
@@ -2059,7 +2017,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/154> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/154-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/154-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/154-deceased> a ga:Deceased ;
         rdfs:label "Isaac Lacoudré in the role of deceased"@en,
             "Isaac Lacoudré in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/154> ;
@@ -2083,7 +2041,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/155> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/155-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/155-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/155-deceased> a ga:Deceased ;
         rdfs:label "Isaac Amyot in the role of deceased"@en,
             "Isaac Amyot in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/155> ;
@@ -2107,7 +2065,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/156> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/156-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/156-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/156-deceased> a ga:Deceased ;
         rdfs:label "Michel Rigail in the role of deceased"@en,
             "Michel Rigail in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/156> ;
@@ -2131,7 +2089,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/157> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/157-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/157-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/157-deceased> a ga:Deceased ;
         rdfs:label "Estienne Escot in the role of deceased"@en,
             "Estienne Escot in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/157> ;
@@ -2167,7 +2125,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/158> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/158-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/158-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/158-deceased> a ga:Deceased ;
         rdfs:label "Etienne Jean Fizeaux in the role of deceased"@en,
             "Etienne Jean Fizeaux in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/158> ;
@@ -2191,7 +2149,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/159> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/159-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/159-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/159-deceased> a ga:Deceased ;
         rdfs:label "Jean Texier in the role of deceased"@en,
             "Jean Texier in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/159> ;
@@ -2215,7 +2173,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/16> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/16-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/16-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/16-deceased> a ga:Deceased ;
         rdfs:label "Pierre Sauchelle in the role of deceased"@en,
             "Pierre Sauchelle in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/16> ;
@@ -2287,7 +2245,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/160> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/160-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/160-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/160-deceased> a ga:Deceased ;
         rdfs:label "David Delprat in the role of deceased"@en,
             "David Delprat in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/160> ;
@@ -2311,7 +2269,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/161> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/161-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/161-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/161-deceased> a ga:Deceased ;
         rdfs:label "Jean Frederic Collignon D. in the role of deceased"@en,
             "Jean Frederic Collignon D. in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/161> ;
@@ -2335,7 +2293,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/162> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/162-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/162-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/162-deceased> a ga:Deceased ;
         rdfs:label "Martinus Smit in the role of deceased"@en,
             "Martinus Smit in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/162> ;
@@ -2359,7 +2317,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/163> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/163-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/163-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/163-deceased> a ga:Deceased ;
         rdfs:label "Reinier Willem Mess in the role of deceased"@en,
             "Reinier Willem Mess in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/163> ;
@@ -2407,7 +2365,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/164> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/164-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/164-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/164-deceased> a ga:Deceased ;
         rdfs:label "David Cuny in the role of deceased"@en,
             "David Cuny in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/164> ;
@@ -2431,7 +2389,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/165> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/165-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/165-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/165-deceased> a ga:Deceased ;
         rdfs:label "Jean Cordes in the role of deceased"@en,
             "Jean Cordes in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/165> ;
@@ -2455,7 +2413,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/166> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/166-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/166-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/166-deceased> a ga:Deceased ;
         rdfs:label "Abraham Godefroy in the role of deceased"@en,
             "Abraham Godefroy in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/166> ;
@@ -2479,7 +2437,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/167> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/167-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/167-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/167-deceased> a ga:Deceased ;
         rdfs:label "Henri Jean Roulland in the role of deceased"@en,
             "Henri Jean Roulland in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/167> ;
@@ -2503,7 +2461,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/168> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/168-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/168-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/168-deceased> a ga:Deceased ;
         rdfs:label "Jean van Hemert in the role of deceased"@en,
             "Jean van Hemert in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/168> ;
@@ -2527,7 +2485,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/169> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/169-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/169-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/169-deceased> a ga:Deceased ;
         rdfs:label "René Roulland in the role of deceased"@en,
             "René Roulland in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/169> ;
@@ -2563,7 +2521,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/17> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/17-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/17-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/17-deceased> a ga:Deceased ;
         rdfs:label "Nicaise Thomas le Clerc in the role of deceased"@en,
             "Nicaise Thomas le Clerc in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/17> ;
@@ -2599,7 +2557,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/170> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/170-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/170-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/170-deceased> a ga:Deceased ;
         rdfs:label "Jean Henri Hageman in the role of deceased"@en,
             "Jean Henri Hageman in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/170> ;
@@ -2623,7 +2581,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/171> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/171-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/171-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/171-deceased> a ga:Deceased ;
         rdfs:label "Pierre Jacob le Febre in the role of deceased"@en,
             "Pierre Jacob le Febre in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/171> ;
@@ -2659,7 +2617,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/172> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/172-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/172-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/172-deceased> a ga:Deceased ;
         rdfs:label "Leonard Daniel Bongaard in the role of deceased"@en,
             "Leonard Daniel Bongaard in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/172> ;
@@ -2695,7 +2653,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/173> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/173-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/173-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/173-deceased> a ga:Deceased ;
         rdfs:label "Philip de Bordes in the role of deceased"@en,
             "Philip de Bordes in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/173> ;
@@ -2743,7 +2701,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/174> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/174-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/174-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/174-deceased> a ga:Deceased ;
         rdfs:label "Jean van Soestdijk in the role of deceased"@en,
             "Jean van Soestdijk in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/174> ;
@@ -2791,7 +2749,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/175> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/175-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/175-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/175-deceased> a ga:Deceased ;
         rdfs:label "Willem Woudman in the role of deceased"@en,
             "Willem Woudman in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/175> ;
@@ -2827,7 +2785,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/176> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/176-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/176-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/176-deceased> a ga:Deceased ;
         rdfs:label "Philip Jacob den van Velden in the role of deceased"@en,
             "Philip Jacob den van Velden in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/176> ;
@@ -2851,7 +2809,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/177> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/177-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/177-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/177-deceased> a ga:Deceased ;
         rdfs:label "Isac Gerard Thin van Keulen in the role of deceased"@en,
             "Isac Gerard Thin van Keulen in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/177> ;
@@ -2887,7 +2845,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/178> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/178-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/178-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/178-deceased> a ga:Deceased ;
         rdfs:label "Jaques Bregúet in the role of deceased"@en,
             "Jaques Bregúet in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/178> ;
@@ -2947,7 +2905,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/179> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/179-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/179-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/179-deceased> a ga:Deceased ;
         rdfs:label "Jean Geraud in the role of deceased"@en,
             "Jean Geraud in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/179> ;
@@ -2983,7 +2941,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/18> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/18-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/18-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/18-deceased> a ga:Deceased ;
         rdfs:label "Abraham Guillaume de Boyrlant in the role of deceased"@en,
             "Abraham Guillaume de Boyrlant in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/18> ;
@@ -3007,7 +2965,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/180> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/180-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/180-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/180-deceased> a ga:Deceased ;
         rdfs:label "Jacob l' Anglois in the role of deceased"@en,
             "Jacob l' Anglois in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/180> ;
@@ -3031,7 +2989,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/181> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/181-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/181-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/181-deceased> a ga:Deceased ;
         rdfs:label "Henri Corneille Serrurier in the role of deceased"@en,
             "Henri Corneille Serrurier in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/181> ;
@@ -3055,7 +3013,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/182> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/182-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/182-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/182-deceased> a ga:Deceased ;
         rdfs:label "Mr. Herman van Schwarem in the role of deceased"@en,
             "Mr. Herman van Schwarem in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/182> ;
@@ -3079,7 +3037,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/183> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/183-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/183-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/183-deceased> a ga:Deceased ;
         rdfs:label "Nicolas Johannes Vezeul in the role of deceased"@en,
             "Nicolas Johannes Vezeul in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/183> ;
@@ -3103,7 +3061,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/184> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/184-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/184-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/184-deceased> a ga:Deceased ;
         rdfs:label "Abraham Jacob Hottentot de Groot in the role of deceased"@en,
             "Abraham Jacob Hottentot de Groot in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/184> ;
@@ -3139,7 +3097,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/185> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/185-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/185-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/185-deceased> a ga:Deceased ;
         rdfs:label "Louis Antoine Bienfait in the role of deceased"@en,
             "Louis Antoine Bienfait in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/185> ;
@@ -3175,7 +3133,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/186> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/186-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/186-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/186-deceased> a ga:Deceased ;
         rdfs:label "Jacob Paul Ceryon in the role of deceased"@en,
             "Jacob Paul Ceryon in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/186> ;
@@ -3199,7 +3157,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/187> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/187-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/187-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/187-deceased> a ga:Deceased ;
         rdfs:label "Michel Peyrette in the role of deceased"@en,
             "Michel Peyrette in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/187> ;
@@ -3235,7 +3193,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/188> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/188-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/188-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/188-deceased> a ga:Deceased ;
         rdfs:label "Jean Titsingh in the role of deceased"@en,
             "Jean Titsingh in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/188> ;
@@ -3259,7 +3217,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/189> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/189-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/189-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/189-deceased> a ga:Deceased ;
         rdfs:label "Pieter ter Borch in the role of deceased"@en,
             "Pieter ter Borch in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/189> ;
@@ -3295,7 +3253,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/19> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/19-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/19-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/19-deceased> a ga:Deceased ;
         rdfs:label "Pierre Schardinel in the role of deceased"@en,
             "Pierre Schardinel in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/19> ;
@@ -3319,7 +3277,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/190> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/190-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/190-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/190-deceased> a ga:Deceased ;
         rdfs:label "Jean van der Laen in the role of deceased"@en,
             "Jean van der Laen in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/190> ;
@@ -3355,7 +3313,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/191> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/191-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/191-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/191-deceased> a ga:Deceased ;
         rdfs:label "Mr. Esaïe Chatelain in the role of deceased"@en,
             "Mr. Esaïe Chatelain in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/191> ;
@@ -3379,7 +3337,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/192> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/192-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/192-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/192-deceased> a ga:Deceased ;
         rdfs:label "Mr. Jaques Teysset Jr. in the role of deceased"@en,
             "Mr. Jaques Teysset Jr. in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/192> ;
@@ -3415,7 +3373,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/193> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/193-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/193-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/193-deceased> a ga:Deceased ;
         rdfs:label "Antoine Callenburgh Baartmans in the role of deceased"@en,
             "Antoine Callenburgh Baartmans in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/193> ;
@@ -3439,7 +3397,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/194> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/194-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/194-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/194-deceased> a ga:Deceased ;
         rdfs:label "Mr. O.W.J. Berg in the role of deceased"@en,
             "Mr. O.W.J. Berg in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/194> ;
@@ -3463,7 +3421,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/195> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/195-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/195-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/195-deceased> a ga:Deceased ;
         rdfs:label "Adrien Teyler van Hall in the role of deceased"@en,
             "Adrien Teyler van Hall in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/195> ;
@@ -3487,7 +3445,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/2> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/2-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/2-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/2-deceased> a ga:Deceased ;
         rdfs:label "Abel de Héripon in the role of deceased"@en,
             "Abel de Héripon in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/2> ;
@@ -3523,7 +3481,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/20> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/20-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/20-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/20-deceased> a ga:Deceased ;
         rdfs:label "Isaac Hochepied in the role of deceased"@en,
             "Isaac Hochepied in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/20> ;
@@ -3559,7 +3517,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/21> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/21-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/21-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/21-deceased> a ga:Deceased ;
         rdfs:label "Marc Muyssart in the role of deceased"@en,
             "Marc Muyssart in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/21> ;
@@ -3607,7 +3565,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/22> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/22-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/22-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/22-deceased> a ga:Deceased ;
         rdfs:label "Johan le Noir in the role of deceased"@en,
             "Johan le Noir in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/22> ;
@@ -3667,7 +3625,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/23> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/23-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/23-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/23-deceased> a ga:Deceased ;
         rdfs:label "Jacques la Haye in the role of deceased"@en,
             "Jacques la Haye in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/23> ;
@@ -3715,7 +3673,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/24> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/24-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/24-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/24-deceased> a ga:Deceased ;
         rdfs:label "Pierre Marin in the role of deceased"@en,
             "Pierre Marin in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/24> ;
@@ -3739,7 +3697,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/25> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/25-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/25-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/25-deceased> a ga:Deceased ;
         rdfs:label "Michel Amya in the role of deceased"@en,
             "Michel Amya in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/25> ;
@@ -3775,7 +3733,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/26> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/26-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/26-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/26-deceased> a ga:Deceased ;
         rdfs:label "Baudouin des Bordes in the role of deceased"@en,
             "Baudouin des Bordes in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/26> ;
@@ -3823,7 +3781,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/27> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/27-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/27-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/27-deceased> a ga:Deceased ;
         rdfs:label "Philippe Cornelisz in the role of deceased"@en,
             "Philippe Cornelisz in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/27> ;
@@ -3847,7 +3805,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/28> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/28-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/28-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/28-deceased> a ga:Deceased ;
         rdfs:label "Joseph Serrurier in the role of deceased"@en,
             "Joseph Serrurier in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/28> ;
@@ -3871,7 +3829,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/29> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/29-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/29-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/29-deceased> a ga:Deceased ;
         rdfs:label "Guillaume Henry in the role of deceased"@en,
             "Guillaume Henry in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/29> ;
@@ -3919,7 +3877,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/3> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/3-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/3-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/3-deceased> a ga:Deceased ;
         rdfs:label "Jean Baguelaer in the role of deceased"@en,
             "Jean Baguelaer in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/3> ;
@@ -3943,7 +3901,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/30> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/30-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/30-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/30-deceased> a ga:Deceased ;
         rdfs:label "Paul Godin in the role of deceased"@en,
             "Paul Godin in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/30> ;
@@ -3979,7 +3937,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/31> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/31-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/31-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/31-deceased> a ga:Deceased ;
         rdfs:label "Eustache Trevache in the role of deceased"@en,
             "Eustache Trevache in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/31> ;
@@ -4003,7 +3961,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/32> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/32-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/32-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/32-deceased> a ga:Deceased ;
         rdfs:label "Jacques Wastelier in the role of deceased"@en,
             "Jacques Wastelier in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/32> ;
@@ -4039,7 +3997,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/33> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/33-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/33-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/33-deceased> a ga:Deceased ;
         rdfs:label "Abraham Muyssart in the role of deceased"@en,
             "Abraham Muyssart in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/33> ;
@@ -4063,7 +4021,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/34> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/34-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/34-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/34-deceased> a ga:Deceased ;
         rdfs:label "Baudoin de Preys in the role of deceased"@en,
             "Baudoin de Preys in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/34> ;
@@ -4087,7 +4045,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/35> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/35-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/35-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/35-deceased> a ga:Deceased ;
         rdfs:label "Bries Engelbreght in the role of deceased"@en,
             "Bries Engelbreght in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/35> ;
@@ -4123,7 +4081,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/36> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/36-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/36-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/36-deceased> a ga:Deceased ;
         rdfs:label "Jacques Libert in the role of deceased"@en,
             "Jacques Libert in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/36> ;
@@ -4159,7 +4117,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/37> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/37-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/37-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/37-deceased> a ga:Deceased ;
         rdfs:label "Jacques Provost in the role of deceased"@en,
             "Jacques Provost in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/37> ;
@@ -4207,7 +4165,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/38> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/38-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/38-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/38-deceased> a ga:Deceased ;
         rdfs:label "Jean Pietersz de la Fontaine in the role of deceased"@en,
             "Jean Pietersz de la Fontaine in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/38> ;
@@ -4231,7 +4189,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/39> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/39-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/39-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/39-deceased> a ga:Deceased ;
         rdfs:label "Everard van Harn in the role of deceased"@en,
             "Everard van Harn in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/39> ;
@@ -4255,7 +4213,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/4> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/4-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/4-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/4-deceased> a ga:Deceased ;
         rdfs:label "Esaye Castelyn in the role of deceased"@en,
             "Esaye Castelyn in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/4> ;
@@ -4279,7 +4237,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/40> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/40-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/40-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/40-deceased> a ga:Deceased ;
         rdfs:label "David Boursse in the role of deceased"@en,
             "David Boursse in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/40> ;
@@ -4315,7 +4273,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/41> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/41-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/41-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/41-deceased> a ga:Deceased ;
         rdfs:label "Abraham Sena in the role of deceased"@en,
             "Abraham Sena in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/41> ;
@@ -4351,7 +4309,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/42> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/42-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/42-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/42-deceased> a ga:Deceased ;
         rdfs:label "Isaac Brayne in the role of deceased"@en,
             "Isaac Brayne in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/42> ;
@@ -4375,7 +4333,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/43> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/43-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/43-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/43-deceased> a ga:Deceased ;
         rdfs:label "Antoine Warin in the role of deceased"@en,
             "Antoine Warin in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/43> ;
@@ -4435,7 +4393,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/44> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/44-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/44-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/44-deceased> a ga:Deceased ;
         rdfs:label "Jeremie van Raey in the role of deceased"@en,
             "Jeremie van Raey in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/44> ;
@@ -4471,7 +4429,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/45> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/45-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/45-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/45-deceased> a ga:Deceased ;
         rdfs:label "Jean du Roy in the role of deceased"@en,
             "Jean du Roy in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/45> ;
@@ -4495,7 +4453,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/46> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/46-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/46-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/46-deceased> a ga:Deceased ;
         rdfs:label "Pierre de Lange in the role of deceased"@en,
             "Pierre de Lange in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/46> ;
@@ -4519,7 +4477,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/47> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/47-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/47-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/47-deceased> a ga:Deceased ;
         rdfs:label "François Pardique in the role of deceased"@en,
             "François Pardique in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/47> ;
@@ -4591,7 +4549,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/48> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/48-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/48-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/48-deceased> a ga:Deceased ;
         rdfs:label "Jean Mercier in the role of deceased"@en,
             "Jean Mercier in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/48> ;
@@ -4615,7 +4573,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/49> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/49-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/49-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/49-deceased> a ga:Deceased ;
         rdfs:label "Isaac Minuit in the role of deceased"@en,
             "Isaac Minuit in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/49> ;
@@ -4651,7 +4609,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/5> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/5-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/5-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/5-deceased> a ga:Deceased ;
         rdfs:label "Philippe Serrurier in the role of deceased"@en,
             "Philippe Serrurier in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/5> ;
@@ -4711,7 +4669,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/50> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/50-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/50-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/50-deceased> a ga:Deceased ;
         rdfs:label "Denis Bert in the role of deceased"@en,
             "Denis Bert in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/50> ;
@@ -4735,7 +4693,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/51> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/51-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/51-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/51-deceased> a ga:Deceased ;
         rdfs:label "Abraham de la Fontaine in the role of deceased"@en,
             "Abraham de la Fontaine in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/51> ;
@@ -4771,7 +4729,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/52> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/52-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/52-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/52-deceased> a ga:Deceased ;
         rdfs:label "Pierre de la Haye in the role of deceased"@en,
             "Pierre de la Haye in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/52> ;
@@ -4795,7 +4753,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/53> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/53-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/53-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/53-deceased> a ga:Deceased ;
         rdfs:label "Esaïe Flournoy in the role of deceased"@en,
             "Esaïe Flournoy in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/53> ;
@@ -4819,7 +4777,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/54> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/54-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/54-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/54-deceased> a ga:Deceased ;
         rdfs:label "Pierre le Grand in the role of deceased"@en,
             "Pierre le Grand in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/54> ;
@@ -4867,7 +4825,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/55> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/55-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/55-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/55-deceased> a ga:Deceased ;
         rdfs:label "Jean Benoist in the role of deceased"@en,
             "Jean Benoist in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/55> ;
@@ -4915,7 +4873,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/56> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/56-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/56-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/56-deceased> a ga:Deceased ;
         rdfs:label "Corneille Vermeulle in the role of deceased"@en,
             "Corneille Vermeulle in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/56> ;
@@ -4963,7 +4921,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/57> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/57-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/57-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/57-deceased> a ga:Deceased ;
         rdfs:label "Adriaen van der Cruys in the role of deceased"@en,
             "Adriaen van der Cruys in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/57> ;
@@ -5095,7 +5053,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/58> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/58-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/58-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/58-deceased> a ga:Deceased ;
         rdfs:label "Jean Gillesz in the role of deceased"@en,
             "Jean Gillesz in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/58> ;
@@ -5179,7 +5137,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/59> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/59-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/59-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/59-deceased> a ga:Deceased ;
         rdfs:label "Pierre Muyssart in the role of deceased"@en,
             "Pierre Muyssart in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/59> ;
@@ -5203,7 +5161,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/6> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/6-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/6-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/6-deceased> a ga:Deceased ;
         rdfs:label "Daniel de Hochepied in the role of deceased"@en,
             "Daniel de Hochepied in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/6> ;
@@ -5239,7 +5197,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/60> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/60-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/60-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/60-deceased> a ga:Deceased ;
         rdfs:label "Jacob Delcourt in the role of deceased"@en,
             "Jacob Delcourt in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/60> ;
@@ -5287,7 +5245,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/61> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/61-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/61-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/61-deceased> a ga:Deceased ;
         rdfs:label "Isaac de la Fontaine in the role of deceased"@en,
             "Isaac de la Fontaine in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/61> ;
@@ -5311,7 +5269,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/62> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/62-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/62-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/62-deceased> a ga:Deceased ;
         rdfs:label "Jean du Peyrou in the role of deceased"@en,
             "Jean du Peyrou in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/62> ;
@@ -5335,7 +5293,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/63> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/63-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/63-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/63-deceased> a ga:Deceased ;
         rdfs:label "Gilles de la Haye in the role of deceased"@en,
             "Gilles de la Haye in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/63> ;
@@ -5359,7 +5317,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/64> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/64-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/64-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/64-deceased> a ga:Deceased ;
         rdfs:label "Abraham de Riemer in the role of deceased"@en,
             "Abraham de Riemer in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/64> ;
@@ -5383,7 +5341,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/65> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/65-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/65-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/65-deceased> a ga:Deceased ;
         rdfs:label "Guillaume Mottet in the role of deceased"@en,
             "Guillaume Mottet in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/65> ;
@@ -5407,7 +5365,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/66> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/66-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/66-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/66-deceased> a ga:Deceased ;
         rdfs:label "Daniel Desbouverie in the role of deceased"@en,
             "Daniel Desbouverie in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/66> ;
@@ -5431,7 +5389,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/67> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/67-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/67-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/67-deceased> a ga:Deceased ;
         rdfs:label "Jean du Bourgh in the role of deceased"@en,
             "Jean du Bourgh in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/67> ;
@@ -5455,7 +5413,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/68> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/68-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/68-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/68-deceased> a ga:Deceased ;
         rdfs:label "Jacques Maillart in the role of deceased"@en,
             "Jacques Maillart in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/68> ;
@@ -5563,7 +5521,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/69> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/69-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/69-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/69-deceased> a ga:Deceased ;
         rdfs:label "Isaac Muyssart in the role of deceased"@en,
             "Isaac Muyssart in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/69> ;
@@ -5587,7 +5545,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/7> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/7-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/7-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/7-deceased> a ga:Deceased ;
         rdfs:label "Daniel Godyn in the role of deceased"@en,
             "Daniel Godyn in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/7> ;
@@ -5623,7 +5581,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/70> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/70-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/70-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/70-deceased> a ga:Deceased ;
         rdfs:label "Corneille de Nis in the role of deceased"@en,
             "Corneille de Nis in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/70> ;
@@ -5647,7 +5605,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/71> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/71-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/71-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/71-deceased> a ga:Deceased ;
         rdfs:label "Gilles van Eys in the role of deceased"@en,
             "Gilles van Eys in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/71> ;
@@ -5707,7 +5665,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/72> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/72-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/72-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/72-deceased> a ga:Deceased ;
         rdfs:label "Jacob Forterie in the role of deceased"@en,
             "Jacob Forterie in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/72> ;
@@ -5731,7 +5689,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/73> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/73-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/73-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/73-deceased> a ga:Deceased ;
         rdfs:label "Jacob du Plouis in the role of deceased"@en,
             "Jacob du Plouis in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/73> ;
@@ -5755,7 +5713,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/74> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/74-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/74-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/74-deceased> a ga:Deceased ;
         rdfs:label "Jean Japin in the role of deceased"@en,
             "Jean Japin in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/74> ;
@@ -5779,7 +5737,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/75> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/75-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/75-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/75-deceased> a ga:Deceased ;
         rdfs:label "Pierre Engels in the role of deceased"@en,
             "Pierre Engels in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/75> ;
@@ -5815,7 +5773,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/76> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/76-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/76-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/76-deceased> a ga:Deceased ;
         rdfs:label "François Baugé in the role of deceased"@en,
             "François Baugé in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/76> ;
@@ -5851,7 +5809,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/77> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/77-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/77-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/77-deceased> a ga:Deceased ;
         rdfs:label "Philippe de la Fontaine in the role of deceased"@en,
             "Philippe de la Fontaine in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/77> ;
@@ -5875,7 +5833,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/78> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/78-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/78-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/78-deceased> a ga:Deceased ;
         rdfs:label "Isaac de Visch in the role of deceased"@en,
             "Isaac de Visch in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/78> ;
@@ -5899,7 +5857,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/79> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/79-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/79-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/79-deceased> a ga:Deceased ;
         rdfs:label "Jacob Blanchetête in the role of deceased"@en,
             "Jacob Blanchetête in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/79> ;
@@ -5923,7 +5881,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/8> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/8-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/8-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/8-deceased> a ga:Deceased ;
         rdfs:label "Isaac Hattevier in the role of deceased"@en,
             "Isaac Hattevier in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/8> ;
@@ -5983,7 +5941,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/80> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/80-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/80-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/80-deceased> a ga:Deceased ;
         rdfs:label "Philippe Couturier in the role of deceased"@en,
             "Philippe Couturier in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/80> ;
@@ -6019,7 +5977,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/81> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/81-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/81-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/81-deceased> a ga:Deceased ;
         rdfs:label "Pierre le Grand in the role of deceased"@en,
             "Pierre le Grand in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/81> ;
@@ -6055,7 +6013,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/82> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/82-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/82-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/82-deceased> a ga:Deceased ;
         rdfs:label "Noé Marissal in the role of deceased"@en,
             "Noé Marissal in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/82> ;
@@ -6079,7 +6037,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/83> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/83-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/83-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/83-deceased> a ga:Deceased ;
         rdfs:label "Louïs du Chesne in the role of deceased"@en,
             "Louïs du Chesne in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/83> ;
@@ -6103,7 +6061,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/84> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/84-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/84-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/84-deceased> a ga:Deceased ;
         rdfs:label "Theodore Vignon in the role of deceased"@en,
             "Theodore Vignon in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/84> ;
@@ -6127,7 +6085,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/85> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/85-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/85-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/85-deceased> a ga:Deceased ;
         rdfs:label "François Robidé in the role of deceased"@en,
             "François Robidé in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/85> ;
@@ -6151,7 +6109,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/86> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/86-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/86-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/86-deceased> a ga:Deceased ;
         rdfs:label "Daniel Monty in the role of deceased"@en,
             "Daniel Monty in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/86> ;
@@ -6175,7 +6133,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/87> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/87-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/87-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/87-deceased> a ga:Deceased ;
         rdfs:label "Robert Neél in the role of deceased"@en,
             "Robert Neél in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/87> ;
@@ -6199,7 +6157,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/88> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/88-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/88-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/88-deceased> a ga:Deceased ;
         rdfs:label "Daniel le Plastrier in the role of deceased"@en,
             "Daniel le Plastrier in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/88> ;
@@ -6283,7 +6241,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/89> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/89-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/89-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/89-deceased> a ga:Deceased ;
         rdfs:label "Samuel Congnard in the role of deceased"@en,
             "Samuel Congnard in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/89> ;
@@ -6319,7 +6277,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/9> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/9-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/9-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/9-deceased> a ga:Deceased ;
         rdfs:label "Abraham de Signe in the role of deceased"@en,
             "Abraham de Signe in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/9> ;
@@ -6343,7 +6301,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/90> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/90-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/90-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/90-deceased> a ga:Deceased ;
         rdfs:label "Isaac le Boullenger in the role of deceased"@en,
             "Isaac le Boullenger in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/90> ;
@@ -6367,7 +6325,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/91> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/91-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/91-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/91-deceased> a ga:Deceased ;
         rdfs:label "Isaac Cazals in the role of deceased"@en,
             "Isaac Cazals in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/91> ;
@@ -6427,7 +6385,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/92> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/92-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/92-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/92-deceased> a ga:Deceased ;
         rdfs:label "Philippe de la Fontaine Wicart in the role of deceased"@en,
             "Philippe de la Fontaine Wicart in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/92> ;
@@ -6463,7 +6421,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/93> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/93-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/93-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/93-deceased> a ga:Deceased ;
         rdfs:label "Philippe Meusnier in the role of deceased"@en,
             "Philippe Meusnier in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/93> ;
@@ -6499,7 +6457,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/94> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/94-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/94-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/94-deceased> a ga:Deceased ;
         rdfs:label "Daniel Bonenfant in the role of deceased"@en,
             "Daniel Bonenfant in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/94> ;
@@ -6523,7 +6481,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/95> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/95-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/95-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/95-deceased> a ga:Deceased ;
         rdfs:label "Pierre Balguerie in the role of deceased"@en,
             "Pierre Balguerie in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/95> ;
@@ -6547,7 +6505,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/96> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/96-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/96-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/96-deceased> a ga:Deceased ;
         rdfs:label "Jacques Amiot in the role of deceased"@en,
             "Jacques Amiot in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/96> ;
@@ -6571,7 +6529,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/97> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/97-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/97-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/97-deceased> a ga:Deceased ;
         rdfs:label "Pierre Docher in the role of deceased"@en,
             "Pierre Docher in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/97> ;
@@ -6607,7 +6565,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/98> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/98-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/98-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/98-deceased> a ga:Deceased ;
         rdfs:label "Guillaume Mottet in the role of deceased"@en,
             "Guillaume Mottet in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/98> ;
@@ -6667,7 +6625,7 @@
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/99> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/99-birth> .
 
-    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/99-died> a ga:Deceased ;
+    <https://data.goldenagents.org/datasets/corporatiestukken/role/regenten/99-deceased> a ga:Deceased ;
         rdfs:label "Jean Colvius in the role of deceased"@en,
             "Jean Colvius in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/99> ;
@@ -16435,11 +16393,11 @@
                 pnv:literalName "Abraham Guillaume de Boyrlant" ;
                 pnv:surnamePrefix "de" ],
             [ a pnv:PersonName ;
-                rdfs:label "Abraham Guillaume de Beyerland" ;
-                pnv:baseSurname "Beyerland" ;
+                rdfs:label "Abraham Guillaume van Boyrlant" ;
+                pnv:baseSurname "Boyrlant" ;
                 pnv:givenName "Abraham Guillaume" ;
-                pnv:literalName "Abraham Guillaume de Beyerland" ;
-                pnv:surnamePrefix "de" ],
+                pnv:literalName "Abraham Guillaume van Boyrlant" ;
+                pnv:surnamePrefix "van" ],
             [ a pnv:PersonName ;
                 rdfs:label "Abraham Guillaume van Beyerland" ;
                 pnv:baseSurname "Beyerland" ;
@@ -16447,11 +16405,11 @@
                 pnv:literalName "Abraham Guillaume van Beyerland" ;
                 pnv:surnamePrefix "van" ],
             [ a pnv:PersonName ;
-                rdfs:label "Abraham Guillaume van Boyrlant" ;
-                pnv:baseSurname "Boyrlant" ;
+                rdfs:label "Abraham Guillaume de Beyerland" ;
+                pnv:baseSurname "Beyerland" ;
                 pnv:givenName "Abraham Guillaume" ;
-                pnv:literalName "Abraham Guillaume van Boyrlant" ;
-                pnv:surnamePrefix "van" ] .
+                pnv:literalName "Abraham Guillaume de Beyerland" ;
+                pnv:surnamePrefix "de" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/28> a ga:Person ;
         rdfs:label "Joseph Serrurier" ;
@@ -16557,15 +16515,15 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/87-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/87-event-1> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Robert Néel" ;
-                pnv:baseSurname "Néel" ;
-                pnv:givenName "Robert" ;
-                pnv:literalName "Robert Néel" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Robert Neél" ;
                 pnv:baseSurname "Neél" ;
                 pnv:givenName "Robert" ;
-                pnv:literalName "Robert Neél" ] .
+                pnv:literalName "Robert Neél" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Robert Néel" ;
+                pnv:baseSurname "Néel" ;
+                pnv:givenName "Robert" ;
+                pnv:literalName "Robert Néel" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/105> a ga:Person ;
         rdfs:label "Abraham Clary" ;
@@ -18742,5 +18700,47 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/98-event-3>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/98-event-4>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/99-event-1> .
+}
+
+{
+    <https://data.goldenagents.org/datasets/corporatiestukken/> a void:Dataset,
+            schema:Dataset ;
+        dcterms:creator <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> ;
+        dcterms:date "2020-06-25"^^xsd:datetime ;
+        dcterms:description ""@nl ;
+        dcterms:publisher <https://leonvanwissen.nl/me> ;
+        dcterms:source <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
+        dcterms:title "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850"@nl ;
+        void:exampleResource <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/195> ;
+        void:subset <https://data.goldenagents.org/datasets/corporatiestukken/regenten/> ;
+        void:triples 13 ;
+        void:vocabulary sem:,
+            "https://data.goldenagents.org/ontology/" ;
+        schema:citation <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
+        schema:creator <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> ;
+        schema:dateModified "2020-06-25"^^xsd:datetime ;
+        schema:description ""@nl ;
+        schema:distribution [ a schema:DataDownload ;
+                schema:encodingFormat "application/trig" ;
+                schema:version "0.1" ] ;
+        schema:hasPart <https://data.goldenagents.org/datasets/corporatiestukken/regenten/> ;
+        schema:isBasedOn <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
+        schema:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+        schema:name "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850"@nl ;
+        schema:publisher <https://leonvanwissen.nl/me> ;
+        schema:spatialCoverage "Amsterdam" ;
+        schema:temporalCoverage "1525-01-01/1850-12-31" .
+
+    <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> a ga:Person ;
+        rdfs:label "Norbert Middelkoop" ;
+        owl:sameAs <http://viaf.org/viaf/12415105> .
+
+    <https://data.goldenagents.org/datasets/corporatiestukken/regenten/> a void:Dataset,
+            schema:Dataset ;
+        void:inDataset <https://data.goldenagents.org/datasets/corporatiestukken/> ;
+        void:triples 17041 ;
+        schema:description "" ;
+        schema:isPartOf <https://data.goldenagents.org/datasets/corporatiestukken/> ;
+        schema:name "Regenten Walenweeshuis"@nl .
 }
 

@@ -11,6 +11,48 @@
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+{
+    <https://data.goldenagents.org/datasets/corporatiestukken/> a void:Dataset,
+            schema:Dataset ;
+        dcterms:creator <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> ;
+        dcterms:date "2020-06-25"^^xsd:datetime ;
+        dcterms:description ""@nl ;
+        dcterms:publisher <https://leonvanwissen.nl/me> ;
+        dcterms:source <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
+        dcterms:title "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850"@nl ;
+        void:exampleResource <https://data.goldenagents.org/datasets/corporatiestukken/artwork/X4> ;
+        void:subset <https://data.goldenagents.org/datasets/corporatiestukken/corporatiestukken/> ;
+        void:triples 13 ;
+        void:vocabulary sem:,
+            "https://data.goldenagents.org/ontology/" ;
+        schema:citation <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
+        schema:creator <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> ;
+        schema:dateModified "2020-06-25"^^xsd:datetime ;
+        schema:description ""@nl ;
+        schema:distribution [ a schema:DataDownload ;
+                schema:encodingFormat "application/trig" ;
+                schema:version "0.1" ] ;
+        schema:hasPart <https://data.goldenagents.org/datasets/corporatiestukken/corporatiestukken/> ;
+        schema:isBasedOn <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
+        schema:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+        schema:name "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850"@nl ;
+        schema:publisher <https://leonvanwissen.nl/me> ;
+        schema:spatialCoverage "Amsterdam" ;
+        schema:temporalCoverage "1525-01-01/1850-12-31" .
+
+    <https://data.goldenagents.org/datasets/corporatiestukken/corporatiestukken/> a void:Dataset,
+            schema:Dataset ;
+        void:inDataset <https://data.goldenagents.org/datasets/corporatiestukken/> ;
+        void:triples 3754 ;
+        schema:description "" ;
+        schema:isPartOf <https://data.goldenagents.org/datasets/corporatiestukken/> ;
+        schema:name "Lijst van corporatiestukken"@nl .
+
+    <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> a ga:Person ;
+        rdfs:label "Norbert Middelkoop" ;
+        owl:sameAs <http://viaf.org/viaf/12415105> .
+}
+
 <https://data.goldenagents.org/datasets/corporatiestukken/corporatiestukken/> {
     <https://data.goldenagents.org/datasets/corporatiestukken/artwork/B1> a ga:CreativeArtifact ;
         rdfs:label "De crypte van de Geboortekerk te Bethlehem met vier Jeruzalemvaarders" ;
@@ -6506,47 +6548,5 @@ Afgebeeld volgens opschrift op de onderregel van de lijst, v.l.n.r.:
                         dcterms:conformsTo <http://tools.ietf.org/rfc/rfc7111> ;
                         rdf:value "row=99" ] ;
                 oa:hasSource "corporatiestukken.csv" ] .
-}
-
-{
-    <https://data.goldenagents.org/datasets/corporatiestukken/> a void:Dataset,
-            schema:Dataset ;
-        dcterms:creator <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> ;
-        dcterms:date "2020-06-25"^^xsd:datetime ;
-        dcterms:description ""@nl ;
-        dcterms:publisher <https://leonvanwissen.nl/me> ;
-        dcterms:source <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
-        dcterms:title "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850"@nl ;
-        void:exampleResource <https://data.goldenagents.org/datasets/corporatiestukken/artwork/X4> ;
-        void:subset <https://data.goldenagents.org/datasets/corporatiestukken/corporatiestukken/> ;
-        void:triples 13 ;
-        void:vocabulary sem:,
-            "https://data.goldenagents.org/ontology/" ;
-        schema:citation <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
-        schema:creator <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> ;
-        schema:dateModified "2020-06-25"^^xsd:datetime ;
-        schema:description ""@nl ;
-        schema:distribution [ a schema:DataDownload ;
-                schema:encodingFormat "application/trig" ;
-                schema:version "0.1" ] ;
-        schema:hasPart <https://data.goldenagents.org/datasets/corporatiestukken/corporatiestukken/> ;
-        schema:isBasedOn <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
-        schema:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
-        schema:name "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850"@nl ;
-        schema:publisher <https://leonvanwissen.nl/me> ;
-        schema:spatialCoverage "Amsterdam" ;
-        schema:temporalCoverage "1525-01-01/1850-12-31" .
-
-    <https://data.goldenagents.org/datasets/corporatiestukken/corporatiestukken/> a void:Dataset,
-            schema:Dataset ;
-        void:inDataset <https://data.goldenagents.org/datasets/corporatiestukken/> ;
-        void:triples 3754 ;
-        schema:description "" ;
-        schema:isPartOf <https://data.goldenagents.org/datasets/corporatiestukken/> ;
-        schema:name "Lijst van corporatiestukken"@nl .
-
-    <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> a ga:Person ;
-        rdfs:label "Norbert Middelkoop" ;
-        owl:sameAs <http://viaf.org/viaf/12415105> .
 }
 

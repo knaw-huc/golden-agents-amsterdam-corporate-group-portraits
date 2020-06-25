@@ -960,7 +960,7 @@ def toRDF(data, uri, name, description, filename, target=None):
             p.death = deathEvent
 
             roleDeceased = Deceased(
-                nsRole.term(f"{pid}-died"),
+                nsRole.term(f"{pid}-deceased"),
                 carriedIn=deathEvent,
                 carriedBy=p,
                 label=[
@@ -1126,7 +1126,7 @@ def toRDF(data, uri, name, description, filename, target=None):
 
                         marriageEvent = Marriage(
                             nsEvent.term(
-                                f"{pid}-{next(eventCounter)}-marriage"),
+                                f"{pid}-marriage-{next(eventCounter)}"),
                             label=[
                                 Literal(
                                     f"Huwelijk tussen {labels[0]} en {wifeName} ({marriageYear})",
@@ -1321,7 +1321,7 @@ def toRDF(data, uri, name, description, filename, target=None):
                         deathEventHusband.participationOf = [husband]
 
                         roleDeceased = Deceased(
-                            nsRole.term(f"{pidHusband}-died"),
+                            nsRole.term(f"{pidHusband}-deceased"),
                             carriedIn=deathEventHusband,
                             carriedBy=husband,
                             label=[
@@ -1338,7 +1338,7 @@ def toRDF(data, uri, name, description, filename, target=None):
 
                         marriageEvent = Marriage(
                             nsEvent.term(
-                                f"{pid}-{next(eventCounter)}-marriage"),
+                                f"{pid}-marriage-{next(eventCounter)}"),
                             label=[
                                 Literal(
                                     f"Huwelijk tussen {labels[0]} en {husbandName} ({marriageYear})",
@@ -1355,7 +1355,7 @@ def toRDF(data, uri, name, description, filename, target=None):
                         lifeEventsHusband.append(marriageEvent)
 
                         roleBride = Bride(
-                            nsRole.term(f"{pid}-{next(roleCounter)}-bride"),
+                            nsRole.term(f"{pid}-bride-{next(roleCounter)}"),
                             carriedIn=marriageEvent,
                             carriedBy=p,
                             label=[
@@ -1367,7 +1367,7 @@ def toRDF(data, uri, name, description, filename, target=None):
 
                         roleGroom = Groom(
                             nsRole.term(
-                                f"{pidHusband}-{next(roleCounter)}-groom"),
+                                f"{pidHusband}-groom-{next(roleCounter)}"),
                             carriedIn=marriageEvent,
                             carriedBy=husband,
                             label=[
@@ -1430,7 +1430,7 @@ def toRDF(data, uri, name, description, filename, target=None):
 
                         marriageEvent = Marriage(
                             nsEvent.term(
-                                f"{pid}-{next(eventCounter)}-marriage"),
+                                f"{pid}-marriage-{next(eventCounter)}"),
                             label=[
                                 Literal(
                                     f"Huwelijk tussen {labels[0]} en {wifeName} ({marriageYear})",
@@ -1447,7 +1447,7 @@ def toRDF(data, uri, name, description, filename, target=None):
                         lifeEventsWife.append(marriageEvent)
 
                         roleGroom = Groom(
-                            nsRole.term(f"{pid}-{next(roleCounter)}-groom"),
+                            nsRole.term(f"{pid}-groom-{next(roleCounter)}"),
                             carriedIn=marriageEvent,
                             carriedBy=p,
                             label=[
@@ -1459,7 +1459,7 @@ def toRDF(data, uri, name, description, filename, target=None):
 
                         roleBride = Bride(
                             nsRole.term(
-                                f"{pidWife}-{next(roleCounter)}-bride"),
+                                f"{pidWife}-bride-{next(roleCounter)}"),
                             carriedIn=marriageEvent,
                             carriedBy=wife,
                             label=[
