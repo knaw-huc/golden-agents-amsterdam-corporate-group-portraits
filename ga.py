@@ -22,6 +22,8 @@ foaf = Namespace("http://xmlns.com/foaf/0.1/")
 void = Namespace("http://rdfs.org/ns/void#")
 dcterms = Namespace("http://purl.org/dc/terms/")
 pnv = Namespace('https://w3id.org/pnv#')
+oa = Namespace('http://www.w3.org/ns/oa#')
+prov = Namespace("http://www.w3.org/ns/prov#")
 
 ### GA ###
 
@@ -36,6 +38,8 @@ class Entity(rdfSubject):
     creationDate = rdfSingle(ga.creationDate)
 
     depiction = rdfMultiple(foaf.depiction)
+
+    wasDerivedFrom = rdfMultiple(prov.wasDerivedFrom)
 
 
 class Bearer(Entity):
@@ -87,6 +91,9 @@ class Person(Bearer):
 
     gender = rdfSingle(ga.gender)
 
+    birth = rdfSingle(bio.birth)
+    death = rdfSingle(bio.death)
+
 
 class PersonName(Entity):
     rdf_type = pnv.PersonName
@@ -119,8 +126,8 @@ class Born(RoleType, Role):
     rdf_type = ga.Born
 
 
-class Died(RoleType, Role):
-    rdf_type = ga.Died
+class Deceased(RoleType, Role):
+    rdf_type = ga.Deceased
 
 
 class Bride(RoleType, Role):
@@ -309,3 +316,42 @@ class DataDownload(CreativeWork):
 
     contentUrl = rdfSingle(schema.contentUrl)
     encodingFormat = rdfSingle(schema.encodingFormat)
+
+
+# OA
+
+
+class Annotation(Entity):
+    rdf_type = oa.Annotation
+    hasTarget = rdfSingle(oa.hasTarget)
+
+    bodyValue = rdfSingle(oa.bodyValue)
+    hasBody = rdfSingle(oa.hasBody)  # or multiple?
+
+    motivatedBy = rdfSingle(oa.motivatedBy)
+
+    depiction = rdfSingle(foaf.depiction)
+
+
+class SpecificResource(Entity):
+    rdf_type = oa.SpecificResource
+
+    hasSource = rdfSingle(oa.hasSource)
+    hasSelector = rdfSingle(oa.hasSelector)
+    hasState = rdfSingle(oa.hasState)
+    hasPurpose = rdfSingle(oa.hasPurpose)
+
+
+class ResourceSelection(Entity):
+    rdf_type = None
+
+    hasSource = rdfSingle(oa.hasSource)
+    hasSelector = rdfSingle(oa.hasSelector)
+    hasState = rdfSingle(oa.hasState)
+
+
+class FragmentSelector(Entity):
+    rdf_type = oa.FragmentSelector
+
+    conformsTo = rdfSingle(dcterms.conformsTo)
+    value = rdfSingle(RDF.value)

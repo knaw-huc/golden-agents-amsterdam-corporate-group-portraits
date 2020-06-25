@@ -171,6 +171,8 @@ def main(loadData=None):
           uri=ns.term('poorters/'),
           name=Literal("Mannelijke poorters", lang='nl'),
           description="",
+          filename=
+          "Middelkoop diss. dl. 2 - bijlage 4a - mannelijke poorters.csv",
           target='trig/poorters.trig')
 
     df2 = pd.read_csv(
@@ -180,6 +182,7 @@ def main(loadData=None):
           uri=ns.term('regentessen/'),
           name=Literal("Regentessen", lang='nl'),
           description="",
+          filename="Middelkoop diss. dl. 2 - bijlage 4b - regentessen.csv",
           target='trig/regentessen.trig')
 
     df3 = pd.read_csv(
@@ -190,17 +193,22 @@ def main(loadData=None):
           uri=ns.term('regenten/'),
           name=Literal("Regenten Walenweeshuis", lang='nl'),
           description="",
+          filename=
+          "Middelkoop diss. dl. 2 - bijlage 4c - regenten Walenweeshuis.csv",
           target='trig/regenten.trig')
 
     df4 = pd.read_csv(
         'data/Middelkoop diss. dl. 2 - bijlage 4d - geportretteerde gildenleden.csv'
     )
     df4 = df4.where((pd.notnull(df4)), None)
-    toRDF(df4.to_dict(orient='records'),
-          uri=ns.term('gildenleden/'),
-          name=Literal("Geportretteerde gildenleden", lang='nl'),
-          description="",
-          target='trig/gildenleden.trig')
+    toRDF(
+        df4.to_dict(orient='records'),
+        uri=ns.term('gildenleden/'),
+        name=Literal("Geportretteerde gildenleden", lang='nl'),
+        description="",
+        filename=
+        "Middelkoop diss. dl. 2 - bijlage 4d - geportretteerde gildenleden.csv",
+        target='trig/gildenleden.trig')
 
     # artwork dataset
     df5 = pd.read_csv('data/corporatiestukken.csv')
@@ -209,6 +217,7 @@ def main(loadData=None):
           uri=ns.term('corporatiestukken/'),
           name=Literal("Lijst van corporatiestukken", lang='nl'),
           description="Overgenomen uit appendix 3 (Middelkoop 2019).",
+          filename="corporatiestukken.csv",
           target='trig/corporatiestukken.trig')
 
 
@@ -225,20 +234,22 @@ def getPersonName(d):
         ' / ') if d['Patroniem en tussenvoegsel'] else [None]
     baseSurnames = d['Achternaam'].split(' / ') if d['Achternaam'] else [None]
 
-    for prefix, givenName, patronym, baseSurname in product(
+    for prefix, givenName, patronymSurnamePrefix, baseSurname in product(
             prefixes, givenNames, patronyms, baseSurnames):
 
         if prefix:
             prefix = prefix.strip()
         if givenName:
             givenName = givenName.strip()
-        if patronym:
+        if patronymSurnamePrefix:
             patronym = " ".join([
-                i for i in patronym.split(' ') if i not in surnamePrefixes
+                i for i in patronymSurnamePrefix.split(' ')
+                if i not in surnamePrefixes
             ]).strip()
 
             surnamePrefix = " ".join([
-                i for i in patronym.split(' ') if i in surnamePrefixes
+                i for i in patronymSurnamePrefix.split(' ')
+                if i in surnamePrefixes
             ]).strip()
 
             if surnamePrefix == "":
@@ -246,6 +257,7 @@ def getPersonName(d):
             if patronym == "":
                 patronym = None
         else:
+            patronym = None
             surnamePrefix = None
 
         if ', ' in baseSurname:
@@ -279,8 +291,8 @@ def getPersonName(d):
 
 def parsePersonName(nameString, identifier=None):
     """
-    Parse a capitalised Notary Name from the notorial acts to pnv format. 
-    
+    Parse a capitalised Notary Name from the notorial acts to pnv format.
+
     Args:
         full_name (str): Capitalised string
 
@@ -412,7 +424,8 @@ def yearToDate(yearString):
 
 
 def parseOccupationInfo(occupationInfo, roleTypePerson, person,
-                        roleTypeOrganization, organizationSubEventDict):
+                        roleTypeOrganization, organizationSubEventDict,
+                        nsEvent, pid, eventCounter, nsRole, roleCounter):
 
     organizationString, years = occupationInfo.split(' ', 1)
 
@@ -444,11 +457,14 @@ def parseOccupationInfo(occupationInfo, roleTypePerson, person,
         label=[Literal(afkortingen[organizationString], lang='nl')])
 
     occupationEvent = Event(
-        None,
+        nsEvent.term(f"{pid}-event-{next(eventCounter)}"),
         label=[
             Literal(
                 f"{person.label[0]} als {roleTypePerson.label[0]} bij {afkortingen[organizationString]} ({beginYearLabel}-{endYearLabel})",
-                lang='nl')
+                lang='nl'),
+            Literal(
+                f"{person.label[0]} as {roleTypePerson.label[0]} at {afkortingen[organizationString]} ({beginYearLabel}-{endYearLabel})",
+                lang='en')
         ],
         participationOf=[person, organization],
         hasEarliestBeginTimeStamp=earliestBeginTimeStamp,
@@ -456,26 +472,34 @@ def parseOccupationInfo(occupationInfo, roleTypePerson, person,
         hasEarliestEndTimeStamp=earliestEndTimeStamp,
         hasLatestEndTimeStamp=latestEndTimeStamp)
 
+    roleCount = next(roleCounter)
+
     rolePerson = SpecificRoleType(
-        None,
+        nsRole.term(f"{pid}-role-{roleCount}"),
         type=roleTypePerson,
         carriedIn=occupationEvent,
         carriedBy=person,
         label=[
             Literal(
                 f"{person.label[0]} in de rol van {roleTypePerson.label[0]}",
-                lang='nl')
+                lang='nl'),
+            Literal(
+                f"{person.label[0]} in the role of  {roleTypePerson.label[0]}",
+                lang='en')
         ])
 
     roleTypeOrganization = SpecificRoleType(
-        None,
+        nsRole.term(f"{pid}-org-{roleCount}"),
         type=roleTypeOrganization,
         carriedIn=occupationEvent,
         carriedBy=organization,
         label=[
             Literal(
                 f"{afkortingen[organizationString]} in de rol van {roleTypeOrganization.label[0]}",
-                lang='nl')
+                lang='nl'),
+            Literal(
+                f"{afkortingen[organizationString]} in the role of {roleTypeOrganization.label[0]}",
+                lang='en')
         ])
 
     organizationSubEventDict[organization].append(occupationEvent)
@@ -484,7 +508,8 @@ def parseOccupationInfo(occupationInfo, roleTypePerson, person,
 
 
 def parseFunctionInfo(functionInfo, person, roleTypeOrganization,
-                      organizationSubEventDict):
+                      organizationSubEventDict, nsEvent, pid, eventCounter,
+                      nsRole, roleCounter):
 
     if 'W.' in functionInfo:
         # kap. W. XXIV 1793-01-01|1793-12-31/1795-01-01|1795-12-31
@@ -545,11 +570,14 @@ def parseFunctionInfo(functionInfo, person, roleTypeOrganization,
         label=[Literal(organizationLiteral, lang='nl')])
 
     functionEvent = Event(
-        None,
+        nsEvent.term(f"{pid}-event-{next(eventCounter)}"),
         label=[
             Literal(
                 f"{person.label[0]} als {roleTypePerson.label[0]} bij {organizationLiteral} ({beginYearLabel}-{endYearLabel})",
-                lang='nl')
+                lang='nl'),
+            Literal(
+                f"{person.label[0]} as {roleTypePerson.label[0]} at {organizationLiteral} ({beginYearLabel}-{endYearLabel})",
+                lang='en')
         ],
         participationOf=[person, organization],
         hasEarliestBeginTimeStamp=earliestBeginTimeStamp,
@@ -557,26 +585,34 @@ def parseFunctionInfo(functionInfo, person, roleTypeOrganization,
         hasEarliestEndTimeStamp=earliestEndTimeStamp,
         hasLatestEndTimeStamp=latestEndTimeStamp)
 
+    roleCount = next(roleCounter)
+
     rolePerson = SpecificRoleType(
-        None,
+        nsRole.term(f"{pid}-role-{roleCount}"),
         type=roleTypePerson,
         carriedIn=functionEvent,
         carriedBy=person,
         label=[
             Literal(
                 f"{person.label[0]} in de rol van {roleTypePerson.label[0]}",
-                lang='nl')
+                lang='nl'),
+            Literal(
+                f"{person.label[0]} in the role of {roleTypePerson.label[0]}",
+                lang='en')
         ])
 
     roleTypeOrganization = SpecificRoleType(
-        None,
+        nsRole.term(f"{pid}-org-{roleCount}"),
         type=roleTypeOrganization,
         carriedIn=functionEvent,
         carriedBy=organization,
         label=[
             Literal(
                 f"{organizationLiteral} in de rol van {roleTypeOrganization.label[0]}",
-                lang='nl')
+                lang='nl'),
+            Literal(
+                f"{organizationLiteral} in the role of {roleTypeOrganization.label[0]}",
+                lang='en')
         ])
 
     organizationSubEventDict[organization].append(functionEvent)
@@ -585,7 +621,8 @@ def parseFunctionInfo(functionInfo, person, roleTypeOrganization,
 
 
 def parseRegeerInfo(regeerInfo, person, organization, roleTypeOrganization,
-                    organizationSubEventDict):
+                    organizationSubEventDict, nsEvent, pid, eventCounter,
+                    nsRole, roleCounter):
 
     function, years = regeerInfo.split(' ')
 
@@ -618,11 +655,14 @@ def parseRegeerInfo(regeerInfo, person, organization, roleTypeOrganization,
         datatype=XSD.date) if latestEndTimeStamp != "?" else None
 
     bestuursEvent = Event(
-        None,
+        nsEvent.term(f"{pid}-event-{next(eventCounter)}"),
         label=[
             Literal(
                 f"{person.label[0]} als {roleTypePerson.label[0]} bij de Stadsregering ({beginYearLabel}-{endYearLabel})",
-                lang='nl')
+                lang='nl'),
+            Literal(
+                f"{person.label[0]} as {roleTypePerson.label[0]} at the City Government ({beginYearLabel}-{endYearLabel})",
+                lang='en')
         ],
         participationOf=[person, organization],
         hasEarliestBeginTimeStamp=earliestBeginTimeStamp,
@@ -630,26 +670,34 @@ def parseRegeerInfo(regeerInfo, person, organization, roleTypeOrganization,
         hasEarliestEndTimeStamp=earliestEndTimeStamp,
         hasLatestEndTimeStamp=latestEndTimeStamp)
 
+    roleCount = next(roleCounter)
+
     rolePerson = SpecificRoleType(
-        None,
+        nsRole.term(f"{pid}-role-{roleCount}"),
         type=roleTypePerson,
         carriedIn=bestuursEvent,
         carriedBy=person,
         label=[
             Literal(
                 f"{person.label[0]} in de rol van {roleTypePerson.label[0]}",
-                lang='nl')
+                lang='nl'),
+            Literal(
+                f"{person.label[0]} in the role of {roleTypePerson.label[0]}",
+                lang='en')
         ])
 
     roleTypeOrganization = SpecificRoleType(
-        None,
+        nsRole.term(f"{pid}-org-{roleCount}"),
         type=roleTypeOrganization,
         carriedIn=bestuursEvent,
         carriedBy=organization,
         label=[
             Literal(
                 f"Stadsregering in de rol van {roleTypeOrganization.label[0]}",
-                lang='nl')
+                lang='nl'),
+            Literal(
+                f"City Government in the role of {roleTypeOrganization.label[0]}",
+                lang='en')
         ])
 
     organizationSubEventDict[organization].append(bestuursEvent)
@@ -657,23 +705,50 @@ def parseRegeerInfo(regeerInfo, person, organization, roleTypeOrganization,
     return bestuursEvent, organizationSubEventDict
 
 
-def toRDF(data, uri, name, description, target=None):
+def toRDF(data, uri, name, description, filename, target=None):
 
     nametype = os.path.split(target)[1].replace('.trig', '')
+
+    _ = RoleType(
+        ga.Groom,
+        subClassOf=ga.Role,
+        label=[Literal("Groom", lang='en'),
+               Literal("Bruidegom", lang='nl')])
+    _ = RoleType(
+        ga.Bride,
+        subClassOf=ga.Role,
+        label=[Literal("Bride", lang='en'),
+               Literal("Bruid", lang='nl')])
+    _ = RoleType(
+        ga.Born,
+        subClassOf=ga.Role,
+        label=[Literal("Born", lang='en'),
+               Literal("Geborene", lang='nl')])
+    _ = RoleType(ga.Deceased,
+                 subClassOf=ga.Role,
+                 label=[
+                     Literal("Deceased", lang='en'),
+                     Literal("Overledene", lang='nl')
+                 ])
+
+    nsAnnotation = Namespace(
+        f"https://data.goldenagents.org/datasets/corporatiestukken/annotation/{nametype}/"
+    )
+
     nsPerson = Namespace(
         f"https://data.goldenagents.org/datasets/corporatiestukken/person/{nametype}/"
     )
-    personCounter = count(1)
+
+    nsGeneralEvent = Namespace(
+        f"https://data.goldenagents.org/datasets/corporatiestukken/event/")
 
     nsEvent = Namespace(
         f"https://data.goldenagents.org/datasets/corporatiestukken/event/{nametype}/"
     )
-    eventCounter = count(1)
 
     nsRole = Namespace(
         f"https://data.goldenagents.org/datasets/corporatiestukken/role/{nametype}/"
     )
-    roleCounter = count(1)
 
     ds = Dataset()
     dataset = ns.term('')
@@ -686,7 +761,20 @@ def toRDF(data, uri, name, description, target=None):
     # For the artworks
     if 'corporatiestukken.trig' in target:
 
-        for d in data:
+        for nrow, d in enumerate(data, 1):
+
+            # Prov
+            anno = Annotation(
+                nsAnnotation.term(str(nrow)),
+                hasTarget=ResourceSelection(
+                    None,
+                    hasSource=filename,
+                    hasSelector=FragmentSelector(
+                        None,
+                        conformsTo=URIRef("http://tools.ietf.org/rfc/rfc7111"),
+                        value=f"row={nrow}")))
+
+            # Artwork
             art_id = d['identifier'].replace(' ', '').replace('.', '')
             artwork = CreativeArtifact(
                 nsArtwork.term(art_id),
@@ -694,7 +782,8 @@ def toRDF(data, uri, name, description, target=None):
                 creationDate=d['date'],
                 artist=[d['artist']],
                 #disambiguatingDescription=d['dimensions'],
-                comment=[Literal(d['description'], lang='nl')])
+                comment=[Literal(d['description'], lang='nl')],
+                wasDerivedFrom=[anno])
 
             sameAs = [
                 URIRef(i) for i in [
@@ -738,7 +827,20 @@ def toRDF(data, uri, name, description, target=None):
 
     # For the person data
     else:
-        for d in data:
+        for nrow, d in enumerate(data, 1):
+
+            # Prov
+            anno = Annotation(
+                nsAnnotation.term(str(nrow)),
+                hasTarget=ResourceSelection(
+                    None,
+                    hasSource=filename,
+                    hasSelector=FragmentSelector(
+                        None,
+                        conformsTo=URIRef("http://tools.ietf.org/rfc/rfc7111"),
+                        value=f"row={nrow}")))
+
+            # Person
 
             lifeEvents = []
 
@@ -750,12 +852,18 @@ def toRDF(data, uri, name, description, target=None):
 
             pn, labels = getPersonName(d)
 
-            pid = str(next(personCounter))
+            # pid = str(next(personCounter))
+            personCounter = count(1)
+            roleCounter = count(1)
+            eventCounter = count(1)
 
-            p = Person(nsPerson.term(pid),
+            pid = d['id']
+
+            p = Person(nsPerson.term(str(pid)),
                        hasName=pn,
                        gender=gender,
-                       label=labels)
+                       label=labels,
+                       wasDerivedFrom=[anno])
 
             birthDate = Literal(d['Doop/geboren genormaliseerd'],
                                 datatype=XSD.date
@@ -772,9 +880,29 @@ def toRDF(data, uri, name, description, target=None):
                 d['Begraven/overleden genormaliseerd'])
 
             # Birth
+            beginBirthYearLabel = datetime.datetime.fromisoformat(
+                birthDateEarliest
+            ).year if birthDateEarliest and birthDateEarliest != "?" else "?"
+            endBirthYearLabel = datetime.datetime.fromisoformat(
+                birthDateLatest
+            ).year if birthDateLatest and birthDateLatest != "?" else "?"
+
+            if birthTimeStamp:
+                birthYearLabel = datetime.datetime.fromisoformat(
+                    birthTimeStamp).year
+            elif beginBirthYearLabel == endBirthYearLabel:
+                birthYearLabel = beginBirthYearLabel
+            else:
+                birthYearLabel = f"ca. {beginBirthYearLabel}-{endBirthYearLabel}"
+
             birthEvent = Birth(
                 nsEvent.term(f"{pid}-birth"),
-                label=[Literal(f"Geboorte van {labels[0]}", lang='nl')],
+                label=[
+                    Literal(f"Geboorte van {labels[0]} ({birthYearLabel})",
+                            lang='nl'),
+                    Literal(f"Birth of {labels[0]} ({birthYearLabel})",
+                            lang='en')
+                ],
                 hasTimeStamp=birthTimeStamp,
                 hasEarliestBeginTimeStamp=birthDateEarliest,
                 hasLatestBeginTimeStamp=birthDateLatest,
@@ -788,13 +916,39 @@ def toRDF(data, uri, name, description, target=None):
             roleBorn = Born(nsRole.term(f"{pid}-born"),
                             carriedIn=birthEvent,
                             carriedBy=p,
-                            label=["Born"])
+                            label=[
+                                Literal(f"{labels[0]} in de rol van geborene",
+                                        lang='nl'),
+                                Literal(f"{labels[0]} in the role of born",
+                                        lang='en')
+                            ])
             lifeEvents.append(birthEvent)
 
             # Death
+
+            beginDeathYearLabel = datetime.datetime.fromisoformat(
+                deathDateEarliest
+            ).year if deathDateEarliest and deathDateEarliest != "?" else "?"
+            endDeathYearLabel = datetime.datetime.fromisoformat(
+                deathDateLatest
+            ).year if deathDateLatest and deathDateLatest != "?" else "?"
+
+            if deathTimeStamp:
+                deathYearLabel = datetime.datetime.fromisoformat(
+                    deathTimeStamp).year
+            elif beginDeathYearLabel == endDeathYearLabel:
+                deathYearLabel = beginDeathYearLabel
+            else:
+                deathYearLabel = f"ca. {beginDeathYearLabel}-{endDeathYearLabel}"
+
             deathEvent = Death(
                 nsEvent.term(f"{pid}-death"),
-                label=[Literal(f"Overlijden van {labels[0]}", lang='nl')],
+                label=[
+                    Literal(f"Overlijden van {labels[0]} ({deathYearLabel})",
+                            lang='nl'),
+                    Literal(f"Death of {labels[0]} ({deathYearLabel})",
+                            lang='en')
+                ],
                 hasTimeStamp=deathTimeStamp,
                 hasEarliestBeginTimeStamp=deathDateEarliest,
                 hasLatestBeginTimeStamp=deathDateLatest,
@@ -805,10 +959,15 @@ def toRDF(data, uri, name, description, target=None):
             deathEvent.participationOf = [p]
             p.death = deathEvent
 
-            roleDied = Died(nsRole.term(f"{pid}-died"),
-                            carriedIn=deathEvent,
-                            carriedBy=p,
-                            label=["Died"])
+            roleDeceased = Deceased(
+                nsRole.term(f"{pid}-died"),
+                carriedIn=deathEvent,
+                carriedBy=p,
+                label=[
+                    Literal(f"{labels[0]} in de rol van overledene",
+                            lang='nl'),
+                    Literal(f"{labels[0]} in the role of deceased", lang='en')
+                ])
 
             lifeEvents.append(deathEvent)
 
@@ -830,7 +989,10 @@ def toRDF(data, uri, name, description, target=None):
             RoleTypeAdministrativeOrganization = RoleType(
                 gaRoleType.AdministrativeOrganization,
                 subClassOf=ga.Role,
-                label=[Literal("Administratieve organisatie", lang='nl')])
+                label=[
+                    Literal("Administratieve organisatie", lang='nl'),
+                    Literal("Administrative organization", lang='en')
+                ])
 
             # 1 poorters
             if 'poorters.trig' in target:
@@ -856,7 +1018,12 @@ def toRDF(data, uri, name, description, target=None):
                             person=p,
                             roleTypeOrganization=
                             RoleTypeAdministrativeOrganization,
-                            organizationSubEventDict=organizationSubEventDict)
+                            organizationSubEventDict=organizationSubEventDict,
+                            nsEvent=nsEvent,
+                            pid=pid,
+                            eventCounter=eventCounter,
+                            nsRole=nsRole,
+                            roleCounter=roleCounter)
                         lifeEvents.append(occupationEvent)
 
                 stadsregeringInfo = d[
@@ -865,7 +1032,12 @@ def toRDF(data, uri, name, description, target=None):
                 if stadsregeringInfo:
 
                     organization = Organization(gaOrganization.Stadsregering,
-                                                label=["Stadsregering"])
+                                                label=[
+                                                    Literal("Stadsregering",
+                                                            lang='nl'),
+                                                    Literal("City Government",
+                                                            lang='en')
+                                                ])
 
                     for regeerInfo in stadsregeringInfo.split('; '):
 
@@ -875,7 +1047,12 @@ def toRDF(data, uri, name, description, target=None):
                             organization=organization,
                             roleTypeOrganization=
                             RoleTypeAdministrativeOrganization,
-                            organizationSubEventDict=organizationSubEventDict)
+                            organizationSubEventDict=organizationSubEventDict,
+                            nsEvent=nsEvent,
+                            pid=pid,
+                            eventCounter=eventCounter,
+                            nsRole=nsRole,
+                            roleCounter=roleCounter)
                         lifeEvents.append(regeerEvent)
 
                 functionInfo = d[
@@ -914,7 +1091,12 @@ def toRDF(data, uri, name, description, target=None):
                             funcInfo,
                             person=p,
                             roleTypeOrganization=rt,
-                            organizationSubEventDict=organizationSubEventDict)
+                            organizationSubEventDict=organizationSubEventDict,
+                            nsEvent=nsEvent,
+                            pid=pid,
+                            eventCounter=eventCounter,
+                            nsRole=nsRole,
+                            roleCounter=roleCounter)
                         lifeEvents.append(functionEvent)
 
                         # except ValueError:
@@ -934,7 +1116,8 @@ def toRDF(data, uri, name, description, target=None):
                         earliestDate, latestDate = yearToDate(marriageYear)
 
                         pnWife, labelsWife = parsePersonName(wifeName)
-                        wife = Person(nsPerson.term(str(next(personCounter))),
+                        pidWife = f"{pid}-wife-{next(personCounter)}"
+                        wife = Person(nsPerson.term(pidWife),
                                       hasName=pnWife,
                                       gender=ga.Female,
                                       label=labelsWife)
@@ -942,11 +1125,15 @@ def toRDF(data, uri, name, description, target=None):
                         lifeEventsWife = []
 
                         marriageEvent = Marriage(
-                            nsEvent.term(f"{next(eventCounter)}-marriage"),
+                            nsEvent.term(
+                                f"{pid}-{next(eventCounter)}-marriage"),
                             label=[
                                 Literal(
-                                    f"Huwelijk tussen {labels[0]} en {wifeName}",
-                                    lang='nl')
+                                    f"Huwelijk tussen {labels[0]} en {wifeName} ({marriageYear})",
+                                    lang='nl'),
+                                Literal(
+                                    f"Marriage between {labels[0]} and {wifeName} ({marriageYear})",
+                                    lang='en')
                             ],
                             hasEarliestBeginTimeStamp=earliestDate,
                             hasLatestEndTimeStamp=latestDate,
@@ -956,21 +1143,27 @@ def toRDF(data, uri, name, description, target=None):
                         lifeEventsWife.append(marriageEvent)
 
                         roleGroom = Groom(
-                            nsRole.term(f"{next(roleCounter)}-groom"),
+                            nsRole.term(f"{pid}-{next(roleCounter)}-groom"),
                             carriedIn=marriageEvent,
                             carriedBy=p,
                             label=[
                                 Literal(f"{labels[0]} in de rol van bruidegom",
-                                        lang='nl')
+                                        lang='nl'),
+                                Literal(f"{labels[0]} in the role of groom",
+                                        lang='en')
                             ])
 
                         roleBride = Bride(
-                            nsRole.term(f"{next(roleCounter)}-bride"),
+                            nsRole.term(
+                                f"{pidWife}-{next(roleCounter)}-bride"),
                             carriedIn=marriageEvent,
                             carriedBy=wife,
                             label=[
                                 Literal(f"{labelsWife[0]} in de rol van bruid",
-                                        lang='nl')
+                                        lang='nl'),
+                                Literal(
+                                    f"{labelsWife[0]} in the role of bride",
+                                    lang='en')
                             ])
 
                         wife.participatesIn = lifeEventsWife
@@ -992,7 +1185,12 @@ def toRDF(data, uri, name, description, target=None):
                         roleTypePerson=RoleTypeRegentes,
                         person=p,
                         roleTypeOrganization=RoleTypeAdministrativeOrganization,
-                        organizationSubEventDict=organizationSubEventDict)
+                        organizationSubEventDict=organizationSubEventDict,
+                        nsEvent=nsEvent,
+                        pid=pid,
+                        eventCounter=eventCounter,
+                        nsRole=nsRole,
+                        roleCounter=roleCounter)
                     lifeEvents.append(occupationEvent)
 
                 # marriage
@@ -1035,8 +1233,8 @@ def toRDF(data, uri, name, description, target=None):
                             birthDateEarliest, birthDateLatest, deathDateEarliest, deathDateLatest = None, None, None, None
 
                         pnHusband, labelsHusband = parsePersonName(husbandName)
-                        pidhusband = nsPerson.term(str(next(personCounter)))
-                        husband = Person(pidhusband,
+                        pidHusband = f"{pid}-husband-{next(personCounter)}"
+                        husband = Person(nsPerson.term(pidHusband),
                                          hasName=pnHusband,
                                          gender=ga.Male,
                                          label=labelsHusband,
@@ -1045,11 +1243,28 @@ def toRDF(data, uri, name, description, target=None):
                         lifeEventsHusband = []
 
                         # Birth Husband
+
+                        beginBirthYearLabel = datetime.datetime.fromisoformat(
+                            birthDateEarliest
+                        ).year if birthDateEarliest and birthDateEarliest != "?" else "?"
+                        endBirthYearLabel = datetime.datetime.fromisoformat(
+                            birthDateLatest
+                        ).year if birthDateLatest and birthDateLatest != "?" else "?"
+
+                        if beginBirthYearLabel == endBirthYearLabel:
+                            birthYearLabel = beginBirthYearLabel
+                        else:
+                            birthYearLabel = f"ca. {beginBirthYearLabel}-{endBirthYearLabel}"
+
                         birthEventHusband = Birth(
-                            nsEvent.term(f"{pidhusband}-birth"),
+                            nsEvent.term(f"{pidHusband}-birth"),
                             label=[
-                                Literal(f"Geboorte van {labelsHusband[0]}",
-                                        lang='nl')
+                                Literal(
+                                    f"Geboorte van {labelsHusband[0]} ({birthYearLabel})",
+                                    lang='nl'),
+                                Literal(
+                                    f"Birth of {labelsHusband[0]} ({birthYearLabel})",
+                                    lang='en')
                             ],
                             hasEarliestBeginTimeStamp=birthDateEarliest,
                             hasLatestBeginTimeStamp=birthDateLatest,
@@ -1060,22 +1275,43 @@ def toRDF(data, uri, name, description, target=None):
                         birthEventHusband.participationOf = [husband]
 
                         roleBorn = Born(
-                            nsRole.term(f"{pidhusband}-born"),
+                            nsRole.term(f"{pidHusband}-born"),
                             carriedIn=birthEventHusband,
                             carriedBy=husband,
                             label=[
                                 Literal(
                                     f"{labelsHusband[0]} in de rol van geborene",
-                                    lang='nl')
+                                    lang='nl'),
+                                Literal(
+                                    f"{labelsHusband[0]} in the role of born",
+                                    lang='en')
                             ])
                         lifeEventsHusband.append(birthEventHusband)
+                        husband.birth = birthEventHusband
 
                         # Death
+
+                        beginDeathYearLabel = datetime.datetime.fromisoformat(
+                            deathDateEarliest
+                        ).year if deathDateEarliest and deathDateEarliest != "?" else "?"
+                        endDeathYearLabel = datetime.datetime.fromisoformat(
+                            deathDateLatest
+                        ).year if deathDateLatest and deathDateLatest != "?" else "?"
+
+                        if beginDeathYearLabel == endDeathYearLabel:
+                            deathYearLabel = beginDeathYearLabel
+                        else:
+                            deathYearLabel = f"ca. {beginDeathYearLabel}-{endDeathYearLabel}"
+
                         deathEventHusband = Death(
-                            nsEvent.term(f"{pidhusband}-death"),
+                            nsEvent.term(f"{pidHusband}-death"),
                             label=[
-                                Literal(f"Overlijden van {labelsHusband[0]}",
-                                        lang='nl')
+                                Literal(
+                                    f"Overlijden van {labelsHusband[0]} ({deathYearLabel})",
+                                    lang='nl'),
+                                Literal(
+                                    f"Death of {labelsHusband[0]} ({deathYearLabel})",
+                                    lang='en')
                             ],
                             hasEarliestBeginTimeStamp=deathDateEarliest,
                             hasLatestBeginTimeStamp=deathDateLatest,
@@ -1084,24 +1320,32 @@ def toRDF(data, uri, name, description, target=None):
                             principal=husband)
                         deathEventHusband.participationOf = [husband]
 
-                        roleDied = Died(
-                            nsRole.term(f"{pidhusband}-died"),
+                        roleDeceased = Deceased(
+                            nsRole.term(f"{pidHusband}-died"),
                             carriedIn=deathEventHusband,
                             carriedBy=husband,
                             label=[
                                 Literal(
                                     f"{labelsHusband[0]} in de rol van overledene",
+                                    lang='nl'),
+                                Literal(
+                                    f"{labelsHusband[0]} in the role of deceased",
                                     lang='nl')
                             ])
 
                         lifeEventsHusband.append(deathEventHusband)
+                        husband.death = deathEventHusband
 
                         marriageEvent = Marriage(
-                            nsEvent.term(f"{next(eventCounter)}-marriage"),
+                            nsEvent.term(
+                                f"{pid}-{next(eventCounter)}-marriage"),
                             label=[
                                 Literal(
-                                    f"Huwelijk tussen {labels[0]} en {husbandName}",
-                                    lang='nl')
+                                    f"Huwelijk tussen {labels[0]} en {husbandName} ({marriageYear})",
+                                    lang='nl'),
+                                Literal(
+                                    f"Marriage between {labels[0]} and {husbandName} ({marriageYear})",
+                                    lang='en')
                             ],
                             hasEarliestBeginTimeStamp=earliestDate,
                             hasLatestEndTimeStamp=latestDate,
@@ -1111,22 +1355,28 @@ def toRDF(data, uri, name, description, target=None):
                         lifeEventsHusband.append(marriageEvent)
 
                         roleBride = Bride(
-                            nsRole.term(f"{next(roleCounter)}-bride"),
+                            nsRole.term(f"{pid}-{next(roleCounter)}-bride"),
                             carriedIn=marriageEvent,
                             carriedBy=p,
                             label=[
                                 Literal(f"{labels[0]} in de rol van bruid",
-                                        lang='nl')
+                                        lang='nl'),
+                                Literal(f"{labels[0]} in the role of bride",
+                                        lang='en')
                             ])
 
                         roleGroom = Groom(
-                            nsRole.term(f"{next(roleCounter)}-groom"),
+                            nsRole.term(
+                                f"{pidHusband}-{next(roleCounter)}-groom"),
                             carriedIn=marriageEvent,
                             carriedBy=husband,
                             label=[
                                 Literal(
                                     f"{labelsHusband[0]} in de rol van bruidegom",
-                                    lang='nl')
+                                    lang='nl'),
+                                Literal(
+                                    f"{labelsHusband[0]} in the role of groom",
+                                    lang='en')
                             ])
 
                         husband.participatesIn = lifeEventsHusband
@@ -1147,7 +1397,12 @@ def toRDF(data, uri, name, description, target=None):
                             person=p,
                             roleTypeOrganization=
                             RoleTypeAdministrativeOrganization,
-                            organizationSubEventDict=organizationSubEventDict)
+                            organizationSubEventDict=organizationSubEventDict,
+                            nsEvent=nsEvent,
+                            pid=pid,
+                            eventCounter=eventCounter,
+                            nsRole=nsRole,
+                            roleCounter=roleCounter)
                         lifeEvents.append(occupationEvent)
 
             # 4 gildenleden
@@ -1164,7 +1419,9 @@ def toRDF(data, uri, name, description, target=None):
                         earliestDate, latestDate = yearToDate(marriageYear)
 
                         pnWife, labelsWife = parsePersonName(wifeName)
-                        wife = Person(nsPerson.term(str(next(personCounter))),
+                        pidWife = f"{pid}-wife-{next(personCounter)}"
+
+                        wife = Person(nsPerson.term(pidWife),
                                       hasName=pnWife,
                                       gender=ga.Female,
                                       label=labelsWife)
@@ -1172,11 +1429,15 @@ def toRDF(data, uri, name, description, target=None):
                         lifeEventsWife = []
 
                         marriageEvent = Marriage(
-                            nsEvent.term(f"{next(eventCounter)}-marriage"),
+                            nsEvent.term(
+                                f"{pid}-{next(eventCounter)}-marriage"),
                             label=[
                                 Literal(
-                                    f"Huwelijk tussen {labels[0]} en {wifeName}",
-                                    lang='nl')
+                                    f"Huwelijk tussen {labels[0]} en {wifeName} ({marriageYear})",
+                                    lang='nl'),
+                                Literal(
+                                    f"Marriage between {labels[0]} and {wifeName} ({marriageYear})",
+                                    lang='en')
                             ],
                             hasEarliestBeginTimeStamp=earliestDate,
                             hasLatestEndTimeStamp=latestDate,
@@ -1186,21 +1447,27 @@ def toRDF(data, uri, name, description, target=None):
                         lifeEventsWife.append(marriageEvent)
 
                         roleGroom = Groom(
-                            nsRole.term(f"{next(roleCounter)}-groom"),
+                            nsRole.term(f"{pid}-{next(roleCounter)}-groom"),
                             carriedIn=marriageEvent,
                             carriedBy=p,
                             label=[
                                 Literal(f"{labels[0]} in de rol van bruidegom",
-                                        lang='nl')
+                                        lang='nl'),
+                                Literal(f"{labels[0]} in the role of groom",
+                                        lang='en')
                             ])
 
                         roleBride = Bride(
-                            nsRole.term(f"{next(roleCounter)}-bride"),
+                            nsRole.term(
+                                f"{pidWife}-{next(roleCounter)}-bride"),
                             carriedIn=marriageEvent,
                             carriedBy=wife,
                             label=[
                                 Literal(f"{labelsWife[0]} in de rol van bruid",
-                                        lang='nl')
+                                        lang='nl'),
+                                Literal(
+                                    f"{labelsWife[0]} in the role of bride",
+                                    lang='en')
                             ])
 
                         wife.participatesIn = lifeEventsWife
@@ -1222,17 +1489,27 @@ def toRDF(data, uri, name, description, target=None):
         organizationResUri2label[organization.resUri] = organization.label[0]
 
     for organization, subEvents in organizationResUriSubEventDict.items():
+
+        eventCounter = count(1)
+
         organizationEvent = Event(
-            nsEvent.term(f"{next(eventCounter)}"),
+            nsGeneralEvent.term(
+                f"{str(organization).rsplit('/', 1)[1]}-{next(eventCounter)}"),
             participationOf=[organization],
             subEvent=subEvents,
             label=[
                 Literal(
                     f"Tijdlijn van {organizationResUri2label[organization]}",
-                    lang='nl')
+                    lang='nl'),
+                Literal(
+                    f"Timeline of {organizationResUri2label[organization]}",
+                    lang='en')
             ])
         for e in subEvents:
             e.subEventOf = organizationEvent
+
+        Organization(organization).participatesIn = [organizationEvent
+                                                     ] + subEvents
 
     ########
     # Meta #
@@ -1338,6 +1615,8 @@ def toRDF(data, uri, name, description, target=None):
     ds.bind('wd', URIRef("http://www.wikidata.org/entity/"))
     ds.bind('pnv', pnv)
     ds.bind('bio', bio)
+    ds.bind('prov', prov)
+    ds.bind('oa', oa)
 
     print(f"Serializing to {target}")
     ds.serialize(target, format='trig')
