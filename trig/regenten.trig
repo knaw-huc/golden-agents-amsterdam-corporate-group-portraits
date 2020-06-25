@@ -12,6 +12,48 @@
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+{
+    <https://data.goldenagents.org/datasets/corporatiestukken/> a void:Dataset,
+            schema:Dataset ;
+        dcterms:creator <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> ;
+        dcterms:date "2020-06-25"^^xsd:datetime ;
+        dcterms:description ""@nl ;
+        dcterms:publisher <https://leonvanwissen.nl/me> ;
+        dcterms:source <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
+        dcterms:title "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850"@nl ;
+        void:exampleResource <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/195> ;
+        void:subset <https://data.goldenagents.org/datasets/corporatiestukken/regenten/> ;
+        void:triples 13 ;
+        void:vocabulary sem:,
+            "https://data.goldenagents.org/ontology/" ;
+        schema:citation <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
+        schema:creator <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> ;
+        schema:dateModified "2020-06-25"^^xsd:datetime ;
+        schema:description ""@nl ;
+        schema:distribution [ a schema:DataDownload ;
+                schema:encodingFormat "application/trig" ;
+                schema:version "0.1" ] ;
+        schema:hasPart <https://data.goldenagents.org/datasets/corporatiestukken/regenten/> ;
+        schema:isBasedOn <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
+        schema:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+        schema:name "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850"@nl ;
+        schema:publisher <https://leonvanwissen.nl/me> ;
+        schema:spatialCoverage "Amsterdam" ;
+        schema:temporalCoverage "1525-01-01/1850-12-31" .
+
+    <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> a ga:Person ;
+        rdfs:label "Norbert Middelkoop" ;
+        owl:sameAs <http://viaf.org/viaf/12415105> .
+
+    <https://data.goldenagents.org/datasets/corporatiestukken/regenten/> a void:Dataset,
+            schema:Dataset ;
+        void:inDataset <https://data.goldenagents.org/datasets/corporatiestukken/> ;
+        void:triples 17057 ;
+        schema:description "" ;
+        schema:isPartOf <https://data.goldenagents.org/datasets/corporatiestukken/> ;
+        schema:name "Regenten Walenweeshuis"@nl .
+}
+
 <https://data.goldenagents.org/datasets/corporatiestukken/regenten/> {
     <https://data.goldenagents.org/datasets/corporatiestukken/artwork/R63> a ga:CreativeArtifact ;
         ga:depicts <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/1>,
@@ -6642,6 +6684,16 @@
             "Jean Colvius in de rol van Regent"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/99> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/99-event-1> .
+
+    ga:Bride a ga:RoleType ;
+        rdfs:label "Bride"@en,
+            "Bruid"@nl ;
+        rdfs:subClassOf ga:Role .
+
+    ga:Groom a ga:RoleType ;
+        rdfs:label "Groom"@en,
+            "Bruidegom"@nl ;
+        rdfs:subClassOf ga:Role .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/annotation/regenten/1> a oa:Annotation ;
         oa:hasTarget [ oa:hasSelector [ a oa:FragmentSelector ;
@@ -14873,16 +14925,16 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/11-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/11-event-1> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Daniel du Jardin" ;
-                pnv:baseSurname "Jardin" ;
-                pnv:givenName "Daniel" ;
-                pnv:literalName "Daniel du Jardin" ;
-                pnv:surnamePrefix "du" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Daniel du Gardijn" ;
                 pnv:baseSurname "Gardijn" ;
                 pnv:givenName "Daniel" ;
                 pnv:literalName "Daniel du Gardijn" ;
+                pnv:surnamePrefix "du" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Daniel du Jardin" ;
+                pnv:baseSurname "Jardin" ;
+                pnv:givenName "Daniel" ;
+                pnv:literalName "Daniel du Jardin" ;
                 pnv:surnamePrefix "du" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/111> a ga:Person ;
@@ -15016,15 +15068,15 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/12-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/12-event-1> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Jean Seullyn" ;
-                pnv:baseSurname "Seullyn" ;
-                pnv:givenName "Jean" ;
-                pnv:literalName "Jean Seullyn" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Jean Selyns?" ;
                 pnv:baseSurname "Selyns?" ;
                 pnv:givenName "Jean" ;
-                pnv:literalName "Jean Selyns?" ] .
+                pnv:literalName "Jean Selyns?" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Jean Seullyn" ;
+                pnv:baseSurname "Seullyn" ;
+                pnv:givenName "Jean" ;
+                pnv:literalName "Jean Seullyn" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/120> a ga:Person ;
         rdfs:label "Laurens le Febvre" ;
@@ -16387,6 +16439,12 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/18-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/18-event-1> ;
         pnv:hasName [ a pnv:PersonName ;
+                rdfs:label "Abraham Guillaume van Beyerland" ;
+                pnv:baseSurname "Beyerland" ;
+                pnv:givenName "Abraham Guillaume" ;
+                pnv:literalName "Abraham Guillaume van Beyerland" ;
+                pnv:surnamePrefix "van" ],
+            [ a pnv:PersonName ;
                 rdfs:label "Abraham Guillaume de Boyrlant" ;
                 pnv:baseSurname "Boyrlant" ;
                 pnv:givenName "Abraham Guillaume" ;
@@ -16397,12 +16455,6 @@
                 pnv:baseSurname "Boyrlant" ;
                 pnv:givenName "Abraham Guillaume" ;
                 pnv:literalName "Abraham Guillaume van Boyrlant" ;
-                pnv:surnamePrefix "van" ],
-            [ a pnv:PersonName ;
-                rdfs:label "Abraham Guillaume van Beyerland" ;
-                pnv:baseSurname "Beyerland" ;
-                pnv:givenName "Abraham Guillaume" ;
-                pnv:literalName "Abraham Guillaume van Beyerland" ;
                 pnv:surnamePrefix "van" ],
             [ a pnv:PersonName ;
                 rdfs:label "Abraham Guillaume de Beyerland" ;
@@ -17203,16 +17255,16 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/2-event-1>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/2-event-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Abel de Héripon" ;
-                pnv:baseSurname "Héripon" ;
-                pnv:givenName "Abel" ;
-                pnv:literalName "Abel de Héripon" ;
-                pnv:surnamePrefix "de" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Abel de Horipon" ;
                 pnv:baseSurname "Horipon" ;
                 pnv:givenName "Abel" ;
                 pnv:literalName "Abel de Horipon" ;
+                pnv:surnamePrefix "de" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Abel de Héripon" ;
+                pnv:baseSurname "Héripon" ;
+                pnv:givenName "Abel" ;
+                pnv:literalName "Abel de Héripon" ;
                 pnv:surnamePrefix "de" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/20> a ga:Person ;
@@ -17727,16 +17779,16 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/22-event-3>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/22-event-4> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Johan le Noir" ;
-                pnv:baseSurname "Noir" ;
-                pnv:givenName "Johan" ;
-                pnv:literalName "Johan le Noir" ;
-                pnv:patronym "le" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Jean le Noir" ;
                 pnv:baseSurname "Noir" ;
                 pnv:givenName "Jean" ;
                 pnv:literalName "Jean le Noir" ;
+                pnv:patronym "le" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Johan le Noir" ;
+                pnv:baseSurname "Noir" ;
+                pnv:givenName "Johan" ;
+                pnv:literalName "Johan le Noir" ;
                 pnv:patronym "le" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/43> a ga:Person ;
@@ -17976,6 +18028,16 @@
                 pnv:givenName "Adriaen" ;
                 pnv:literalName "Adriaen van der Cruys" ;
                 pnv:surnamePrefix "van der" ] .
+
+    ga:Born a ga:RoleType ;
+        rdfs:label "Born"@en,
+            "Geborene"@nl ;
+        rdfs:subClassOf ga:Role .
+
+    ga:Deceased a ga:RoleType ;
+        rdfs:label "Deceased"@en,
+            "Overledene"@nl ;
+        rdfs:subClassOf ga:Role .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/roletype/AdministrativeOrganization> a ga:RoleType ;
         rdfs:label "Administrative organization"@en,
@@ -18700,47 +18762,5 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/98-event-3>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/98-event-4>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regenten/99-event-1> .
-}
-
-{
-    <https://data.goldenagents.org/datasets/corporatiestukken/> a void:Dataset,
-            schema:Dataset ;
-        dcterms:creator <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> ;
-        dcterms:date "2020-06-25"^^xsd:datetime ;
-        dcterms:description ""@nl ;
-        dcterms:publisher <https://leonvanwissen.nl/me> ;
-        dcterms:source <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
-        dcterms:title "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850"@nl ;
-        void:exampleResource <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/195> ;
-        void:subset <https://data.goldenagents.org/datasets/corporatiestukken/regenten/> ;
-        void:triples 13 ;
-        void:vocabulary sem:,
-            "https://data.goldenagents.org/ontology/" ;
-        schema:citation <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
-        schema:creator <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> ;
-        schema:dateModified "2020-06-25"^^xsd:datetime ;
-        schema:description ""@nl ;
-        schema:distribution [ a schema:DataDownload ;
-                schema:encodingFormat "application/trig" ;
-                schema:version "0.1" ] ;
-        schema:hasPart <https://data.goldenagents.org/datasets/corporatiestukken/regenten/> ;
-        schema:isBasedOn <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
-        schema:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
-        schema:name "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850"@nl ;
-        schema:publisher <https://leonvanwissen.nl/me> ;
-        schema:spatialCoverage "Amsterdam" ;
-        schema:temporalCoverage "1525-01-01/1850-12-31" .
-
-    <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> a ga:Person ;
-        rdfs:label "Norbert Middelkoop" ;
-        owl:sameAs <http://viaf.org/viaf/12415105> .
-
-    <https://data.goldenagents.org/datasets/corporatiestukken/regenten/> a void:Dataset,
-            schema:Dataset ;
-        void:inDataset <https://data.goldenagents.org/datasets/corporatiestukken/> ;
-        void:triples 17041 ;
-        schema:description "" ;
-        schema:isPartOf <https://data.goldenagents.org/datasets/corporatiestukken/> ;
-        schema:name "Regenten Walenweeshuis"@nl .
 }
 

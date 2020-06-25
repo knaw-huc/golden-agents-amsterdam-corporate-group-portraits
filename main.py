@@ -21,7 +21,6 @@ rdflib.graph.DATASET_DEFAULT_GRAPH_ID = ns
 
 nsArtwork = Namespace(
     "https://data.goldenagents.org/datasets/corporatiestukken/artwork/")
-artworkCounter = count(1)
 
 afkortingen = {
     "Amh": "Aalmoezeniershuis",
@@ -709,28 +708,6 @@ def toRDF(data, uri, name, description, filename, target=None):
 
     nametype = os.path.split(target)[1].replace('.trig', '')
 
-    _ = RoleType(
-        ga.Groom,
-        subClassOf=ga.Role,
-        label=[Literal("Groom", lang='en'),
-               Literal("Bruidegom", lang='nl')])
-    _ = RoleType(
-        ga.Bride,
-        subClassOf=ga.Role,
-        label=[Literal("Bride", lang='en'),
-               Literal("Bruid", lang='nl')])
-    _ = RoleType(
-        ga.Born,
-        subClassOf=ga.Role,
-        label=[Literal("Born", lang='en'),
-               Literal("Geborene", lang='nl')])
-    _ = RoleType(ga.Deceased,
-                 subClassOf=ga.Role,
-                 label=[
-                     Literal("Deceased", lang='en'),
-                     Literal("Overledene", lang='nl')
-                 ])
-
     nsAnnotation = Namespace(
         f"https://data.goldenagents.org/datasets/corporatiestukken/annotation/{nametype}/"
     )
@@ -754,6 +731,28 @@ def toRDF(data, uri, name, description, filename, target=None):
     dataset = ns.term('')
 
     g = rdfSubject.db = ds.graph(identifier=uri)
+
+    _ = RoleType(
+        ga.Groom,
+        subClassOf=ga.Role,
+        label=[Literal("Groom", lang='en'),
+               Literal("Bruidegom", lang='nl')])
+    _ = RoleType(
+        ga.Bride,
+        subClassOf=ga.Role,
+        label=[Literal("Bride", lang='en'),
+               Literal("Bruid", lang='nl')])
+    _ = RoleType(
+        ga.Born,
+        subClassOf=ga.Role,
+        label=[Literal("Born", lang='en'),
+               Literal("Geborene", lang='nl')])
+    _ = RoleType(ga.Deceased,
+                 subClassOf=ga.Role,
+                 label=[
+                     Literal("Deceased", lang='en'),
+                     Literal("Overledene", lang='nl')
+                 ])
 
     artworkDepictedDict = defaultdict(list)
     organizationSubEventDict = defaultdict(list)
@@ -1004,7 +1003,7 @@ def toRDF(data, uri, name, description, filename, target=None):
                         if occInfo.startswith('km. '):
                             rtp = "Kerkmeester"
                             occInfo = occInfo.replace('km. ', '')
-                            RoleTypePoorter = RoleType(ga.term(rtp),
+                            RoleTypePoorter = RoleType(gaRoleType.term(rtp),
                                                        subClassOf=ga.Role,
                                                        label=[rtp.title()])
                         else:

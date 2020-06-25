@@ -43,7 +43,7 @@
     <https://data.goldenagents.org/datasets/corporatiestukken/corporatiestukken/> a void:Dataset,
             schema:Dataset ;
         void:inDataset <https://data.goldenagents.org/datasets/corporatiestukken/> ;
-        void:triples 3754 ;
+        void:triples 3770 ;
         schema:description "" ;
         schema:isPartOf <https://data.goldenagents.org/datasets/corporatiestukken/> ;
         schema:name "Lijst van corporatiestukken"@nl .
@@ -5156,6 +5156,26 @@ Afgebeeld volgens opschrift op de onderregel van de lijst, v.l.n.r.:
         prov:wasDerivedFrom <https://data.goldenagents.org/datasets/corporatiestukken/annotation/corporatiestukken/232> ;
         ga:artist "Herman van der Mijn (Amsterdam 1684 – Londen 1741)" ;
         ga:creationDate "ca. 1719" .
+
+    ga:Born a ga:RoleType ;
+        rdfs:label "Born"@en,
+            "Geborene"@nl ;
+        rdfs:subClassOf ga:Role .
+
+    ga:Bride a ga:RoleType ;
+        rdfs:label "Bride"@en,
+            "Bruid"@nl ;
+        rdfs:subClassOf ga:Role .
+
+    ga:Deceased a ga:RoleType ;
+        rdfs:label "Deceased"@en,
+            "Overledene"@nl ;
+        rdfs:subClassOf ga:Role .
+
+    ga:Groom a ga:RoleType ;
+        rdfs:label "Groom"@en,
+            "Bruidegom"@nl ;
+        rdfs:subClassOf ga:Role .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/annotation/corporatiestukken/1> a oa:Annotation ;
         oa:hasTarget [ oa:hasSelector [ a oa:FragmentSelector ;
