@@ -9,3 +9,7 @@ Middelkoop, N. E. (2019). Schutters, gildebroeders, regenten en regentessen: Het
 ### Changes
 
 Files altered for transformation to RDF. No changes in content, only syntax. See git history for all changes made. 
+
+## Model
+
+Only the CreativeWork and Person resources carry a `prov:wasDerivedFrom` property that refers to the row number of the original csv file. 
