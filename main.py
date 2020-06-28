@@ -222,7 +222,8 @@ def main(loadData=None):
 
 def getPersonName(d):
 
-    surnamePrefixes = ['de', 'van', 'la', 'der', 'du']
+    # surnamePrefixes = ['de', 'van', 'la', 'der', 'du']
+    surnamePrefixes = ['van', 'de', 'den', 'des', 'der', 'ten', "l'", "d'"]
     pns = []
     labels = []
 
