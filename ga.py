@@ -221,6 +221,16 @@ class PrenuptialAgreement(GroupEvent):
 ### Generic dataset
 
 
+class SchemaPerson(rdfSubject):
+    rdf_type = schema.Person
+    name = rdfMultiple(schema.name)
+
+
+class SchemaOrganization(rdfSubject):
+    rdf_type = schema.Organization
+    name = rdfMultiple(schema.name)
+
+
 class CreativeWork(Entity):
     rdf_type = schema.CreativeWork
 
@@ -244,7 +254,7 @@ class DatasetClass(rdfSubject):
     See also: https://developers.google.com/search/docs/data-types/dataset
     """
 
-    rdf_type = void.Dataset, schema.Dataset
+    rdf_type = schema.Dataset
     label = rdfMultiple(RDFS.label)
 
     ##########
@@ -256,7 +266,10 @@ class DatasetClass(rdfSubject):
     alternateName = rdfMultiple(schema.alternateName)
     creator = rdfMultiple(schema.creator,
                           range_type=(schema.Person, schema.Organization))
-    publisher = rdfMultiple(schema.publisher)
+    contributor = rdfMultiple(schema.contributor,
+                              range_type=(schema.Person, schema.Organization))
+    publisher = rdfMultiple(schema.publisher,
+                            range_type=(schema.Person, schema.Organization))
     citation = rdfMultiple(schema.citation,
                            range_type=(Literal, schema.CreativeWork))
     hasPart = rdfMultiple(schema.hasPart, range_type=(URIRef, schema.Dataset))
@@ -280,9 +293,17 @@ class DatasetClass(rdfSubject):
 
     distribution = rdfSingle(schema.distribution,
                              range_type=schema.DataDownload)
+    dateCreated = rdfSingle(schema.dateCreated)
     dateModified = rdfSingle(schema.dateModified)
+    datePublished = rdfSingle(schema.datePublished)
 
     image = rdfSingle(schema.image, range_type=URIRef)
+
+    includedInDataCatalog = rdfSingle(schema.includedInDataCatalog)
+    mainEntityOfPage = rdfSingle(schema.mainEntityOfPage)
+    usageInfo = rdfSingle(schema.usageInfo)
+
+    workExample = rdfSingle(schema.workExample)
 
     ########
     # void #

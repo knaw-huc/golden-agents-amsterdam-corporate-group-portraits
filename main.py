@@ -24,7 +24,7 @@ nsArtwork = Namespace(
 
 afkortingen = {
     "Amh": "Aalmoezeniershuis",
-    "Awh": "Aalmoezeniershuis",
+    "Awh": "Aalmoezeniershuis",  #Check?
     "Amwh": "Aalmoezeniersweeshuis",
     "Bwh": "Burgerweeshuis",
     "CM": "Collegium Medicum",
@@ -103,7 +103,7 @@ bestuursfuncties = {
     "C.Z.": "Commissaris Zeezaken",
     "Wm.": "Weesmeester",
     "C.D.B.": "Commissaris Desolate Boedelskamer",
-    "C.B.L.": "Commisaris Bank van Lening",
+    "C.B.L.": "Commissaris Bank van Lening",
     "Th.E.": "Thesaurier Extraordinaris",
     "Th.": "Thesaurier Ordinaris",
     "Am.": "Assurantiemeester",
@@ -159,31 +159,37 @@ def main(loadData=None):
     # RDF #
     #######
 
-    # default graph
-
-    # dataset specific
+    # Poorters
     df1 = pd.read_csv(
         'data/Middelkoop diss. dl. 2 - bijlage 4a - mannelijke poorters.csv')
     df1 = df1.where((pd.notnull(df1)), None)
 
-    toRDF(df1.to_dict(orient='records'),
-          uri=ns.term('poorters/'),
-          name=Literal("Mannelijke poorters", lang='nl'),
-          description="",
-          filename=
-          "Middelkoop diss. dl. 2 - bijlage 4a - mannelijke poorters.csv",
-          target='trig/poorters.trig')
+    toRDF(
+        df1.to_dict(orient='records'),
+        uri=ns.term('poorters/'),
+        name=Literal("Mannelijke poorters", lang='nl'),
+        description=Literal(
+            "Lijst van mannelijke poorters in functies als instellingsregent, kerkmeester, officier der schutterij en/of ten stadhuize, ca. 1500 – ca. 1795",
+            lang='nl'),
+        filename=
+        "Middelkoop diss. dl. 2 - bijlage 4a - mannelijke poorters.csv",
+        target='trig/poorters.trig')
 
+    # Regentessen
     df2 = pd.read_csv(
         'data/Middelkoop diss. dl. 2 - bijlage 4b - regentessen.csv')
     df2 = df2.where((pd.notnull(df2)), None)
-    toRDF(df2.to_dict(orient='records'),
-          uri=ns.term('regentessen/'),
-          name=Literal("Regentessen", lang='nl'),
-          description="",
-          filename="Middelkoop diss. dl. 2 - bijlage 4b - regentessen.csv",
-          target='trig/regentessen.trig')
+    toRDF(
+        df2.to_dict(orient='records'),
+        uri=ns.term('regentessen/'),
+        name=Literal("Regentessen", lang='nl'),
+        description=Literal(
+            "Lijst van regentessen van zorg- en tuchtinstellingen, ca. 1578 – ca. 1795",
+            lang='nl'),
+        filename="Middelkoop diss. dl. 2 - bijlage 4b - regentessen.csv",
+        target='trig/regentessen.trig')
 
+    # Regenten
     df3 = pd.read_csv(
         'data/Middelkoop diss. dl. 2 - bijlage 4c - regenten Walenweeshuis.csv'
     )
@@ -191,11 +197,14 @@ def main(loadData=None):
     toRDF(df3.to_dict(orient='records'),
           uri=ns.term('regenten/'),
           name=Literal("Regenten Walenweeshuis", lang='nl'),
-          description="",
+          description=Literal(
+              "Lijst van regenten van het Walenweeshuis, 1631 – 1800",
+              lang='nl'),
           filename=
           "Middelkoop diss. dl. 2 - bijlage 4c - regenten Walenweeshuis.csv",
           target='trig/regenten.trig')
 
+    # Gildeleden
     df4 = pd.read_csv(
         'data/Middelkoop diss. dl. 2 - bijlage 4d - geportretteerde gildenleden.csv'
     )
@@ -204,17 +213,20 @@ def main(loadData=None):
         df4.to_dict(orient='records'),
         uri=ns.term('gildenleden/'),
         name=Literal("Geportretteerde gildenleden", lang='nl'),
-        description="",
+        description=Literal(
+            "Lijst van geportretteerde leden van ambachtsgilden, inspecteurs van het Collegium Medicum en Oppercommissarissen der Walen, 1599 – 1795",
+            lang='nl'),
         filename=
         "Middelkoop diss. dl. 2 - bijlage 4d - geportretteerde gildenleden.csv",
         target='trig/gildenleden.trig')
 
-    # artwork dataset
+    # Artwork dataset
     df5 = pd.read_csv('data/corporatiestukken.csv')
     df5 = df5.where((pd.notnull(df5)), None)
     toRDF(df5.to_dict(orient='records'),
           uri=ns.term('corporatiestukken/'),
-          name=Literal("Lijst van corporatiestukken", lang='nl'),
+          name=Literal("Overzicht van Amsterdamse corporatiestukken",
+                       lang='nl'),
           description="Overgenomen uit appendix 3 (Middelkoop 2019).",
           filename="corporatiestukken.csv",
           target='trig/corporatiestukken.trig')
@@ -378,6 +390,16 @@ def parsePersonName(nameString, identifier=None):
 
 
 def parseDate(dateString):
+    """
+    Parse a date notation from the CSV data to XSD literals. 
+    
+    Args:
+        dateString (str): Date string from CSV data
+    
+    Returns:
+        tuple: (earliestDate, latestDate, timeStamp)
+    
+    """
 
     if dateString is None:
         return None, None, None
@@ -415,6 +437,17 @@ def parseDate(dateString):
 
 
 def yearToDate(yearString):
+    """
+    Convert a year string to a XSD date literal.
+    
+    Args:
+        yearString (str): Year string from CSV data
+
+    Returns:
+        Literal: XSD date literal
+    
+    """
+
     if yearString is None or yearString == "?":
         return None, None
 
@@ -426,6 +459,10 @@ def yearToDate(yearString):
 def parseOccupationInfo(occupationInfo, roleTypePerson, person,
                         roleTypeOrganization, organizationSubEventDict,
                         nsEvent, pid, eventCounter, nsRole, roleCounter):
+    """
+    Parse occupation information.
+
+    """
 
     organizationString, years = occupationInfo.split(' ', 1)
 
@@ -1519,8 +1556,6 @@ def toRDF(data, uri, name, description, filename, target=None):
 
     description = """"""
 
-    contributors = ""
-
     download = DataDownload(
         None,
         # contentUrl=URIRef(
@@ -1534,7 +1569,7 @@ def toRDF(data, uri, name, description, filename, target=None):
         version="0.1")
 
     date = Literal(datetime.datetime.now().strftime('%Y-%m-%d'),
-                   datatype=XSD.datetime)
+                   datatype=XSD.date)
 
     dataset = DatasetClass(uri,
                            name=[name],
@@ -1546,11 +1581,6 @@ def toRDF(data, uri, name, description, filename, target=None):
 
     mainDataset = DatasetClass(
         ns.term(''),
-        dctitle=[
-            Literal(
-                "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850",
-                lang='nl')
-        ],
         name=[
             Literal(
                 "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850",
@@ -1561,27 +1591,20 @@ def toRDF(data, uri, name, description, filename, target=None):
         # about=URIRef(''),
         # url=URIRef(''),
         description=[Literal(description, lang='nl')],
-        dcdescription=[Literal(description, lang='nl')],
         creator=[
-            Person(URIRef(
-                "https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop"
-            ),
-                   label=["Norbert Middelkoop"],
-                   sameAs=[URIRef("http://viaf.org/viaf/12415105")])
+            SchemaPerson(URIRef("http://viaf.org/viaf/12415105"),
+                         name=["Norbert Middelkoop"])
         ],
-        dccreator=[
-            Person(URIRef(
-                "https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop"
-            ),
-                   label=["Norbert Middelkoop"],
-                   sameAs=[URIRef("http://viaf.org/viaf/12415105")])
+        publisher=[
+            SchemaOrganization(URIRef("https://www.goldenagents.org/"),
+                               name=["Golden Agents Project"])
         ],
-        publisher=[URIRef("https://leonvanwissen.nl/me")],
-        dcpublisher=[URIRef("https://leonvanwissen.nl/me")],
-        # contributor=contributor,
-        dcsource=URIRef(
-            'https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e'
-        ),
+        contributor=[
+            SchemaPerson(URIRef("https://orcid.org/0000-0001-8672-025X"),
+                         name=["Leon van Wissen"]),
+            SchemaPerson(URIRef("https://orcid.org/0000-0003-2702-4371"),
+                         name=["Jirsi Reinders"])
+        ],
         citation=[
             URIRef(
                 'https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e'
@@ -1592,18 +1615,18 @@ def toRDF(data, uri, name, description, filename, target=None):
                 "https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e"
             )
         ],
-        dcdate=date,
+        datePublished=None,
+        dateCreated=None,
         dateModified=date,
         distribution=download,
-        dccreated=None,
-        dcissued=None,
-        dcmodified=None,
-        exampleResource=p,
-        vocabulary=[ga, URIRef("http://semanticweb.cs.vu.nl/2009/11/sem/")],
+        workExample=p,
+        vocabulary=[
+            ga.term(''),
+            URIRef("http://semanticweb.cs.vu.nl/2009/11/sem/")
+        ],
         triples=sum(1 for i in ds.graph(identifier=ns).subjects()),
-        licenseprop=URIRef("https://creativecommons.org/licenses/by-sa/4.0/"),
-        hasPart=[dataset],
-        subset=[dataset])
+        licenseprop=URIRef("https://creativecommons.org/licenses/by/4.0/"),
+        hasPart=[dataset])
 
     ds.bind('owl', OWL)
     ds.bind('dcterms', dcterms)
