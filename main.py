@@ -824,8 +824,8 @@ def toRDF(data, uri, name, description, filename, target=None):
 
             sameAs = [
                 URIRef(i) for i in [
-                    d['rijksmuseum_uri'], d['amsterdammuseum_uri'],
-                    d['stadsarchief_uri']
+                    d['wikidata_uri'], d['rkd_uri'], d['rijksmuseum_uri'],
+                    d['amsterdammuseum_uri'], d['stadsarchief_uri']
                 ] if i is not None
             ]
             artwork.sameAs = sameAs

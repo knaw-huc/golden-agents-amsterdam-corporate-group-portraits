@@ -2,7 +2,6 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ga: <https://data.goldenagents.org/ontology/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix pnv: <https://w3id.org/pnv#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -13,45 +12,46 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 {
-    <https://data.goldenagents.org/datasets/corporatiestukken/> a void:Dataset,
-            schema:Dataset ;
-        dcterms:creator <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> ;
-        dcterms:date "2020-06-25"^^xsd:datetime ;
-        dcterms:description ""@nl ;
-        dcterms:publisher <https://leonvanwissen.nl/me> ;
-        dcterms:source <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
-        dcterms:title "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850"@nl ;
-        void:exampleResource <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/390> ;
-        void:subset <https://data.goldenagents.org/datasets/corporatiestukken/regentessen/> ;
-        void:triples 13 ;
+    <http://viaf.org/viaf/12415105> a schema:Person ;
+        schema:name "Norbert Middelkoop" .
+
+    <https://data.goldenagents.org/datasets/corporatiestukken/regentessen/> a schema:Dataset ;
+        void:inDataset <https://data.goldenagents.org/datasets/corporatiestukken/> ;
+        void:triples 51944 ;
+        schema:description "" ;
+        schema:isPartOf <https://data.goldenagents.org/datasets/corporatiestukken/> ;
+        schema:name "Regentessen"@nl .
+
+    <https://orcid.org/0000-0001-8672-025X> a schema:Person ;
+        schema:name "Leon van Wissen" .
+
+    <https://orcid.org/0000-0003-2702-4371> a schema:Person ;
+        schema:name "Jirsi Reinders" .
+
+    <https://www.goldenagents.org/> a schema:Organization ;
+        schema:name "Golden Agents Project" .
+
+    <https://data.goldenagents.org/datasets/corporatiestukken/> a schema:Dataset ;
+        void:triples 17 ;
         void:vocabulary sem:,
-            "https://data.goldenagents.org/ontology/" ;
+            ga: ;
         schema:citation <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
-        schema:creator <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> ;
-        schema:dateModified "2020-06-25"^^xsd:datetime ;
+        schema:contributor <https://orcid.org/0000-0001-8672-025X>,
+            <https://orcid.org/0000-0003-2702-4371> ;
+        schema:creator <http://viaf.org/viaf/12415105> ;
+        schema:dateModified "2021-10-30"^^xsd:date ;
         schema:description ""@nl ;
         schema:distribution [ a schema:DataDownload ;
                 schema:encodingFormat "application/trig" ;
                 schema:version "0.1" ] ;
         schema:hasPart <https://data.goldenagents.org/datasets/corporatiestukken/regentessen/> ;
         schema:isBasedOn <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
-        schema:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+        schema:license <https://creativecommons.org/licenses/by/4.0/> ;
         schema:name "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850"@nl ;
-        schema:publisher <https://leonvanwissen.nl/me> ;
+        schema:publisher <https://www.goldenagents.org/> ;
         schema:spatialCoverage "Amsterdam" ;
-        schema:temporalCoverage "1525-01-01/1850-12-31" .
-
-    <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> a ga:Person ;
-        rdfs:label "Norbert Middelkoop" ;
-        owl:sameAs <http://viaf.org/viaf/12415105> .
-
-    <https://data.goldenagents.org/datasets/corporatiestukken/regentessen/> a void:Dataset,
-            schema:Dataset ;
-        void:inDataset <https://data.goldenagents.org/datasets/corporatiestukken/> ;
-        void:triples 51949 ;
-        schema:description "" ;
-        schema:isPartOf <https://data.goldenagents.org/datasets/corporatiestukken/> ;
-        schema:name "Regentessen"@nl .
+        schema:temporalCoverage "1525-01-01/1850-12-31" ;
+        schema:workExample <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/390> .
 }
 
 <https://data.goldenagents.org/datasets/corporatiestukken/regentessen/> {
@@ -3648,20 +3648,20 @@
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/165-event-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/166-born> a ga:Born ;
-        rdfs:label "Ludewina Pietersdr Reael [lijst: Riaals] in the role of born"@en,
-            "Ludewina Pietersdr Reael [lijst: Riaals] in de rol van geborene"@nl ;
+        rdfs:label "Ludewina Pietersdr Reael in the role of born"@en,
+            "Ludewina Pietersdr Reael in de rol van geborene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/166> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/166-birth> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/166-bride-2> a ga:Bride ;
-        rdfs:label "Ludewina Pietersdr Reael [lijst: Riaals] in the role of bride"@en,
-            "Ludewina Pietersdr Reael [lijst: Riaals] in de rol van bruid"@nl ;
+        rdfs:label "Ludewina Pietersdr Reael in the role of bride"@en,
+            "Ludewina Pietersdr Reael in de rol van bruid"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/166> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/166-marriage-2> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/166-deceased> a ga:Deceased ;
-        rdfs:label "Ludewina Pietersdr Reael [lijst: Riaals] in the role of deceased"@en,
-            "Ludewina Pietersdr Reael [lijst: Riaals] in de rol van overledene"@nl ;
+        rdfs:label "Ludewina Pietersdr Reael in the role of deceased"@en,
+            "Ludewina Pietersdr Reael in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/166> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/166-death> .
 
@@ -3690,8 +3690,8 @@
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/166-event-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/166-role-1> a <https://data.goldenagents.org/datasets/corporatiestukken/roletype/Regentes> ;
-        rdfs:label "Ludewina Pietersdr Reael [lijst: Riaals] in the role of  Regentes"@en,
-            "Ludewina Pietersdr Reael [lijst: Riaals] in de rol van Regentes"@nl ;
+        rdfs:label "Ludewina Pietersdr Reael in the role of  Regentes"@en,
+            "Ludewina Pietersdr Reael in de rol van Regentes"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/166> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/166-event-1> .
 
@@ -7026,20 +7026,20 @@
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/226-death> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/226-husband-1-born> a ga:Born ;
-        rdfs:label "Pieter van der Poel, in the role of born"@en,
-            "Pieter van der Poel, in de rol van geborene"@nl ;
+        rdfs:label "Pieter van der Poel in the role of born"@en,
+            "Pieter van der Poel in de rol van geborene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/226-husband-1> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/226-husband-1-birth> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/226-husband-1-deceased> a ga:Deceased ;
-        rdfs:label "Pieter van der Poel, in de rol van overledene"@nl,
-            "Pieter van der Poel, in the role of deceased"@nl ;
+        rdfs:label "Pieter van der Poel in de rol van overledene"@nl,
+            "Pieter van der Poel in the role of deceased"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/226-husband-1> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/226-husband-1-death> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/226-husband-1-groom-3> a ga:Groom ;
-        rdfs:label "Pieter van der Poel, in the role of groom"@en,
-            "Pieter van der Poel, in de rol van bruidegom"@nl ;
+        rdfs:label "Pieter van der Poel in the role of groom"@en,
+            "Pieter van der Poel in de rol van bruidegom"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/226-husband-1> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/226-marriage-2> .
 
@@ -7056,26 +7056,26 @@
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/226-event-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/227-born> a ga:Born ;
-        rdfs:label "Maria den van Bosch in the role of born"@en,
-            "Maria den van Bosch in de rol van geborene"@nl ;
+        rdfs:label "Maria van den Bosch in the role of born"@en,
+            "Maria van den Bosch in de rol van geborene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/227> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/227-birth> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/227-bride-2> a ga:Bride ;
-        rdfs:label "Maria den van Bosch in the role of bride"@en,
-            "Maria den van Bosch in de rol van bruid"@nl ;
+        rdfs:label "Maria van den Bosch in the role of bride"@en,
+            "Maria van den Bosch in de rol van bruid"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/227> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/227-marriage-2> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/227-bride-4> a ga:Bride ;
-        rdfs:label "Maria den van Bosch in the role of bride"@en,
-            "Maria den van Bosch in de rol van bruid"@nl ;
+        rdfs:label "Maria van den Bosch in the role of bride"@en,
+            "Maria van den Bosch in de rol van bruid"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/227> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/227-marriage-3> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/227-deceased> a ga:Deceased ;
-        rdfs:label "Maria den van Bosch in the role of deceased"@en,
-            "Maria den van Bosch in de rol van overledene"@nl ;
+        rdfs:label "Maria van den Bosch in the role of deceased"@en,
+            "Maria van den Bosch in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/227> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/227-death> .
 
@@ -7122,8 +7122,8 @@
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/227-event-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/227-role-1> a <https://data.goldenagents.org/datasets/corporatiestukken/roletype/Regentes> ;
-        rdfs:label "Maria den van Bosch in the role of  Regentes"@en,
-            "Maria den van Bosch in de rol van Regentes"@nl ;
+        rdfs:label "Maria van den Bosch in the role of  Regentes"@en,
+            "Maria van den Bosch in de rol van Regentes"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/227> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/227-event-1> .
 
@@ -9504,20 +9504,20 @@
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/275-event-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/276-born> a ga:Born ;
-        rdfs:label "Anna Elisabeth den van Bempden in the role of born"@en,
-            "Anna Elisabeth den van Bempden in de rol van geborene"@nl ;
+        rdfs:label "Anna Elisabeth van den Bempden in the role of born"@en,
+            "Anna Elisabeth van den Bempden in de rol van geborene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/276> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/276-birth> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/276-bride-2> a ga:Bride ;
-        rdfs:label "Anna Elisabeth den van Bempden in the role of bride"@en,
-            "Anna Elisabeth den van Bempden in de rol van bruid"@nl ;
+        rdfs:label "Anna Elisabeth van den Bempden in the role of bride"@en,
+            "Anna Elisabeth van den Bempden in de rol van bruid"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/276> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/276-marriage-2> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/276-deceased> a ga:Deceased ;
-        rdfs:label "Anna Elisabeth den van Bempden in the role of deceased"@en,
-            "Anna Elisabeth den van Bempden in de rol van overledene"@nl ;
+        rdfs:label "Anna Elisabeth van den Bempden in the role of deceased"@en,
+            "Anna Elisabeth van den Bempden in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/276> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/276-death> .
 
@@ -9546,8 +9546,8 @@
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/276-event-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/276-role-1> a <https://data.goldenagents.org/datasets/corporatiestukken/roletype/Regentes> ;
-        rdfs:label "Anna Elisabeth den van Bempden in the role of  Regentes"@en,
-            "Anna Elisabeth den van Bempden in de rol van Regentes"@nl ;
+        rdfs:label "Anna Elisabeth van den Bempden in the role of  Regentes"@en,
+            "Anna Elisabeth van den Bempden in de rol van Regentes"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/276> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/276-event-1> .
 
@@ -12360,20 +12360,20 @@
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/335-event-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/336-born> a ga:Born ;
-        rdfs:label "Catharina Susanna den van Bempden in the role of born"@en,
-            "Catharina Susanna den van Bempden in de rol van geborene"@nl ;
+        rdfs:label "Catharina Susanna van den Bempden in the role of born"@en,
+            "Catharina Susanna van den Bempden in de rol van geborene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/336> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/336-birth> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/336-bride-2> a ga:Bride ;
-        rdfs:label "Catharina Susanna den van Bempden in the role of bride"@en,
-            "Catharina Susanna den van Bempden in de rol van bruid"@nl ;
+        rdfs:label "Catharina Susanna van den Bempden in the role of bride"@en,
+            "Catharina Susanna van den Bempden in de rol van bruid"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/336> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/336-marriage-2> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/336-deceased> a ga:Deceased ;
-        rdfs:label "Catharina Susanna den van Bempden in the role of deceased"@en,
-            "Catharina Susanna den van Bempden in de rol van overledene"@nl ;
+        rdfs:label "Catharina Susanna van den Bempden in the role of deceased"@en,
+            "Catharina Susanna van den Bempden in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/336> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/336-death> .
 
@@ -12402,8 +12402,8 @@
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/336-event-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/336-role-1> a <https://data.goldenagents.org/datasets/corporatiestukken/roletype/Regentes> ;
-        rdfs:label "Catharina Susanna den van Bempden in the role of  Regentes"@en,
-            "Catharina Susanna den van Bempden in de rol van Regentes"@nl ;
+        rdfs:label "Catharina Susanna van den Bempden in the role of  Regentes"@en,
+            "Catharina Susanna van den Bempden in de rol van Regentes"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/336> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/336-event-1> .
 
@@ -14208,20 +14208,20 @@
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/372-event-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/373-born> a ga:Born ;
-        rdfs:label "Ester Aagje den van Bempden in the role of born"@en,
-            "Ester Aagje den van Bempden in de rol van geborene"@nl ;
+        rdfs:label "Ester Aagje van den Bempden in the role of born"@en,
+            "Ester Aagje van den Bempden in de rol van geborene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/373> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/373-birth> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/373-bride-2> a ga:Bride ;
-        rdfs:label "Ester Aagje den van Bempden in the role of bride"@en,
-            "Ester Aagje den van Bempden in de rol van bruid"@nl ;
+        rdfs:label "Ester Aagje van den Bempden in the role of bride"@en,
+            "Ester Aagje van den Bempden in de rol van bruid"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/373> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/373-marriage-2> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/373-deceased> a ga:Deceased ;
-        rdfs:label "Ester Aagje den van Bempden in the role of deceased"@en,
-            "Ester Aagje den van Bempden in de rol van overledene"@nl ;
+        rdfs:label "Ester Aagje van den Bempden in the role of deceased"@en,
+            "Ester Aagje van den Bempden in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/373> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/373-death> .
 
@@ -14250,8 +14250,8 @@
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/373-event-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/373-role-1> a <https://data.goldenagents.org/datasets/corporatiestukken/roletype/Regentes> ;
-        rdfs:label "Ester Aagje den van Bempden in the role of  Regentes"@en,
-            "Ester Aagje den van Bempden in de rol van Regentes"@nl ;
+        rdfs:label "Ester Aagje van den Bempden in the role of  Regentes"@en,
+            "Ester Aagje van den Bempden in de rol van Regentes"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/373> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/373-event-1> .
 
@@ -14988,26 +14988,26 @@
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/385-event-3> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/386-born> a ga:Born ;
-        rdfs:label "Cathérine de la Fontaine in the role of born"@en,
-            "Cathérine de la Fontaine in de rol van geborene"@nl ;
+        rdfs:label "Cathérine la de Fontaine in the role of born"@en,
+            "Cathérine la de Fontaine in de rol van geborene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/386> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/386-birth> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/386-bride-2> a ga:Bride ;
-        rdfs:label "Cathérine de la Fontaine in the role of bride"@en,
-            "Cathérine de la Fontaine in de rol van bruid"@nl ;
+        rdfs:label "Cathérine la de Fontaine in the role of bride"@en,
+            "Cathérine la de Fontaine in de rol van bruid"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/386> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/386-marriage-2> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/386-bride-4> a ga:Bride ;
-        rdfs:label "Cathérine de la Fontaine in the role of bride"@en,
-            "Cathérine de la Fontaine in de rol van bruid"@nl ;
+        rdfs:label "Cathérine la de Fontaine in the role of bride"@en,
+            "Cathérine la de Fontaine in de rol van bruid"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/386> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/386-marriage-3> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/386-deceased> a ga:Deceased ;
-        rdfs:label "Cathérine de la Fontaine in the role of deceased"@en,
-            "Cathérine de la Fontaine in de rol van overledene"@nl ;
+        rdfs:label "Cathérine la de Fontaine in the role of deceased"@en,
+            "Cathérine la de Fontaine in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/386> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/386-death> .
 
@@ -15054,8 +15054,8 @@
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/386-event-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/386-role-1> a <https://data.goldenagents.org/datasets/corporatiestukken/roletype/Regentes> ;
-        rdfs:label "Cathérine de la Fontaine in the role of  Regentes"@en,
-            "Cathérine de la Fontaine in de rol van Regentes"@nl ;
+        rdfs:label "Cathérine la de Fontaine in the role of  Regentes"@en,
+            "Cathérine la de Fontaine in de rol van Regentes"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/386> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/386-event-1> .
 
@@ -16176,20 +16176,20 @@
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/55-event-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/56-born> a ga:Born ;
-        rdfs:label "Corn. den van Berg in the role of born"@en,
-            "Corn. den van Berg in de rol van geborene"@nl ;
+        rdfs:label "Corn. van den Berg in the role of born"@en,
+            "Corn. van den Berg in de rol van geborene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/56> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/56-birth> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/56-bride-2> a ga:Bride ;
-        rdfs:label "Corn. den van Berg in the role of bride"@en,
-            "Corn. den van Berg in de rol van bruid"@nl ;
+        rdfs:label "Corn. van den Berg in the role of bride"@en,
+            "Corn. van den Berg in de rol van bruid"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/56> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/56-marriage-2> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/56-deceased> a ga:Deceased ;
-        rdfs:label "Corn. den van Berg in the role of deceased"@en,
-            "Corn. den van Berg in de rol van overledene"@nl ;
+        rdfs:label "Corn. van den Berg in the role of deceased"@en,
+            "Corn. van den Berg in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/56> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/56-death> .
 
@@ -16218,8 +16218,8 @@
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/56-event-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/regentessen/56-role-1> a <https://data.goldenagents.org/datasets/corporatiestukken/roletype/Regentes> ;
-        rdfs:label "Corn. den van Berg in the role of  Regentes"@en,
-            "Corn. den van Berg in de rol van Regentes"@nl ;
+        rdfs:label "Corn. van den Berg in the role of  Regentes"@en,
+            "Corn. van den Berg in de rol van Regentes"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/56> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/56-event-1> .
 
@@ -23482,8 +23482,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/166-birth> a bio:Birth,
             ga:Event ;
-        rdfs:label "Birth of Ludewina Pietersdr Reael [lijst: Riaals] (1626)"@en,
-            "Geboorte van Ludewina Pietersdr Reael [lijst: Riaals] (1626)"@nl ;
+        rdfs:label "Birth of Ludewina Pietersdr Reael (1626)"@en,
+            "Geboorte van Ludewina Pietersdr Reael (1626)"@nl ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/166> ;
         sem:hasEarliestBeginTimeStamp "1626-01-01"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1626-01-01"^^xsd:date ;
@@ -23493,8 +23493,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/166-death> a bio:Death,
             ga:Event ;
-        rdfs:label "Death of Ludewina Pietersdr Reael [lijst: Riaals] (1676)"@en,
-            "Overlijden van Ludewina Pietersdr Reael [lijst: Riaals] (1676)"@nl ;
+        rdfs:label "Death of Ludewina Pietersdr Reael (1676)"@en,
+            "Overlijden van Ludewina Pietersdr Reael (1676)"@nl ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/166> ;
         sem:hasEarliestBeginTimeStamp "1676-10-03"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1676-10-03"^^xsd:date ;
@@ -26455,8 +26455,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/226-husband-1-birth> a bio:Birth,
             ga:Event ;
-        rdfs:label "Birth of Pieter van der Poel, (1691)"@en,
-            "Geboorte van Pieter van der Poel, (1691)"@nl ;
+        rdfs:label "Birth of Pieter van der Poel (1691)"@en,
+            "Geboorte van Pieter van der Poel (1691)"@nl ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/226-husband-1> ;
         sem:hasEarliestBeginTimeStamp "1691-01-01"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1691-01-01"^^xsd:date ;
@@ -26466,8 +26466,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/226-husband-1-death> a bio:Death,
             ga:Event ;
-        rdfs:label "Death of Pieter van der Poel, (1695)"@en,
-            "Overlijden van Pieter van der Poel, (1695)"@nl ;
+        rdfs:label "Death of Pieter van der Poel (1695)"@en,
+            "Overlijden van Pieter van der Poel (1695)"@nl ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/226-husband-1> ;
         sem:hasEarliestBeginTimeStamp "1695-01-01"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1695-01-01"^^xsd:date ;
@@ -26477,15 +26477,15 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/227-birth> a bio:Birth,
             ga:Event ;
-        rdfs:label "Birth of Maria den van Bosch (?)"@en,
-            "Geboorte van Maria den van Bosch (?)"@nl ;
+        rdfs:label "Birth of Maria van den Bosch (?)"@en,
+            "Geboorte van Maria van den Bosch (?)"@nl ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/227> ;
         ga:participationOf <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/227> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/227-death> a bio:Death,
             ga:Event ;
-        rdfs:label "Death of Maria den van Bosch (1736)"@en,
-            "Overlijden van Maria den van Bosch (1736)"@nl ;
+        rdfs:label "Death of Maria van den Bosch (1736)"@en,
+            "Overlijden van Maria van den Bosch (1736)"@nl ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/227> ;
         sem:hasEarliestBeginTimeStamp "1736-01-01"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1736-01-01"^^xsd:date ;
@@ -28463,8 +28463,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/276-birth> a bio:Birth,
             ga:Event ;
-        rdfs:label "Birth of Anna Elisabeth den van Bempden (1695)"@en,
-            "Geboorte van Anna Elisabeth den van Bempden (1695)"@nl ;
+        rdfs:label "Birth of Anna Elisabeth van den Bempden (1695)"@en,
+            "Geboorte van Anna Elisabeth van den Bempden (1695)"@nl ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/276> ;
         sem:hasEarliestBeginTimeStamp "1695-09-07"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1695-09-07"^^xsd:date ;
@@ -28475,8 +28475,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/276-death> a bio:Death,
             ga:Event ;
-        rdfs:label "Death of Anna Elisabeth den van Bempden (1773)"@en,
-            "Overlijden van Anna Elisabeth den van Bempden (1773)"@nl ;
+        rdfs:label "Death of Anna Elisabeth van den Bempden (1773)"@en,
+            "Overlijden van Anna Elisabeth van den Bempden (1773)"@nl ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/276> ;
         sem:hasEarliestBeginTimeStamp "1773-05-01"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1773-05-01"^^xsd:date ;
@@ -30719,8 +30719,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/336-birth> a bio:Birth,
             ga:Event ;
-        rdfs:label "Birth of Catharina Susanna den van Bempden (1703)"@en,
-            "Geboorte van Catharina Susanna den van Bempden (1703)"@nl ;
+        rdfs:label "Birth of Catharina Susanna van den Bempden (1703)"@en,
+            "Geboorte van Catharina Susanna van den Bempden (1703)"@nl ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/336> ;
         sem:hasEarliestBeginTimeStamp "1703-08-25"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1703-08-25"^^xsd:date ;
@@ -30731,8 +30731,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/336-death> a bio:Death,
             ga:Event ;
-        rdfs:label "Death of Catharina Susanna den van Bempden (1768)"@en,
-            "Overlijden van Catharina Susanna den van Bempden (1768)"@nl ;
+        rdfs:label "Death of Catharina Susanna van den Bempden (1768)"@en,
+            "Overlijden van Catharina Susanna van den Bempden (1768)"@nl ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/336> ;
         sem:hasEarliestBeginTimeStamp "1768-10-04"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1768-10-04"^^xsd:date ;
@@ -32247,8 +32247,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/373-birth> a bio:Birth,
             ga:Event ;
-        rdfs:label "Birth of Ester Aagje den van Bempden (1705)"@en,
-            "Geboorte van Ester Aagje den van Bempden (1705)"@nl ;
+        rdfs:label "Birth of Ester Aagje van den Bempden (1705)"@en,
+            "Geboorte van Ester Aagje van den Bempden (1705)"@nl ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/373> ;
         sem:hasEarliestBeginTimeStamp "1705-06-11"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1705-06-11"^^xsd:date ;
@@ -32259,8 +32259,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/373-death> a bio:Death,
             ga:Event ;
-        rdfs:label "Death of Ester Aagje den van Bempden (1768)"@en,
-            "Overlijden van Ester Aagje den van Bempden (1768)"@nl ;
+        rdfs:label "Death of Ester Aagje van den Bempden (1768)"@en,
+            "Overlijden van Ester Aagje van den Bempden (1768)"@nl ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/373> ;
         sem:hasEarliestBeginTimeStamp "1768-03-10"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1768-03-10"^^xsd:date ;
@@ -32831,8 +32831,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/386-birth> a bio:Birth,
             ga:Event ;
-        rdfs:label "Birth of Cathérine de la Fontaine (1628)"@en,
-            "Geboorte van Cathérine de la Fontaine (1628)"@nl ;
+        rdfs:label "Birth of Cathérine la de Fontaine (1628)"@en,
+            "Geboorte van Cathérine la de Fontaine (1628)"@nl ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/386> ;
         sem:hasEarliestBeginTimeStamp "1628-01-01"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1628-01-01"^^xsd:date ;
@@ -32842,8 +32842,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/386-death> a bio:Death,
             ga:Event ;
-        rdfs:label "Death of Cathérine de la Fontaine (1708)"@en,
-            "Overlijden van Cathérine de la Fontaine (1708)"@nl ;
+        rdfs:label "Death of Cathérine la de Fontaine (1708)"@en,
+            "Overlijden van Cathérine la de Fontaine (1708)"@nl ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/386> ;
         sem:hasEarliestBeginTimeStamp "1708-01-01"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1708-01-01"^^xsd:date ;
@@ -33709,15 +33709,15 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/56-birth> a bio:Birth,
             ga:Event ;
-        rdfs:label "Birth of Corn. den van Berg (?)"@en,
-            "Geboorte van Corn. den van Berg (?)"@nl ;
+        rdfs:label "Birth of Corn. van den Berg (?)"@en,
+            "Geboorte van Corn. van den Berg (?)"@nl ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/56> ;
         ga:participationOf <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/56> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/56-death> a bio:Death,
             ga:Event ;
-        rdfs:label "Death of Corn. den van Berg (?)"@en,
-            "Overlijden van Corn. den van Berg (?)"@nl ;
+        rdfs:label "Death of Corn. van den Berg (?)"@en,
+            "Overlijden van Corn. van den Berg (?)"@nl ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/56> ;
         ga:participationOf <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/56> .
 
@@ -36200,8 +36200,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/166-marriage-2> a bio:Marriage,
             ga:Event ;
-        rdfs:label "Marriage between Ludewina Pietersdr Reael [lijst: Riaals] and Johannes Rombouts  (1656)"@en,
-            "Huwelijk tussen Ludewina Pietersdr Reael [lijst: Riaals] en Johannes Rombouts  (1656)"@nl ;
+        rdfs:label "Marriage between Ludewina Pietersdr Reael and Johannes Rombouts  (1656)"@en,
+            "Huwelijk tussen Ludewina Pietersdr Reael en Johannes Rombouts  (1656)"@nl ;
         bio:partner <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/166>,
             <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/166-husband-1> ;
         sem:hasEarliestBeginTimeStamp "1656-01-01"^^xsd:date ;
@@ -36991,8 +36991,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/226-marriage-2> a bio:Marriage,
             ga:Event ;
-        rdfs:label "Marriage between Margaretha de Canjoncle and Pieter van der Poel,  (?)"@en,
-            "Huwelijk tussen Margaretha de Canjoncle en Pieter van der Poel,  (?)"@nl ;
+        rdfs:label "Marriage between Margaretha de Canjoncle and Pieter van der Poel  (?)"@en,
+            "Huwelijk tussen Margaretha de Canjoncle en Pieter van der Poel  (?)"@nl ;
         bio:partner <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/226>,
             <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/226-husband-1> ;
         ga:participationOf <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/226>,
@@ -37000,8 +37000,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/227-marriage-2> a bio:Marriage,
             ga:Event ;
-        rdfs:label "Marriage between Maria den van Bosch and Jan Oorthoorn  (?)"@en,
-            "Huwelijk tussen Maria den van Bosch en Jan Oorthoorn  (?)"@nl ;
+        rdfs:label "Marriage between Maria van den Bosch and Jan Oorthoorn  (?)"@en,
+            "Huwelijk tussen Maria van den Bosch en Jan Oorthoorn  (?)"@nl ;
         bio:partner <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/227>,
             <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/227-husband-1> ;
         ga:participationOf <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/227>,
@@ -37009,8 +37009,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/227-marriage-3> a bio:Marriage,
             ga:Event ;
-        rdfs:label "Marriage between Maria den van Bosch and Dr. Caspar Commelin  (1705)"@en,
-            "Huwelijk tussen Maria den van Bosch en Dr. Caspar Commelin  (1705)"@nl ;
+        rdfs:label "Marriage between Maria van den Bosch and Dr. Caspar Commelin  (1705)"@en,
+            "Huwelijk tussen Maria van den Bosch en Dr. Caspar Commelin  (1705)"@nl ;
         bio:partner <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/227>,
             <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/227-husband-2> ;
         sem:hasEarliestBeginTimeStamp "1705-01-01"^^xsd:date ;
@@ -37500,8 +37500,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/276-marriage-2> a bio:Marriage,
             ga:Event ;
-        rdfs:label "Marriage between Anna Elisabeth den van Bempden and Jan Six II  (1728)"@en,
-            "Huwelijk tussen Anna Elisabeth den van Bempden en Jan Six II  (1728)"@nl ;
+        rdfs:label "Marriage between Anna Elisabeth van den Bempden and Jan Six II  (1728)"@en,
+            "Huwelijk tussen Anna Elisabeth van den Bempden en Jan Six II  (1728)"@nl ;
         bio:partner <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/276>,
             <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/276-husband-1> ;
         sem:hasEarliestBeginTimeStamp "1728-01-01"^^xsd:date ;
@@ -38036,8 +38036,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/336-marriage-2> a bio:Marriage,
             ga:Event ;
-        rdfs:label "Marriage between Catharina Susanna den van Bempden and Mr. Pieter van de Poll  (1725)"@en,
-            "Huwelijk tussen Catharina Susanna den van Bempden en Mr. Pieter van de Poll  (1725)"@nl ;
+        rdfs:label "Marriage between Catharina Susanna van den Bempden and Mr. Pieter van de Poll  (1725)"@en,
+            "Huwelijk tussen Catharina Susanna van den Bempden en Mr. Pieter van de Poll  (1725)"@nl ;
         bio:partner <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/336>,
             <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/336-husband-1> ;
         sem:hasEarliestBeginTimeStamp "1725-01-01"^^xsd:date ;
@@ -38426,8 +38426,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/373-marriage-2> a bio:Marriage,
             ga:Event ;
-        rdfs:label "Marriage between Ester Aagje den van Bempden and Gerard Deutz  (1739)"@en,
-            "Huwelijk tussen Ester Aagje den van Bempden en Gerard Deutz  (1739)"@nl ;
+        rdfs:label "Marriage between Ester Aagje van den Bempden and Gerard Deutz  (1739)"@en,
+            "Huwelijk tussen Ester Aagje van den Bempden en Gerard Deutz  (1739)"@nl ;
         bio:partner <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/373>,
             <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/373-husband-1> ;
         sem:hasEarliestBeginTimeStamp "1739-01-01"^^xsd:date ;
@@ -38585,8 +38585,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/386-marriage-2> a bio:Marriage,
             ga:Event ;
-        rdfs:label "Marriage between Cathérine de la Fontaine and Jean de Mouson  (1644)"@en,
-            "Huwelijk tussen Cathérine de la Fontaine en Jean de Mouson  (1644)"@nl ;
+        rdfs:label "Marriage between Cathérine la de Fontaine and Jean de Mouson  (1644)"@en,
+            "Huwelijk tussen Cathérine la de Fontaine en Jean de Mouson  (1644)"@nl ;
         bio:partner <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/386>,
             <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/386-husband-1> ;
         sem:hasEarliestBeginTimeStamp "1644-01-01"^^xsd:date ;
@@ -38596,8 +38596,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/386-marriage-3> a bio:Marriage,
             ga:Event ;
-        rdfs:label "Marriage between Cathérine de la Fontaine and Jean de la Fontaine  (1678)"@en,
-            "Huwelijk tussen Cathérine de la Fontaine en Jean de la Fontaine  (1678)"@nl ;
+        rdfs:label "Marriage between Cathérine la de Fontaine and Jean de la Fontaine  (1678)"@en,
+            "Huwelijk tussen Cathérine la de Fontaine en Jean de la Fontaine  (1678)"@nl ;
         bio:partner <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/386>,
             <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/386-husband-2> ;
         sem:hasEarliestBeginTimeStamp "1678-01-01"^^xsd:date ;
@@ -38820,8 +38820,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/56-marriage-2> a bio:Marriage,
             ga:Event ;
-        rdfs:label "Marriage between Corn. den van Berg and H. Koek  (?)"@en,
-            "Huwelijk tussen Corn. den van Berg en H. Koek  (?)"@nl ;
+        rdfs:label "Marriage between Corn. van den Berg and H. Koek  (?)"@en,
+            "Huwelijk tussen Corn. van den Berg en H. Koek  (?)"@nl ;
         bio:partner <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/56>,
             <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/56-husband-1> ;
         ga:participationOf <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/56>,
@@ -40051,8 +40051,8 @@
         ga:subEventOf <https://data.goldenagents.org/datasets/corporatiestukken/event/Gh-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/166-event-1> a ga:Event ;
-        rdfs:label "Ludewina Pietersdr Reael [lijst: Riaals] as Regentes at Gasthuizen (1668-1676)"@en,
-            "Ludewina Pietersdr Reael [lijst: Riaals] als Regentes bij Gasthuizen (1668-1676)"@nl ;
+        rdfs:label "Ludewina Pietersdr Reael as Regentes at Gasthuizen (1668-1676)"@en,
+            "Ludewina Pietersdr Reael als Regentes bij Gasthuizen (1668-1676)"@nl ;
         sem:hasEarliestBeginTimeStamp "1668-01-01"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1676-01-01"^^xsd:date ;
         sem:hasLatestBeginTimeStamp "1668-12-31"^^xsd:date ;
@@ -40798,8 +40798,8 @@
         ga:subEventOf <https://data.goldenagents.org/datasets/corporatiestukken/event/Lh-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/227-event-1> a ga:Event ;
-        rdfs:label "Maria den van Bosch as Regentes at Leprozenhuis (1715-1736)"@en,
-            "Maria den van Bosch als Regentes bij Leprozenhuis (1715-1736)"@nl ;
+        rdfs:label "Maria van den Bosch as Regentes at Leprozenhuis (1715-1736)"@en,
+            "Maria van den Bosch als Regentes bij Leprozenhuis (1715-1736)"@nl ;
         sem:hasEarliestBeginTimeStamp "1715-01-01"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1736-01-01"^^xsd:date ;
         sem:hasLatestBeginTimeStamp "1715-12-31"^^xsd:date ;
@@ -41390,8 +41390,8 @@
         ga:subEventOf <https://data.goldenagents.org/datasets/corporatiestukken/event/OMVGh-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/276-event-1> a ga:Event ;
-        rdfs:label "Anna Elisabeth den van Bempden as Regentes at Oude Mannen- en Vrouwengasthuis (1729-1773)"@en,
-            "Anna Elisabeth den van Bempden als Regentes bij Oude Mannen- en Vrouwengasthuis (1729-1773)"@nl ;
+        rdfs:label "Anna Elisabeth van den Bempden as Regentes at Oude Mannen- en Vrouwengasthuis (1729-1773)"@en,
+            "Anna Elisabeth van den Bempden als Regentes bij Oude Mannen- en Vrouwengasthuis (1729-1773)"@nl ;
         sem:hasEarliestBeginTimeStamp "1729-01-01"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1773-01-01"^^xsd:date ;
         sem:hasLatestBeginTimeStamp "1729-12-31"^^xsd:date ;
@@ -42122,8 +42122,8 @@
         ga:subEventOf <https://data.goldenagents.org/datasets/corporatiestukken/event/SJh-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/336-event-1> a ga:Event ;
-        rdfs:label "Catharina Susanna den van Bempden as Regentes at Sint Jorishof (1731-1768)"@en,
-            "Catharina Susanna den van Bempden als Regentes bij Sint Jorishof (1731-1768)"@nl ;
+        rdfs:label "Catharina Susanna van den Bempden as Regentes at Sint Jorishof (1731-1768)"@en,
+            "Catharina Susanna van den Bempden als Regentes bij Sint Jorishof (1731-1768)"@nl ;
         sem:hasEarliestBeginTimeStamp "1731-01-01"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1768-01-01"^^xsd:date ;
         sem:hasLatestBeginTimeStamp "1731-12-31"^^xsd:date ;
@@ -42573,8 +42573,8 @@
         ga:subEventOf <https://data.goldenagents.org/datasets/corporatiestukken/event/SphNWh-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/373-event-1> a ga:Event ;
-        rdfs:label "Ester Aagje den van Bempden as Regentes at Spin- en Nieuwe Werkhuis (1740-1768)"@en,
-            "Ester Aagje den van Bempden als Regentes bij Spin- en Nieuwe Werkhuis (1740-1768)"@nl ;
+        rdfs:label "Ester Aagje van den Bempden as Regentes at Spin- en Nieuwe Werkhuis (1740-1768)"@en,
+            "Ester Aagje van den Bempden als Regentes bij Spin- en Nieuwe Werkhuis (1740-1768)"@nl ;
         sem:hasEarliestBeginTimeStamp "1740-01-01"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1768-01-01"^^xsd:date ;
         sem:hasLatestBeginTimeStamp "1740-12-31"^^xsd:date ;
@@ -42804,8 +42804,8 @@
         ga:subEventOf <https://data.goldenagents.org/datasets/corporatiestukken/event/Wwh-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/386-event-1> a ga:Event ;
-        rdfs:label "Cathérine de la Fontaine as Regentes at Walenweeshuis (1671-1673)"@en,
-            "Cathérine de la Fontaine als Regentes bij Walenweeshuis (1671-1673)"@nl ;
+        rdfs:label "Cathérine la de Fontaine as Regentes at Walenweeshuis (1671-1673)"@en,
+            "Cathérine la de Fontaine als Regentes bij Walenweeshuis (1671-1673)"@nl ;
         sem:hasEarliestBeginTimeStamp "1671-01-01"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1673-01-01"^^xsd:date ;
         sem:hasLatestBeginTimeStamp "1671-12-31"^^xsd:date ;
@@ -43121,8 +43121,8 @@
         ga:subEventOf <https://data.goldenagents.org/datasets/corporatiestukken/event/Amwh-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/56-event-1> a ga:Event ;
-        rdfs:label "Corn. den van Berg as Regentes at Aalmoezeniersweeshuis (1799-1813)"@en,
-            "Corn. den van Berg als Regentes bij Aalmoezeniersweeshuis (1799-1813)"@nl ;
+        rdfs:label "Corn. van den Berg as Regentes at Aalmoezeniersweeshuis (1799-1813)"@en,
+            "Corn. van den Berg als Regentes bij Aalmoezeniersweeshuis (1799-1813)"@nl ;
         sem:hasEarliestBeginTimeStamp "1799-01-01"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1813-01-01"^^xsd:date ;
         sem:hasLatestBeginTimeStamp "1799-12-31"^^xsd:date ;
@@ -43704,16 +43704,16 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/157-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/157-event-1> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Truijtjen [Jelisdr] Valckenier" ;
-                pnv:baseSurname "Valckenier" ;
-                pnv:givenName "Truijtjen" ;
-                pnv:literalName "Truijtjen [Jelisdr] Valckenier" ;
-                pnv:patronym "[Jelisdr]" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Geertruijt [Jelisdr] Valckenier" ;
                 pnv:baseSurname "Valckenier" ;
                 pnv:givenName "Geertruijt" ;
                 pnv:literalName "Geertruijt [Jelisdr] Valckenier" ;
+                pnv:patronym "[Jelisdr]" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Truijtjen [Jelisdr] Valckenier" ;
+                pnv:baseSurname "Valckenier" ;
+                pnv:givenName "Truijtjen" ;
+                pnv:literalName "Truijtjen [Jelisdr] Valckenier" ;
                 pnv:patronym "[Jelisdr]" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/182> a ga:Person ;
@@ -43822,7 +43822,7 @@
                 pnv:baseSurname "Grootenhuys" ;
                 pnv:givenName "Catharina" ;
                 pnv:literalName "Catharina ten Grootenhuys" ;
-                pnv:patronym "ten" ] .
+                pnv:surnamePrefix "ten" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/228> a ga:Person ;
         rdfs:label "Maria Boddens" ;
@@ -45474,15 +45474,15 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/149-husband-1-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/149-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Aert Tholincx" ;
-                pnv:givenName "Aert" ;
-                pnv:literalName "Aert Tholincx" ;
-                pnv:surname "Tholincx" ],
-            [ a pnv:PersonName ;
                 rdfs:label "N. Teulingh" ;
                 pnv:givenName "N." ;
                 pnv:literalName "N. Teulingh" ;
-                pnv:surname "Teulingh" ] .
+                pnv:surname "Teulingh" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Aert Tholincx" ;
+                pnv:givenName "Aert" ;
+                pnv:literalName "Aert Tholincx" ;
+                pnv:surname "Tholincx" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/15-husband-1> a ga:Person ;
         rdfs:label "Mr. Joh. van Hoorn," ;
@@ -45801,16 +45801,16 @@
                 pnv:patronym "Jansz" ;
                 pnv:surname "Melis" ],
             [ a pnv:PersonName ;
-                rdfs:label "Heer van den Lande En Vrijheid van Safting" ;
-                pnv:givenName "Heer" ;
-                pnv:literalName "Heer van den Lande En Vrijheid van Safting" ;
-                pnv:surname "van den Lande En Vrijheid van Safting" ;
-                pnv:surnamePrefix "van den van" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Heer van den Lande En Vrijheid van Saftingen" ;
                 pnv:givenName "Heer" ;
                 pnv:literalName "Heer van den Lande En Vrijheid van Saftingen" ;
                 pnv:surname "van den Lande En Vrijheid van Saftingen" ;
+                pnv:surnamePrefix "van den van" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Heer van den Lande En Vrijheid van Safting" ;
+                pnv:givenName "Heer" ;
+                pnv:literalName "Heer van den Lande En Vrijheid van Safting" ;
+                pnv:surname "van den Lande En Vrijheid van Safting" ;
                 pnv:surnamePrefix "van den van" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/168-husband-1> a ga:Person ;
@@ -46639,8 +46639,8 @@
                 pnv:surname "Huyghens" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/206> a ga:Person ;
-        rdfs:label "Tryntie den van Bergh",
-            "Tryntie ten Bergh" ;
+        rdfs:label "Tryntie ten Bergh",
+            "Tryntie van den Bergh" ;
         bio:birth <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/206-birth> ;
         bio:death <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/206-death> ;
         prov:wasDerivedFrom <https://data.goldenagents.org/datasets/corporatiestukken/annotation/regentessen/206> ;
@@ -46649,18 +46649,17 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/206-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/206-event-1> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Tryntie den van Bergh" ;
+                rdfs:label "Tryntie van den Bergh" ;
                 pnv:baseSurname "Bergh" ;
                 pnv:givenName "Tryntie" ;
-                pnv:literalName "Tryntie den van Bergh" ;
-                pnv:patronym "den" ;
-                pnv:surnamePrefix "van" ],
+                pnv:literalName "Tryntie van den Bergh" ;
+                pnv:surnamePrefix "van den" ],
             [ a pnv:PersonName ;
                 rdfs:label "Tryntie ten Bergh" ;
                 pnv:baseSurname "Bergh" ;
                 pnv:givenName "Tryntie" ;
                 pnv:literalName "Tryntie ten Bergh" ;
-                pnv:patronym "ten" ] .
+                pnv:surnamePrefix "ten" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/207> a ga:Person ;
         rdfs:label "Tryntie Meelinx" ;
@@ -46689,11 +46688,6 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/208-husband-1-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/208-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Hendrick Huybertsz" ;
-                pnv:givenName "Hendrick" ;
-                pnv:literalName "Hendrick Huybertsz" ;
-                pnv:patronym "Huybertsz" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Wolfaert van Bijlaer" ;
                 pnv:givenName "Wolfaert" ;
                 pnv:literalName "Wolfaert van Bijlaer" ;
@@ -46703,7 +46697,12 @@
                 rdfs:label "Thomas Howkins" ;
                 pnv:givenName "Thomas" ;
                 pnv:literalName "Thomas Howkins" ;
-                pnv:surname "Howkins" ] .
+                pnv:surname "Howkins" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Hendrick Huybertsz" ;
+                pnv:givenName "Hendrick" ;
+                pnv:literalName "Hendrick Huybertsz" ;
+                pnv:patronym "Huybertsz" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/209-husband-1> a ga:Person ;
         rdfs:label "Herman Tholincx" ;
@@ -46991,19 +46990,19 @@
                 pnv:surname "Hochepied" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/226-husband-1> a ga:Person ;
-        rdfs:label "Pieter van der Poel," ;
+        rdfs:label "Pieter van der Poel" ;
         bio:birth <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/226-husband-1-birth> ;
         bio:death <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/226-husband-1-death> ;
-        rdfs:comment " Bg, 1693 luit." ;
+        rdfs:comment ", Bg, 1693 luit." ;
         ga:gender ga:Male ;
         ga:participatesIn <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/226-husband-1-birth>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/226-husband-1-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/226-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Pieter van der Poel," ;
+                rdfs:label "Pieter van der Poel" ;
                 pnv:givenName "Pieter" ;
-                pnv:literalName "Pieter van der Poel," ;
-                pnv:surname "Poel," ;
+                pnv:literalName "Pieter van der Poel" ;
+                pnv:surname "Poel" ;
                 pnv:surnamePrefix "van der" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/227-husband-1> a ga:Person ;
@@ -48270,15 +48269,15 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/313-husband-1-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/313-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Adriaen Roch" ;
-                pnv:givenName "Adriaen" ;
-                pnv:literalName "Adriaen Roch" ;
-                pnv:surname "Roch" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Mr. Hercules Roch" ;
                 pnv:givenName "Hercules" ;
                 pnv:literalName "Mr. Hercules Roch" ;
                 pnv:prefix "Mr." ;
+                pnv:surname "Roch" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Adriaen Roch" ;
+                pnv:givenName "Adriaen" ;
+                pnv:literalName "Adriaen Roch" ;
                 pnv:surname "Roch" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/314-husband-1> a ga:Person ;
@@ -49713,16 +49712,16 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/5-husband-1-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/5-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Pieter van Alderwerelt" ;
-                pnv:givenName "Pieter" ;
-                pnv:literalName "Pieter van Alderwerelt" ;
-                pnv:surname "Alderwerelt" ;
-                pnv:surnamePrefix "van" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Pieter van Alderweert" ;
                 pnv:givenName "Pieter" ;
                 pnv:literalName "Pieter van Alderweert" ;
                 pnv:surname "Alderweert" ;
+                pnv:surnamePrefix "van" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Pieter van Alderwerelt" ;
+                pnv:givenName "Pieter" ;
+                pnv:literalName "Pieter van Alderwerelt" ;
+                pnv:surname "Alderwerelt" ;
                 pnv:surnamePrefix "van" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/50-husband-1> a ga:Person ;
@@ -50454,15 +50453,15 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/10-event-1>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/10-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Cornelia Gerard" ;
-                pnv:baseSurname "Gerard" ;
-                pnv:givenName "Cornelia" ;
-                pnv:literalName "Cornelia Gerard" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Cornelia Gerards" ;
                 pnv:baseSurname "Gerards" ;
                 pnv:givenName "Cornelia" ;
-                pnv:literalName "Cornelia Gerards" ] .
+                pnv:literalName "Cornelia Gerards" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Cornelia Gerard" ;
+                pnv:baseSurname "Gerard" ;
+                pnv:givenName "Cornelia" ;
+                pnv:literalName "Cornelia Gerard" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/100> a ga:Person ;
         rdfs:label "Maria Susanna van Collen" ;
@@ -50907,7 +50906,7 @@
                 pnv:baseSurname "Acquet" ;
                 pnv:givenName "Sabine Agnes" ;
                 pnv:literalName "Sabine Agnes d' Acquet" ;
-                pnv:patronym "d'" ] .
+                pnv:surnamePrefix "d'" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/13> a ga:Person ;
         rdfs:label "Wendela van Loon" ;
@@ -51171,7 +51170,7 @@
                 pnv:baseSurname "Arnaud" ;
                 pnv:givenName "Cath. Jac." ;
                 pnv:literalName "Cath. Jac. d' Arnaud" ;
-                pnv:patronym "d'" ] .
+                pnv:surnamePrefix "d'" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/144> a ga:Person ;
         rdfs:label "Cath. Bentink" ;
@@ -51565,7 +51564,7 @@
                 pnv:literalName "Sara Munters" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/166> a ga:Person ;
-        rdfs:label "Ludewina Pietersdr Reael [lijst: Riaals]" ;
+        rdfs:label "Ludewina Pietersdr Reael" ;
         bio:birth <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/166-birth> ;
         bio:death <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/166-death> ;
         prov:wasDerivedFrom <https://data.goldenagents.org/datasets/corporatiestukken/annotation/regentessen/166> ;
@@ -51575,10 +51574,10 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/166-event-1>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/166-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Ludewina Pietersdr Reael [lijst: Riaals]" ;
-                pnv:baseSurname "Reael [lijst: Riaals]" ;
+                rdfs:label "Ludewina Pietersdr Reael" ;
+                pnv:baseSurname "Reael" ;
                 pnv:givenName "Ludewina" ;
-                pnv:literalName "Ludewina Pietersdr Reael [lijst: Riaals]" ;
+                pnv:literalName "Ludewina Pietersdr Reael" ;
                 pnv:patronym "Pietersdr" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/167> a ga:Person ;
@@ -52447,16 +52446,16 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/233-event-1>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/233-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Henrietta Cornelia van Marcelis" ;
-                pnv:baseSurname "Marcelis" ;
-                pnv:givenName "Henrietta Cornelia" ;
-                pnv:literalName "Henrietta Cornelia van Marcelis" ;
-                pnv:surnamePrefix "van" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Henrietta Cornelia van Marselis" ;
                 pnv:baseSurname "Marselis" ;
                 pnv:givenName "Henrietta Cornelia" ;
                 pnv:literalName "Henrietta Cornelia van Marselis" ;
+                pnv:surnamePrefix "van" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Henrietta Cornelia van Marcelis" ;
+                pnv:baseSurname "Marcelis" ;
+                pnv:givenName "Henrietta Cornelia" ;
+                pnv:literalName "Henrietta Cornelia van Marcelis" ;
                 pnv:surnamePrefix "van" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/234> a ga:Person ;
@@ -52684,12 +52683,6 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/257-event-1>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/257-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Teeuwt Jansdr Jan Cattendr" ;
-                pnv:baseSurname "Jan Cattendr" ;
-                pnv:givenName "Teeuwt" ;
-                pnv:literalName "Teeuwt Jansdr Jan Cattendr" ;
-                pnv:patronym "Jansdr" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Matthea Jansdr Jan Cattendr" ;
                 pnv:baseSurname "Jan Cattendr" ;
                 pnv:givenName "Matthea" ;
@@ -52706,6 +52699,12 @@
                 pnv:baseSurname "Cat" ;
                 pnv:givenName "Matthea" ;
                 pnv:literalName "Matthea Jansdr Cat" ;
+                pnv:patronym "Jansdr" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Teeuwt Jansdr Jan Cattendr" ;
+                pnv:baseSurname "Jan Cattendr" ;
+                pnv:givenName "Teeuwt" ;
+                pnv:literalName "Teeuwt Jansdr Jan Cattendr" ;
                 pnv:patronym "Jansdr" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/26> a ga:Person ;
@@ -52887,7 +52886,7 @@
                 pnv:literalName "Clara Decquer" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/276> a ga:Person ;
-        rdfs:label "Anna Elisabeth den van Bempden" ;
+        rdfs:label "Anna Elisabeth van den Bempden" ;
         bio:birth <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/276-birth> ;
         bio:death <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/276-death> ;
         prov:wasDerivedFrom <https://data.goldenagents.org/datasets/corporatiestukken/annotation/regentessen/276> ;
@@ -52897,12 +52896,11 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/276-event-1>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/276-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Anna Elisabeth den van Bempden" ;
+                rdfs:label "Anna Elisabeth van den Bempden" ;
                 pnv:baseSurname "Bempden" ;
                 pnv:givenName "Anna Elisabeth" ;
-                pnv:literalName "Anna Elisabeth den van Bempden" ;
-                pnv:patronym "den" ;
-                pnv:surnamePrefix "van" ] .
+                pnv:literalName "Anna Elisabeth van den Bempden" ;
+                pnv:surnamePrefix "van den" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/277> a ga:Person ;
         rdfs:label "Maria le Seutre" ;
@@ -53278,7 +53276,7 @@
                 pnv:baseSurname "Grootenhuys" ;
                 pnv:givenName "Jacoba Elisabeth" ;
                 pnv:literalName "Jacoba Elisabeth ten Grootenhuys" ;
-                pnv:patronym "ten" ] .
+                pnv:surnamePrefix "ten" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/300> a ga:Person ;
         rdfs:label "Elis. Gerarda Meynts" ;
@@ -53673,7 +53671,7 @@
                 pnv:literalName "Wendela Klopper" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/336> a ga:Person ;
-        rdfs:label "Catharina Susanna den van Bempden" ;
+        rdfs:label "Catharina Susanna van den Bempden" ;
         bio:birth <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/336-birth> ;
         bio:death <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/336-death> ;
         prov:wasDerivedFrom <https://data.goldenagents.org/datasets/corporatiestukken/annotation/regentessen/336> ;
@@ -53683,12 +53681,11 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/336-event-1>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/336-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Catharina Susanna den van Bempden" ;
+                rdfs:label "Catharina Susanna van den Bempden" ;
                 pnv:baseSurname "Bempden" ;
                 pnv:givenName "Catharina Susanna" ;
-                pnv:literalName "Catharina Susanna den van Bempden" ;
-                pnv:patronym "den" ;
-                pnv:surnamePrefix "van" ] .
+                pnv:literalName "Catharina Susanna van den Bempden" ;
+                pnv:surnamePrefix "van den" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/337> a ga:Person ;
         rdfs:label "Maria Catharina Meyners" ;
@@ -53976,16 +53973,16 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/363-event-1>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/363-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Fokeltge van Hoorn" ;
-                pnv:baseSurname "Hoorn" ;
-                pnv:givenName "Fokeltge" ;
-                pnv:literalName "Fokeltge van Hoorn" ;
-                pnv:surnamePrefix "van" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Focola van Hoorn" ;
                 pnv:baseSurname "Hoorn" ;
                 pnv:givenName "Focola" ;
                 pnv:literalName "Focola van Hoorn" ;
+                pnv:surnamePrefix "van" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Fokeltge van Hoorn" ;
+                pnv:baseSurname "Hoorn" ;
+                pnv:givenName "Fokeltge" ;
+                pnv:literalName "Fokeltge van Hoorn" ;
                 pnv:surnamePrefix "van" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/367> a ga:Person ;
@@ -54021,7 +54018,7 @@
                 pnv:literalName "Debora Elias" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/373> a ga:Person ;
-        rdfs:label "Ester Aagje den van Bempden" ;
+        rdfs:label "Ester Aagje van den Bempden" ;
         bio:birth <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/373-birth> ;
         bio:death <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/373-death> ;
         prov:wasDerivedFrom <https://data.goldenagents.org/datasets/corporatiestukken/annotation/regentessen/373> ;
@@ -54031,12 +54028,11 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/373-event-1>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/373-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Ester Aagje den van Bempden" ;
+                rdfs:label "Ester Aagje van den Bempden" ;
                 pnv:baseSurname "Bempden" ;
                 pnv:givenName "Ester Aagje" ;
-                pnv:literalName "Ester Aagje den van Bempden" ;
-                pnv:patronym "den" ;
-                pnv:surnamePrefix "van" ] .
+                pnv:literalName "Ester Aagje van den Bempden" ;
+                pnv:surnamePrefix "van den" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/374> a ga:Person ;
         rdfs:label "Maria Schaak" ;
@@ -54216,7 +54212,7 @@
                 pnv:baseSurname "Peyrou" ;
                 pnv:givenName "Clara Magdalena" ;
                 pnv:literalName "Clara Magdalena du Peyrou" ;
-                pnv:surnamePrefix "du" ] .
+                pnv:patronym "du" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/41> a ga:Person ;
         rdfs:label "Cornelia Jacoba Wolters" ;
@@ -54447,7 +54443,7 @@
                 pnv:surnamePrefix "van" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/56> a ga:Person ;
-        rdfs:label "Corn. den van Berg" ;
+        rdfs:label "Corn. van den Berg" ;
         bio:birth <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/56-birth> ;
         bio:death <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/56-death> ;
         prov:wasDerivedFrom <https://data.goldenagents.org/datasets/corporatiestukken/annotation/regentessen/56> ;
@@ -54457,12 +54453,11 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/56-event-1>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/56-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Corn. den van Berg" ;
+                rdfs:label "Corn. van den Berg" ;
                 pnv:baseSurname "Berg" ;
                 pnv:givenName "Corn." ;
-                pnv:literalName "Corn. den van Berg" ;
-                pnv:patronym "den" ;
-                pnv:surnamePrefix "van" ] .
+                pnv:literalName "Corn. van den Berg" ;
+                pnv:surnamePrefix "van den" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/58> a ga:Person ;
         rdfs:label "Marij Jacob Dobbesdr" ;
@@ -54679,15 +54674,15 @@
                 pnv:givenName "Brechtge" ;
                 pnv:literalName "Brechtge Spiegels" ],
             [ a pnv:PersonName ;
-                rdfs:label "Bregitta Spiegels" ;
-                pnv:baseSurname "Spiegels" ;
-                pnv:givenName "Bregitta" ;
-                pnv:literalName "Bregitta Spiegels" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Brechtge Spiegel" ;
                 pnv:baseSurname "Spiegel" ;
                 pnv:givenName "Brechtge" ;
                 pnv:literalName "Brechtge Spiegel" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Bregitta Spiegels" ;
+                pnv:baseSurname "Spiegels" ;
+                pnv:givenName "Bregitta" ;
+                pnv:literalName "Bregitta Spiegels" ],
             [ a pnv:PersonName ;
                 rdfs:label "Bregitta Spiegel" ;
                 pnv:baseSurname "Spiegel" ;
@@ -54706,16 +54701,16 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/83-event-1>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/83-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Belige de Vrij" ;
-                pnv:baseSurname "Vrij" ;
-                pnv:givenName "Belige" ;
-                pnv:literalName "Belige de Vrij" ;
-                pnv:surnamePrefix "de" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Belijtge de Vrij" ;
                 pnv:baseSurname "Vrij" ;
                 pnv:givenName "Belijtge" ;
                 pnv:literalName "Belijtge de Vrij" ;
+                pnv:surnamePrefix "de" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Belige de Vrij" ;
+                pnv:baseSurname "Vrij" ;
+                pnv:givenName "Belige" ;
+                pnv:literalName "Belige de Vrij" ;
                 pnv:surnamePrefix "de" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/89> a ga:Person ;
@@ -54746,15 +54741,15 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/9-event-1>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/9-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Constantia Blommaert" ;
-                pnv:baseSurname "Blommaert" ;
-                pnv:givenName "Constantia" ;
-                pnv:literalName "Constantia Blommaert" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Constantia Bloemaert" ;
                 pnv:baseSurname "Bloemaert" ;
                 pnv:givenName "Constantia" ;
-                pnv:literalName "Constantia Bloemaert" ] .
+                pnv:literalName "Constantia Bloemaert" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Constantia Blommaert" ;
+                pnv:baseSurname "Blommaert" ;
+                pnv:givenName "Constantia" ;
+                pnv:literalName "Constantia Blommaert" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/90> a ga:Person ;
         rdfs:label "Catharina Laurentius" ;
@@ -54800,15 +54795,15 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/93-event-1>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/93-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Agatha Hooft" ;
-                pnv:baseSurname "Hooft" ;
-                pnv:givenName "Agatha" ;
-                pnv:literalName "Agatha Hooft" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Aagje Hooft" ;
                 pnv:baseSurname "Hooft" ;
                 pnv:givenName "Aagje" ;
-                pnv:literalName "Aagje Hooft" ] .
+                pnv:literalName "Aagje Hooft" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Agatha Hooft" ;
+                pnv:baseSurname "Hooft" ;
+                pnv:givenName "Agatha" ;
+                pnv:literalName "Agatha Hooft" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/95> a ga:Person ;
         rdfs:label "Ester Elizabeth Tulp" ;
@@ -55180,10 +55175,10 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/71-event-1>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/71-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Aechje Henrix Oetgens" ;
+                rdfs:label "Aeght Henrix Oetgens" ;
                 pnv:baseSurname "Oetgens" ;
-                pnv:givenName "Aechje" ;
-                pnv:literalName "Aechje Henrix Oetgens" ;
+                pnv:givenName "Aeght" ;
+                pnv:literalName "Aeght Henrix Oetgens" ;
                 pnv:patronym "Henrix" ],
             [ a pnv:PersonName ;
                 rdfs:label "Aeght Hendricksdr Oetgens" ;
@@ -55192,17 +55187,17 @@
                 pnv:literalName "Aeght Hendricksdr Oetgens" ;
                 pnv:patronym "Hendricksdr" ],
             [ a pnv:PersonName ;
+                rdfs:label "Aechje Henrix Oetgens" ;
+                pnv:baseSurname "Oetgens" ;
+                pnv:givenName "Aechje" ;
+                pnv:literalName "Aechje Henrix Oetgens" ;
+                pnv:patronym "Henrix" ],
+            [ a pnv:PersonName ;
                 rdfs:label "Aechje Hendricksdr Oetgens" ;
                 pnv:baseSurname "Oetgens" ;
                 pnv:givenName "Aechje" ;
                 pnv:literalName "Aechje Hendricksdr Oetgens" ;
-                pnv:patronym "Hendricksdr" ],
-            [ a pnv:PersonName ;
-                rdfs:label "Aeght Henrix Oetgens" ;
-                pnv:baseSurname "Oetgens" ;
-                pnv:givenName "Aeght" ;
-                pnv:literalName "Aeght Henrix Oetgens" ;
-                pnv:patronym "Henrix" ] .
+                pnv:patronym "Hendricksdr" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/74> a ga:Person ;
         rdfs:label "Dieuwertgen Bicker" ;
@@ -55452,7 +55447,7 @@
                 pnv:patronym "[Cornelisdr]" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/227> a ga:Person ;
-        rdfs:label "Maria den van Bosch" ;
+        rdfs:label "Maria van den Bosch" ;
         bio:birth <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/227-birth> ;
         bio:death <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/227-death> ;
         prov:wasDerivedFrom <https://data.goldenagents.org/datasets/corporatiestukken/annotation/regentessen/227> ;
@@ -55463,12 +55458,11 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/227-marriage-2>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/227-marriage-3> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Maria den van Bosch" ;
+                rdfs:label "Maria van den Bosch" ;
                 pnv:baseSurname "Bosch" ;
                 pnv:givenName "Maria" ;
-                pnv:literalName "Maria den van Bosch" ;
-                pnv:patronym "den" ;
-                pnv:surnamePrefix "van" ] .
+                pnv:literalName "Maria van den Bosch" ;
+                pnv:surnamePrefix "van den" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/231> a ga:Person ;
         rdfs:label "Christina van Cuyck" ;
@@ -55764,7 +55758,7 @@
                 pnv:surnamePrefix "van der" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/386> a ga:Person ;
-        rdfs:label "Cathérine de la Fontaine" ;
+        rdfs:label "Cathérine la de Fontaine" ;
         bio:birth <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/386-birth> ;
         bio:death <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/386-death> ;
         prov:wasDerivedFrom <https://data.goldenagents.org/datasets/corporatiestukken/annotation/regentessen/386> ;
@@ -55775,11 +55769,12 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/386-marriage-2>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/regentessen/386-marriage-3> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Cathérine de la Fontaine" ;
+                rdfs:label "Cathérine la de Fontaine" ;
                 pnv:baseSurname "Fontaine" ;
                 pnv:givenName "Cathérine" ;
-                pnv:literalName "Cathérine de la Fontaine" ;
-                pnv:surnamePrefix "de la" ] .
+                pnv:literalName "Cathérine la de Fontaine" ;
+                pnv:patronym "la" ;
+                pnv:surnamePrefix "de" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/88> a ga:Person ;
         rdfs:label "Maria van der Merct" ;
@@ -55816,7 +55811,7 @@
                 pnv:baseSurname "Plouis" ;
                 pnv:givenName "Sara" ;
                 pnv:literalName "Sara du Plouis" ;
-                pnv:surnamePrefix "du" ] .
+                pnv:patronym "du" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/387> a ga:Person ;
         rdfs:label "Olympe Marie Chion" ;

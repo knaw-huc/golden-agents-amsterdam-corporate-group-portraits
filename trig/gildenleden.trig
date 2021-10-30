@@ -2,7 +2,6 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ga: <https://data.goldenagents.org/ontology/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix pnv: <https://w3id.org/pnv#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -11,48 +10,6 @@
 @prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-{
-    <https://data.goldenagents.org/datasets/corporatiestukken/> a void:Dataset,
-            schema:Dataset ;
-        dcterms:creator <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> ;
-        dcterms:date "2020-06-25"^^xsd:datetime ;
-        dcterms:description ""@nl ;
-        dcterms:publisher <https://leonvanwissen.nl/me> ;
-        dcterms:source <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
-        dcterms:title "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850"@nl ;
-        void:exampleResource <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/259> ;
-        void:subset <https://data.goldenagents.org/datasets/corporatiestukken/gildenleden/> ;
-        void:triples 13 ;
-        void:vocabulary sem:,
-            "https://data.goldenagents.org/ontology/" ;
-        schema:citation <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
-        schema:creator <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> ;
-        schema:dateModified "2020-06-25"^^xsd:datetime ;
-        schema:description ""@nl ;
-        schema:distribution [ a schema:DataDownload ;
-                schema:encodingFormat "application/trig" ;
-                schema:version "0.1" ] ;
-        schema:hasPart <https://data.goldenagents.org/datasets/corporatiestukken/gildenleden/> ;
-        schema:isBasedOn <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
-        schema:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
-        schema:name "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850"@nl ;
-        schema:publisher <https://leonvanwissen.nl/me> ;
-        schema:spatialCoverage "Amsterdam" ;
-        schema:temporalCoverage "1525-01-01/1850-12-31" .
-
-    <https://data.goldenagents.org/datasets/corporatiestukken/gildenleden/> a void:Dataset,
-            schema:Dataset ;
-        void:inDataset <https://data.goldenagents.org/datasets/corporatiestukken/> ;
-        void:triples 18545 ;
-        schema:description "" ;
-        schema:isPartOf <https://data.goldenagents.org/datasets/corporatiestukken/> ;
-        schema:name "Geportretteerde gildenleden"@nl .
-
-    <https://data.goldenagents.org/datasets/corporatiestukken/person/norbert-middelkoop> a ga:Person ;
-        rdfs:label "Norbert Middelkoop" ;
-        owl:sameAs <http://viaf.org/viaf/12415105> .
-}
 
 <https://data.goldenagents.org/datasets/corporatiestukken/gildenleden/> {
     <https://data.goldenagents.org/datasets/corporatiestukken/artwork/CM1> a ga:CreativeArtifact ;
@@ -507,14 +464,14 @@
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/104-marriage-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/gildenleden/105-born> a ga:Born ;
-        rdfs:label "Jan den van Eeckhout in the role of born"@en,
-            "Jan den van Eeckhout in de rol van geborene"@nl ;
+        rdfs:label "Jan van den Eeckhout in the role of born"@en,
+            "Jan van den Eeckhout in de rol van geborene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/105> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/105-birth> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/gildenleden/105-deceased> a ga:Deceased ;
-        rdfs:label "Jan den van Eeckhout in the role of deceased"@en,
-            "Jan den van Eeckhout in de rol van overledene"@nl ;
+        rdfs:label "Jan van den Eeckhout in the role of deceased"@en,
+            "Jan van den Eeckhout in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/105> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/105-death> .
 
@@ -4311,26 +4268,26 @@
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/6-marriage-2> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/gildenleden/60-born> a ga:Born ;
-        rdfs:label "Jan Pietersz den van Eeckhout in the role of born"@en,
-            "Jan Pietersz den van Eeckhout in de rol van geborene"@nl ;
+        rdfs:label "Jan Pietersz van den Eeckhout in the role of born"@en,
+            "Jan Pietersz van den Eeckhout in de rol van geborene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/60> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/60-birth> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/gildenleden/60-deceased> a ga:Deceased ;
-        rdfs:label "Jan Pietersz den van Eeckhout in the role of deceased"@en,
-            "Jan Pietersz den van Eeckhout in de rol van overledene"@nl ;
+        rdfs:label "Jan Pietersz van den Eeckhout in the role of deceased"@en,
+            "Jan Pietersz van den Eeckhout in de rol van overledene"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/60> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/60-death> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/gildenleden/60-groom-1> a ga:Groom ;
-        rdfs:label "Jan Pietersz den van Eeckhout in the role of groom"@en,
-            "Jan Pietersz den van Eeckhout in de rol van bruidegom"@nl ;
+        rdfs:label "Jan Pietersz van den Eeckhout in the role of groom"@en,
+            "Jan Pietersz van den Eeckhout in de rol van bruidegom"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/60> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/60-marriage-1> .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/role/gildenleden/60-groom-3> a ga:Groom ;
-        rdfs:label "Jan Pietersz den van Eeckhout in the role of groom"@en,
-            "Jan Pietersz den van Eeckhout in de rol van bruidegom"@nl ;
+        rdfs:label "Jan Pietersz van den Eeckhout in the role of groom"@en,
+            "Jan Pietersz van den Eeckhout in de rol van bruidegom"@nl ;
         ga:carriedBy <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/60> ;
         ga:carriedIn <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/60-marriage-2> .
 
@@ -6973,8 +6930,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/105-birth> a bio:Birth,
             ga:Event ;
-        rdfs:label "Birth of Jan den van Eeckhout (1619)"@en,
-            "Geboorte van Jan den van Eeckhout (1619)"@nl ;
+        rdfs:label "Birth of Jan van den Eeckhout (1619)"@en,
+            "Geboorte van Jan van den Eeckhout (1619)"@nl ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/105> ;
         sem:hasEarliestBeginTimeStamp "1619-01-01"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1619-01-01"^^xsd:date ;
@@ -6984,8 +6941,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/105-death> a bio:Death,
             ga:Event ;
-        rdfs:label "Death of Jan den van Eeckhout (1669)"@en,
-            "Overlijden van Jan den van Eeckhout (1669)"@nl ;
+        rdfs:label "Death of Jan van den Eeckhout (1669)"@en,
+            "Overlijden van Jan van den Eeckhout (1669)"@nl ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/105> ;
         sem:hasEarliestBeginTimeStamp "1669-01-01"^^xsd:date ;
         sem:hasEarliestEndTimeStamp "1669-01-01"^^xsd:date ;
@@ -11463,8 +11420,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/60-birth> a bio:Birth,
             ga:Event ;
-        rdfs:label "Birth of Jan Pietersz den van Eeckhout (1584)"@en,
-            "Geboorte van Jan Pietersz den van Eeckhout (1584)"@nl ;
+        rdfs:label "Birth of Jan Pietersz van den Eeckhout (1584)"@en,
+            "Geboorte van Jan Pietersz van den Eeckhout (1584)"@nl ;
         bio:place "Harlingen" ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/60> ;
         sem:hasEarliestBeginTimeStamp "1584-08-12"^^xsd:date ;
@@ -11476,8 +11433,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/60-death> a bio:Death,
             ga:Event ;
-        rdfs:label "Death of Jan Pietersz den van Eeckhout (1652)"@en,
-            "Overlijden van Jan Pietersz den van Eeckhout (1652)"@nl ;
+        rdfs:label "Death of Jan Pietersz van den Eeckhout (1652)"@en,
+            "Overlijden van Jan Pietersz van den Eeckhout (1652)"@nl ;
         bio:place "Amsterdam" ;
         bio:principal <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/60> ;
         sem:hasEarliestBeginTimeStamp "1652-11-08"^^xsd:date ;
@@ -15119,8 +15076,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/60-marriage-1> a bio:Marriage,
             ga:Event ;
-        rdfs:label "Marriage between Jan Pietersz den van Eeckhout and Griete Claesdr Leijdeckers (1606)"@en,
-            "Huwelijk tussen Jan Pietersz den van Eeckhout en Griete Claesdr Leijdeckers (1606)"@nl ;
+        rdfs:label "Marriage between Jan Pietersz van den Eeckhout and Griete Claesdr Leijdeckers (1606)"@en,
+            "Huwelijk tussen Jan Pietersz van den Eeckhout en Griete Claesdr Leijdeckers (1606)"@nl ;
         bio:partner <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/60>,
             <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/60-wife-1> ;
         sem:hasEarliestBeginTimeStamp "1606-01-01"^^xsd:date ;
@@ -15130,8 +15087,8 @@
 
     <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/60-marriage-2> a bio:Marriage,
             ga:Event ;
-        rdfs:label "Marriage between Jan Pietersz den van Eeckhout and Cornelia Dedels (1633)"@en,
-            "Huwelijk tussen Jan Pietersz den van Eeckhout en Cornelia Dedels (1633)"@nl ;
+        rdfs:label "Marriage between Jan Pietersz van den Eeckhout and Cornelia Dedels (1633)"@en,
+            "Huwelijk tussen Jan Pietersz van den Eeckhout en Cornelia Dedels (1633)"@nl ;
         bio:partner <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/60>,
             <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/60-wife-2> ;
         sem:hasEarliestBeginTimeStamp "1633-01-01"^^xsd:date ;
@@ -15602,7 +15559,7 @@
                 pnv:patronym "Jansz" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/105> a ga:Person ;
-        rdfs:label "Jan den van Eeckhout" ;
+        rdfs:label "Jan van den Eeckhout" ;
         bio:birth <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/105-birth> ;
         bio:death <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/105-death> ;
         prov:wasDerivedFrom <https://data.goldenagents.org/datasets/corporatiestukken/annotation/gildenleden/105> ;
@@ -15610,12 +15567,11 @@
         ga:participatesIn <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/105-birth>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/105-death> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Jan den van Eeckhout" ;
+                rdfs:label "Jan van den Eeckhout" ;
                 pnv:baseSurname "Eeckhout" ;
                 pnv:givenName "Jan" ;
-                pnv:literalName "Jan den van Eeckhout" ;
-                pnv:patronym "den" ;
-                pnv:surnamePrefix "van" ] .
+                pnv:literalName "Jan van den Eeckhout" ;
+                pnv:surnamePrefix "van den" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/106> a ga:Person ;
         rdfs:label "Thomas Hendricksz" ;
@@ -16002,15 +15958,15 @@
         ga:participatesIn <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/131-birth>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/131-death> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Jacob Brand" ;
-                pnv:baseSurname "Brand" ;
-                pnv:givenName "Jacob" ;
-                pnv:literalName "Jacob Brand" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Jacob Brandt" ;
                 pnv:baseSurname "Brandt" ;
                 pnv:givenName "Jacob" ;
-                pnv:literalName "Jacob Brandt" ] .
+                pnv:literalName "Jacob Brandt" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Jacob Brand" ;
+                pnv:baseSurname "Brand" ;
+                pnv:givenName "Jacob" ;
+                pnv:literalName "Jacob Brand" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/132> a ga:Person ;
         rdfs:label "Rogier Jansz de Coen",
@@ -16078,16 +16034,16 @@
         ga:participatesIn <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/14-birth>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/14-death> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Jeroen Jorisz Wafelier" ;
-                pnv:baseSurname "Wafelier" ;
-                pnv:givenName "Jeroen" ;
-                pnv:literalName "Jeroen Jorisz Wafelier" ;
-                pnv:patronym "Jorisz" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Jeroen Jorisz Waphelier" ;
                 pnv:baseSurname "Waphelier" ;
                 pnv:givenName "Jeroen" ;
                 pnv:literalName "Jeroen Jorisz Waphelier" ;
+                pnv:patronym "Jorisz" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Jeroen Jorisz Wafelier" ;
+                pnv:baseSurname "Wafelier" ;
+                pnv:givenName "Jeroen" ;
+                pnv:literalName "Jeroen Jorisz Wafelier" ;
                 pnv:patronym "Jorisz" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/157> a ga:Person ;
@@ -16385,16 +16341,16 @@
         ga:participatesIn <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/194-birth>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/194-death> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Adriaan Pietersz Verduijn" ;
-                pnv:baseSurname "Verduijn" ;
-                pnv:givenName "Adriaan" ;
-                pnv:literalName "Adriaan Pietersz Verduijn" ;
-                pnv:patronym "Pietersz" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Adriaan Pietersz van der Duijn" ;
                 pnv:baseSurname "van der Duijn" ;
                 pnv:givenName "Adriaan" ;
                 pnv:literalName "Adriaan Pietersz van der Duijn" ;
+                pnv:patronym "Pietersz" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Adriaan Pietersz Verduijn" ;
+                pnv:baseSurname "Verduijn" ;
+                pnv:givenName "Adriaan" ;
+                pnv:literalName "Adriaan Pietersz Verduijn" ;
                 pnv:patronym "Pietersz" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/196> a ga:Person ;
@@ -16516,7 +16472,7 @@
                 pnv:baseSurname "Hove" ;
                 pnv:givenName "Marten" ;
                 pnv:literalName "Marten ten Hove" ;
-                pnv:patronym "ten" ] .
+                pnv:surnamePrefix "ten" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/208> a ga:Person ;
         rdfs:label "Esaias Linkenburg" ;
@@ -16627,16 +16583,16 @@
         ga:participatesIn <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/215-birth>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/215-death> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Jan Pietersz Becker" ;
-                pnv:baseSurname "Becker" ;
-                pnv:givenName "Jan" ;
-                pnv:literalName "Jan Pietersz Becker" ;
-                pnv:patronym "Pietersz" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Jan Pietersz Bekker" ;
                 pnv:baseSurname "Bekker" ;
                 pnv:givenName "Jan" ;
                 pnv:literalName "Jan Pietersz Bekker" ;
+                pnv:patronym "Pietersz" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Jan Pietersz Becker" ;
+                pnv:baseSurname "Becker" ;
+                pnv:givenName "Jan" ;
+                pnv:literalName "Jan Pietersz Becker" ;
                 pnv:patronym "Pietersz" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/216> a ga:Person ;
@@ -16798,17 +16754,17 @@
         ga:participatesIn <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/234-birth>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/234-death> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Dr. Petrus van Leent" ;
-                pnv:baseSurname "Leent" ;
-                pnv:givenName "Petrus" ;
-                pnv:literalName "Dr. Petrus van Leent" ;
-                pnv:prefix "Dr." ;
-                pnv:surnamePrefix "van" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Dr. Petrus van Leendt" ;
                 pnv:baseSurname "Leendt" ;
                 pnv:givenName "Petrus" ;
                 pnv:literalName "Dr. Petrus van Leendt" ;
+                pnv:prefix "Dr." ;
+                pnv:surnamePrefix "van" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Dr. Petrus van Leent" ;
+                pnv:baseSurname "Leent" ;
+                pnv:givenName "Petrus" ;
+                pnv:literalName "Dr. Petrus van Leent" ;
                 pnv:prefix "Dr." ;
                 pnv:surnamePrefix "van" ] .
 
@@ -17631,10 +17587,10 @@
         ga:participatesIn <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/99-birth>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/99-death> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Augustus Maijer" ;
-                pnv:baseSurname "Maijer" ;
+                rdfs:label "Augustus Meijer" ;
+                pnv:baseSurname "Meijer" ;
                 pnv:givenName "Augustus" ;
-                pnv:literalName "Augustus Maijer" ],
+                pnv:literalName "Augustus Meijer" ],
             [ a pnv:PersonName ;
                 rdfs:label "Augustijn Meijer" ;
                 pnv:baseSurname "Meijer" ;
@@ -17646,10 +17602,10 @@
                 pnv:givenName "Augustijn" ;
                 pnv:literalName "Augustijn Maijer" ],
             [ a pnv:PersonName ;
-                rdfs:label "Augustus Meijer" ;
-                pnv:baseSurname "Meijer" ;
+                rdfs:label "Augustus Maijer" ;
+                pnv:baseSurname "Maijer" ;
                 pnv:givenName "Augustus" ;
-                pnv:literalName "Augustus Meijer" ] .
+                pnv:literalName "Augustus Maijer" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/102> a ga:Person ;
         rdfs:label "Gijsbert Matthysz Calkoen",
@@ -17861,16 +17817,16 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/147-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/147-marriage-1> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Gerard Hendricksz Verhul" ;
-                pnv:baseSurname "Verhul" ;
-                pnv:givenName "Gerard" ;
-                pnv:literalName "Gerard Hendricksz Verhul" ;
-                pnv:patronym "Hendricksz" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Gerard Hendricksz van Hull" ;
                 pnv:baseSurname "van Hull" ;
                 pnv:givenName "Gerard" ;
                 pnv:literalName "Gerard Hendricksz van Hull" ;
+                pnv:patronym "Hendricksz" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Gerard Hendricksz Verhul" ;
+                pnv:baseSurname "Verhul" ;
+                pnv:givenName "Gerard" ;
+                pnv:literalName "Gerard Hendricksz Verhul" ;
                 pnv:patronym "Hendricksz" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/149> a ga:Person ;
@@ -18359,16 +18315,16 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/199-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/199-marriage-1> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Wiggert van Wesick" ;
-                pnv:baseSurname "Wesick" ;
-                pnv:givenName "Wiggert" ;
-                pnv:literalName "Wiggert van Wesick" ;
-                pnv:surnamePrefix "van" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Wighard van Wesik" ;
                 pnv:baseSurname "Wesik" ;
                 pnv:givenName "Wighard" ;
                 pnv:literalName "Wighard van Wesik" ;
+                pnv:surnamePrefix "van" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Wighard van Wesick" ;
+                pnv:baseSurname "Wesick" ;
+                pnv:givenName "Wighard" ;
+                pnv:literalName "Wighard van Wesick" ;
                 pnv:surnamePrefix "van" ],
             [ a pnv:PersonName ;
                 rdfs:label "Wiggert van Wesik" ;
@@ -18377,10 +18333,10 @@
                 pnv:literalName "Wiggert van Wesik" ;
                 pnv:surnamePrefix "van" ],
             [ a pnv:PersonName ;
-                rdfs:label "Wighard van Wesick" ;
+                rdfs:label "Wiggert van Wesick" ;
                 pnv:baseSurname "Wesick" ;
-                pnv:givenName "Wighard" ;
-                pnv:literalName "Wighard van Wesick" ;
+                pnv:givenName "Wiggert" ;
+                pnv:literalName "Wiggert van Wesick" ;
                 pnv:surnamePrefix "van" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/200> a ga:Person ;
@@ -18425,16 +18381,16 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/202-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/202-marriage-1> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Cornelis van der Swet" ;
-                pnv:baseSurname "Swet" ;
-                pnv:givenName "Cornelis" ;
-                pnv:literalName "Cornelis van der Swet" ;
-                pnv:surnamePrefix "van der" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Cornelis van der Swed" ;
                 pnv:baseSurname "Swed" ;
                 pnv:givenName "Cornelis" ;
                 pnv:literalName "Cornelis van der Swed" ;
+                pnv:surnamePrefix "van der" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Cornelis van der Swet" ;
+                pnv:baseSurname "Swet" ;
+                pnv:givenName "Cornelis" ;
+                pnv:literalName "Cornelis van der Swet" ;
                 pnv:surnamePrefix "van der" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/203> a ga:Person ;
@@ -18509,15 +18465,15 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/220-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/220-marriage-1> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Hendrik Sak" ;
-                pnv:baseSurname "Sak" ;
-                pnv:givenName "Hendrik" ;
-                pnv:literalName "Hendrik Sak" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Hendrik Sack" ;
                 pnv:baseSurname "Sack" ;
                 pnv:givenName "Hendrik" ;
-                pnv:literalName "Hendrik Sack" ] .
+                pnv:literalName "Hendrik Sack" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Hendrik Sak" ;
+                pnv:baseSurname "Sak" ;
+                pnv:givenName "Hendrik" ;
+                pnv:literalName "Hendrik Sak" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/221> a ga:Person ;
         rdfs:label "Jan Agges Scholten heer van Aschat" ;
@@ -18550,7 +18506,7 @@
                 pnv:disambiguatingDescription "Heer van Limmen" ;
                 pnv:givenName "Jacobus" ;
                 pnv:literalName "Jacobus du Peyrou Jansz Heer van Limmen" ;
-                pnv:surnamePrefix "du" ] .
+                pnv:patronym "du" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/225> a ga:Person ;
         rdfs:label "Hendrik de Lange" ;
@@ -18731,16 +18687,16 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/255-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/255-marriage-1> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Isaac van Zaan" ;
-                pnv:baseSurname "Zaan" ;
-                pnv:givenName "Isaac" ;
-                pnv:literalName "Isaac van Zaan" ;
-                pnv:surnamePrefix "van" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Isaac van Zanen" ;
                 pnv:baseSurname "Zanen" ;
                 pnv:givenName "Isaac" ;
                 pnv:literalName "Isaac van Zanen" ;
+                pnv:surnamePrefix "van" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Isaac van Zaan" ;
+                pnv:baseSurname "Zaan" ;
+                pnv:givenName "Isaac" ;
+                pnv:literalName "Isaac van Zaan" ;
                 pnv:surnamePrefix "van" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/256> a ga:Person ;
@@ -18885,16 +18841,16 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/38-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/38-marriage-1> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Hendrick Claesz Koolvelt" ;
-                pnv:baseSurname "Koolvelt" ;
-                pnv:givenName "Hendrick" ;
-                pnv:literalName "Hendrick Claesz Koolvelt" ;
-                pnv:patronym "Claesz" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Hendrick Claesz Colevelt" ;
                 pnv:baseSurname "Colevelt" ;
                 pnv:givenName "Hendrick" ;
                 pnv:literalName "Hendrick Claesz Colevelt" ;
+                pnv:patronym "Claesz" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Hendrick Claesz Koolvelt" ;
+                pnv:baseSurname "Koolvelt" ;
+                pnv:givenName "Hendrick" ;
+                pnv:literalName "Hendrick Claesz Koolvelt" ;
                 pnv:patronym "Claesz" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/39> a ga:Person ;
@@ -18929,16 +18885,16 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/4-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/4-marriage-1> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Hendrick Andriesz Boelis" ;
-                pnv:baseSurname "Boelis" ;
-                pnv:givenName "Hendrick" ;
-                pnv:literalName "Hendrick Andriesz Boelis" ;
-                pnv:patronym "Andriesz" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Hendrick Andriesz Boelen" ;
                 pnv:baseSurname "Boelen" ;
                 pnv:givenName "Hendrick" ;
                 pnv:literalName "Hendrick Andriesz Boelen" ;
+                pnv:patronym "Andriesz" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Hendrick Andriesz Boelis" ;
+                pnv:baseSurname "Boelis" ;
+                pnv:givenName "Hendrick" ;
+                pnv:literalName "Hendrick Andriesz Boelis" ;
                 pnv:patronym "Andriesz" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/40> a ga:Person ;
@@ -18999,15 +18955,15 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/57-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/57-marriage-1> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Cornelis Wilhelmus" ;
-                pnv:baseSurname "Wilhelmus" ;
-                pnv:givenName "Cornelis" ;
-                pnv:literalName "Cornelis Wilhelmus" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Cornelis Willemsz" ;
                 pnv:baseSurname "Willemsz" ;
                 pnv:givenName "Cornelis" ;
-                pnv:literalName "Cornelis Willemsz" ] .
+                pnv:literalName "Cornelis Willemsz" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Cornelis Wilhelmus" ;
+                pnv:baseSurname "Wilhelmus" ;
+                pnv:givenName "Cornelis" ;
+                pnv:literalName "Cornelis Wilhelmus" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/61> a ga:Person ;
         rdfs:label "Jan van Melis" ;
@@ -19167,22 +19123,16 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/79-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/79-marriage-1> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Jaques le Merchier" ;
-                pnv:baseSurname "Merchier" ;
+                rdfs:label "Jaques le Mercier" ;
+                pnv:baseSurname "Mercier" ;
                 pnv:givenName "Jaques" ;
-                pnv:literalName "Jaques le Merchier" ;
+                pnv:literalName "Jaques le Mercier" ;
                 pnv:patronym "le" ],
             [ a pnv:PersonName ;
                 rdfs:label "Jacob le Mercier" ;
                 pnv:baseSurname "Mercier" ;
                 pnv:givenName "Jacob" ;
                 pnv:literalName "Jacob le Mercier" ;
-                pnv:patronym "le" ],
-            [ a pnv:PersonName ;
-                rdfs:label "Jaques le Mercier" ;
-                pnv:baseSurname "Mercier" ;
-                pnv:givenName "Jaques" ;
-                pnv:literalName "Jaques le Mercier" ;
                 pnv:patronym "le" ],
             [ a pnv:PersonName ;
                 rdfs:label "Jaques le Marcier" ;
@@ -19201,6 +19151,12 @@
                 pnv:baseSurname "Merchier" ;
                 pnv:givenName "Jacob" ;
                 pnv:literalName "Jacob le Merchier" ;
+                pnv:patronym "le" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Jaques le Merchier" ;
+                pnv:baseSurname "Merchier" ;
+                pnv:givenName "Jaques" ;
+                pnv:literalName "Jaques le Merchier" ;
                 pnv:patronym "le" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/81> a ga:Person ;
@@ -19245,15 +19201,15 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/83-death>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/83-marriage-1> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Harmanus Martens" ;
-                pnv:baseSurname "Martens" ;
-                pnv:givenName "Harmanus" ;
-                pnv:literalName "Harmanus Martens" ],
-            [ a pnv:PersonName ;
                 rdfs:label "Harmanus Mertens" ;
                 pnv:baseSurname "Mertens" ;
                 pnv:givenName "Harmanus" ;
-                pnv:literalName "Harmanus Mertens" ] .
+                pnv:literalName "Harmanus Mertens" ],
+            [ a pnv:PersonName ;
+                rdfs:label "Harmanus Martens" ;
+                pnv:baseSurname "Martens" ;
+                pnv:givenName "Harmanus" ;
+                pnv:literalName "Harmanus Martens" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/86> a ga:Person ;
         rdfs:label "Jacques de Win" ;
@@ -19597,7 +19553,7 @@
                 pnv:literalName "Hendrick Servaesz" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/60> a ga:Person ;
-        rdfs:label "Jan Pietersz den van Eeckhout" ;
+        rdfs:label "Jan Pietersz van den Eeckhout" ;
         bio:birth <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/60-birth> ;
         bio:death <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/60-death> ;
         prov:wasDerivedFrom <https://data.goldenagents.org/datasets/corporatiestukken/annotation/gildenleden/60> ;
@@ -19607,12 +19563,12 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/60-marriage-1>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/60-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Jan Pietersz den van Eeckhout" ;
+                rdfs:label "Jan Pietersz van den Eeckhout" ;
                 pnv:baseSurname "Eeckhout" ;
                 pnv:givenName "Jan" ;
-                pnv:literalName "Jan Pietersz den van Eeckhout" ;
-                pnv:patronym "Pietersz den" ;
-                pnv:surnamePrefix "van" ] .
+                pnv:literalName "Jan Pietersz van den Eeckhout" ;
+                pnv:patronym "Pietersz" ;
+                pnv:surnamePrefix "van den" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/65> a ga:Person ;
         rdfs:label "Lambrecht Melchiorsz van Kloeskerk",
@@ -19628,10 +19584,10 @@
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/65-marriage-1>,
             <https://data.goldenagents.org/datasets/corporatiestukken/event/gildenleden/65-marriage-2> ;
         pnv:hasName [ a pnv:PersonName ;
-                rdfs:label "Lammert Melsen Kloeskerk" ;
+                rdfs:label "Lambrecht Melsen Kloeskerk" ;
                 pnv:baseSurname "Kloeskerk" ;
-                pnv:givenName "Lammert" ;
-                pnv:literalName "Lammert Melsen Kloeskerk" ;
+                pnv:givenName "Lambrecht" ;
+                pnv:literalName "Lambrecht Melsen Kloeskerk" ;
                 pnv:patronym "Melsen" ],
             [ a pnv:PersonName ;
                 rdfs:label "Lammert Melchiorsz van Kloeskerk" ;
@@ -19648,10 +19604,10 @@
                 pnv:patronym "Melchiorsz" ;
                 pnv:surnamePrefix "van" ],
             [ a pnv:PersonName ;
-                rdfs:label "Lambrecht Melsen Kloeskerk" ;
+                rdfs:label "Lammert Melsen Kloeskerk" ;
                 pnv:baseSurname "Kloeskerk" ;
-                pnv:givenName "Lambrecht" ;
-                pnv:literalName "Lambrecht Melsen Kloeskerk" ;
+                pnv:givenName "Lammert" ;
+                pnv:literalName "Lammert Melsen Kloeskerk" ;
                 pnv:patronym "Melsen" ] .
 
     <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/67> a ga:Person ;
@@ -19819,5 +19775,48 @@
         rdfs:label "Deceased"@en,
             "Overledene"@nl ;
         rdfs:subClassOf ga:Role .
+}
+
+{
+    <http://viaf.org/viaf/12415105> a schema:Person ;
+        schema:name "Norbert Middelkoop" .
+
+    <https://data.goldenagents.org/datasets/corporatiestukken/gildenleden/> a schema:Dataset ;
+        void:inDataset <https://data.goldenagents.org/datasets/corporatiestukken/> ;
+        void:triples 18544 ;
+        schema:description "" ;
+        schema:isPartOf <https://data.goldenagents.org/datasets/corporatiestukken/> ;
+        schema:name "Geportretteerde gildenleden"@nl .
+
+    <https://orcid.org/0000-0001-8672-025X> a schema:Person ;
+        schema:name "Leon van Wissen" .
+
+    <https://orcid.org/0000-0003-2702-4371> a schema:Person ;
+        schema:name "Jirsi Reinders" .
+
+    <https://www.goldenagents.org/> a schema:Organization ;
+        schema:name "Golden Agents Project" .
+
+    <https://data.goldenagents.org/datasets/corporatiestukken/> a schema:Dataset ;
+        void:triples 17 ;
+        void:vocabulary sem:,
+            ga: ;
+        schema:citation <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
+        schema:contributor <https://orcid.org/0000-0001-8672-025X>,
+            <https://orcid.org/0000-0003-2702-4371> ;
+        schema:creator <http://viaf.org/viaf/12415105> ;
+        schema:dateModified "2021-10-30"^^xsd:date ;
+        schema:description ""@nl ;
+        schema:distribution [ a schema:DataDownload ;
+                schema:encodingFormat "application/trig" ;
+                schema:version "0.1" ] ;
+        schema:hasPart <https://data.goldenagents.org/datasets/corporatiestukken/gildenleden/> ;
+        schema:isBasedOn <https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e> ;
+        schema:license <https://creativecommons.org/licenses/by/4.0/> ;
+        schema:name "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850"@nl ;
+        schema:publisher <https://www.goldenagents.org/> ;
+        schema:spatialCoverage "Amsterdam" ;
+        schema:temporalCoverage "1525-01-01/1850-12-31" ;
+        schema:workExample <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/259> .
 }
 
