@@ -849,7 +849,7 @@ def toRDF(data, uri, name, description, filename, target=None):
     # For the artworks
     if 'corporatiestukken.trig' in target:
 
-        for nrow, d in enumerate(data, 1):
+        for nrow, d in enumerate(data, 2):
 
             # Prov
             anno = Annotation(
@@ -915,7 +915,7 @@ def toRDF(data, uri, name, description, filename, target=None):
 
     # For the person data
     else:
-        for nrow, d in enumerate(data, 1):
+        for nrow, d in enumerate(data, 2):
 
             # Prov
             anno = Annotation(
