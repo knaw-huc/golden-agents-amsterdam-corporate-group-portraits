@@ -1,5 +1,6 @@
 import os
 import time
+import uuid
 import datetime
 import json
 import re
@@ -17,6 +18,8 @@ from rdfalchemy import rdfSubject, rdfMultiple, rdfSingle
 from ga import *
 
 ns = Namespace("https://data.goldenagents.org/datasets/corporatiestukken/")
+gaPersonName = Namespace("https://data.goldenagents.org/datasets/personname/")
+
 rdflib.graph.DATASET_DEFAULT_GRAPH_ID = ns
 
 nsArtwork = Namespace(
@@ -153,6 +156,27 @@ bestuursfuncties = {
 # }
 
 
+def unique(*args, sep="", ns=None):
+    """Function to generate a unique BNode based on a series of arguments.
+
+    Uses the uuid5 function to generate a uuid from one or multiple ordered
+    arguments. This way, the BNode function of rdflib can be used, without the
+    need to filter strange characters or spaces that will break the serialization.
+
+    Returns:
+        BNode: Blank node with identifier that is based on the function's input.
+    """
+
+    identifier = "".join(str(i) for i in args)  # order matters
+
+    unique_id = uuid.uuid5(uuid.NAMESPACE_X500, identifier)
+
+    if ns:
+        return ns.term(str(unique_id))
+    else:
+        return BNode(unique_id)
+
+
 def main(loadData=None):
 
     #######
@@ -286,7 +310,17 @@ def getPersonName(d):
         ])
         labels.append(literalName)
 
-        pn = PersonName(None,
+        identifier = unique(prefix,
+                            givenName,
+                            patronym,
+                            surnamePrefix,
+                            baseSurname,
+                            disambiguatingDescription,
+                            literalName,
+                            sep='@ga@',
+                            ns=gaPersonName)
+
+        pn = PersonName(identifier,
                         prefix=prefix,
                         givenName=givenName,
                         patronym=patronym,
@@ -370,16 +404,33 @@ def parsePersonName(nameString, identifier=None):
         full_name = " ".join(tokens).strip(
         )  # ALL CAPS to normal name format (e.g. Mr. Jan van Tatenhove)
 
-        pn = PersonName(
-            identifier,
-            literalName=full_name.strip()
-            if full_name is not None else "Unknown",
-            prefix=prefix if prefix != "" else None,
-            givenName=first_name if first_name != "" else None,
-            surnamePrefix=infix if infix != "" else None,
-            surname=family_name if family_name != "" else None,
-            patronym=patronym if patronym != "" else None,
-            disambiguatingDescription=suffix if suffix != "" else None)
+        literalName = full_name.strip() if full_name is not None else "Unknown"
+        disambiguatingDescription = suffix if suffix != "" else None
+        patronym = patronym if patronym != "" else None
+        prefix = prefix if prefix != "" else None
+        givenName = first_name if first_name != "" else None
+        surnamePrefix = infix if infix != "" else None
+        baseSurname = family_name if family_name != "" else None
+
+        if identifier is None:
+            identifier = unique(prefix,
+                                givenName,
+                                patronym,
+                                surnamePrefix,
+                                baseSurname,
+                                disambiguatingDescription,
+                                literalName,
+                                sep='@ga@',
+                                ns=gaPersonName)
+
+        pn = PersonName(identifier,
+                        literalName=literalName,
+                        prefix=prefix,
+                        givenName=givenName,
+                        surnamePrefix=surnamePrefix,
+                        baseSurname=baseSurname,
+                        patronym=patronym,
+                        disambiguatingDescription=disambiguatingDescription)
 
         pn.label = [pn.literalName]
 
@@ -1008,11 +1059,6 @@ def toRDF(data, uri, name, description, filename, target=None):
 
             lifeEvents.append(deathEvent)
 
-            #    birthDate=birthDate,
-            #    deathDate=deathDate,
-            #    birthPlace=birthPlace,
-            #    deathPlace=deathPlace)
-
             if d['Geportretteerd op genormaliseerd']:
 
                 art_id = d['Geportretteerd op genormaliseerd']
@@ -1607,12 +1653,12 @@ def toRDF(data, uri, name, description, filename, target=None):
         ],
         citation=[
             URIRef(
-                'https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e'
+                'http://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e'
             )
         ],
         isBasedOn=[
             URIRef(
-                "https://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e"
+                "http://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e"
             )
         ],
         datePublished=None,
