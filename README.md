@@ -1,4 +1,7 @@
-# amsterdam-institutional-group-portraits-rdf
+# Amsterdam Corporate Group Portraits (dataset)
+
+:warning: | This repository is work in progress and contains unfinished data. 
+:---: | :---
 
 ## Data
 
