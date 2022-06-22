@@ -381,7 +381,7 @@ def parsePersonName(nameString, identifier=None):
                                     if i not in prefixes and i not in suffixes)
 
         if infix and infix in name_removed_fix:
-            name = name_removed_fix.split(infix)
+            name = name_removed_fix.split(" " + infix, 1)  # would be nicer with regex word boundary
             first_name = name[0].strip()
             family_name = name[1].strip()
 
@@ -442,14 +442,14 @@ def parsePersonName(nameString, identifier=None):
 
 def parseDate(dateString):
     """
-    Parse a date notation from the CSV data to XSD literals. 
-    
+    Parse a date notation from the CSV data to XSD literals.
+
     Args:
         dateString (str): Date string from CSV data
-    
+
     Returns:
         tuple: (earliestDate, latestDate, timeStamp)
-    
+
     """
 
     if dateString is None:
@@ -490,13 +490,13 @@ def parseDate(dateString):
 def yearToDate(yearString):
     """
     Convert a year string to a XSD date literal.
-    
+
     Args:
         yearString (str): Year string from CSV data
 
     Returns:
         Literal: XSD date literal
-    
+
     """
 
     if yearString is None or yearString == "?":
