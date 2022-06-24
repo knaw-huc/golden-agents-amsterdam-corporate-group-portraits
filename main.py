@@ -946,12 +946,16 @@ def toRDF(data, uri, name, description, filename, target=None):
             eventCounter = count(1)
 
             pid = d['id']
+            person_sameAs = []
+            
+            if Qid:= d['Wikidata']:
+                person_sameAs.append(URIRef("http://www.wikidata.org/entity/" + Qid))
 
             p = Person(nsPerson.term(str(pid)),
                        hasName=pn,
                        gender=gender,
                        label=labels,
-                       wasDerivedFrom=[anno])
+                       wasDerivedFrom=[anno], sameAs=person_sameAs)
 
             birthDate = Literal(d['Doop/geboren genormaliseerd'],
                                 datatype=XSD.date
