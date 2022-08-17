@@ -10,12 +10,13 @@ from rdflib import Dataset, ConjunctiveGraph, Graph, URIRef, Literal, XSD, Names
 from rdfalchemy import rdfSubject, rdfMultiple, rdfSingle, rdfContainer
 
 ga = Namespace("https://data.goldenagents.org/ontology/")
+ga_skolem = Namespace("https://data.goldenagents.org/datasets/")
 gaRoleType = Namespace(
     "https://data.goldenagents.org/datasets/corporatiestukken/roletype/")
 gaOrganization = Namespace(
     "https://data.goldenagents.org/datasets/corporatiestukken/organization/")
 
-schema = Namespace("http://schema.org/")
+schema = Namespace("https://schema.org/")
 sem = Namespace("http://semanticweb.cs.vu.nl/2009/11/sem/")
 bio = Namespace("http://purl.org/vocab/bio/0.1/")
 foaf = Namespace("http://xmlns.com/foaf/0.1/")
