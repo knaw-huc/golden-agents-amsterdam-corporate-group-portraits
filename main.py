@@ -1,3 +1,16 @@
+"""
+Pipeline to convert Amsterdam Corporate Group Portrait data into RDF.  
+
+Built upon an adapted version of RDFAlchemy for Python (3.7). Install with:
+
+```bash
+pip install git+https://github.com/LvanWissen/RDFAlchemy.git
+```
+
+Contact:
+    Leon van Wissen (l.vanwissen@uva.nl)
+"""
+
 import os
 import uuid
 import datetime
