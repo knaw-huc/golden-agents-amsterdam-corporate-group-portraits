@@ -1,5 +1,4 @@
 import os
-import time
 import uuid
 import datetime
 import json
@@ -12,7 +11,7 @@ import pandas as pd
 from dateutil import parser as dateParser
 
 import rdflib
-from rdflib import Dataset, ConjunctiveGraph, Graph, URIRef, Literal, XSD, Namespace, RDFS, BNode, OWL
+from rdflib import Graph, URIRef, Literal, XSD, Namespace, BNode, OWL
 from rdfalchemy import rdfSubject, rdfMultiple, rdfSingle
 
 from ga import *
@@ -816,10 +815,9 @@ def toRDF(data, uri, name, description, filename, target=None):
         f"https://data.goldenagents.org/datasets/corporatiestukken/role/{nametype}/"
     )
 
-    ds = Dataset()
     dataset = ns.term('')
 
-    g = rdfSubject.db = ds.graph(identifier=uri)
+    g = rdfSubject.db = Graph(identifier=uri)
 
     _ = RoleType(
         ga.Groom,
@@ -957,13 +955,7 @@ def toRDF(data, uri, name, description, filename, target=None):
                        label=labels,
                        wasDerivedFrom=[anno], sameAs=person_sameAs)
 
-            birthDate = Literal(d['Doop/geboren genormaliseerd'],
-                                datatype=XSD.date
-                                ) if d['Doop/geboren genormaliseerd'] else None
             birthPlace = d['Doop/geboren te']
-            deathDate = Literal(
-                d['Begraven/overleden genormaliseerd'], datatype=XSD.date
-            ) if d['Begraven/overleden genormaliseerd'] else None
             deathPlace = d['Begraven/overleden te']
 
             birthDateEarliest, birthDateLatest, birthTimeStamp = parseDate(
@@ -1598,101 +1590,108 @@ def toRDF(data, uri, name, description, filename, target=None):
         Organization(organization).participatesIn = [organizationEvent
                                                      ] + subEvents
 
-    ########
-    # Meta #
-    ########
+    # ########
+    # # Meta #
+    # ########
 
-    rdfSubject.db = ds
+    # rdfSubject.db = g
 
-    description = """"""
+    # description = """"""
 
-    download = DataDownload(
-        None,
-        # contentUrl=URIRef(
-        #     "https://raw.githubusercontent.com/LvanWissen/iets.trig"
-        # ),
-        # name=Literal(),
-        # url=URIRef(
-        #     "https://github.com/LvanWissen/iets/data"
-        # ),
-        encodingFormat="application/trig",
-        version="0.1")
+    # download = DataDownload(
+    #     None,
+    #     # contentUrl=URIRef(
+    #     #     "https://raw.githubusercontent.com/LvanWissen/iets.trig"
+    #     # ),
+    #     # name=Literal(),
+    #     # url=URIRef(
+    #     #     "https://github.com/LvanWissen/iets/data"
+    #     # ),
+    #     encodingFormat="application/trig",
+    #     version="0.1")
 
-    date = Literal(datetime.datetime.now().strftime('%Y-%m-%d'),
-                   datatype=XSD.date)
+    # date = Literal(datetime.datetime.now().strftime('%Y-%m-%d'),
+    #                datatype=XSD.date)
 
-    dataset = DatasetClass(uri,
-                           name=[name],
-                           description=[description],
-                           isPartOf=ns.term(''),
-                           inDataset=ns.term(''),
-                           triples=sum(
-                               1 for i in ds.graph(identifier=uri).subjects()))
+    # dataset = DatasetClass(uri,
+    #                        name=[name],
+    #                        description=[description],
+    #                        isPartOf=ns.term(''),
+    #                        inDataset=ns.term(''),
+    #                        triples=sum(
+    #                            1 for i in g.subjects()))
 
-    mainDataset = DatasetClass(
-        ns.term(''),
-        name=[
-            Literal(
-                "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850",
-                lang='nl')
-        ],
-        temporalCoverage=[Literal("1525-01-01/1850-12-31")],
-        spatialCoverage=[Literal("Amsterdam")],
-        # about=URIRef(''),
-        # url=URIRef(''),
-        description=[Literal(description, lang='nl')],
-        creator=[
-            SchemaPerson(URIRef("http://viaf.org/viaf/12415105"),
-                         name=["Norbert Middelkoop"])
-        ],
-        publisher=[
-            SchemaOrganization(URIRef("https://www.goldenagents.org/"),
-                               name=["Golden Agents Project"])
-        ],
-        contributor=[
-            SchemaPerson(URIRef("https://orcid.org/0000-0001-8672-025X"),
-                         name=["Leon van Wissen"]),
-            SchemaPerson(URIRef("https://orcid.org/0000-0003-2702-4371"),
-                         name=["Jirsi Reinders"])
-        ],
-        citation=[
-            URIRef(
-                'http://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e'
-            )
-        ],
-        isBasedOn=[
-            URIRef(
-                "http://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e"
-            )
-        ],
-        datePublished=None,
-        dateCreated=None,
-        dateModified=date,
-        distribution=download,
-        workExample=p,
-        vocabulary=[
-            ga.term(''),
-            URIRef("http://semanticweb.cs.vu.nl/2009/11/sem/")
-        ],
-        triples=sum(1 for i in ds.graph(identifier=ns).subjects()),
-        licenseprop=URIRef("https://creativecommons.org/licenses/by/4.0/"),
-        hasPart=[dataset])
+    # mainDataset = DatasetClass(
+    #     ns.term(''),
+    #     name=[
+    #         Literal(
+    #             "Schutters, gildebroeders, regenten en regentessen: Het Amsterdamse corporatiestuk 1525-1850",
+    #             lang='nl')
+    #     ],
+    #     temporalCoverage=[Literal("1525-01-01/1850-12-31")],
+    #     spatialCoverage=[Literal("Amsterdam")],
+    #     # about=URIRef(''),
+    #     # url=URIRef(''),
+    #     description=[Literal(description, lang='nl')],
+    #     creator=[
+    #         SchemaPerson(URIRef("http://viaf.org/viaf/12415105"),
+    #                      name=["Norbert Middelkoop"])
+    #     ],
+    #     publisher=[
+    #         SchemaOrganization(URIRef("https://www.goldenagents.org/"),
+    #                            name=["Golden Agents Project"])
+    #     ],
+    #     contributor=[
+    #         SchemaPerson(URIRef("https://orcid.org/0000-0001-8672-025X"),
+    #                      name=["Leon van Wissen"]),
+    #         SchemaPerson(URIRef("https://orcid.org/0000-0003-2702-4371"),
+    #                      name=["Jirsi Reinders"])
+    #     ],
+    #     citation=[
+    #         URIRef(
+    #             'http://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e'
+    #         )
+    #     ],
+    #     isBasedOn=[
+    #         URIRef(
+    #             "http://hdl.handle.net/11245.1/509fbcc0-8dc0-44ae-869d-2620f905092e"
+    #         )
+    #     ],
+    #     datePublished=None,
+    #     dateCreated=None,
+    #     dateModified=date,
+    #     distribution=download,
+    #     workExample=p,
+    #     vocabulary=[
+    #         ga.term(''),
+    #         URIRef("http://semanticweb.cs.vu.nl/2009/11/sem/")
+    #     ],
+    #     triples=sum(1 for i in g.subjects()),
+    #     licenseprop=URIRef("https://creativecommons.org/licenses/by/4.0/"),
+    #     hasPart=[dataset])
 
-    ds.bind('owl', OWL)
-    ds.bind('dcterms', dcterms)
-    ds.bind('ga', ga)
-    ds.bind('schema', schema)
-    ds.bind('sem', sem)
-    ds.bind('void', void)
-    ds.bind('foaf', foaf)
-    ds.bind('wd', URIRef("http://www.wikidata.org/entity/"))
-    ds.bind('pnv', pnv)
-    ds.bind('bio', bio)
-    ds.bind('prov', prov)
-    ds.bind('oa', oa)
+    # Skolemize BNodes
+    g = g.skolemize(
+        new_graph=rdflib.Graph(identifier=uri),
+        authority="https://data.goldenagents.org/",
+        basepath=rdflib.term.skolem_genid,
+    )
+
+    g.bind('owl', OWL)
+    g.bind('dcterms', dcterms)
+    g.bind('ga', ga)
+    g.bind('schema', schema)
+    g.bind('sem', sem)
+    g.bind('void', void)
+    g.bind('foaf', foaf)
+    g.bind('wd', URIRef("http://www.wikidata.org/entity/"))
+    g.bind('pnv', pnv)
+    g.bind('bio', bio)
+    g.bind('prov', prov)
+    g.bind('oa', oa)
 
     print(f"Serializing to {target}")
-    ds.serialize(target, format='trig')
+    g.serialize(target, format='trig')
 
 
 if __name__ == "__main__":
