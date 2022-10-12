@@ -1706,6 +1706,116 @@ def toRDF(data, uri, name, description, filename, target=None):
     print(f"Serializing to {target}")
     g.serialize(target, format='trig')
 
+def prepare_for_timbuctoo(trigfolder: str):
+    """
+    Replace all entity URIs by a single canonical URI from a linkset.
+
+    Timbuctoo doesn't understand semantics, so this function replaces 
+    all entity URIs (that indicate duplicate persons/roles/events etc. 
+    if you cannot enable OWL equality through `owl:sameAs`) by a single 
+    canonical URI. The original URI is added with an `owl:sameAs` to 
+    hopefully maintain 'sharability/connectability'. 
+
+    Writes to 'trig/dataset_timbuctoo.trig'.
+    """
+
+    g = ConjunctiveGraph()
+
+    # Read in data
+    for f in os.listdir(trigfolder):
+        if f.endswith('.trig') and f != 'dataset_timbuctoo.trig':
+            print(f"Reading {f}")
+            g.parse(os.path.join(trigfolder, f), format='trig')
+
+    g = materialize(
+        g, 
+        ga.Person, 
+        Namespace("https://data.goldenagents.org/datasets/corporatiestukken/person/"), 
+        'linksets/lens_f399a189f02246ee0b9a7300677a6be6_6_accepted.trig'
+        )
+
+    # Again, no reasoning here
+    for RoleClass in g.subjects(RDF.type, ga.RoleType):
+        g = materialize(
+            g,
+            RoleClass,
+            Namespace("https://data.goldenagents.org/datasets/corporatiestukken/role/"),
+            'linksets/sameAs_roles.trig'
+            )
+
+    g = materialize(
+        g,
+        ga.Event,
+        Namespace("https://data.goldenagents.org/datasets/corporatiestukken/event/"),
+        'linksets/sameAs_events.trig'
+        )
+
+    g.serialize(os.path.join(trigfolder, 'dataset_timbuctoo.trig'), format='trig')
+
+def materialize(g, entityType, nsEntity, linkset_path):
+    """
+    Use one canonical URI for an entity of a type. 
+    Add `owl:sameAs` links to the old ones. 
+
+    Args:
+        g (rdflib.Graph): Graph object
+        entityType (rdflib.URIRef): Entity type
+        nsEntity (rdflib.Namespace): Namespace of entity type
+        linkset_path (str): Path to linkset.
+
+    Returns:
+        rdflib.Graph: Graph object
+    """
+
+    # Read in linkset
+    l = ConjunctiveGraph()
+    l.parse(linkset_path)
+
+    allSameAsPersons = set()
+    mapping = defaultdict(set)
+    for o, s in l.subject_objects(OWL.sameAs):
+        mapping[o].add(s)
+        mapping[s].add(o)
+
+        allSameAsPersons.add(s)
+        allSameAsPersons.add(o)
+
+    clusters = mapping.values()  # this should give unique clusters
+
+    uri2cluster = dict()
+    for c in clusters:
+        uri2cluster[unique(*c, ns=nsEntity)] = uri2cluster
+
+    quadsToAdd = set()
+    persons = g.quads((None, RDF.type, entityType, None))
+    for s, p, o, q in persons:
+        if s not in allSameAsPersons:
+            uri = unique(s, ns=nsEntity)
+            quadsToAdd.add((uri, OWL.sameAs, s, q))  # later
+        else:
+            for uri, cluster in uri2cluster.items():
+                if str(s) in cluster:
+                    for i in cluster:
+                        quadsToAdd.add((uri, OWL.sameAs, URIRef(i), q))
+                    break  # uri is defined
+
+        subjects = g.quads((s, None, None, None))
+        for s1, p1, o1, q1 in subjects:
+            g.remove((s, p1, o1, q1))
+            g.add((uri, p1, o1, q1))
+
+        objects = g.quads((None, None, s, None))
+        for s1, p1, o1, q1 in objects:
+            g.remove((s1, p1, s, q1))
+            g.add((s1, p1, uri, q1))
+
+    # Now add the sameAs links to the old URI
+    g.addN(quadsToAdd)
+
+    return g
+
 
 if __name__ == "__main__":
     main()
+
+    prepare_for_timbuctoo('trig')

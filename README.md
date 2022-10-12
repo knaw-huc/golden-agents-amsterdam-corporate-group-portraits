@@ -28,6 +28,71 @@ The ontology used is event based.
 We tried to convert all uncertain dates to valid ISO-8601 date spans. In case there was a 'ca.' notation, we interpreted this as an uncertainty range of ±2 years. This helps us to (bulk) query the data in our datastore.
 For example, a notation of `1505 ca.` is converted to a date span of `1503-01-01/1507-12-31` (earliest begin / latest end). Depending on the context of the date, this sometimes is written as `1503-01-01|1503-12-31/1507-01-01|1507-12-31` (earliest begin | latest begin / earliest end | latest end).
 
+### Linksets
+
+```SPARQL
+PREFIX ga: <https://data.goldenagents.org/ontology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+CONSTRUCT {
+    ?role1 owl:sameAs ?role2 .
+} WHERE { 
+    ?person a ga:Person ;
+         ga:participatesIn ?event1, ?event2 .
+    
+    FILTER(?event1 != ?event2)
+    
+    ?event1 rdfs:label ?eventlabel .
+    ?event2 rdfs:label ?eventlabel .
+    
+    ?role1 a ?roleType1 ;
+          ga:carriedIn ?event1 ;
+          ga:carriedBy ?person ;
+          rdfs:label ?label .
+    
+    ?role2 a ?roleType2 ;
+          ga:carriedIn ?event2 ;
+          ga:carriedBy ?person ;
+          rdfs:label ?label .
+    
+    FILTER(?role1 != ?role2)
+    
+    
+}
+
+```
+
+```SPARQL
+PREFIX ga: <https://data.goldenagents.org/ontology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+CONSTRUCT {
+    ?event1 owl:sameAs ?event2 .
+} WHERE { 
+    ?person a ga:Person ;
+         ga:participatesIn ?event1, ?event2 .
+    
+    FILTER(?event1 != ?event2)
+    
+    ?event1 rdfs:label ?eventlabel .
+    ?event2 rdfs:label ?eventlabel .
+    
+    ?role1 a ?roleType1 ;
+          ga:carriedIn ?event1 ;
+          ga:carriedBy ?person ;
+          rdfs:label ?label .
+    
+    ?role2 a ?roleType2 ;
+          ga:carriedIn ?event2 ;
+          ga:carriedBy ?person ;
+          rdfs:label ?label .
+    
+    FILTER(?role1 != ?role2)
+    
+    
+}
+```
+
 ### Provenance
 Only the CreativeWork and Person resources carry a `prov:wasDerivedFrom` property that refers to the row number of the original csv file. 
 
