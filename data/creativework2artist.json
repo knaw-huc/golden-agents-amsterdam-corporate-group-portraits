@@ -1,0 +1,1162 @@
+{
+  "B1": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "B2": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "B3": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "CM1": {
+    "name": "Adriaen Backer",
+    "wikidata": "http://www.wikidata.org/entity/Q3922347",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/673"
+  },
+  "CM2": {
+    "name": "Cornelis Troost",
+    "wikidata": "http://www.wikidata.org/entity/Q2627927",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/8861"
+  },
+  "CM3": {
+    "name": "Tibout Regters",
+    "wikidata": "http://www.wikidata.org/entity/Q7800530",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/11682"
+  },
+  "G1": {
+    "name": "Aert Pietersz",
+    "wikidata": "http://www.wikidata.org/entity/Q4688509",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6006"
+  },
+  "G10": {
+    "name": "Jurriaan Pool II",
+    "wikidata": "http://www.wikidata.org/entity/Q2685281",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6082"
+  },
+  "G11": {
+    "name": "Pieter Blauwpot",
+    "wikidata": null,
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/1005"
+  },
+  "G12": {
+    "name": "Arnold Boonen",
+    "wikidata": "http://www.wikidata.org/entity/Q4794968",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/79"
+  },
+  "G13": {
+    "name": "Cornelis Troost",
+    "wikidata": "http://www.wikidata.org/entity/Q2627927",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/8861"
+  },
+  "G14": {
+    "name": "Cornelis Troost",
+    "wikidata": "http://www.wikidata.org/entity/Q2627927",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/8861"
+  },
+  "G15": {
+    "name": "Jan Maurits Quinkhard",
+    "wikidata": "http://www.wikidata.org/entity/Q6149476",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6183"
+  },
+  "G16": {
+    "name": "Jan Maurits Quinkhard",
+    "wikidata": "http://www.wikidata.org/entity/Q6149476",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6183"
+  },
+  "G17": {
+    "name": "Jan Maurits Quinkhard",
+    "wikidata": "http://www.wikidata.org/entity/Q6149476",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6183"
+  },
+  "G18": {
+    "name": "Tibout Regters",
+    "wikidata": "http://www.wikidata.org/entity/Q7800530",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/11682"
+  },
+  "G19": {
+    "name": "Adam Camerarius",
+    "wikidata": "http://www.wikidata.org/entity/Q18516447",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/1607"
+  },
+  "G2": {
+    "name": "Werner van den Valckert",
+    "wikidata": "http://www.wikidata.org/entity/Q7983530",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7561"
+  },
+  "G20": {
+    "name": "Barend Graat",
+    "wikidata": "http://www.wikidata.org/entity/Q4860438",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/3319"
+  },
+  "G21": {
+    "name": "Werner van den Valckert",
+    "wikidata": "http://www.wikidata.org/entity/Q7983530",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7561"
+  },
+  "G22": {
+    "name": "Tibout Regters",
+    "wikidata": "http://www.wikidata.org/entity/Q7800530",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/11682"
+  },
+  "G23": {
+    "name": "T. v.d. Elst",
+    "wikidata": "http://www.wikidata.org/entity/Q22669013",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/2768"
+  },
+  "G24": {
+    "name": "M. Engel",
+    "wikidata": null,
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/2783"
+  },
+  "G25": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "G26": {
+    "name": "Pieter Pietersz",
+    "wikidata": "http://www.wikidata.org/entity/Q1868417",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6022"
+  },
+  "G27": {
+    "name": "Rembrandt",
+    "wikidata": "http://www.wikidata.org/entity/Q5598",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6292"
+  },
+  "G28": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "G29": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "G3": {
+    "name": "Nicolaes Eliaszoon Pickenoy",
+    "wikidata": "http://www.wikidata.org/entity/Q632846",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/5986"
+  },
+  "G30": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "G31": {
+    "name": "Dirck van Santvoort",
+    "wikidata": "http://www.wikidata.org/entity/Q420452",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6566"
+  },
+  "G32": {
+    "name": "Thomas de Keyser",
+    "wikidata": "http://www.wikidata.org/entity/Q932263",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4299"
+  },
+  "G33": {
+    "name": "Thomas de Keyser",
+    "wikidata": "http://www.wikidata.org/entity/Q932263",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4299"
+  },
+  "G34": {
+    "name": "Thomas de Keyser",
+    "wikidata": "http://www.wikidata.org/entity/Q932263",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4299"
+  },
+  "G35": {
+    "name": "Thomas de Keyser",
+    "wikidata": "http://www.wikidata.org/entity/Q932263",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4299"
+  },
+  "G36": {
+    "name": "Jurriaan Pool",
+    "wikidata": "http://www.wikidata.org/entity/Q110359426",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6082"
+  },
+  "G37": {
+    "name": "Nicolaes Eliaszoon Pickenoy",
+    "wikidata": "http://www.wikidata.org/entity/Q632846",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/5986"
+  },
+  "G38": {
+    "name": "Nicolaes Eliasz Pickenoy",
+    "wikidata": "http://www.wikidata.org/entity/Q632846",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/5986"
+  },
+  "G39": {
+    "name": "Ferdinand Bol",
+    "wikidata": "http://www.wikidata.org/entity/Q374039",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/1118"
+  },
+  "G4": {
+    "name": "Rembrandt",
+    "wikidata": "http://www.wikidata.org/entity/Q5598",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6292"
+  },
+  "G40": {
+    "name": "Carel de Moor",
+    "wikidata": "http://www.wikidata.org/entity/Q874936",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/5475"
+  },
+  "G41": {
+    "name": "Arnold Boonen",
+    "wikidata": "http://www.wikidata.org/entity/Q4794968",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/79"
+  },
+  "G42": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "G43": {
+    "name": "Jan Maurits Quinkhard",
+    "wikidata": "http://www.wikidata.org/entity/Q6149476",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6183"
+  },
+  "G44": {
+    "name": "Jan Maurits Quinkhard",
+    "wikidata": "http://www.wikidata.org/entity/Q6149476",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6183"
+  },
+  "G45": {
+    "name": "Tibout Regters",
+    "wikidata": "http://www.wikidata.org/entity/Q7800530",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/11682"
+  },
+  "G46": {
+    "name": "Gerbrand van den Eeckhout",
+    "wikidata": "http://www.wikidata.org/entity/Q550146",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/2720"
+  },
+  "G47": {
+    "name": "Gerbrand van den Eeckhout",
+    "wikidata": "http://www.wikidata.org/entity/Q550146",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/2720"
+  },
+  "G48": {
+    "name": "Arnold Boonen",
+    "wikidata": "http://www.wikidata.org/entity/Q4794968",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/79"
+  },
+  "G49": {
+    "name": "Jan Maurits Quinkhard",
+    "wikidata": "http://www.wikidata.org/entity/Q6149476",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6183"
+  },
+  "G5": {
+    "name": "Rembrandt",
+    "wikidata": "http://www.wikidata.org/entity/Q5598",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6292"
+  },
+  "G50": {
+    "name": "Jan Maurits Quinkhard",
+    "wikidata": "http://www.wikidata.org/entity/Q6149476",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6183"
+  },
+  "G6": {
+    "name": "Adriaen Backer",
+    "wikidata": "http://www.wikidata.org/entity/Q3922347",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/673"
+  },
+  "G7": {
+    "name": "Nicolaes Maes",
+    "wikidata": "http://www.wikidata.org/entity/Q505150",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4814"
+  },
+  "G8": {
+    "name": "Jan van Neck",
+    "wikidata": "http://www.wikidata.org/entity/Q6150374",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/5574"
+  },
+  "G9": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "OCW1": {
+    "name": "Wallerant Vaillant",
+    "wikidata": "http://www.wikidata.org/entity/Q513815",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7538"
+  },
+  "OCW2": {
+    "name": "Jan Maurits Quinkhard",
+    "wikidata": "http://www.wikidata.org/entity/Q6149476",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6183"
+  },
+  "OCW3": {
+    "name": "Wybrand Hendricks",
+    "wikidata": "http://www.wikidata.org/entity/Q474624",
+    "ecartico": null
+  },
+  "R1": {
+    "name": "Cornelis van der Voort",
+    "wikidata": "http://www.wikidata.org/entity/Q1818227",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7983"
+  },
+  "R10": {
+    "name": "Jan Maurits Quinkhard",
+    "wikidata": "http://www.wikidata.org/entity/Q6149476",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6183"
+  },
+  "R11": {
+    "name": "Johan Antoni Kaldenbach",
+    "wikidata": "http://www.wikidata.org/entity/Q21635799",
+    "ecartico": null
+  },
+  "R12": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "R13": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "R14": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "R15": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "R16": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "R17": {
+    "name": "Cornelis Troost",
+    "wikidata": "http://www.wikidata.org/entity/Q2627927",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/8861"
+  },
+  "R18": {
+    "name": "Tibout Regters",
+    "wikidata": "http://www.wikidata.org/entity/Q7800530",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/11682"
+  },
+  "R19": {
+    "name": "Werner van den Valckert",
+    "wikidata": "http://www.wikidata.org/entity/Q7983530",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7561"
+  },
+  "R2": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "R20": {
+    "name": "Werner van den Valckert",
+    "wikidata": "http://www.wikidata.org/entity/Q7983530",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7561"
+  },
+  "R21": {
+    "name": "Ferdinand Bol",
+    "wikidata": "http://www.wikidata.org/entity/Q374039",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/1118"
+  },
+  "R22": {
+    "name": "Ferdinand Bol",
+    "wikidata": "http://www.wikidata.org/entity/Q374039",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/1118"
+  },
+  "R23": {
+    "name": "Ferdinand Bol",
+    "wikidata": "http://www.wikidata.org/entity/Q374039",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/1118"
+  },
+  "R24": {
+    "name": "Jacob Ochtervelt",
+    "wikidata": "http://www.wikidata.org/entity/Q724646",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/5700"
+  },
+  "R25": {
+    "name": "Anthoni Schoonjans",
+    "wikidata": "http://www.wikidata.org/entity/Q572587",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6697"
+  },
+  "R26": {
+    "name": "Arnold Boonen",
+    "wikidata": "http://www.wikidata.org/entity/Q4794968",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/79"
+  },
+  "R27": {
+    "name": "Arnold Boonen",
+    "wikidata": "http://www.wikidata.org/entity/Q4794968",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/79"
+  },
+  "R28": {
+    "name": "Jan Maurits Quinkhard",
+    "wikidata": "http://www.wikidata.org/entity/Q6149476",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6183"
+  },
+  "R29": {
+    "name": "Jan Maurits Quinkhard",
+    "wikidata": "http://www.wikidata.org/entity/Q6149476",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6183"
+  },
+  "R3": {
+    "name": "Jan Maurits Quinkhard",
+    "wikidata": "http://www.wikidata.org/entity/Q6149476",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6183"
+  },
+  "R30": {
+    "name": "Tibout Regters",
+    "wikidata": "http://www.wikidata.org/entity/Q7800530",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/11682"
+  },
+  "R31": {
+    "name": "Jacobus Luberti Augustini",
+    "wikidata": "http://www.wikidata.org/entity/Q16199256",
+    "ecartico": null
+  },
+  "R32": {
+    "name": "Louis Moritz",
+    "wikidata": "http://www.wikidata.org/entity/Q16062256",
+    "ecartico": null
+  },
+  "R33": {
+    "name": "Jan Adam Kruseman",
+    "wikidata": "http://www.wikidata.org/entity/Q576824",
+    "ecartico": null
+  },
+  "R34": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "R35": {
+    "name": "Nicolaes Eliaszoon Pickenoy",
+    "wikidata": "http://www.wikidata.org/entity/Q632846",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/5986"
+  },
+  "R36": {
+    "name": "Dirck van Santvoort",
+    "wikidata": "http://www.wikidata.org/entity/Q420452",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6566"
+  },
+  "R37": {
+    "name": "Jacob Backer",
+    "wikidata": "http://www.wikidata.org/entity/Q19032",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/676"
+  },
+  "R38": {
+    "name": "Bartholomeus van der Helst",
+    "wikidata": "http://www.wikidata.org/entity/Q380704",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/3619"
+  },
+  "R39": {
+    "name": "Karel Dujardin",
+    "wikidata": "http://www.wikidata.org/entity/Q719666",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/2652"
+  },
+  "R4": {
+    "name": "Cornelis van der Voort",
+    "wikidata": "http://www.wikidata.org/entity/Q1818227",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7983"
+  },
+  "R40": {
+    "name": "Jan de Baen",
+    "wikidata": "http://www.wikidata.org/entity/Q759784",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/701"
+  },
+  "R41": {
+    "name": "Arnold Boonen",
+    "wikidata": "http://www.wikidata.org/entity/Q4794968",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/79"
+  },
+  "R42": {
+    "name": "Arnold Boonen",
+    "wikidata": "http://www.wikidata.org/entity/Q4794968",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/79"
+  },
+  "R43": {
+    "name": "Arnold Boonen",
+    "wikidata": "http://www.wikidata.org/entity/Q4794968",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/79"
+  },
+  "R44": {
+    "name": "Arnold Boonen",
+    "wikidata": "http://www.wikidata.org/entity/Q4794968",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/79"
+  },
+  "R45": {
+    "name": "Jan Maurits Quinkhard",
+    "wikidata": "http://www.wikidata.org/entity/Q6149476",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6183"
+  },
+  "R46": {
+    "name": "Jan Maurits Quinkhard",
+    "wikidata": "http://www.wikidata.org/entity/Q6149476",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6183"
+  },
+  "R47": {
+    "name": "Jacob Backer",
+    "wikidata": "http://www.wikidata.org/entity/Q19032",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/676"
+  },
+  "R48": {
+    "name": "Ferdinand Bol",
+    "wikidata": "http://www.wikidata.org/entity/Q374039",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/1118"
+  },
+  "R49": {
+    "name": "Adriaan de Lelie",
+    "wikidata": "http://www.wikidata.org/entity/Q616083",
+    "ecartico": null
+  },
+  "R5": {
+    "name": "Cornelis van der Voort",
+    "wikidata": "http://www.wikidata.org/entity/Q1818227",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7983"
+  },
+  "R50": {
+    "name": "J\u00fcrgen Ovens",
+    "wikidata": "http://www.wikidata.org/entity/Q370576",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/5829"
+  },
+  "R51": {
+    "name": "Pieter van Anraedt",
+    "wikidata": "http://www.wikidata.org/entity/Q2311583",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/579"
+  },
+  "R52": {
+    "name": "Arnold Boonen",
+    "wikidata": "http://www.wikidata.org/entity/Q4794968",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/79"
+  },
+  "R53": {
+    "name": "Arnold Boonen",
+    "wikidata": "http://www.wikidata.org/entity/Q4794968",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/79"
+  },
+  "R54": {
+    "name": "Cornelis Troost",
+    "wikidata": "http://www.wikidata.org/entity/Q2627927",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/8861"
+  },
+  "R55": {
+    "name": "Jan Maurits Quinkhard",
+    "wikidata": "http://www.wikidata.org/entity/Q6149476",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6183"
+  },
+  "R56": {
+    "name": "Adriaan de Lelie",
+    "wikidata": "http://www.wikidata.org/entity/Q616083",
+    "ecartico": null
+  },
+  "R57": {
+    "name": "Adriaan de Lelie",
+    "wikidata": "http://www.wikidata.org/entity/Q616083",
+    "ecartico": null
+  },
+  "R58": {
+    "name": "Abraham de Vries",
+    "wikidata": "http://www.wikidata.org/entity/Q2821872",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/8060"
+  },
+  "R59": {
+    "name": "Jacob Backer",
+    "wikidata": "http://www.wikidata.org/entity/Q19032",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/676"
+  },
+  "R6": {
+    "name": "Claes Corneliszoon Moeyaert",
+    "wikidata": "http://www.wikidata.org/entity/Q59661",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/5307"
+  },
+  "R60": {
+    "name": "J\u00fcrgen Ovens",
+    "wikidata": "http://www.wikidata.org/entity/Q370576",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/5829"
+  },
+  "R61": {
+    "name": "Adriaen Backer",
+    "wikidata": "http://www.wikidata.org/entity/Q3922347",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/673"
+  },
+  "R62": {
+    "name": "Arnold Boonen",
+    "wikidata": "http://www.wikidata.org/entity/Q4794968",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/79"
+  },
+  "R63": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "R64": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "R65": {
+    "name": "Bartholomeus van der Helst",
+    "wikidata": "http://www.wikidata.org/entity/Q380704",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/3619"
+  },
+  "R66": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "R67": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "R68": {
+    "name": "Abraham Lambertsz van den Tempel",
+    "wikidata": "http://www.wikidata.org/entity/Q330210",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7322"
+  },
+  "R69": {
+    "name": "Adriaen Backer",
+    "wikidata": "http://www.wikidata.org/entity/Q3922347",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/673"
+  },
+  "R7": {
+    "name": "Adriaen Backer",
+    "wikidata": "http://www.wikidata.org/entity/Q3922347",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/673"
+  },
+  "R70": {
+    "name": "Wallerant Vaillant",
+    "wikidata": "http://www.wikidata.org/entity/Q513815",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7538"
+  },
+  "R71": {
+    "name": "Arnold Boonen",
+    "wikidata": "http://www.wikidata.org/entity/Q4794968",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/79"
+  },
+  "R72": {
+    "name": "Jacobus Buys",
+    "wikidata": "http://www.wikidata.org/entity/Q6119855",
+    "ecartico": null
+  },
+  "R73": {
+    "name": "Jacobus Buys",
+    "wikidata": "http://www.wikidata.org/entity/Q6119855",
+    "ecartico": null
+  },
+  "R74": {
+    "name": "Adriaan de Lelie",
+    "wikidata": "http://www.wikidata.org/entity/Q616083",
+    "ecartico": null
+  },
+  "R75": {
+    "name": "Gerrit Postma",
+    "wikidata": null,
+    "ecartico": null
+  },
+  "R8": {
+    "name": "Barend Graat",
+    "wikidata": "http://www.wikidata.org/entity/Q4860438",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/3319"
+  },
+  "R9": {
+    "name": "Jan Maurits Quinkhard",
+    "wikidata": "http://www.wikidata.org/entity/Q6149476",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6183"
+  },
+  "S1": {
+    "name": "Dirck Jacobsz.",
+    "wikidata": "http://www.wikidata.org/entity/Q2445767",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4015"
+  },
+  "S10": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S11": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S12": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S13": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S14": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S15": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S16": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S17": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S18": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S19": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S2": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S20": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S21": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S22": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S23": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S24": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S25": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S26": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S27": {
+    "name": "Dirck Jacobsz.",
+    "wikidata": "http://www.wikidata.org/entity/Q2445767",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4015"
+  },
+  "S28": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S29": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S3": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S30": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S31": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S32": {
+    "name": "Dirck Jacobsz.",
+    "wikidata": "http://www.wikidata.org/entity/Q2445767",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4015"
+  },
+  "S33": {
+    "name": "Dirck Barendsz",
+    "wikidata": "http://www.wikidata.org/entity/Q2183916",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/749"
+  },
+  "S34": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S35": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S36": {
+    "name": "Dirck Jacobsz.",
+    "wikidata": "http://www.wikidata.org/entity/Q2445767",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4015"
+  },
+  "S37": {
+    "name": "Dirck Barendsz",
+    "wikidata": "http://www.wikidata.org/entity/Q2183916",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/749"
+  },
+  "S38": {
+    "name": "Dirck Jacobsz.",
+    "wikidata": "http://www.wikidata.org/entity/Q2445767",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4015"
+  },
+  "S39": {
+    "name": "Dirck Barendsz",
+    "wikidata": "http://www.wikidata.org/entity/Q2183916",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/749"
+  },
+  "S4": {
+    "name": "Cornelis Anthonisz",
+    "wikidata": "http://www.wikidata.org/entity/Q2761474",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/590"
+  },
+  "S40": {
+    "name": "Dirck Barendsz",
+    "wikidata": "http://www.wikidata.org/entity/Q2183916",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/749"
+  },
+  "S41": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S42": {
+    "name": "Jacob Lenartsz",
+    "wikidata": null,
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4553"
+  },
+  "S43": {
+    "name": "Pieter Pietersz",
+    "wikidata": "http://www.wikidata.org/entity/Q1868417",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6022"
+  },
+  "S44": {
+    "name": "Pieter Pietersz",
+    "wikidata": "http://www.wikidata.org/entity/Q1868417",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6022"
+  },
+  "S45": {
+    "name": "Jacob Lenartsz",
+    "wikidata": null,
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4553"
+  },
+  "S46": {
+    "name": "Dirck Barendsz",
+    "wikidata": "http://www.wikidata.org/entity/Q2183916",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/749"
+  },
+  "S47": {
+    "name": "Dirck Barendsz",
+    "wikidata": "http://www.wikidata.org/entity/Q2183916",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/749"
+  },
+  "S48": {
+    "name": "Jacob Lenartsz",
+    "wikidata": null,
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4553"
+  },
+  "S49": {
+    "name": "Cornelis Ketel",
+    "wikidata": "http://www.wikidata.org/entity/Q1133586",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4276"
+  },
+  "S5": {
+    "name": "Dirck Jacobsz.",
+    "wikidata": "http://www.wikidata.org/entity/Q2445767",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4015"
+  },
+  "S50": {
+    "name": "Adriaen van Conflans",
+    "wikidata": "http://www.wikidata.org/entity/Q22668380",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/1967"
+  },
+  "S51": {
+    "name": "Pieter Isaacsz",
+    "wikidata": "http://www.wikidata.org/entity/Q1780756",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/3996"
+  },
+  "S52": {
+    "name": "Pieter Isaacsz",
+    "wikidata": "http://www.wikidata.org/entity/Q1780756",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/3996"
+  },
+  "S53": {
+    "name": "Aert Pietersz",
+    "wikidata": "http://www.wikidata.org/entity/Q4688509",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6006"
+  },
+  "S54": {
+    "name": "Gerrit Pietersz",
+    "wikidata": "http://www.wikidata.org/entity/Q5552584",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7265"
+  },
+  "S55": {
+    "name": "Aert Pietersz",
+    "wikidata": "http://www.wikidata.org/entity/Q4688509",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6006"
+  },
+  "S56": {
+    "name": "Gerrit Pietersz",
+    "wikidata": "http://www.wikidata.org/entity/Q5552584",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7265"
+  },
+  "S57": {
+    "name": "Aert Pietersz",
+    "wikidata": "http://www.wikidata.org/entity/Q4688509",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6006"
+  },
+  "S58": {
+    "name": "Pieter Isaacsz",
+    "wikidata": "http://www.wikidata.org/entity/Q1780756",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/3996"
+  },
+  "S59": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S6": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S60": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S61": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S62": {
+    "name": "Frans Badens",
+    "wikidata": "http://www.wikidata.org/entity/Q5492337",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/694"
+  },
+  "S63": {
+    "name": "Cornelis van der Voort",
+    "wikidata": "http://www.wikidata.org/entity/Q1818227",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7983"
+  },
+  "S64": {
+    "name": "Jan Tengnagel",
+    "wikidata": "http://www.wikidata.org/entity/Q2862503",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7324"
+  },
+  "S65": {
+    "name": "Paulus Moreelse",
+    "wikidata": "http://www.wikidata.org/entity/Q59620",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/5483"
+  },
+  "S66": {
+    "name": "Cornelis van der Voort",
+    "wikidata": "http://www.wikidata.org/entity/Q1818227",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7983"
+  },
+  "S67": {
+    "name": "Jan Tengnagel",
+    "wikidata": "http://www.wikidata.org/entity/Q2862503",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7324"
+  },
+  "S68": {
+    "name": "Cornelis van der Voort",
+    "wikidata": "http://www.wikidata.org/entity/Q1818227",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7983"
+  },
+  "S69": {
+    "name": "Cornelis van der Voort",
+    "wikidata": "http://www.wikidata.org/entity/Q1818227",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7983"
+  },
+  "S7": {
+    "name": "Cornelis Anthonisz",
+    "wikidata": "http://www.wikidata.org/entity/Q2761474",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/590"
+  },
+  "S70": {
+    "name": "Nicolaes Lastman",
+    "wikidata": "http://www.wikidata.org/entity/Q7029353",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4491"
+  },
+  "S71": {
+    "name": "Werner van den Valckert",
+    "wikidata": "http://www.wikidata.org/entity/Q7983530",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7561"
+  },
+  "S72": {
+    "name": "Jacob Lyon",
+    "wikidata": "http://www.wikidata.org/entity/Q18608055",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4774"
+  },
+  "S73": {
+    "name": "Nicolaes Eliaszoon Pickenoy",
+    "wikidata": "http://www.wikidata.org/entity/Q632846",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/5986"
+  },
+  "S74": {
+    "name": "Thomas de Keyser",
+    "wikidata": "http://www.wikidata.org/entity/Q932263",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4299"
+  },
+  "S75": {
+    "name": "Nicolaes Eliaszoon Pickenoy",
+    "wikidata": "http://www.wikidata.org/entity/Q632846",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/5986"
+  },
+  "S76": {
+    "name": "Thomas de Keyser",
+    "wikidata": "http://www.wikidata.org/entity/Q932263",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4299"
+  },
+  "S77": {
+    "name": "Frans Hals",
+    "wikidata": "http://www.wikidata.org/entity/Q167654",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/3474"
+  },
+  "S78": {
+    "name": "Jacob Backer",
+    "wikidata": "http://www.wikidata.org/entity/Q19032",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/676"
+  },
+  "S79": {
+    "name": "Nicolaes Eliaszoon Pickenoy",
+    "wikidata": "http://www.wikidata.org/entity/Q632846",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/5986"
+  },
+  "S8": {
+    "name": "Allaert Claesz",
+    "wikidata": "http://www.wikidata.org/entity/Q20203596",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/1752"
+  },
+  "S80": {
+    "name": "Joachim von Sandrart",
+    "wikidata": "http://www.wikidata.org/entity/Q551624",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6555"
+  },
+  "S81": {
+    "name": "Govert Flinck",
+    "wikidata": "http://www.wikidata.org/entity/Q550401",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/2973"
+  },
+  "S82": {
+    "name": "Jacob Backer",
+    "wikidata": "http://www.wikidata.org/entity/Q19032",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/676"
+  },
+  "S83": {
+    "name": "Nicolaes Eliaszoon Pickenoy",
+    "wikidata": "http://www.wikidata.org/entity/Q632846",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/5986"
+  },
+  "S84": {
+    "name": "Rembrandt",
+    "wikidata": "http://www.wikidata.org/entity/Q5598",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6292"
+  },
+  "S85": {
+    "name": "Bartholomeus van der Helst",
+    "wikidata": "http://www.wikidata.org/entity/Q380704",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/3619"
+  },
+  "S86": {
+    "name": "Govert Flinck",
+    "wikidata": "http://www.wikidata.org/entity/Q550401",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/2973"
+  },
+  "S87": {
+    "name": "Nicolaes Eliaszoon Pickenoy",
+    "wikidata": "http://www.wikidata.org/entity/Q632846",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/5986"
+  },
+  "S88": {
+    "name": "Govert Flinck",
+    "wikidata": "http://www.wikidata.org/entity/Q550401",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/2973"
+  },
+  "S89": {
+    "name": "Bartholomeus van der Helst",
+    "wikidata": "http://www.wikidata.org/entity/Q380704",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/3619"
+  },
+  "S9": {
+    "name": null,
+    "wikidata": null,
+    "ecartico": null
+  },
+  "S90": {
+    "name": "Johannes Spilberg",
+    "wikidata": "http://www.wikidata.org/entity/Q6216996",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/7010"
+  },
+  "S91": {
+    "name": "Bartholomeus van der Helst",
+    "wikidata": "http://www.wikidata.org/entity/Q380704",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/3619"
+  },
+  "S92": {
+    "name": "Bartholomeus van der Helst",
+    "wikidata": "http://www.wikidata.org/entity/Q380704",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/3619"
+  },
+  "S93": {
+    "name": "Bartholomeus van der Helst",
+    "wikidata": "http://www.wikidata.org/entity/Q380704",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/3619"
+  },
+  "S94": {
+    "name": "Louis Moritz",
+    "wikidata": "http://www.wikidata.org/entity/Q16062256",
+    "ecartico": null
+  },
+  "X1": {
+    "name": "Gerard de Lairesse",
+    "wikidata": "http://www.wikidata.org/entity/Q533958",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4438"
+  },
+  "X2": {
+    "name": "Gerard de Lairesse",
+    "wikidata": "http://www.wikidata.org/entity/Q533958",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/4438"
+  },
+  "X3": {
+    "name": "Anthoni Schoonjans",
+    "wikidata": "http://www.wikidata.org/entity/Q572587",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/6697"
+  },
+  "X4": {
+    "name": "Herman van der Mijn",
+    "wikidata": "http://www.wikidata.org/entity/Q1610383",
+    "ecartico": "https://www.vondel.humanities.uva.nl/ecartico/persons/5550"
+  }
+}

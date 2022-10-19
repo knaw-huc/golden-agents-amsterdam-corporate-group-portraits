@@ -11,6 +11,7 @@ Contact:
     Leon van Wissen (l.vanwissen@uva.nl)
 """
 
+from cProfile import label
 import os
 import uuid
 import datetime
@@ -393,7 +394,8 @@ def parsePersonName(nameString, identifier=None):
                                     if i not in prefixes and i not in suffixes)
 
         if infix and infix in name_removed_fix:
-            name = name_removed_fix.split(" " + infix, 1)  # would be nicer with regex word boundary
+            name = name_removed_fix.split(
+                " " + infix, 1)  # would be nicer with regex word boundary
             first_name = name[0].strip()
             family_name = name[1].strip()
 
@@ -860,6 +862,18 @@ def toRDF(data, uri, name, description, filename, target=None):
     # For the artworks
     if 'corporatiestukken.trig' in target:
 
+        # Artists
+        with open('data/creativework2artist.json') as infile:
+            creativework2artist = json.load(infile)
+
+        # Depictions
+        with open('data/depictions_amsterdammuseum.json') as infile:
+            depictions_amsterdammuseum = json.load(infile)
+        with open('data/depictions_rijksmuseum.json') as infile:
+            depictions_rijksmuseum = json.load(infile)
+        with open('data/depictions_stadsarchief.json') as infile:
+            depictions_stadsarchief = json.load(infile)
+
         for nrow, d in enumerate(data, 2):
 
             # Prov
@@ -879,10 +893,28 @@ def toRDF(data, uri, name, description, filename, target=None):
                 nsArtwork.term(art_id),
                 label=[d['title']],
                 creationDate=d['date'],
-                artist=[d['artist']],
+                # artist=[d['artist']],
                 #disambiguatingDescription=d['dimensions'],
                 comment=[Literal(d['description'], lang='nl')],
                 wasDerivedFrom=[anno])
+
+            # Get data from mapping
+            artist_name = creativework2artist[art_id]["name"]
+            artist_uri = creativework2artist[art_id][
+                "ecartico"] or creativework2artist[art_id]["wikidata"]
+
+            if artist_uri:
+                artist = Person(URIRef(artist_uri), label=[artist_name])
+
+                if 'ecartico' in artist_uri and creativework2artist[art_id][
+                        "wikidata"]:
+                    artist.sameAs = [
+                        URIRef(creativework2artist[art_id]["wikidata"])
+                    ]
+            else:
+                artist = Person(None, label=[d['artist']])
+
+            artwork.artist = [artist]
 
             sameAs = [
                 URIRef(i) for i in [
@@ -894,27 +926,18 @@ def toRDF(data, uri, name, description, filename, target=None):
 
             depictions = []
             if d['amsterdammuseum_uri']:
-                with open('data/depictions_amsterdammuseum.json') as infile:
-                    depictions_amsterdammuseum = json.load(infile)
-
-                    depictionsList = [
-                        URIRef(i) for i in depictions_amsterdammuseum[
-                            d['amsterdammuseum_uri']]
-                    ]
-                    depictions += depictionsList
+                depictionsList = [
+                    URIRef(i) for i in depictions_amsterdammuseum[
+                        d['amsterdammuseum_uri']]
+                ]
+                depictions += depictionsList
 
             if d['rijksmuseum_uri']:
-                with open('data/depictions_rijksmuseum.json') as infile:
-                    depictions_rijksmuseum = json.load(infile)
-
                 portrait = depictions_rijksmuseum.get(d['rijksmuseum_uri'])
                 if portrait:
                     depictions.append(URIRef(portrait))
 
             if d['stadsarchief_uri']:
-                with open('data/depictions_stadsarchief.json') as infile:
-                    depictions_stadsarchief = json.load(infile)
-
                 portrait = depictions_stadsarchief.get(d['stadsarchief_uri'])
                 if portrait:
                     depictions.append(URIRef(portrait))
@@ -958,15 +981,17 @@ def toRDF(data, uri, name, description, filename, target=None):
 
             pid = d['id']
             person_sameAs = []
-            
-            if Qid:= d['Wikidata']:
-                person_sameAs.append(URIRef("http://www.wikidata.org/entity/" + Qid))
+
+            if Qid := d['Wikidata']:
+                person_sameAs.append(
+                    URIRef("http://www.wikidata.org/entity/" + Qid))
 
             p = Person(nsPerson.term(str(pid)),
                        hasName=pn,
                        gender=gender,
                        label=labels,
-                       wasDerivedFrom=[anno], sameAs=person_sameAs)
+                       wasDerivedFrom=[anno],
+                       sameAs=person_sameAs)
 
             birthPlace = d['Doop/geboren te']
             deathPlace = d['Begraven/overleden te']
@@ -1706,6 +1731,7 @@ def toRDF(data, uri, name, description, filename, target=None):
     print(f"Serializing to {target}")
     g.serialize(target, format='trig')
 
+
 def prepare_for_timbuctoo(trigfolder: str):
     """
     Replace all entity URIs by a single canonical URI from a linkset.
@@ -1728,29 +1754,28 @@ def prepare_for_timbuctoo(trigfolder: str):
             g.parse(os.path.join(trigfolder, f), format='trig')
 
     g = materialize(
-        g, 
-        ga.Person, 
-        Namespace("https://data.goldenagents.org/datasets/corporatiestukken/person/"), 
-        'linksets/lens_f399a189f02246ee0b9a7300677a6be6_6_accepted.trig'
-        )
+        g, ga.Person,
+        Namespace(
+            "https://data.goldenagents.org/datasets/corporatiestukken/person/"
+        ), 'linksets/lens_f399a189f02246ee0b9a7300677a6be6_6_accepted.trig')
 
     # Again, no reasoning here
     for RoleClass in g.subjects(RDF.type, ga.RoleType):
         g = materialize(
-            g,
-            RoleClass,
-            Namespace("https://data.goldenagents.org/datasets/corporatiestukken/role/"),
-            'linksets/sameAs_roles.trig'
-            )
+            g, RoleClass,
+            Namespace(
+                "https://data.goldenagents.org/datasets/corporatiestukken/role/"
+            ), 'linksets/sameAs_roles.trig')
 
     g = materialize(
-        g,
-        ga.Event,
-        Namespace("https://data.goldenagents.org/datasets/corporatiestukken/event/"),
-        'linksets/sameAs_events.trig'
-        )
+        g, ga.Event,
+        Namespace(
+            "https://data.goldenagents.org/datasets/corporatiestukken/event/"),
+        'linksets/sameAs_events.trig')
 
-    g.serialize(os.path.join(trigfolder, 'dataset_timbuctoo.trig'), format='trig')
+    g.serialize(os.path.join(trigfolder, 'dataset_timbuctoo.trig'),
+                format='trig')
+
 
 def materialize(g, entityType, nsEntity, linkset_path):
     """
