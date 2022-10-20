@@ -953,7 +953,7 @@ def toRDF(data, uri, name, description, filename, target=None):
 
             # Prov
             anno = Annotation(
-                nsAnnotation.term(str(nrow)),
+                nsAnnotation.term(str(d['id'])),
                 hasTarget=ResourceSelection(
                     None,
                     hasSource=filename,
@@ -1854,6 +1854,5 @@ def materialize(g, entityType, nsEntity, linkset_path):
 
 
 if __name__ == "__main__":
-    # main()
-
+    main()
     prepare_for_timbuctoo('trig')
