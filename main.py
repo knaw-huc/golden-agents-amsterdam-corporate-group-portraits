@@ -190,7 +190,7 @@ def unique(*args, sep="", ns=None):
         return BNode(unique_id)
 
 
-def main(loadData=None):
+def main():
 
     #######
     # RDF #
@@ -1796,41 +1796,54 @@ def materialize(g, entityType, nsEntity, linkset_path):
     l = ConjunctiveGraph()
     l.parse(linkset_path)
 
-    allSameAsPersons = set()
+    allSameAsEntities = set()
     mapping = defaultdict(set)
-    for o, s in l.subject_objects(OWL.sameAs):
-        mapping[o].add(s)
+    for s, o in l.subject_objects(OWL.sameAs):
+        mapping[s].add(s)
         mapping[s].add(o)
+        mapping[s].update(mapping[o])
 
-        allSameAsPersons.add(s)
-        allSameAsPersons.add(o)
+        mapping[o].add(s)
+        mapping[o].add(o)
+        mapping[o].update(mapping[s])
 
-    clusters = mapping.values()  # this should give unique clusters
+        allSameAsEntities.add(s)
+        allSameAsEntities.add(o)
 
+    clusters = set([tuple(i) for i in mapping.values()
+                    ])  # this should give unique clusters
+
+    clusters = list(
+        filter(lambda x: not any(set(x) < set(c) for c in clusters),
+               clusters))  # and this removes the subsets
+
+    # Every cluster is one entity. Generate a unique URI for it.
     uri2cluster = dict()
     for c in clusters:
-        uri2cluster[unique(*c, ns=nsEntity)] = uri2cluster
+        uri2cluster[unique(*sorted(c), ns=nsEntity)] = c
 
     quadsToAdd = set()
-    persons = g.quads((None, RDF.type, entityType, None))
-    for s, p, o, q in persons:
-        if s not in allSameAsPersons:
+    entities = g.quads((None, RDF.type, entityType, None))
+    for s, _, o, q in entities:
+
+        # URI consistency, generate a unique URI for each single-occuring entity
+        if s not in allSameAsEntities:
             uri = unique(s, ns=nsEntity)
             quadsToAdd.add((uri, OWL.sameAs, s, q))  # later
         else:
             for uri, cluster in uri2cluster.items():
-                if str(s) in cluster:
+                if s in cluster:
                     for i in cluster:
                         quadsToAdd.add((uri, OWL.sameAs, URIRef(i), q))
                     break  # uri is defined
 
         subjects = g.quads((s, None, None, None))
-        for s1, p1, o1, q1 in subjects:
+        for _, p1, o1, q1 in subjects:
             g.remove((s, p1, o1, q1))
             g.add((uri, p1, o1, q1))
 
         objects = g.quads((None, None, s, None))
-        for s1, p1, o1, q1 in objects:
+        for s1, p1, _, q1 in objects:
             g.remove((s1, p1, s, q1))
             g.add((s1, p1, uri, q1))
 
@@ -1841,6 +1854,6 @@ def materialize(g, entityType, nsEntity, linkset_path):
 
 
 if __name__ == "__main__":
-    main()
+    # main()
 
     prepare_for_timbuctoo('trig')
