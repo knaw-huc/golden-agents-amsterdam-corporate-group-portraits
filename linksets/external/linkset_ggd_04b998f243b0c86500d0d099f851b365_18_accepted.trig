@@ -1,0 +1,1276 @@
+##############################################################################################################
+#                                                 NAMESPACES                                                 #
+##############################################################################################################
+
+
+### PREDEFINED SHARED NAMESPACES
+@prefix                  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix                 rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix                 void: <http://rdfs.org/ns/void#> .
+@prefix              dcterms: <http://purl.org/dc/terms/> .
+@prefix              formats: <http://www.w3.org/ns/formats/> .
+@prefix                   cc: <http://creativecommons.org/ns#> .
+@prefix                  xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+### PREDEFINED SPECIFIC NAMESPACES
+@prefix             voidPlus: <https://lenticularlens.org/voidPlus/> .
+@prefix             resource: <https://lenticularlens.org/voidPlus/resource/> .
+@prefix              linkset: <https://lenticularlens.org/voidPlus/resource/linkset#> .
+@prefix                 lens: <https://lenticularlens.org/voidPlus/resource/lens#> .
+@prefix             operator: <https://lenticularlens.org/voidPlus/resource/lensOperator#> .
+@prefix              cluster: <https://lenticularlens.org/voidPlus/resource/cluster#> .
+@prefix           clusterset: <https://lenticularlens.org/voidPlus/resource/clusterset#> .
+@prefix           validation: <https://lenticularlens.org/voidPlus/resource/validation#> .
+@prefix        validationset: <https://lenticularlens.org/voidPlus/resource/validationset#> .
+
+### AUTOMATED / EXTRACTED NAMESPACES
+@prefix                   ga: <https://data.goldenagents.org/ontology/> .
+@prefix                  sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
+@prefix               schema: <http://schema.org/> .
+@prefix                  pnv: <https://w3id.org/pnv#> .
+@prefix                  owl: <http://www.w3.org/2002/07/owl#> .
+@prefix                   wd: <http://www.wikidata.org/entity/> .
+@prefix       poorters_27df1: <https://data.goldenagents.org/datasets/corporatiestukken/person/poorters/> .
+@prefix       regenten_27df1: <https://data.goldenagents.org/datasets/corporatiestukken/person/regenten/> .
+@prefix    gildenleden_27df1: <https://data.goldenagents.org/datasets/corporatiestukken/person/gildenleden/> .
+@prefix    regentessen_27df1: <https://data.goldenagents.org/datasets/corporatiestukken/person/regentessen/> .
+@prefix          genid_843db: <https://data.goldenagents.org/.well-known/genid/> .
+@prefix         person_1b68c: <https://data.goldenagents.org/datasets/corporatiestukken/person/> .
+@prefix        persons_edca8: <https://www.vondel.humanities.uva.nl/ecartico/persons/> .
+@prefix           thes_5b822: <http://data.bibliotheken.nl/id/thes/> .
+@prefix           viaf_1c811: <http://viaf.org/viaf/> .
+@prefix         author_997c1: <https://data.create.humanities.uva.nl/id/ggd/author/> .
+@prefix         person_997c1: <https://data.create.humanities.uva.nl/id/ggd/person/> .
+
+
+               ################################################################################               
+               #                           LINKSET GENERIC METADATA                           #
+               ################################################################################               
+
+
+### JOB ID       : 04b998f243b0c86500d0d099f851b365
+### LINKSET ID   : 18
+linkset:04b998f243b0c86500d0d099f851b365-18
+    a                                                      voidPlus:Linkset ;
+    void:feature                                           formats:Turtle, formats:TriG ;
+    cc:attributionName                                     "Lenticular Lens"@en ;
+    cc:license                                             <http://purl.org/NET/rdflicense/W3C1.0> ;
+    dcterms:created                                        "2022-10-31T14:23:47.842738"^^xsd:dateTime ;
+    voidPlus:exportDate                                    "2022-11-02T14:08:10.403395"^^xsd:dateTime ;
+    dcterms:creator                                        "Leon van Wissen" ;
+    dcterms:publisher                                      "Golden Agents" ;
+    void:linkPredicate                                     owl:sameAs ;
+    rdfs:label                                             "Person - GGD Ambtsaanvaarding (0.8, 1 person, 1 year)" ;
+
+    ### VOID LINKSET STATS
+    void:triples                                           "82"^^xsd:integer ;
+    void:entities                                          "109"^^xsd:integer ;
+    void:distinctSubjects                                  "70"^^xsd:integer ;
+    void:distinctObjects                                   "39"^^xsd:integer ;
+
+    ### SOURCE AND TARGET DATASETS STATS
+    voidPlus:srcTrgEntities                                "13991"^^xsd:integer ;
+    voidPlus:sourceEntities                                "13538"^^xsd:integer ;
+    voidPlus:targetEntities                                "453"^^xsd:integer ;
+
+    ### ABOUT CLUSTERS
+    voidPlus:clusters                                      "33"^^xsd:integer ;
+    voidPlus:hasClusterset                                 clusterset:04b998f243b0c86500d0d099f851b365-linkset-18 ;
+
+    ### ABOUT VALIDATIONS
+    voidPlus:hasValidationSet                              validationset:04b998f243b0c86500d0d099f851b365-linkset-18 ;
+
+    ### SOURCE ENTITY TYPE SELECTION(S)
+    voidPlus:subjectsTarget                                resource:ResourceSelection-04b998f243b0c86500d0d099f851b365-1 ;
+
+    ### TARGET ENTITY TYPE SELECTION(S)
+    voidPlus:objectsTarget                                 resource:ResourceSelection-04b998f243b0c86500d0d099f851b365-5 ;
+
+    ### THE LOGIC FORMULA
+    voidPlus:hasFormulation                                resource:LinksetFormulation-04b998f243b0c86500d0d099f851b365-18 .
+
+
+               ################################################################################               
+               #                           LINKSET LOGIC EXPRESSION                           #
+               ################################################################################               
+
+
+resource:LinksetFormulation-04b998f243b0c86500d0d099f851b365-18
+    a                                                      voidPlus:LinksetFormulation ;
+    voidPlus:hasItem                                       resource:Levenshtein-Normalized-8b3e5f26d50d2f2 ,
+                                                           resource:Time-Delta-fc343cd60fd1334 ;
+
+    voidPlus:hasFormulaDescription                         "(resource:Levenshtein-Normalized-8b3e5f26d50d2f2 AND [Minimum t-norm (⊤min)] resource:Time-Delta-fc343cd60fd1334)" ;
+
+    voidPlus:hasFormulaTree                                """
+        AND [Minimum t-norm (⊤min)]
+        ╠══ resource:Levenshtein-Normalized-8b3e5f26d50d2f2
+        ╚══ resource:Time-Delta-fc343cd60fd1334
+    """ .
+
+
+               ################################################################################               
+               #                         LINKSET RESOURCE SELECTIONS                          #
+               ################################################################################               
+
+
+### RESOURCE 1
+resource:ResourceSelection-04b998f243b0c86500d0d099f851b365-1
+    a                                                      void:Dataset, voidPlus:ResourceSelection ;
+    rdfs:label                                             "corporatiestukken_20221020 [type: ga_Person]" ;
+    voidPlus:subsetOf                                      resource:u692bc364e9d7fa97b3510c6c0c8f2bb9a0e5123b__corporatiestukken_20221020 ;
+    dcterms:identifier                                     "corporatiestukken_20221020" ;
+    voidPlus:hasFormulation                                resource:SelectionFormulation-5d96abbbc493973 .
+
+### RESOURCE 5
+resource:ResourceSelection-04b998f243b0c86500d0d099f851b365-5
+    a                                                      void:Dataset, voidPlus:ResourceSelection ;
+    rdfs:label                                             "ggd_20220222 [type: schema_Person]" ;
+    voidPlus:subsetOf                                      resource:u692bc364e9d7fa97b3510c6c0c8f2bb9a0e5123b__ggd_20220222 ;
+    dcterms:identifier                                     "ggd_20220222" ;
+    voidPlus:hasFormulation                                resource:SelectionFormulation-b4aad54c19cb321 .
+
+
+resource:ClassPartition-e3d3271337a7507
+    a                                                      voidPlus:ClassPartition ;
+    void:class                                             ga:Person .
+
+resource:ClassPartition-2bae4bef92ffa32
+    a                                                      voidPlus:ClassPartition ;
+    void:class                                             schema:Person .
+
+resource:SelectionFormulation-5d96abbbc493973
+    a                                                      voidPlus:PartitionFormulation ;
+    voidPlus:hasItem                                       resource:ClassPartition-e3d3271337a7507 .
+
+resource:SelectionFormulation-b4aad54c19cb321
+    a                                                      voidPlus:PartitionFormulation ;
+    voidPlus:hasItem                                       resource:ClassPartition-2bae4bef92ffa32 ,
+                                                           resource:PropertyPartition-5bedb96565b4ec8 ;
+
+    voidPlus:hasFormulaDescription                         "(resource:PropertyPartition-5bedb96565b4ec8 AND resource:ClassPartition-2bae4bef92ffa32)" ;
+
+    voidPlus:hasFormulaTree                                """
+        AND
+        ╠══ resource:PropertyPartition-5bedb96565b4ec8
+        ╚══ resource:ClassPartition-2bae4bef92ffa32
+    """ .
+
+resource:PropertyPartition-5bedb96565b4ec8
+    a                                                      voidPlus:PropertyPartition ;
+    void:property                                          
+        [
+            a                                              rdfs:Sequence ;
+            rdf:_1                                         schema:about ;
+            rdf:_2                                         schema:Role ;
+            rdf:_3                                         schema:about ;
+            rdf:_4                                         schema:Book ;
+            rdf:_5                                         schema:about ;
+            rdf:_6                                         sem:Event ;
+            rdf:_7                                         sem:eventType ;
+            rdf:_8                                         sem:EventType ;
+            rdf:_9                                         rdfs:label ;
+        ] ;
+
+    voidPlus:hasFilterFunction                             "contains" ;
+    voidPlus:hasValueFunction                              "%aanvaarding%" .
+
+
+               ################################################################################               
+               #                              METHOD SIGNATURES                               #
+               ################################################################################               
+
+
+resource:Levenshtein-Normalized-8b3e5f26d50d2f2
+    a                                                      voidPlus:MatchingMethod ;
+    voidPlus:hasAlgorithm                                  resource:Levenshtein-Normalized ;
+    voidPlus:similarityThresholdRange                      "]0, 1]" ;
+    voidPlus:similarityThreshold                           "0.8"^^xsd:double ;
+
+    ### SOURCE PREDICATE(S) CONFIGURATION
+    voidPlus:hasSubjResourceSelection                      resource:ResourcePartition-ee7733d813088d8 ;
+
+    ### TARGET PREDICATE(S) CONFIGURATION
+    voidPlus:hasObjResourceSelection                       resource:ResourcePartition-82457e544ff5f8f .
+
+resource:Time-Delta-fc343cd60fd1334
+    a                                                      voidPlus:MatchingMethod ;
+    voidPlus:hasAlgorithm                                  resource:Time-Delta ;
+    voidPlus:similarityThresholdRange                      "ℕ" ;
+
+    ### SOURCE PREDICATE(S) CONFIGURATION
+    voidPlus:hasSubjResourceSelection                      resource:ResourcePartition-514752ce4450c47 ;
+
+    ### TARGET PREDICATE(S) CONFIGURATION
+    voidPlus:hasObjResourceSelection                       resource:ResourcePartition-e41e67da94a113d .
+
+
+               ################################################################################               
+               #                        METHODS'S PREDICATE SELECTIONS                        #
+               ################################################################################               
+
+
+resource:ResourcePartition-ee7733d813088d8
+    a                                                      voidPlus:ResourceSelection ;
+    voidPlus:hasFormulation                                resource:PartitionFormulation-ee7733d813088d8 .
+
+resource:PartitionFormulation-ee7733d813088d8
+    a                                                      voidPlus:PartitionFormulation ;
+    voidPlus:hasItem                                       resource:PropertyPartition-64fa76fe7bb647f ;
+    voidPlus:hasFormulaDescription                         "(resource:PropertyPartition-64fa76fe7bb647f)" ;
+    voidPlus:hasFormulaTree                                """
+        OR [Maximum s-norm (⊥max)]
+        ╚══ resource:PropertyPartition-64fa76fe7bb647f
+    """ .
+
+resource:ResourcePartition-514752ce4450c47
+    a                                                      voidPlus:ResourceSelection ;
+    voidPlus:hasFormulation                                resource:PartitionFormulation-514752ce4450c47 .
+
+resource:PartitionFormulation-514752ce4450c47
+    a                                                      voidPlus:PartitionFormulation ;
+    voidPlus:hasItem                                       resource:PropertyPartition-f661291db4c3c5a ;
+    voidPlus:hasFormulaDescription                         "(resource:PropertyPartition-f661291db4c3c5a)" ;
+    voidPlus:hasFormulaTree                                """
+        OR [Maximum s-norm (⊥max)]
+        ╚══ resource:PropertyPartition-f661291db4c3c5a
+    """ .
+
+resource:ResourcePartition-82457e544ff5f8f
+    a                                                      voidPlus:ResourceSelection ;
+    voidPlus:hasFormulation                                resource:PartitionFormulation-82457e544ff5f8f .
+
+resource:PartitionFormulation-82457e544ff5f8f
+    a                                                      voidPlus:PartitionFormulation ;
+    voidPlus:hasItem                                       resource:PropertyPartition-ed33edfef56942b ;
+    voidPlus:hasFormulaDescription                         "(resource:PropertyPartition-ed33edfef56942b)" ;
+    voidPlus:hasFormulaTree                                """
+        OR [Maximum s-norm (⊥max)]
+        ╚══ resource:PropertyPartition-ed33edfef56942b
+    """ .
+
+resource:ResourcePartition-e41e67da94a113d
+    a                                                      voidPlus:ResourceSelection ;
+    voidPlus:hasFormulation                                resource:PartitionFormulation-e41e67da94a113d .
+
+resource:PartitionFormulation-e41e67da94a113d
+    a                                                      voidPlus:PartitionFormulation ;
+    voidPlus:hasItem                                       resource:PropertyPartition-ca88350f5f9a012 ;
+    voidPlus:hasFormulaDescription                         "(resource:PropertyPartition-ca88350f5f9a012)" ;
+    voidPlus:hasFormulaTree                                """
+        OR [Maximum s-norm (⊥max)]
+        ╚══ resource:PropertyPartition-ca88350f5f9a012
+    """ .
+
+resource:PropertyPartition-ca88350f5f9a012
+    a                                                      voidPlus:PropertyPartition ;
+    voidPlus:subsetOf                                      resource:ResourceSelection-04b998f243b0c86500d0d099f851b365-5 ;
+    void:property                                          
+        [
+            a                                              rdfs:Sequence ;
+            rdf:_1                                         schema:about ;
+            rdf:_2                                         schema:Role ;
+            rdf:_3                                         schema:about ;
+            rdf:_4                                         schema:Book ;
+            rdf:_5                                         schema:about ;
+            rdf:_6                                         sem:Event ;
+            rdf:_7                                         sem:hasTimeStamp ;
+        ] .
+
+resource:PropertyPartition-64fa76fe7bb647f
+    a                                                      voidPlus:PropertyPartition ;
+    voidPlus:subsetOf                                      resource:ResourceSelection-04b998f243b0c86500d0d099f851b365-1 ;
+    void:property                                          
+        [
+            a                                              rdfs:Sequence ;
+            rdf:_1                                         pnv:hasName ;
+            rdf:_2                                         pnv:PersonName ;
+            rdf:_3                                         pnv:literalName ;
+        ] .
+
+resource:PropertyPartition-f661291db4c3c5a
+    a                                                      voidPlus:PropertyPartition ;
+    voidPlus:subsetOf                                      resource:ResourceSelection-04b998f243b0c86500d0d099f851b365-1 ;
+    void:property                                          
+        [
+            a                                              rdfs:Sequence ;
+            rdf:_1                                         ga:participatesIn ;
+            rdf:_2                                         ga:Event ;
+            rdf:_3                                         sem:hasEarliestBeginTimeStamp ;
+        ] .
+
+resource:PropertyPartition-ed33edfef56942b
+    a                                                      voidPlus:PropertyPartition ;
+    voidPlus:subsetOf                                      resource:ResourceSelection-04b998f243b0c86500d0d099f851b365-5 ;
+    void:property                                          
+        [
+            a                                              rdfs:Sequence ;
+            rdf:_1                                         pnv:hasName ;
+            rdf:_2                                         pnv:PersonName ;
+            rdf:_3                                         pnv:literalName ;
+        ] .
+
+
+               ################################################################################               
+               #                            METHODS'S DESCRIPTION                             #
+               ################################################################################               
+
+
+resource:Levenshtein-Normalized
+    a                                                      voidPlus:MatchingAlgorithm ;
+    rdfs:label                                             "Levenshtein normalized"@en ;
+    dcterms:description                                    "This method is used to align source and target’s IRIs whenever the similarity score of their respective user selected property values are above a given Levenshtein threshold. Edit distance is a way of quantifying how dissimilar two strings (e.g., words) are to one another by counting the minimum number of operations ε (removal, insertion, or substitution of a character in the string) required to transform one string into the other."@en ;
+    rdfs:seeAlso                                           <https://lenticularlens.org/matching-method/levenshtein> ,
+                                                           <https://en.wikipedia.org/wiki/Edit_distance> .
+
+resource:Time-Delta
+    a                                                      voidPlus:MatchingAlgorithm ;
+    rdfs:label                                             "Time Delta"@en ;
+    dcterms:description                                    "The time delta is used to align the source and the target by approximating the match of the date values of the selected properties according to a delta."@en ;
+    rdfs:seeAlso                                           <https://lenticularlens.org/matching-method/time-delta> .
+
+
+               ################################################################################               
+               #                              ANNOTATED LINKSET                               #
+               ################################################################################               
+
+
+linkset:04b998f243b0c86500d0d099f851b365-18
+{
+    ### LINK Nr: 1
+    poorters_27df1:2394    owl:sameAs    thes_5b822:p070076065 .
+
+    resource:Reification-57eb5eafa88e59e
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:2394 ;
+        rdf:object                                         thes_5b822:p070076065 ;
+        voidPlus:matchingStrength                          "0.82143"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:494a9e7674f8fd3 ;
+        voidPlus:hasValidation                             validation:57eb5eafa88e59e .
+
+    ### LINK Nr: 2
+    person_1b68c:c54664c8-c8b8-56fa-86ef-640ddfca6710    owl:sameAs    thes_5b822:p070404194 .
+
+    resource:Reification-e2d5c8c139cd569
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        person_1b68c:c54664c8-c8b8-56fa-86ef-640ddfca6710 ;
+        rdf:object                                         thes_5b822:p070404194 ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:6f30adf67516ce0 ;
+        voidPlus:hasValidation                             validation:e2d5c8c139cd569 .
+
+    ### LINK Nr: 3
+    poorters_27df1:1710    owl:sameAs    thes_5b822:p070404194 .
+
+    resource:Reification-f635aa02f77e8b6
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:1710 ;
+        rdf:object                                         thes_5b822:p070404194 ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:6f30adf67516ce0 ;
+        voidPlus:hasValidation                             validation:f635aa02f77e8b6 .
+
+    ### LINK Nr: 4
+    poorters_27df1:3410    owl:sameAs    thes_5b822:p073526703 .
+
+    resource:Reification-beec8ce843e6f61
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:3410 ;
+        rdf:object                                         thes_5b822:p073526703 ;
+        voidPlus:matchingStrength                          "0.96000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:2a76db1ea81d3f1 ;
+        voidPlus:hasValidation                             validation:beec8ce843e6f61 .
+
+    ### LINK Nr: 5
+    poorters_27df1:2638    owl:sameAs    thes_5b822:p074166220 .
+
+    resource:Reification-29ea06ce758300d
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:2638 ;
+        rdf:object                                         thes_5b822:p074166220 ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:64f4014e40ff09f ;
+        voidPlus:hasValidation                             validation:29ea06ce758300d .
+
+    ### LINK Nr: 6
+    regentessen_27df1:84-husband-3    owl:sameAs    thes_5b822:p108676064 .
+
+    resource:Reification-66e00386bc9f819
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        regentessen_27df1:84-husband-3 ;
+        rdf:object                                         thes_5b822:p108676064 ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:1e30024d3aabfd9 ;
+        voidPlus:hasValidation                             validation:66e00386bc9f819 .
+
+    ### LINK Nr: 7
+    poorters_27df1:3555    owl:sameAs    thes_5b822:p115203818 .
+
+    resource:Reification-0d045c2be3c8ef9
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:3555 ;
+        rdf:object                                         thes_5b822:p115203818 ;
+        voidPlus:matchingStrength                          "0.83333"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:b3901f02f0b6034 ;
+        voidPlus:hasValidation                             validation:0d045c2be3c8ef9 .
+
+    ### LINK Nr: 8
+    poorters_27df1:1726    owl:sameAs    thes_5b822:p157246841 .
+
+    resource:Reification-2938cb6acfc196b
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:1726 ;
+        rdf:object                                         thes_5b822:p157246841 ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:27f7d9758065f26 ;
+        voidPlus:hasValidation                             validation:2938cb6acfc196b .
+
+    ### LINK Nr: 9
+    poorters_27df1:1117    owl:sameAs    thes_5b822:p165893141 .
+
+    resource:Reification-a63365ea1a97ba9
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:1117 ;
+        rdf:object                                         thes_5b822:p165893141 ;
+        voidPlus:matchingStrength                          "0.83333"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:1d9b25d6fdcd445 ;
+        voidPlus:hasValidation                             validation:a63365ea1a97ba9 .
+
+    ### LINK Nr: 10
+    poorters_27df1:1392    owl:sameAs    thes_5b822:p203220528 .
+
+    resource:Reification-5cd0e2edc05ffb7
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:1392 ;
+        rdf:object                                         thes_5b822:p203220528 ;
+        voidPlus:matchingStrength                          "0.82143"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:2cfca3ed00fd565 ;
+        voidPlus:hasValidation                             validation:5cd0e2edc05ffb7 .
+
+    ### LINK Nr: 11
+    poorters_27df1:2919    owl:sameAs    thes_5b822:p20483970X .
+
+    resource:Reification-37b032c00b760c0
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:2919 ;
+        rdf:object                                         thes_5b822:p20483970X ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:9fb783d739e5118 ;
+        voidPlus:hasValidation                             validation:37b032c00b760c0 .
+
+    ### LINK Nr: 12
+    poorters_27df1:587    owl:sameAs    thes_5b822:p237543486 .
+
+    resource:Reification-57efae5bc4029d8
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:587 ;
+        rdf:object                                         thes_5b822:p237543486 ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:4c7fff7d0b957df ;
+        voidPlus:hasValidation                             validation:57efae5bc4029d8 .
+
+    ### LINK Nr: 13
+    poorters_27df1:681    owl:sameAs    thes_5b822:p237543486 .
+
+    resource:Reification-6341f869d3328de
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:681 ;
+        rdf:object                                         thes_5b822:p237543486 ;
+        voidPlus:matchingStrength                          "0.92308"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:4c7fff7d0b957df ;
+        voidPlus:hasValidation                             validation:6341f869d3328de .
+
+    ### LINK Nr: 14
+    poorters_27df1:1124    owl:sameAs    thes_5b822:p297869450 .
+
+    resource:Reification-56fa28712c795d7
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:1124 ;
+        rdf:object                                         thes_5b822:p297869450 ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:d5b4ed6d73f3638 ;
+        voidPlus:hasValidation                             validation:56fa28712c795d7 .
+
+    ### LINK Nr: 15
+    poorters_27df1:4576    owl:sameAs    thes_5b822:p338769749 .
+
+    resource:Reification-e2e5050cea24fca
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:4576 ;
+        rdf:object                                         thes_5b822:p338769749 ;
+        voidPlus:matchingStrength                          "0.81818"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:cf896d17540dd1b ;
+        voidPlus:hasValidation                             validation:e2e5050cea24fca .
+
+    ### LINK Nr: 16
+    poorters_27df1:2427    owl:sameAs    thes_5b822:p35218115X .
+
+    resource:Reification-5346bca54b6d8f2
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:2427 ;
+        rdf:object                                         thes_5b822:p35218115X ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:665e1a18f304d6c ;
+        voidPlus:hasValidation                             validation:5346bca54b6d8f2 .
+
+    ### LINK Nr: 17
+    regentessen_27df1:39-husband-1    owl:sameAs    thes_5b822:p35218115X .
+
+    resource:Reification-b0378eeacea8c0c
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        regentessen_27df1:39-husband-1 ;
+        rdf:object                                         thes_5b822:p35218115X ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:665e1a18f304d6c ;
+        voidPlus:hasValidation                             validation:b0378eeacea8c0c .
+
+    ### LINK Nr: 18
+    poorters_27df1:1849    owl:sameAs    thes_5b822:p377468029 .
+
+    resource:Reification-90119d923ae4c69
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:1849 ;
+        rdf:object                                         thes_5b822:p377468029 ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:5f0055445cb95ae ;
+        voidPlus:hasValidation                             validation:90119d923ae4c69 .
+
+    ### LINK Nr: 19
+    poorters_27df1:2978    owl:sameAs    person_997c1:0653bbea-60a8-417e-baa0-66d8ce80d7a6 .
+
+    resource:Reification-9c629076c33a678
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:2978 ;
+        rdf:object                                         person_997c1:0653bbea-60a8-417e-baa0-66d8ce80d7a6 ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:355ded21673ce2c ;
+        voidPlus:hasValidation                             validation:9c629076c33a678 .
+
+    ### LINK Nr: 20
+    poorters_27df1:4668    owl:sameAs    person_997c1:1d0e058a-bd19-4408-a355-7e7f8a1146b4 .
+
+    resource:Reification-e0114f54e1b27a0
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:4668 ;
+        rdf:object                                         person_997c1:1d0e058a-bd19-4408-a355-7e7f8a1146b4 ;
+        voidPlus:matchingStrength                          "0.95833"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:9e0be53200e65d5 ;
+        voidPlus:hasValidation                             validation:e0114f54e1b27a0 .
+
+    ### LINK Nr: 21
+    poorters_27df1:2591    owl:sameAs    person_997c1:251f59f4-cd16-422d-a522-25283697e4fb .
+
+    resource:Reification-33ed63f53ad7e46
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:2591 ;
+        rdf:object                                         person_997c1:251f59f4-cd16-422d-a522-25283697e4fb ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:37a444b1a46d5bf ;
+        voidPlus:hasValidation                             validation:33ed63f53ad7e46 .
+
+    ### LINK Nr: 22
+    poorters_27df1:2283    owl:sameAs    person_997c1:28772256-a6fd-4e57-bee7-5c7428f50ef7 .
+
+    resource:Reification-30a90c1dc7cd31c
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:2283 ;
+        rdf:object                                         person_997c1:28772256-a6fd-4e57-bee7-5c7428f50ef7 ;
+        voidPlus:matchingStrength                          "0.80000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:48bdbc0f84b97dd ;
+        voidPlus:hasValidation                             validation:30a90c1dc7cd31c .
+
+    ### LINK Nr: 23
+    poorters_27df1:2978    owl:sameAs    person_997c1:34d6b925-2449-4a94-bb6f-f67ad9ecf756 .
+
+    resource:Reification-d75decbc2488291
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:2978 ;
+        rdf:object                                         person_997c1:34d6b925-2449-4a94-bb6f-f67ad9ecf756 ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:355ded21673ce2c ;
+        voidPlus:hasValidation                             validation:d75decbc2488291 .
+
+    ### LINK Nr: 24
+    poorters_27df1:2978    owl:sameAs    person_997c1:37ff9737-0cbc-4ddb-89e8-55d042ece467 .
+
+    resource:Reification-99ec2805e8c2098
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:2978 ;
+        rdf:object                                         person_997c1:37ff9737-0cbc-4ddb-89e8-55d042ece467 ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:355ded21673ce2c ;
+        voidPlus:hasValidation                             validation:99ec2805e8c2098 .
+
+    ### LINK Nr: 25
+    poorters_27df1:2699    owl:sameAs    person_997c1:3da4998a-9b58-4407-9ace-1b0a2f08fb55 .
+
+    resource:Reification-0d438cea0ff5915
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:2699 ;
+        rdf:object                                         person_997c1:3da4998a-9b58-4407-9ace-1b0a2f08fb55 ;
+        voidPlus:matchingStrength                          "0.91304"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:ab6d03a0dde0243 ;
+        voidPlus:hasValidation                             validation:0d438cea0ff5915 .
+
+    ### LINK Nr: 26
+    poorters_27df1:2699    owl:sameAs    person_997c1:49f230d1-7802-4dd5-8816-86caaac90154 .
+
+    resource:Reification-9cd3f7194d60561
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:2699 ;
+        rdf:object                                         person_997c1:49f230d1-7802-4dd5-8816-86caaac90154 ;
+        voidPlus:matchingStrength                          "0.91304"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:ab6d03a0dde0243 ;
+        voidPlus:hasValidation                             validation:9cd3f7194d60561 .
+
+    ### LINK Nr: 27
+    poorters_27df1:3760    owl:sameAs    person_997c1:52a03f74-200c-4870-ae6e-004a886aa86d .
+
+    resource:Reification-d4bcc09ff804d3b
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:3760 ;
+        rdf:object                                         person_997c1:52a03f74-200c-4870-ae6e-004a886aa86d ;
+        voidPlus:matchingStrength                          "0.90909"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:b97961749da3e83 ;
+        voidPlus:hasValidation                             validation:d4bcc09ff804d3b .
+
+    ### LINK Nr: 28
+    poorters_27df1:2929    owl:sameAs    person_997c1:5b2ae61e-612f-45da-b6d5-0f2ef51ec423 .
+
+    resource:Reification-e507985f940cf13
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:2929 ;
+        rdf:object                                         person_997c1:5b2ae61e-612f-45da-b6d5-0f2ef51ec423 ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:bb1b89cf4e7ecb9 ;
+        voidPlus:hasValidation                             validation:e507985f940cf13 .
+
+    ### LINK Nr: 29
+    poorters_27df1:2847    owl:sameAs    person_997c1:640bff18-ac5b-48d3-a8d7-06eb5764ca76 .
+
+    resource:Reification-591379fe798a895
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:2847 ;
+        rdf:object                                         person_997c1:640bff18-ac5b-48d3-a8d7-06eb5764ca76 ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:4a35bba68ed9e65 ;
+        voidPlus:hasValidation                             validation:591379fe798a895 .
+
+    ### LINK Nr: 30
+    poorters_27df1:2978    owl:sameAs    person_997c1:69fafeb0-63ed-4620-b13a-d831c3f34eac .
+
+    resource:Reification-c12a9fa1b6cc1a0
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:2978 ;
+        rdf:object                                         person_997c1:69fafeb0-63ed-4620-b13a-d831c3f34eac ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:355ded21673ce2c ;
+        voidPlus:hasValidation                             validation:c12a9fa1b6cc1a0 .
+
+    ### LINK Nr: 31
+    poorters_27df1:3273    owl:sameAs    person_997c1:8734ed74-4be7-4647-9b98-8d42c14fa829 .
+
+    resource:Reification-0c94ae552a5aa00
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:3273 ;
+        rdf:object                                         person_997c1:8734ed74-4be7-4647-9b98-8d42c14fa829 ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:e664f73ac47e810 ;
+        voidPlus:hasValidation                             validation:0c94ae552a5aa00 .
+
+    ### LINK Nr: 32
+    poorters_27df1:2978    owl:sameAs    person_997c1:9a30b534-b941-48be-b7d2-51708670cb47 .
+
+    resource:Reification-98ef5a1fe240716
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:2978 ;
+        rdf:object                                         person_997c1:9a30b534-b941-48be-b7d2-51708670cb47 ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:355ded21673ce2c ;
+        voidPlus:hasValidation                             validation:98ef5a1fe240716 .
+
+    ### LINK Nr: 33
+    poorters_27df1:3923    owl:sameAs    person_997c1:9f6a60f0-aef7-48b6-bcf2-0dd7e3b7d28f .
+
+    resource:Reification-ac2dd55becb7885
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:3923 ;
+        rdf:object                                         person_997c1:9f6a60f0-aef7-48b6-bcf2-0dd7e3b7d28f ;
+        voidPlus:matchingStrength                          "0.94737"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:fe3a6bbf6949ddd ;
+        voidPlus:hasValidation                             validation:ac2dd55becb7885 .
+
+    ### LINK Nr: 34
+    poorters_27df1:4645    owl:sameAs    person_997c1:ce1e30fa-92cf-4994-836f-77678129d74f .
+
+    resource:Reification-cf89cc0a6089029
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:4645 ;
+        rdf:object                                         person_997c1:ce1e30fa-92cf-4994-836f-77678129d74f ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:68be08c0d7813ea ;
+        voidPlus:hasValidation                             validation:cf89cc0a6089029 .
+
+    ### LINK Nr: 35
+    poorters_27df1:2978    owl:sameAs    person_997c1:ce5ac189-5c1e-42e4-9e9d-aa72e23a671e .
+
+    resource:Reification-8df1a599696d0ce
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:2978 ;
+        rdf:object                                         person_997c1:ce5ac189-5c1e-42e4-9e9d-aa72e23a671e ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:355ded21673ce2c ;
+        voidPlus:hasValidation                             validation:8df1a599696d0ce .
+
+    ### LINK Nr: 36
+    poorters_27df1:4500    owl:sameAs    person_997c1:ed9deae6-0efe-432b-976d-ad154f248326 .
+
+    resource:Reification-9454148b6eb5b80
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:4500 ;
+        rdf:object                                         person_997c1:ed9deae6-0efe-432b-976d-ad154f248326 ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:cb5726e21301e6a ;
+        voidPlus:hasValidation                             validation:9454148b6eb5b80 .
+
+    ### LINK Nr: 37
+    poorters_27df1:4384    owl:sameAs    person_997c1:f6198b2c-2d0d-497a-8e8b-7f052d4ea735 .
+
+    resource:Reification-1a9ab8791b75426
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:4384 ;
+        rdf:object                                         person_997c1:f6198b2c-2d0d-497a-8e8b-7f052d4ea735 ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:b857180d3c2095c ;
+        voidPlus:hasValidation                             validation:1a9ab8791b75426 .
+
+    ### LINK Nr: 38
+    poorters_27df1:3958    owl:sameAs    viaf_1c811:304945546 .
+
+    resource:Reification-66dfb8dd07ed4b0
+        a                                                  rdf:Statement ;
+        rdf:predicate                                      owl:sameAs ;
+        rdf:subject                                        poorters_27df1:3958 ;
+        rdf:object                                         viaf_1c811:304945546 ;
+        voidPlus:matchingStrength                          "1.00000"^^xsd:decimal ;
+        voidPlus:hasClusterID                              cluster:cbd01c6da38fc26 ;
+        voidPlus:hasValidation                             validation:66dfb8dd07ed4b0 .
+
+}
+
+               ################################################################################               
+               #                           LINK VALIDATION METADATA                           #
+               ################################################################################               
+
+
+validationset:04b998f243b0c86500d0d099f851b365-linkset-18
+    a                                                      voidPlus:Validationset ;
+    voidPlus:hasTarget                                     linkset:04b998f243b0c86500d0d099f851b365-18 ;
+
+    ### VOID+ VALIDATION STATS
+    voidPlus:accepted                                      "38"^^xsd:integer ;
+    voidPlus:rejected                                      "2"^^xsd:integer ;
+    voidPlus:uncertain                                     "3"^^xsd:integer ;
+    voidPlus:unchecked                                     "39"^^xsd:integer ;
+
+    dcterms:description                                    "Unless explicitly stated in a specific validation resource, a. An accepted link entails that the validator agrees with the alignment (matching) in general and with the specific correspondence under scrutiny. b. A rejected link entails that the validator agrees with the alignment (matching) in general but disagrees with the specific correspondence under scrutiny. Together, the values of the selected properties provided by the validator justify her disagreement. c. Rejecting an alignment entails that the validator disagrees with the alignment in general and may have selected a set of properties for which the values justify her disagreement." .
+
+
+               ################################################################################               
+               #                            VALIDATION TERMINOLOGY                            #
+               ################################################################################               
+
+
+resource:Accepted
+    a                                                      voidPlus:ValidationFlag ;
+    rdfs:label                                             "Accepted"@en ;
+    dcterms:description                                    "A validation process that results in the link under scrutiny being flagged as ACCEPTED. This, with the intent of notifying that the link has undergone and PASSED a user-defined set of checks which gives ground to CONFIRM the rightful creation of the context dependent link."@en .
+
+resource:Rejected
+    a                                                      voidPlus:ValidationFlag ;
+    rdfs:label                                             "Rejected"@en ;
+    dcterms:description                                    "A validation process that results in the link under scrutiny being flagged as REJECTED. This, with the intent of notifying that the link has undergone and FAILED a user-defined set of checks which gives ground to REFUTE the creation of the context dependent link."@en .
+
+resource:Uncertain
+    a                                                      voidPlus:ValidationFlag ;
+    rdfs:label                                             "Uncertain"@en ;
+    dcterms:description                                    "A validation process that results in the link under scrutiny being flagged as UNCERTAIN. This flag reveals the lack of confidence in confirming or refuting the creation of the context dependent link."@en .
+
+resource:Unchecked
+    a                                                      voidPlus:ValidationFlag ;
+    rdfs:label                                             "Unchecked"@en ;
+    dcterms:description                                    "Flagging a link as UNCHECKED literally highlights that it has not undergone any user-defined scrutiny such that it could be flagged as ACCEPTED, REJECTED or UNCERTAIN."@en .
+
+resource:Disputed
+    a                                                      voidPlus:ValidationFlag ;
+    rdfs:label                                             "Disputed"@en ;
+    dcterms:description                                    "A validation process that results in the link under scrutiny being flagged as DISPUTED. This, with the intent of notifying that the link has undergone MULTIPLE user-defined set of checks which result in a contradiction. In other words, the same link has been flagged with contradicting labels such as for example ACCEPTED, REJECTED, UNCERTAIN AND UNCHECKED."@en .
+
+
+               ################################################################################               
+               #                                VALIDATIONSET                                 #
+               ################################################################################               
+
+
+validationset:04b998f243b0c86500d0d099f851b365-linkset-18
+{
+    validation:57eb5eafa88e59e
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:e2d5c8c139cd569
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:f635aa02f77e8b6
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:beec8ce843e6f61
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:29ea06ce758300d
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:66e00386bc9f819
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:0d045c2be3c8ef9
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:2938cb6acfc196b
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:a63365ea1a97ba9
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:5cd0e2edc05ffb7
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:37b032c00b760c0
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:57efae5bc4029d8
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:6341f869d3328de
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:56fa28712c795d7
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:e2e5050cea24fca
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:5346bca54b6d8f2
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:b0378eeacea8c0c
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:90119d923ae4c69
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:9c629076c33a678
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:e0114f54e1b27a0
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:33ed63f53ad7e46
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:30a90c1dc7cd31c
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:d75decbc2488291
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:99ec2805e8c2098
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:0d438cea0ff5915
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:9cd3f7194d60561
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:d4bcc09ff804d3b
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:e507985f940cf13
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:591379fe798a895
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:c12a9fa1b6cc1a0
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:0c94ae552a5aa00
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:98ef5a1fe240716
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:ac2dd55becb7885
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:cf89cc0a6089029
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:8df1a599696d0ce
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:9454148b6eb5b80
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:1a9ab8791b75426
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+    validation:66dfb8dd07ed4b0
+        a                                                  voidPlus:Validation ;
+        voidPlus:hasValidationStatus                       resource:Accepted .
+
+}
+
+               ################################################################################               
+               #                        RESOURCE PARTITIONING METADATA                        #
+               ################################################################################               
+
+
+clusterset:04b998f243b0c86500d0d099f851b365-linkset-18
+    a                                                      voidPlus:Clusterset ;
+    voidPlus:clusters                                      "33"^^xsd:integer ;
+    void:entities                                          "109"^^xsd:integer ;
+    voidPlus:largestNodeCount                              "8"^^xsd:integer ;
+    voidPlus:largestLinkCount                              "12"^^xsd:integer ;
+    voidPlus:hasTarget                                     linkset:04b998f243b0c86500d0d099f851b365-18 ;
+    voidPlus:hasAlgorithm                                  resource:SimpleClustering .
+
+resource:SimpleClustering
+    a                                                      voidPlus:ClusteringAlgorithm ;
+    dcterms:description                                    "A collection of clusters of resources where each cluster is obtained by the transitivity of links. In case these links are identity links, the clustered resources could be seen as co-referents and the network formed from the co-referents resources is an identity (link) network." ;
+    rdfs:seeAlso                                           <https://doi.org/10.3233/SW-200410> .
+
+
+               ################################################################################               
+               #                       ANNOTATED CO-REFERENT RESOURCES                        #
+               ################################################################################               
+
+
+clusterset:04b998f243b0c86500d0d099f851b365-linkset-18
+{
+    cluster:355ded21673ce2c
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "8"^^xsd:integer ;
+        voidPlus:hasItem                                   person_997c1:0653bbea-60a8-417e-baa0-66d8ce80d7a6 ,
+                                                           person_997c1:34d6b925-2449-4a94-bb6f-f67ad9ecf756 ,
+                                                           person_997c1:37ff9737-0cbc-4ddb-89e8-55d042ece467 ,
+                                                           person_997c1:69fafeb0-63ed-4620-b13a-d831c3f34eac ,
+                                                           person_997c1:9a30b534-b941-48be-b7d2-51708670cb47 ,
+                                                           person_997c1:ce5ac189-5c1e-42e4-9e9d-aa72e23a671e ,
+                                                           person_1b68c:d3c2977e-06b1-5080-8852-f652a8104d44 ,
+                                                           poorters_27df1:2978 .
+
+    cluster:81631d10272b02c
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "5"^^xsd:integer ;
+        voidPlus:hasItem                                   thes_5b822:p115228233 ,
+                                                           person_1b68c:21ae5477-c174-59da-b13d-08cacaf8aa17 ,
+                                                           person_1b68c:2e0dfdf3-75b4-50f3-9a1c-2db94fce9480 ,
+                                                           poorters_27df1:3326 ,
+                                                           poorters_27df1:3558 .
+
+    cluster:4c7fff7d0b957df
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "4"^^xsd:integer ;
+        voidPlus:hasItem                                   thes_5b822:p237543486 ,
+                                                           person_1b68c:603299f1-b2a4-5030-a7f7-c5dc44f65365 ,
+                                                           poorters_27df1:587 ,
+                                                           poorters_27df1:681 .
+
+    cluster:665e1a18f304d6c
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "4"^^xsd:integer ;
+        voidPlus:hasItem                                   thes_5b822:p35218115X ,
+                                                           person_1b68c:b63a3fed-e374-5603-b490-8b68a5eb9f8e ,
+                                                           poorters_27df1:2427 ,
+                                                           regentessen_27df1:39-husband-1 .
+
+    cluster:ab6d03a0dde0243
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "4"^^xsd:integer ;
+        voidPlus:hasItem                                   person_997c1:3da4998a-9b58-4407-9ace-1b0a2f08fb55 ,
+                                                           person_997c1:49f230d1-7802-4dd5-8816-86caaac90154 ,
+                                                           person_1b68c:bba96460-11e3-57e9-b854-b45bf64df9e2 ,
+                                                           poorters_27df1:2699 .
+
+    cluster:494a9e7674f8fd3
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   thes_5b822:p070076065 ,
+                                                           person_1b68c:9589b81d-5590-5270-8bb2-3c86e89b8847 ,
+                                                           poorters_27df1:2394 .
+
+    cluster:6f30adf67516ce0
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   thes_5b822:p070404194 ,
+                                                           person_1b68c:c54664c8-c8b8-56fa-86ef-640ddfca6710 ,
+                                                           poorters_27df1:1710 .
+
+    cluster:19980a5e3742d04
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   thes_5b822:p071044612 ,
+                                                           person_1b68c:9e035420-fc92-5202-ac3e-523610f6232a ,
+                                                           poorters_27df1:2976 .
+
+    cluster:2a76db1ea81d3f1
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   thes_5b822:p073526703 ,
+                                                           person_1b68c:f9ce701f-77d1-5dd7-9ca9-e6e2425d2b64 ,
+                                                           poorters_27df1:3410 .
+
+    cluster:64f4014e40ff09f
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   thes_5b822:p074166220 ,
+                                                           person_1b68c:f4360804-052a-57e0-b7cd-36965ef154b4 ,
+                                                           poorters_27df1:2638 .
+
+    cluster:1e30024d3aabfd9
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   thes_5b822:p108676064 ,
+                                                           person_1b68c:823cc695-d205-5f36-9521-420af676b9b4 ,
+                                                           regentessen_27df1:84-husband-3 .
+
+    cluster:b3901f02f0b6034
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   thes_5b822:p115203818 ,
+                                                           person_1b68c:4e63c11d-5e40-51eb-9e96-85f465ca5f71 ,
+                                                           poorters_27df1:3555 .
+
+    cluster:27f7d9758065f26
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   thes_5b822:p157246841 ,
+                                                           person_1b68c:76274f41-5413-5d06-a389-87b5a853e892 ,
+                                                           poorters_27df1:1726 .
+
+    cluster:1d9b25d6fdcd445
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   thes_5b822:p165893141 ,
+                                                           person_1b68c:6d452d15-7d60-5e51-9591-9ec5497ab4c4 ,
+                                                           poorters_27df1:1117 .
+
+    cluster:2cfca3ed00fd565
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   thes_5b822:p203220528 ,
+                                                           person_1b68c:1ff76094-4753-57a8-b24a-54b39bd99da9 ,
+                                                           poorters_27df1:1392 .
+
+    cluster:9fb783d739e5118
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   thes_5b822:p20483970X ,
+                                                           person_1b68c:2852d4f4-3467-56d5-aeee-b02853e25e6f ,
+                                                           poorters_27df1:2919 .
+
+    cluster:2b626fd31869a45
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   thes_5b822:p269448632 ,
+                                                           person_1b68c:846161e8-8cf9-5d60-bc1d-bb9eebd50d74 ,
+                                                           regentessen_27df1:198-husband-2 .
+
+    cluster:d5b4ed6d73f3638
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   thes_5b822:p297869450 ,
+                                                           person_1b68c:8f0ffba4-c6fa-5a18-ac5f-45abb27bd18b ,
+                                                           poorters_27df1:1124 .
+
+    cluster:cf896d17540dd1b
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   thes_5b822:p338769749 ,
+                                                           person_1b68c:973e4ea4-8834-5705-8780-551c913f5fdd ,
+                                                           poorters_27df1:4576 .
+
+    cluster:5f0055445cb95ae
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   thes_5b822:p377468029 ,
+                                                           person_1b68c:91a33e52-f41f-520b-a78f-66247897f294 ,
+                                                           poorters_27df1:1849 .
+
+    cluster:cbd01c6da38fc26
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   person_1b68c:b17d4509-257d-5462-b299-9c1686f3644e ,
+                                                           poorters_27df1:3958 ,
+                                                           viaf_1c811:304945546 .
+
+    cluster:9e0be53200e65d5
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   person_997c1:1d0e058a-bd19-4408-a355-7e7f8a1146b4 ,
+                                                           person_1b68c:2014f3cb-dad1-57f1-8839-e451e1279f4b ,
+                                                           poorters_27df1:4668 .
+
+    cluster:37a444b1a46d5bf
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   person_997c1:251f59f4-cd16-422d-a522-25283697e4fb ,
+                                                           person_1b68c:5e3538df-619f-51a0-813e-55d5917f9284 ,
+                                                           poorters_27df1:2591 .
+
+    cluster:48bdbc0f84b97dd
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   person_997c1:28772256-a6fd-4e57-bee7-5c7428f50ef7 ,
+                                                           person_1b68c:36da5cdc-e90a-5181-9c1f-8fa76e0a3ccd ,
+                                                           poorters_27df1:2283 .
+
+    cluster:7021f5916dce111
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   person_997c1:42942630-4af7-4136-9844-9e45e14bd08a ,
+                                                           person_1b68c:2d993759-64ff-579b-bb3c-0279080581c7 ,
+                                                           poorters_27df1:1258 .
+
+    cluster:b97961749da3e83
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   person_997c1:52a03f74-200c-4870-ae6e-004a886aa86d ,
+                                                           person_1b68c:11202a3b-fc6b-579f-bc6f-90cc7750d569 ,
+                                                           poorters_27df1:3760 .
+
+    cluster:bb1b89cf4e7ecb9
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   person_997c1:5b2ae61e-612f-45da-b6d5-0f2ef51ec423 ,
+                                                           person_1b68c:adef54d7-121f-544e-bd3d-fc7cfd15993d ,
+                                                           poorters_27df1:2929 .
+
+    cluster:4a35bba68ed9e65
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   person_997c1:640bff18-ac5b-48d3-a8d7-06eb5764ca76 ,
+                                                           person_1b68c:b86936aa-76ab-5a03-8e77-52571e075b85 ,
+                                                           poorters_27df1:2847 .
+
+    cluster:e664f73ac47e810
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   person_997c1:8734ed74-4be7-4647-9b98-8d42c14fa829 ,
+                                                           person_1b68c:b182cfdd-dccb-5885-aafe-52155162b16c ,
+                                                           poorters_27df1:3273 .
+
+    cluster:fe3a6bbf6949ddd
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   person_997c1:9f6a60f0-aef7-48b6-bcf2-0dd7e3b7d28f ,
+                                                           person_1b68c:abc51a27-53b4-503c-a307-67e2262c7567 ,
+                                                           poorters_27df1:3923 .
+
+    cluster:68be08c0d7813ea
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   person_997c1:ce1e30fa-92cf-4994-836f-77678129d74f ,
+                                                           person_1b68c:9225925d-f1f3-5dbc-bc05-0bf301737ab7 ,
+                                                           poorters_27df1:4645 .
+
+    cluster:cb5726e21301e6a
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   person_997c1:ed9deae6-0efe-432b-976d-ad154f248326 ,
+                                                           person_1b68c:9de77e79-f1e8-587f-80ea-99d0eefd29b7 ,
+                                                           poorters_27df1:4500 .
+
+    cluster:b857180d3c2095c
+        a                                                  voidPlus:Cluster ;
+        voidPlus:nodes                                     "3"^^xsd:integer ;
+        voidPlus:hasItem                                   person_997c1:f6198b2c-2d0d-497a-8e8b-7f052d4ea735 ,
+                                                           person_1b68c:cff8879d-88a6-5d18-8e0a-ee5b0978dd2a ,
+                                                           poorters_27df1:4384 .
+
+}
