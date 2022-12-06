@@ -892,6 +892,8 @@ def toRDF(data, uri, name, description, filename, target=None):
                 nsArtwork.term(art_id),
                 label=[d['title']],
                 creationDate=d['date'],
+                hasEarliestBeginTimeStamp=d['earliestBeginTimeStamp'],
+                hasLatestEndTimeStamp=d['latestEndTimeStamp'],
                 # artist=[d['artist']],
                 #disambiguatingDescription=d['dimensions'],
                 comment=[Literal(d['description'], lang='nl')],

@@ -119,6 +119,9 @@ class CreativeArtifact(Entity):
 
     artist = rdfMultiple(ga.artist)  # not in ontology
 
+    hasEarliestBeginTimeStamp = rdfSingle(sem.hasEarliestBeginTimeStamp)
+    hasLatestEndTimeStamp = rdfSingle(sem.hasLatestEndTimeStamp)
+
 
 ### RoleTypes
 
