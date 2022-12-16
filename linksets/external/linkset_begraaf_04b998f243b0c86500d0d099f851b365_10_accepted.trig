@@ -3424,16 +3424,6 @@ linkset:04b998f243b0c86500d0d099f851b365-10
         voidPlus:hasValidation                             validation:a07ae79c8c238c0 .
 
     ### LINK Nr: 261
-    poorters_27df1:531    owl:sameAs    <https://archief.amsterdam/indexen/deeds/775a4ba0-9bfd-4b41-bace-471878c82f7c?person=99e87e1c-69c9-2bb2-e053-b784100a6a2e> .
-
-    resource:Reification-ab0b96ceb808233
-        a                                                  rdf:Statement ;
-        rdf:predicate                                      owl:sameAs ;
-        rdf:subject                                        poorters_27df1:531 ;
-        rdf:object                                         <https://archief.amsterdam/indexen/deeds/775a4ba0-9bfd-4b41-bace-471878c82f7c?person=99e87e1c-69c9-2bb2-e053-b784100a6a2e> ;
-        voidPlus:matchingStrength                          "0.80000"^^xsd:decimal ;
-        voidPlus:hasClusterID                              cluster:8fb69a5a64147fb ;
-        voidPlus:hasValidation                             validation:ab0b96ceb808233 .
 
     ### LINK Nr: 262
     gildenleden_27df1:207    owl:sameAs    <https://archief.amsterdam/indexen/deeds/78278851-d884-47ff-b81b-01bd37d51982?person=99e87e18-3fb3-2bb2-e053-b784100a6a2e> .
@@ -7986,10 +7976,6 @@ validationset:04b998f243b0c86500d0d099f851b365-linkset-10
         voidPlus:hasValidationStatus                       resource:Accepted .
 
     validation:a07ae79c8c238c0
-        a                                                  voidPlus:Validation ;
-        voidPlus:hasValidationStatus                       resource:Accepted .
-
-    validation:ab0b96ceb808233
         a                                                  voidPlus:Validation ;
         voidPlus:hasValidationStatus                       resource:Accepted .
 
