@@ -23,6 +23,70 @@ In a lot of the remanining cases persons were mentioned in an event with in a sl
 
 Manual validation eventually delivered a dataset (Lens #6, above) with 380 accepted matches, 131 rejected matches and 87 uncertain matches. For the manual deduplication task the works of Elias, NNBW, Van der Aa and the indices of the Amsterdam City Archives were consulted.
 
+If persons are disambiguated and linked using an `owl:sameAs` predicate, then this should also be done for any duplicate role and event information (e.g. the role of being born in a birth event). The two construct queries below partly solve this issue and can be found in that same folder. 
+
+To construct a linkset of roles of persons:
+
+```SPARQL
+PREFIX ga: <https://data.goldenagents.org/ontology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+CONSTRUCT {
+    ?role1 owl:sameAs ?role2 .
+} WHERE { 
+    ?person a ga:Person ;
+         ga:participatesIn ?event1, ?event2 .
+    
+    FILTER(?event1 != ?event2)
+    
+    ?event1 rdfs:label ?eventlabel .
+    ?event2 rdfs:label ?eventlabel .
+    
+    ?role1 a ?roleType1 ;
+          ga:carriedIn ?event1 ;
+          ga:carriedBy ?person ;
+          rdfs:label ?label .
+    
+    ?role2 a ?roleType2 ;
+          ga:carriedIn ?event2 ;
+          ga:carriedBy ?person ;
+          rdfs:label ?label .
+    
+    FILTER(?role1 != ?role2)
+}
+```
+
+To construct a linkset of events in which persons participate:
+
+```SPARQL
+PREFIX ga: <https://data.goldenagents.org/ontology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+CONSTRUCT {
+    ?event1 owl:sameAs ?event2 .
+} WHERE { 
+    ?person a ga:Person ;
+         ga:participatesIn ?event1, ?event2 .
+    
+    FILTER(?event1 != ?event2)
+    
+    ?event1 rdfs:label ?eventlabel .
+    ?event2 rdfs:label ?eventlabel .
+    
+    ?role1 a ?roleType1 ;
+          ga:carriedIn ?event1 ;
+          ga:carriedBy ?person ;
+          rdfs:label ?label .
+    
+    ?role2 a ?roleType2 ;
+          ga:carriedIn ?event2 ;
+          ga:carriedBy ?person ;
+          rdfs:label ?label .
+    
+    FILTER(?role1 != ?role2)
+}
+```
+
 ## External
 
 External linksets serve to reconcile the persons mentioned in the Corporate Group Portraits dataset to other datasets. The following linksets were created:
