@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+title: Amsterdam Corporate Group Portraits
+message: >-
+  If you use this dataset, please cite it using the
+  metadata from this file.
+type: dataset
+authors:
+  - given-names: Leon
+    name-particle: van
+    family-names: Wissen
+    email: l.vanwissen@uva.nl
+    affiliation: University of Amsterdam
+    orcid: "https://orcid.org/0000-0001-8672-025X"
+  - given-names: Jirsi
+    family-names: Reinders
+    email: jirsi.reinders@huygens.knaw.nl
+    affiliation: >-
+      Huygens Institute for the History of the
+      Netherlands
+    orcid: "https://orcid.org/0000-0003-2702-4371"
+  - given-names: Norbert
+    family-names: Middelkoop
+    affiliation: >-
+      Amsterdam Museum
+  - name: Golden Agents project
+identifiers:
+  - type: doi
+    value:
+    description: URL for release of data
+repository-code: "https://github.com/knaw-huc/golden-agents-amsterdam-corporate-group-portraits/"
+abstract: >-
+  The Amsterdam Corporate Group Portraits dataset
+  contains biographical information on persons 
+  depicted on institutional/corporate group 
+  portraits in the seventeenth and eighteenth
+  century in Amsterdam. The dataset is part of the 
+  Golden Agents project (https://www.goldenagents.org/).
+keywords:
+  - Group Portraits
+  - Golden Agents
+  - Linked Open Data
+  - Archival Sources
+license: CC-BY-4.0
+version: v1.0
+date-released: "2022-12-24"
