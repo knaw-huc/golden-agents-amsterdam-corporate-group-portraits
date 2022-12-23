@@ -130,6 +130,7 @@ The original spreadsheets did not contain unique person mentions. It could be th
 Only the CreativeWork and Person resources carry a `prov:wasDerivedFrom` property that refers to the row number of the original csv file. Original values were kept in different columns. Every file is converted to a separate named graph, so that the origin of certain statements can be traced once the data is loaded into a triplestore.
 
 ## License / Citation
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7478545.svg)](https://doi.org/10.5281/zenodo.7478545)
 
 If you use the data, alway cite the original research:
 
